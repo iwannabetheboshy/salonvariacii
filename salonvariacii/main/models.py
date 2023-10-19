@@ -3,25 +3,25 @@ from django.db import models
 
 class Kitchen(models.Model):
     COLOR_CHOICES = (
-        ('black', "black"),
-        ('white', "white"),
+        ('black', "Черный"),
+        ('white', "Белый"),
     )
 
     STYLE_CHOICES = (
-        ('classic', "classic"),
-        ('modern', "modern"),
+        ('classic', "Классический"),
+        ('modern', "Модерн"),
     )
 
     MATERIAL_CHOICES = (
-        ('PVX', "PVX"),
-        ('LDSP', "LDSP"),
-        ('MDF', "MDF"),
+        ('PVX', "ПВХ"),
+        ('LDSP', "ЛДСП"),
+        ('MDF', "МДФ"),
     )
 
     FORM_CHOICES = (
-        ('straight', "straight"),
-        ('angular', "angular"),
-        ('narrow', "narrow"),
+        ('straight', "Прямой"),
+        ('angular', "Угловой"),
+        ('narrow', "Узкий"),
     )
     color = models.CharField('Цвет', choices=COLOR_CHOICES, max_length=50)
     style = models.CharField('Стиль кухни', choices=STYLE_CHOICES, max_length=50)
