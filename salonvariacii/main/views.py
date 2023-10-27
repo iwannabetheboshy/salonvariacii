@@ -1,14 +1,15 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from .models import *
-# from .forms import FilterForm
+from .models import Kitchen, KitchenMaterial, KitchenOpeningMethod
+from .forms import FilterForm
 
 
 def get_related_items_for_admin(request):
-    style_id = request.GET.get('style_id')
+    selected_styles = request.GET.get('styles')
+    selected_styles = selected_styles.split(',')
 
-    materials = KitchenMaterial.objects.filter(kitchen_styles__pk=style_id)
-    opening_methods = KitchenOpeningMethod.objects.filter(kitchen_styles__pk=style_id)
+    materials = KitchenMaterial.objects.filter(kitchen_styles__pk__in=selected_styles)
+    opening_methods = KitchenOpeningMethod.objects.filter(kitchen_styles__pk__in=selected_styles)
 
     material_data = [{'id': material.id, 'name': material.name} for material in materials]
     opening_method_data = [{'id': opening_method.id, 'name': opening_method.name} for opening_method in opening_methods]
@@ -27,33 +28,36 @@ def main(request):
 
 def catalog(request):
     kitchen = Kitchen.objects.all()
-    # form = FilterForm()
-    return render(request, "main/catalog.html", {'kitchen': kitchen})
+    form = FilterForm()
+    return render(request, "main/catalog.html", {'kitchen': kitchen, 'form': form})
 
 
 def filter(request):
-    # if request.method == 'POST':
-    #     form = FilterForm(request.POST)
-    #     kitchen = Kitchen.objects.all()
-    #     if form.is_valid():
-    #         color_values = form.cleaned_data.get('color', [])
-    #         style_values = form.cleaned_data.get('style', [])
-    #         material_values = form.cleaned_data.get('material', [])
-    #         form_values = form.cleaned_data.get('form', [])
-    #
-    #         filter_parameters = {
-    #             'color__in': color_values,
-    #             'style__in': style_values,
-    #             'material__in': material_values,
-    #             'form__in': form_values,
-    #         }
-    #
-    #         kitchen = Kitchen.objects.all()
-    #         for field, values in filter_parameters.items():
-    #             if values:
-    #                 kitchen = kitchen.filter(**{field: values})
-    #
-    #         filtered_kitchens = list(kitchen.values())  # Преобразование queryset в список словарей
-    #
-    #         return JsonResponse({'filtered_kitchens': filtered_kitchens})
-    return render(request, "main/catalog.html")
+    if request.method == 'POST':
+        form = FilterForm(request.POST)
+        kitchen = Kitchen.objects.all()
+        if form.is_valid():
+            name_value = form.cleaned_data.get('name')
+            style_values = form.cleaned_data.get('style', [])
+            material_values = form.cleaned_data.get('material', [])
+            openingMethod_values = form.cleaned_data.get('openingMethod', [])
+
+            filter_parameters = {
+                'name__icontains': name_value,
+                'style__in': style_values,
+                'material__name__in': material_values,
+                'openingMethod__name__in': openingMethod_values,
+            }
+
+            kitchen = Kitchen.objects.all()
+            for field, values in filter_parameters.items():
+                if values:
+                    kitchen = kitchen.filter(**{field: values}).values('name','style__name', 'material__name', 'openingMethod__name')
+
+            filtered_kitchens = list(kitchen)  # Преобразование queryset в список словарей
+            print(filtered_kitchens)
+            return JsonResponse({'filtered_kitchens': filtered_kitchens})
+        else:
+            # Вывод ошибок в консоль
+            print(form.errors)
+            return render(request, "main/catalog.html")
