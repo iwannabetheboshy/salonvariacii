@@ -45,4 +45,3 @@ class Kitchen(models.Model):
     class Meta:
         verbose_name = "Кухня"
         verbose_name_plural = "Кухни"
-

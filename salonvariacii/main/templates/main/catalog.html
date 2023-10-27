@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<div class="col-1">
+<div class="col-2">
     <form id="filter-form" method="post">
     {% csrf_token %}
     {{ form.as_p }}
@@ -15,15 +15,15 @@
          {%for kit in kitchen%}
         <div class="col">
             <br>
-          {{kit.get_color_display}} <br>
-          {{kit.get_style_display}}<br>
-          {{kit.get_material_display}}<br>
-          {{kit.get_form_display}}<br>
-          {{kit.width}}<br>
+          {{kit.name}} <br>
+          {{kit.style}}<br>
+          {{kit.material}}<br>
+          {{kit.openingMethod}}<br>
             <br>
         </div>
         {%endfor%}
     </div>
 </div>
 <script src="{% static 'main/js/filter.js' %}"></script>
+<script src="{% static 'main/js/filter_style.js' %}"></script>
 {% endblock %}
