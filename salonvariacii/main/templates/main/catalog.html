@@ -1,0 +1,29 @@
+{% extends 'main/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-1">
+    <form id="filter-form" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+  <button type="submit">Применить</button>
+</form>
+
+</div>
+<div class="col-11">
+    <div class="row" id="filtered-results">
+         {%for kit in kitchen%}
+        <div class="col">
+            <br>
+          {{kit.get_color_display}} <br>
+          {{kit.get_style_display}}<br>
+          {{kit.get_material_display}}<br>
+          {{kit.get_form_display}}<br>
+          {{kit.width}}<br>
+            <br>
+        </div>
+        {%endfor%}
+    </div>
+</div>
+<script src="{% static 'main/js/filter.js' %}"></script>
+{% endblock %}
