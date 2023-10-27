@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   styleSelect.addEventListener('change', function () {
     const styleId = styleSelect.value;
 
-    fetch('/get-related-items-for-admin/?style_id=' + styleId)
+    fetch('/get-related-items-for-admin/?styles=' + styleId)
       .then(response => response.json())
       .then(data => {
 
