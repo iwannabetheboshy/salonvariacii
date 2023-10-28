@@ -1,0 +1,58 @@
+body{
+    width: 90%; 
+    max-width: 1664px; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+/* fonts */
+
+@font-face {
+    font-family: 'Stolzl';
+    src: local('font/Stolzl Book'), local('font/Stolzl-Book'),
+        url('font/Stolzl-Book.woff2') format('woff2'),
+        url('font/Stolzl-Book.woff') format('woff'),
+        url('font/Stolzl-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'Stolzl Bold';
+    src: local('font/Stolzl Regular'), local('font/Stolzl Regular'),
+        url('font/Stolzl-Regular.woff2') format('woff2'),
+        url('font/Stolzl-Regular.woff') format('woff'),
+        url('font/Stolzl-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.plain-text{
+    font-family: Stolzl;
+    font-size: 14px; 
+    font-weight: 400; 
+}
+
+/* header */
+
+header{
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.contacts a{
+    padding-left: 16px;
+}
+
+.link a{
+    margin-left: 32px; /* Отступ сверху и снизу, ноль справа и слева */
+}
+
+.link a:first-child {
+    margin: 0; /* Убираем отступы у первого и последнего блока */
+}
