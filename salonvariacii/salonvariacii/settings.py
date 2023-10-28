@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'admin_reorder',
     'main'
 ]
 
@@ -37,6 +38,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder',
 ]
 
 ROOT_URLCONF = 'salonvariacii.urls'
@@ -116,3 +118,38 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+ADMIN_REORDER = (
+    'sites',
+    {
+        "app" : "main",
+        "label" : "Кухни",
+        "models" : (
+            "main.Kitchen",
+            "main.KitchenStyle",
+            "main.KitchenMaterial",
+            "main.KitchenOpeningMethod",
+            "main.KitchenPhoto",
+        )
+    },
+
+     {
+        'app': 'main',
+        'label': 'Отображаемое на главной странице',
+        'models': (
+            'main.MainPageCarousel',
+            "main.AboutUs",
+            'main.AboutUsDopBlock',
+            'main.ReviewsAndProject',
+
+        )
+    },
+
+    {'app': 'auth', 'models': (
+        'auth.Group',
+        {'model': 'auth.User', 'label': 'Пользователи'},
+    )}
+
+
+    
+)
