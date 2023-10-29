@@ -91,7 +91,7 @@ class AboutUsDopBlock(models.Model):
 
 
 class AboutUs(models.Model):
-    image = models.ImageField('Фото')
+    image = models.ImageField('Фото', upload_to='about/')
     text = models.TextField('Текст')
     
     class Meta:
@@ -99,7 +99,7 @@ class AboutUs(models.Model):
         verbose_name_plural = "Блок о нас"
 
     def __str__(self):
-        return self.name  
+        return self.image.url  
 
 
 class ReviewsAndProject(models.Model):

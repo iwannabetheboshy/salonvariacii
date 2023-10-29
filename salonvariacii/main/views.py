@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from .models import Kitchen, KitchenMaterial, KitchenOpeningMethod
+from .models import Kitchen, KitchenMaterial, KitchenOpeningMethod, MainPageCarousel, AboutUsDopBlock, AboutUs
 from .forms import FilterForm
 
 
@@ -23,7 +23,19 @@ def get_related_items_for_admin(request):
 
 
 def main(request):
-    return render(request, "main/catalog.html")
+    sliderPhoto = MainPageCarousel.objects.all().order_by('show_number')
+    about = AboutUs.objects.first()
+    aboutMini = AboutUsDopBlock.objects.all()
+    numberOfBlocksAboutMini = aboutMini.count() // 2
+    
+    data = {
+        "sliderPhoto": sliderPhoto,
+        "about": about,
+        "aboutMini": aboutMini,
+        "numberOfBlocksAboutMini": numberOfBlocksAboutMini
+    }
+
+    return render(request, "main/index.html", data)
 
 
 def catalog(request):
