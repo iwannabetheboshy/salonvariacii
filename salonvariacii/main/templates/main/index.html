@@ -117,17 +117,65 @@
             <div class="about-us-text">
                 {{ about.text|safe }}
             </div>
-            <div class="about-us-text-dop row row-cols-{{ numberOfBlocksAboutMini }}">
-                {% for mini in aboutMini %}
+            <div class="about-us-text-dop row row-cols-3">
+                {% if numberOfBlocksAboutMini == 4%}
                     <div class="about-us-text-dop-block">
                         <div class="value">
-                            {{ mini.value }}
+                            {{ aboutMini.0.value }}
                         </div>
                         <div class="title">
-                            {{ mini.name }}
+                            {{ aboutMini.0.name }}
                         </div>
                     </div>
-                {% endfor %}
+                    <div class="about-us-text-dop-block">
+                        <div class="value">
+                            {{ aboutMini.1.value }}
+                        </div>
+                        <div class="title">
+                            {{ aboutMini.1.name }}
+                        </div>
+                    </div>
+                    <div class="about-us-text-dop-block">
+                        <div class="value">
+                        </div>
+                        <div class="title">
+                        </div>
+                    </div>
+                    <div class="about-us-text-dop-block">
+                        <div class="value">
+                            {{ aboutMini.2.value }}
+                        </div>
+                        <div class="title">
+                            {{ aboutMini.2.name }}
+                        </div>
+                    </div>
+                    <div class="about-us-text-dop-block">
+                        <div class="value">
+                            {{ aboutMini.3.value }}
+                        </div>
+                        <div class="title">
+                            {{ aboutMini.3.name }}
+                        </div>
+                    </div>
+                    <div class="about-us-text-dop-block">
+                        <div class="value">
+                        </div>
+                        <div class="title">
+                        </div>
+                    </div>
+                {% else %}
+                    {% for mini in aboutMini %}
+                        <div class="about-us-text-dop-block">
+                            <div class="value">
+                                {{ mini.value }}
+                            </div>
+                            <div class="title">
+                                {{ mini.name }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                
             </div>
            
         </div>

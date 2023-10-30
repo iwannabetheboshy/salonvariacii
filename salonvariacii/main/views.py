@@ -26,13 +26,14 @@ def main(request):
     sliderPhoto = MainPageCarousel.objects.all().order_by('show_number')
     about = AboutUs.objects.first()
     aboutMini = AboutUsDopBlock.objects.all()
-    numberOfBlocksAboutMini = aboutMini.count() // 2
+    numberOfBlocksAboutMini = aboutMini.count() 
+   
     
     data = {
         "sliderPhoto": sliderPhoto,
         "about": about,
         "aboutMini": aboutMini,
-        "numberOfBlocksAboutMini": numberOfBlocksAboutMini
+        "numberOfBlocksAboutMini": numberOfBlocksAboutMini,
     }
 
     return render(request, "main/index.html", data)
