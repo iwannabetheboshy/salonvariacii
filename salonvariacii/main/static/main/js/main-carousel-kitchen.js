@@ -19,7 +19,6 @@ $(document).ready(function(){
     autoplaySpeed: interval,
     infinite: false, 
     edgeFriction: 0.2,
-
   });
 
   $slider.on('beforeChange', function(event, slick, currentSlide, nextSlide){

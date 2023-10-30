@@ -268,6 +268,57 @@ a{
     padding-right: 15px;
   }
 
+ /*----------------- catalog-carousel -----------------*/
+
+ #catalog-carousel{
+    margin-bottom: 500px;
+ }
+ .small-image {
+    width: 147px;
+    height: 400px;
+    cursor: pointer;
+    object-fit: cover;
+    transition: .5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+    padding-right: 4px;
+  }
+  
+  .large-image {
+    width: 833px;
+    height: 400px; 
+    object-fit: cover;
+
+  }
+
+  .slider-catalog-container{
+    width: 100%;
+    overflow: hidden; 
+    white-space: nowrap; 
+    padding-left: 70px;
+  }
+
+  .slide-line{
+    margin-top: 24px;
+  }
+
+  #catalog-carousel .content{
+    display: none;
+  }
+
+  #catalog-carousel .active{
+    display: block;
+  }
+
+  #catalog-carousel .slide{
+    display: inline-block;
+    vertical-align: top;
+  }
+
+
+
+
+
+
+
  @media (max-width: 1080px) {
 
     .bottom-block-main-block-mobile{

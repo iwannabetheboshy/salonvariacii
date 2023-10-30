@@ -53,6 +53,7 @@ class Kitchen(models.Model):
     openingMethod = models.ForeignKey(KitchenOpeningMethod, on_delete=models.CASCADE, verbose_name="Метод открытия кухни")
     mainImage = models.ImageField('Главное фото', upload_to='kitchen/')
     images = models.ManyToManyField(KitchenPhoto, blank=True, verbose_name="Дополнительные фотографии кухни")
+    show_number = models.IntegerField('Номер показа в карусели каталога', null=True)
 
 
     class Meta:
