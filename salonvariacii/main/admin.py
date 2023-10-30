@@ -25,5 +25,28 @@ class KitchenStyleAdmin(admin.ModelAdmin):
     pass
 
 
+@admin.register(KitchenPhoto)
+class KitchenPhotoAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(MainPageCarousel)
+class MainPageCarouselAdmin(admin.ModelAdmin):
+    list_display = ("name", "image", "show_number")
+
+
+@admin.register(AboutUsDopBlock)
+class AboutUsDopBlocklAdmin(admin.ModelAdmin):
+    list_display = ("name", "value")
+
+
+@admin.register(AboutUs)
+class AboutUslAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(ReviewsAndProject)
+class ReviewsAndProjectAdmin(admin.ModelAdmin):
+    list_display = ("project_name", "price", "squeare", "review_name", "text", "image")
+
 
 

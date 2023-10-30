@@ -1,0 +1,492 @@
+body{
+    max-width: 1402px;
+    font-family: Stolzl; 
+    margin-left: auto; 
+    margin-right: auto;
+    overflow-x: hidden;
+}
+
+.custom-container{
+    width: 90%; 
+    max-width: 1664px; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.row{
+    max-width: 1402px;
+}
+
+/* ----------------- fonts -----------------*/
+
+@font-face {
+    font-family: 'Stolzl';
+    src: local('font/Stolzl Book'), local('font/Stolzl-Book'),
+        url('font/Stolzl-Book.woff2') format('woff2'),
+        url('font/Stolzl-Book.woff') format('woff'),
+        url('font/Stolzl-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+@font-face {
+    font-family: 'Stolzl Bold';
+    src: local('font/Stolzl Regular'), local('font/Stolzl-Bold'),
+        url('font/Stolzl-Bold.woff2') format('woff2'),
+        url('font/Stolzl-Bold.woff') format('woff'),
+        url('font/Stolzl-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.plain-text{
+    font-family: Stolzl;
+    font-size: 14px; 
+    font-weight: 400; 
+}
+
+
+
+h1{
+    color: #1E1E1E; 
+    font-family: 'Stolzl Bold';
+    font-size: 52px; 
+    font-weight: 700; 
+}
+
+h2{
+    color: #1E1E1E; 
+    font-family: 'Stolzl Bold';
+    font-size: 36px;  
+    font-weight: 700; 
+}
+
+.gray-text{
+    color: #787878; 
+    font-size: 16px; 
+    font-size: 16px; 
+    font-weight: 400; 
+}
+
+.num{
+    color: #1E1E1E;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/*----------------- header -----------------*/
+
+header{
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.contacts a{
+    padding-left: 16px;
+}
+
+.link a{
+    margin-left: 32px;
+}
+
+.link a:first-child {
+    margin: 0; 
+}
+
+
+/*----------------- first-block-main-kitchen-carousel -----------------*/
+.text-width{
+    width: 70%;
+    margin-bottom: 24px;
+}
+.parent .line{
+    position: relative;
+    left: 36%;
+}
+
+.custom-button{
+    border-radius: 130px;
+    background: #1E1E1E; 
+    color: #F9F9F9;
+    padding: 20px 32px; 
+    border: none;
+}
+
+    /* carousel */
+.main-kitchen-carousel{
+    margin-bottom: 12px;
+    width: 104%;
+}
+
+.main-kitchen-carousel img{
+    width: 500px !important;
+    height: 500px;
+    object-fit: cover;
+    object-position: bottom;
+    margin-right: 15px;
+}
+
+.slick-slide{
+    width: auto !important;
+}
+
+#first-block-main-kitchen-carousel .col-5{
+    width: 45% !important;
+    overflow: hidden;
+}
+
+#first-block-main-kitchen-carousel .col-6{
+    margin-left: 5%;
+}
+
+.main-kitchen-carousel-slide-kithen-name{
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    color: #FFF;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.main-kitchen-carousel-slide{
+    position: relative;
+}
+
+.nav-main-kitchen-carousel{
+    padding-left: 12px;
+}
+
+
+.proggress .show_number{
+    max-width: 28px;
+    padding: 0 !important;
+    margin-right: 16px;
+}
+
+.progress-container {
+    width: 100%;
+    height: 2px; 
+    background-color: #C9C7DB; 
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: transparent; 
+    width: 100%; 
+  }
+  
+  .progress-fill {
+    width: 0; 
+    height: 100%;
+    background-color: #000;
+    transition: width 1s linear; 
+  }
+
+  .slick-arrow svg{
+    fill: #1E1E1E;
+  }
+
+  .slick-disabled svg{
+    fill: #DBC7D7;
+  }
+
+
+ /*----------------- about us -----------------*/
+
+ #about-us-block{
+    margin: 110px 0;
+ }
+
+ .about-us-block-image{
+    position: relative;
+ }
+
+ .about-us-block-image:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-top: 50px solid transparent;
+    border-right: 50px solid #fff;
+    border-bottom: 50px solid #fff;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+ }
+
+ .about-us-text-dop-block{
+    margin-top: 24px;
+    overflow: hidden;
+ }
+
+ .about-us-text-block{
+    padding-left: 40px;
+ }
+
+ .about-us-text{
+    margin-top: 24px;
+ }
+
+ .about-us-text-dop-block .value{
+    font-size: 36px; 
+    font-weight: 400; 
+ }
+
+ .about-us-text-dop-block .title{
+    font-size: 14px; 
+    font-weight: 400; 
+ }
+
+
+ .mobile, .bottom-block-main-block-mobile{
+    display: none;
+ }
+
+ @media (max-width: 1080px) {
+    .bottom-block-main-block-mobile .row .col-7{
+        width: 100.3% !important;
+    }
+
+    .bottom-block-main-block-mobile{
+        text-align: center !important;
+    }
+
+
+    .parent .line{
+        left: 0;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .main-kitchen-carousel img {
+        width: calc(100vw * 0.8) !important;
+        height: calc(100vw * 0.8) !important;
+    }
+
+    h1 {
+        font-size: 46px;
+    }
+
+    .line svg {
+        width: 58%;
+    }
+
+    .parent .line {
+        left: -12% !important;
+    }
+
+    .custom-button {
+        width: 63%;
+        padding: 17px 32px;
+        margin-bottom: 24px;
+        margin-top: 24px;
+    }
+
+    h1 {
+        font-size: 46px;
+    }
+
+    .mobile {
+        font-size: 34px;
+        display: block;
+        margin-left: 4%;
+        margin-bottom: 20px;
+    }
+
+    #first-block-main-kitchen-carousel .col-5 {
+        width: 100% !important;
+    }
+
+    .main-kitchen-carousel-slide-kithen-name, .num, .nav-main-kitchen-carousel-buttton, .bottom-block-main-block, .desk{
+        display: none !important;
+    }
+
+
+    .text-width {
+        width: 100%;
+    }
+
+    #first-block-main-kitchen-carousel .col-6 {
+        width: 69%;
+    }
+
+    .about-us-block-image img {
+        width: calc(100vw*0.93);
+        margin-left: 3%;
+        
+      }
+
+      .proggress {
+        justify-content: center;
+      }
+
+    .mobile, .bottom-block-main-block-mobile{
+        display: block;
+     }
+
+    .col-9{
+        width: 100%;
+    }
+
+  }
+
+  @media (max-width: 950px) {
+    .custom-button {
+        padding: 16px 32px;
+        width: 67%;
+    }
+
+
+    h1 {
+        font-size: 38px;
+    }
+    
+  }
+
+  @media (max-width: 850px) {
+
+    h1 {
+        font-size: 33px;
+    }
+
+    .line svg {
+        width: 32%;
+    }
+
+    .parent .line {
+        left: -1% !important;
+    }
+    
+}
+
+@media (max-width: 750px) {
+
+    h1 {
+        font-size: 31px;
+    }
+
+    .mobile {
+        font-size: 27px;
+    }
+    
+  }
+
+  @media (max-width: 750px) {
+    #first-block-main-kitchen-carousel .col-6 {
+        width: 78%;
+    }
+
+    .parent .line {
+        left: 0% !important;
+    }
+
+    .bottom-block-main-block-mobile .row .col-7{
+        text-align: center !important;
+        width: 100.3% !important;
+    }
+
+    .custom-button {
+        padding: 15px 32px;
+        width: 80%;
+    }  
+  }
+
+  @media (max-width: 550px) {
+    #first-block-main-kitchen-carousel .col-6 {
+        width: 78%;
+    }
+
+    .parent .line {
+        left: 0% !important;
+    }
+
+    .bottom-block-main-block-mobile .row .col-7{
+        text-align: center !important;
+        width: 82% !important;
+    }
+
+    #about-us-block{
+        margin-left: 16px;
+    }
+
+    .about-us-text-block{
+        padding: 16px;
+    }
+    
+  }
+
+  @media (max-width: 460px) {
+
+    h1{
+        font-size: 24px; 
+    }
+
+    .line svg{
+        width: 30%;
+    }
+
+    .plain-text {
+        font-size: 17px;
+    }
+
+    .custom-container{
+        margin-bottom: 24px;
+    }
+
+    #first-block-main-kitchen-carousel .col-6{
+        width: 90%;
+    }
+
+    .parent .line {
+        left: 0% !important;
+    }
+
+    .text-width {
+        width: 100%;
+    }
+
+    .bottom-block-main-block-mobile{
+        display: block;
+        margin-top: 24px;
+        margin-bottom: 24px;
+    }
+    .bottom-block-main-block-mobile .row{
+        justify-content: center !important;
+        text-align: center;
+    }
+
+    .main-kitchen-carousel img {
+        width: calc(100vw * 0.8) !important;
+        height: calc(100vw * 0.8) !important;
+    }
+
+    #first-block-main-kitchen-carousel .col-5 {
+        width: 96% !important;
+    }
+
+    .proggress{
+        justify-content: center;
+    }
+
+    .custom-button {
+        width: 96%;
+        padding: 12px 32px;
+        margin-bottom: 24px;
+    }
+
+    h2{
+        font-size: 24px; 
+    }
+
+    .about-us-text-block {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+  }
+
