@@ -169,10 +169,24 @@ a{
     margin-right: 16px;
 }
 
+.show_number{
+    position: relative;
+}
+.num{
+    display: none;
+}
+.num-active{
+    display: block;
+}
+
+
+
 .progress-container {
     width: 100%;
     height: 2px; 
     background-color: #C9C7DB; 
+    position: absolute;
+    bottom: 10%;
   }
   
   .progress-bar {
