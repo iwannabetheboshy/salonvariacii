@@ -105,6 +105,11 @@ a{
     width: 70%;
     margin-bottom: 24px;
 }
+
+.parent{
+    padding-left: 70px;
+}
+
 .parent .line{
     position: relative;
     left: 36%;
@@ -116,6 +121,10 @@ a{
     color: #F9F9F9;
     padding: 20px 32px; 
     border: none;
+}
+
+.watch-video{
+    padding-left: 24px;
 }
 
     /* carousel */
@@ -134,15 +143,6 @@ a{
 
 .slick-slide{
     width: auto !important;
-}
-
-#first-block-main-kitchen-carousel .col-5{
-    width: 45% !important;
-    overflow: hidden;
-}
-
-#first-block-main-kitchen-carousel .col-6{
-    margin-left: 5%;
 }
 
 .main-kitchen-carousel-slide-kithen-name{
@@ -239,9 +239,6 @@ a{
     overflow: hidden;
  }
 
- .about-us-text-block{
-    padding-left: 40px;
- }
 
  .about-us-text{
     margin-top: 24px;
@@ -262,22 +259,34 @@ a{
     display: none;
  }
 
+ .about-us-block-image img {
+    width: 100%;
+  }
+
+  .about-us-text-block{
+    padding-left: 40px;
+    padding-right: 15px;
+  }
+
  @media (max-width: 1080px) {
-    .bottom-block-main-block-mobile .row .col-7{
-        width: 100.3% !important;
-    }
 
     .bottom-block-main-block-mobile{
         text-align: center !important;
     }
-
-
     .parent .line{
         left: 0;
     }
   }
 
   @media (max-width: 1000px) {
+    .main-kitchen-carousel, #about-us-block{
+        padding-left: 5%;
+    }
+
+    #about-us-block{
+        padding-right: 5%;
+    }
+
     .main-kitchen-carousel img {
         width: calc(100vw * 0.8) !important;
         height: calc(100vw * 0.8) !important;
@@ -295,6 +304,11 @@ a{
         left: -12% !important;
     }
 
+    .parent{
+        padding-left: 5%;
+        width: 73%;
+    }
+
     .custom-button {
         width: 63%;
         padding: 17px 32px;
@@ -309,12 +323,7 @@ a{
     .mobile {
         font-size: 34px;
         display: block;
-        margin-left: 4%;
         margin-bottom: 20px;
-    }
-
-    #first-block-main-kitchen-carousel .col-5 {
-        width: 100% !important;
     }
 
     .main-kitchen-carousel-slide-kithen-name, .num, .nav-main-kitchen-carousel-buttton, .bottom-block-main-block, .desk{
@@ -326,26 +335,20 @@ a{
         width: 100%;
     }
 
-    #first-block-main-kitchen-carousel .col-6 {
-        width: 69%;
-    }
-
-    .about-us-block-image img {
-        width: calc(100vw*0.93);
-        margin-left: 3%;
-        
-      }
-
-      .proggress {
+    .proggress {
         justify-content: center;
-      }
+    }
 
     .mobile, .bottom-block-main-block-mobile{
         display: block;
-     }
+    }
 
-    .col-9{
-        width: 100%;
+    .about-us-text-block{
+        padding: 0px;
+      }
+
+    .nav-main-kitchen-carousel{
+        justify-content: center;
     }
 
   }
@@ -389,20 +392,9 @@ a{
         font-size: 27px;
     }
     
-  }
-
-  @media (max-width: 750px) {
-    #first-block-main-kitchen-carousel .col-6 {
-        width: 78%;
-    }
 
     .parent .line {
         left: 0% !important;
-    }
-
-    .bottom-block-main-block-mobile .row .col-7{
-        text-align: center !important;
-        width: 100.3% !important;
     }
 
     .custom-button {
@@ -411,22 +403,16 @@ a{
     }  
   }
 
+  @media (max-width: 650px) {
+
+    .parent .line {
+        left: 27% !important;
+      }
+  }
   @media (max-width: 550px) {
-    #first-block-main-kitchen-carousel .col-6 {
-        width: 78%;
-    }
 
     .parent .line {
         left: 0% !important;
-    }
-
-    .bottom-block-main-block-mobile .row .col-7{
-        text-align: center !important;
-        width: 82% !important;
-    }
-
-    #about-us-block{
-        margin-left: 16px;
     }
 
     .about-us-text-block{
@@ -453,10 +439,6 @@ a{
         margin-bottom: 24px;
     }
 
-    #first-block-main-kitchen-carousel .col-6{
-        width: 90%;
-    }
-
     .parent .line {
         left: 0% !important;
     }
@@ -478,10 +460,6 @@ a{
     .main-kitchen-carousel img {
         width: calc(100vw * 0.8) !important;
         height: calc(100vw * 0.8) !important;
-    }
-
-    #first-block-main-kitchen-carousel .col-5 {
-        width: 96% !important;
     }
 
     .proggress{

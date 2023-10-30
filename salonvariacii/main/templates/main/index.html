@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 <section id="first-block-main-kitchen-carousel">
-    <div class="row align-items-center">
-        <div class="col-6">
+    <div class="row align-items-center px-0">
+        <div class="col-lg-6 col-12 px-0">
             <div class="parent">
                 <h1>Встроенные кухни именно для вас</h1>
                 <div class="line">
@@ -17,22 +17,18 @@
                 <div class="row align-items-center bottom-block-main-block">
                     <div class="col">
                         <button class="custom-button">Оставить заявку</button>
-                    </div>
-                    <div class="col-7">
-                        <a href="">
+                        <a href="" class="watch-video">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM10.6219 8.41459L15.5008 11.6672C15.6846 11.7897 15.7343 12.0381 15.6117 12.2219C15.5824 12.2658 15.5447 12.3035 15.5008 12.3328L10.6219 15.5854C10.4381 15.708 10.1897 15.6583 10.0672 15.4745C10.0234 15.4088 10 15.3316 10 15.2526V8.74741C10 8.52649 10.1791 8.34741 10.4 8.34741C10.479 8.34741 10.5562 8.37078 10.6219 8.41459Z" fill="#1E1E1E"/>
                             </svg> 
                             Смотреть видео
                         </a>
-                        
-                    </div>
-                    
+                    </div>                   
                 </div>
             </div>
             
         </div>
-        <div class="col-5">
+        <div class="col-lg-6 col-12 px-0">
             <div class="main-kitchen-carousel">
                 {% for photo in sliderPhoto %}
                     <div class="main-kitchen-carousel-slide">
@@ -76,7 +72,7 @@
                     {{ photo.show_slider }}
                 </div>
                 
-                <div class="col-3 row nav-main-kitchen-carousel-buttton">
+                <div class="col-3 row  nav-main-kitchen-carousel-buttton px-0">
                     <div class="col-5 custom-prev-arrow">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/>
@@ -94,31 +90,29 @@
     </div>
     <div class="bottom-block-main-block-mobile">
         <div class="row align-items-center">
-            <div class="col">
+            <div class="col-lg-6 col-12">
                 <button class="custom-button">Оставить заявку</button>
-            </div>
-            <div class="col-7">
+            </div>  
+            <div class="col-lg-6 col-12">
                 <a href="">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM10.6219 8.41459L15.5008 11.6672C15.6846 11.7897 15.7343 12.0381 15.6117 12.2219C15.5824 12.2658 15.5447 12.3035 15.5008 12.3328L10.6219 15.5854C10.4381 15.708 10.1897 15.6583 10.0672 15.4745C10.0234 15.4088 10 15.3316 10 15.2526V8.74741C10 8.52649 10.1791 8.34741 10.4 8.34741C10.479 8.34741 10.5562 8.37078 10.6219 8.41459Z" fill="#1E1E1E"/>
                     </svg> 
                     Смотреть видео
                 </a>
-                
-            </div>
-            
+            </div>       
         </div>
     </div>
 </section>
 
 <section id="about-us-block">
     <div class="row about-us-block">
-        <h2 class="mobile">О нас</h2>
-        <div class="col about-us-block-image">
+        <h2 class="mobile px-0">О нас</h2>
+        <div class="col-lg-6 col-12 about-us-block-image px-0">
             <img src="{{ about.image.url }}" alt="">
         </div>
        
-        <div class="col about-us-text-block">
+        <div class="col-lg-6 col-12 about-us-text-block">
             <h2 class="desk">О нас</h2>
             <div class="about-us-text">
                 {{ about.text|safe }}
