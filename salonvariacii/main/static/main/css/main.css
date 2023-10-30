@@ -209,7 +209,47 @@ a{
   .slick-disabled svg{
     fill: #DBC7D7;
   }
+  
+ /*----------------- look at -----------------*/
+ #look-at-block {
+	background-color: #F8F7F4;
+ }
+ 
+ .hero {
+	text-align: left !important;
+	background-color: #F8F7F4;
+	padding: 0; 
+ }
+ 
+ .hero .hero-marquee {
+	background-color: #F8F7F4;
+ }
+ 
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
 
+.hero-marquee {
+    padding: 0 0 80px 0 !important;
+}
+
+.hero-marquee-item__info {
+    grid-template-columns: 2fr 1fr !important;
+    align-items: center;
+}
+
+.hero-marquee-item__tags {
+    align-items: flex-end !important;
+}
+
+.hero-marquee-item__tag {
+    align-items: center;
+}
+
+.hero-marquee-item__tags .hero-marquee-item__tag .heart {
+    padding-right: 6px;
+}
 
  /*----------------- about us -----------------*/
 
