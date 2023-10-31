@@ -68,6 +68,19 @@ h2{
     font-weight: 400; 
 }
 
+.little-text {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 17px;
+}
+
+.num-white {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+}
+
 .num{
     color: #1E1E1E;
     font-size: 14px;
@@ -236,7 +249,7 @@ a{
 
 .hero-marquee-item__info {
     grid-template-columns: 2fr 1fr !important;
-    align-items: center;
+    align-items: baseline !important;
 }
 
 .hero-marquee-item__tags {
