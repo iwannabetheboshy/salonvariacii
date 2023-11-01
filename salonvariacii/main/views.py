@@ -1,6 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render
-from .models import Kitchen, KitchenMaterial, KitchenOpeningMethod, MainPageCarousel, AboutUsDopBlock, AboutUs
+from .models import *
 from .forms import FilterForm
 
 
@@ -27,13 +27,15 @@ def main(request):
     about = AboutUs.objects.first()
     aboutMini = AboutUsDopBlock.objects.all()
     numberOfBlocksAboutMini = aboutMini.count() 
-   
+    catalog_carousel = Kitchen.objects.exclude(show_number=None).order_by('show_number')
+    
     
     data = {
         "sliderPhoto": sliderPhoto,
         "about": about,
         "aboutMini": aboutMini,
         "numberOfBlocksAboutMini": numberOfBlocksAboutMini,
+        "catalog_carousel": catalog_carousel,
     }
 
     return render(request, "main/index.html", data)
