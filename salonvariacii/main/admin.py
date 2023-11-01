@@ -4,7 +4,8 @@ from .models import *
 
 @admin.register(Kitchen)
 class KitchenAdmin(admin.ModelAdmin):
-    list_display = ("name", "style", "material", "openingMethod")
+    list_display = ("name", "style", "material", "openingMethod", "show_number")
+    exclude = ['slug']
 
     class Media:
         js = ("main/js/custom_admin.js",)

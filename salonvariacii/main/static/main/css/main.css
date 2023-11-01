@@ -74,6 +74,13 @@ h2{
     font-weight: 700;
 }
 
+.slider-catalog-kitchen-name{
+    color: #1E1E1E;
+    font-family: Stolzl Bold;
+    font-size: 18px; 
+    font-weight: 500;
+}
+
 
 /*----------------- header -----------------*/
 
@@ -103,7 +110,7 @@ a{
 /*----------------- first-block-main-kitchen-carousel -----------------*/
 .text-width{
     width: 70%;
-    margin-bottom: 24px;
+    margin-bottom: 80px;
 }
 
 .parent{
@@ -267,6 +274,76 @@ a{
     padding-left: 40px;
     padding-right: 15px;
   }
+
+ /*----------------- catalog-carousel -----------------*/
+
+ #catalog-carousel{
+    margin-bottom: 500px;
+ }
+ .small-image {
+    width: 147px;
+    height: 400px;
+    cursor: pointer;
+    object-fit: cover;
+    transition: .5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+  }
+  
+  .large-image {
+    width: 833px;
+    height: 400px; 
+    object-fit: cover;
+
+  }
+
+  .slider-catalog-container{
+    width: 100%;
+    overflow: hidden; 
+    white-space: nowrap; 
+    padding-left: 70px;
+  }
+
+  .slide-line{
+    margin-top: 24px;
+  }
+
+  #catalog-carousel .content{
+    display: none;
+  }
+
+  #catalog-carousel .active{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 16px;
+    background: #FFF; 
+    transition: .5s cubic-bezier(0.05, 0.61, 0.41, 0.95), opacity .5s ease-out;
+  }
+
+  #catalog-carousel .slide{
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+  }
+
+  #catalog-carousel .content svg{
+    margin-left: 8px;
+  }
+
+  .slider-catalog-kitchen-short-desc{
+    font-size: 16px; 
+    margin: 16px 0;
+  }
+
+  .catalog-carousel-button{
+    margin-top: 60px;
+  }
+
+
+
+
+
+
 
  @media (max-width: 1080px) {
 

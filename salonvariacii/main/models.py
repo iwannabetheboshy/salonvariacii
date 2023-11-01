@@ -1,6 +1,5 @@
 from django.db import models
-from django.db.models.signals import pre_delete
-from django.dispatch import receiver
+from django.utils.text import slugify
 
 
 class KitchenStyle(models.Model):
@@ -48,12 +47,20 @@ class KitchenPhoto(models.Model):
 
 class Kitchen(models.Model):
     name = models.CharField('Наименование', max_length=50)
+    short_desc = models.CharField('Краткое описание для карусели каталога', blank=True, max_length=300)
     style = models.ForeignKey(KitchenStyle, on_delete=models.CASCADE, verbose_name="Вид кухни", related_name='kitchens')
     material = models.ForeignKey(KitchenMaterial, on_delete=models.CASCADE, verbose_name="Материал кухни")
     openingMethod = models.ForeignKey(KitchenOpeningMethod, on_delete=models.CASCADE, verbose_name="Метод открытия кухни")
     mainImage = models.ImageField('Главное фото', upload_to='kitchen/')
     images = models.ManyToManyField(KitchenPhoto, blank=True, verbose_name="Дополнительные фотографии кухни")
+    show_number = models.IntegerField('Номер показа в карусели каталога', null=True, blank=True)
+    slug = models.SlugField(blank=True)
+    
 
+    def save(self, *args, **kwargs):
+        # Генерируем slug из названия кухни
+        self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "кухню"
