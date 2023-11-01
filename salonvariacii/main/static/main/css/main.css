@@ -64,9 +64,16 @@ h2{
 .gray-text{
     color: #787878; 
     font-size: 16px; 
-    font-size: 16px; 
     font-weight: 400; 
 }
+
+.gray-text-small{
+    color: #787878; 
+    font-size: 14px; 
+    font-weight: 400; 
+}
+
+
 
 .num{
     color: #1E1E1E;
@@ -98,8 +105,23 @@ a{
     padding-left: 16px;
 }
 
+.contacts svg{
+    fill: #1E1E1E;
+}
+.contacts svg:hover{
+    fill: #494949;
+}
+
 .link a{
+    color: #787878; 
     margin-left: 32px;
+}
+
+.link a:hover{
+    color: #1E1E1E;
+    text-decoration-color: #787878;
+    text-decoration-line: revert;
+    
 }
 
 .link a:first-child {
@@ -128,6 +150,10 @@ a{
     color: #F9F9F9;
     padding: 20px 32px; 
     border: none;
+}
+
+.custom-button:hover{
+    background: #494949; 
 }
 
 .watch-video{
@@ -186,8 +212,6 @@ a{
     display: block;
 }
 
-
-
 .progress-container {
     width: 100%;
     height: 2px; 
@@ -216,6 +240,12 @@ a{
   .slick-disabled svg{
     fill: #DBC7D7;
   }
+
+  .slick-arrow svg:hover{
+    fill: #787878;
+  }
+
+
 
 
  /*----------------- about us -----------------*/
@@ -277,9 +307,6 @@ a{
 
  /*----------------- catalog-carousel -----------------*/
 
- #catalog-carousel{
-    margin-bottom: 500px;
- }
  .small-image {
     width: 147px;
     height: 400px;
@@ -340,9 +367,50 @@ a{
   }
 
 
+ /*----------------- advantages -----------------*/
+  #advantages{
+    margin-top: 130px;
+    padding: 80px 70px; 
+    background: #F8F7F4; 
+  }
+
+  .advantages-content{
+    margin-top: 52px;
+  }
+
+  .advantages-content .block{
+    padding-right: 40px;
+  }
+
+  .advantages-content-title{
+    color: #1E1E1E;
+    font-family: Stolzl;
+    font-size: 24px; 
+    margin-bottom: 20px;
+  }
+
+  .advantages-content-title svg{
+    margin-right: 12px;
+  }
+
+  .advantages-content-title-text{
+    color: #787878;
+    font-family: Stolzl;
+    font-size: 14px; 
+  }
 
 
 
+
+  @media (max-width: 1295px) {
+
+    .bottom-block-main-block-mobile{
+        text-align: center !important;
+    }
+    .parent .line{
+        left: 0;
+    }
+  }
 
 
  @media (max-width: 1080px) {
@@ -558,4 +626,3 @@ a{
         padding-right: 16px;
     }
   }
-
