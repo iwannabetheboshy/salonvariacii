@@ -120,7 +120,5 @@ class ReviewsAndProject(models.Model):
     class Meta:
         verbose_name = "отзыв"
         verbose_name_plural = "Отзывы"
-
-    def __str__(self):
-        return self.name   
+ 
         

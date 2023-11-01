@@ -1,7 +1,7 @@
 $(document).ready(function(){
   var $slider = $('.main-kitchen-carousel')
-  var $proggress = $('.progress-fill')
-  var $numbers = $('.num')
+  var $proggress = $('.main-kitchen-carousel .progress-fill')
+  var $numbers = $('.main-kitchen-carousel .num')
   const interval = 5000;
   
   $('.main-kitchen-carousel').on('init', function(event, slick){
@@ -13,8 +13,8 @@ $(document).ready(function(){
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
-    prevArrow: $('.custom-prev-arrow'),
-    nextArrow: $('.custom-next-arrow'),
+    prevArrow: $('.nav-main-kitchen-carousel-buttton .custom-prev-arrow'),
+    nextArrow: $('.nav-main-kitchen-carousel-buttton .custom-next-arrow'),
     autoplay: true,
     autoplaySpeed: interval,
     infinite: false, 

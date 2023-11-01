@@ -8,4 +8,5 @@ $(document).ready(function() {
       $(this).find('img').addClass('large-image');
       $(this).find('.content').addClass('active');
     });
-  });
+
+});

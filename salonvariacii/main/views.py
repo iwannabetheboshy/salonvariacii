@@ -28,6 +28,7 @@ def main(request):
     aboutMini = AboutUsDopBlock.objects.all()
     numberOfBlocksAboutMini = aboutMini.count() 
     catalog_carousel = Kitchen.objects.exclude(show_number=None).order_by('show_number')
+    reviews = ReviewsAndProject.objects.all()
     
     
     data = {
@@ -36,6 +37,7 @@ def main(request):
         "aboutMini": aboutMini,
         "numberOfBlocksAboutMini": numberOfBlocksAboutMini,
         "catalog_carousel": catalog_carousel,
+        "reviews": reviews,
     }
 
     return render(request, "main/index.html", data)

@@ -59,6 +59,7 @@ h2{
     font-family: 'Stolzl Bold';
     font-size: 36px;  
     font-weight: 700; 
+    margin-bottom: 24px;
 }
 
 .gray-text{
@@ -127,6 +128,52 @@ a{
 .link a:first-child {
     margin: 0; 
 }
+
+.mobile-header, .burger-close{
+    display: none;
+}
+
+.link-mobile{
+    margin-top: 31px;
+    height: 44px; 
+    color: #1E1E1E;
+    font-family: Stolzl;
+    font-size: 16px; 
+}
+
+.burger-menu{
+    z-index: 1;
+    position: absolute;
+    background: #FFF;
+    width: 100%;
+    padding-left: 16px;
+    padding-bottom: 31px;
+    display: none;
+}
+
+
+.mobile-adress{
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.mobile-adress .number{
+    margin-bottom:12px;
+}
+
+.contacts-mobile-block a svg{
+    fill: #1E1E1E;
+}
+
+.contacts-mobile-block a svg:hover{
+    fill: #494949;
+}
+
+.contacts-mobile{
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
 
 
 /*----------------- first-block-main-kitchen-carousel -----------------*/
@@ -233,16 +280,25 @@ a{
     transition: width 1s linear; 
   }
 
-  .slick-arrow svg{
+  .nav-main-kitchen-carousel-buttton{
+    padding-right: 70px;
+    text-align: end;
+  }
+
+  .nav-main-kitchen-carousel-buttton svg{
     fill: #1E1E1E;
   }
 
-  .slick-disabled svg{
+  .nav-main-kitchen-carousel-buttton .slick-disabled{
     fill: #DBC7D7;
   }
 
-  .slick-arrow svg:hover{
+   .custom-prev-arrow:hover, .custom-next-arrow:hover{
     fill: #787878;
+  }
+
+  .custom-prev-arrow{
+    margin-right: 40px;
   }
 
 
@@ -281,12 +337,12 @@ a{
     margin-top: 24px;
  }
 
- .about-us-text-dop-block .value{
+ .value{
     font-size: 36px; 
     font-weight: 400; 
  }
 
- .about-us-text-dop-block .title{
+ .value-name{
     font-size: 14px; 
     font-weight: 400; 
  }
@@ -372,6 +428,7 @@ a{
     margin-top: 130px;
     padding: 80px 70px; 
     background: #F8F7F4; 
+    margin-bottom: 110px;
   }
 
   .advantages-content{
@@ -399,8 +456,70 @@ a{
     font-size: 14px; 
   }
 
+   /*----------------- project-and-reviews -----------------*/
+   #project-and-reviews{
+    margin-bottom: 500px;
+   }
+   #project-and-reviews .title{
+    padding: 0 70px;
+   }
+
+   .nav-project-and-reviews{
+    margin-bottom: 24px;
+   }
+
+  .nav-project-and-reviews svg{
+    fill: #000;
+  }
+
+  .nav-project-and-reviews .slick-disabled{
+    fill: #DBC7D7;
+  }
+
+  .project-and-reviews-slider{
+    padding-left: 62px;
+  }
+
+  .project-and-reviews-slider-slide img{
+    width: 580px;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .project-and-reviews-kitchen-name{
+    font-family: Stolzl;
+    font-size: 14px;    
+    padding: 4px 12px; 
+    margin-bottom: 24px;
+    width: 118px;
+    border-radius: 24px;
+    background: #1E1E1E;
+    color: #FFF;
+  }
+
+  .review-content{
+    padding-left: 40px;
+  }
+
+  .project-and-reviews-slider-price-square{
+    margin-bottom: 40px;
+  }
+
+  .project-and-reviews-name{
+    font-family: Stolzl Bold;
+    font-size: 14px; 
+    margin-bottom: 12px;
+  }
+
+  .project-and-reviews-slider-slide{
+    width: 1154px !important;
+  }
 
 
+
+
+
+   /*----------------- adaptive -----------------*/
 
   @media (max-width: 1295px) {
 
@@ -496,6 +615,22 @@ a{
         justify-content: center;
     }
 
+    .header-desk{
+        display: none;
+    }
+
+    .mobile-header{
+        display: block;
+        margin-left: 27px;
+        margin-top: 16px;
+    }
+
+    .custom-container{
+        margin: 0;
+        width: 100%;
+    }
+
+
   }
 
   @media (max-width: 950px) {
@@ -559,10 +694,6 @@ a{
     .parent .line {
         left: 0% !important;
     }
-
-    .about-us-text-block{
-        padding: 16px;
-    }
     
   }
 
@@ -621,8 +752,4 @@ a{
         font-size: 24px; 
     }
 
-    .about-us-text-block {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
   }

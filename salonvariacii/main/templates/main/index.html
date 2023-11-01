@@ -72,17 +72,14 @@
                     {{ photo.show_slider }}
                 </div>
                 
-                <div class="col-3 row  nav-main-kitchen-carousel-buttton px-0">
-                    <div class="col-5 custom-prev-arrow">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="col nav-main-kitchen-carousel-buttton ps-0">
+                        <svg class="custom-prev-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/>
                         </svg> 
-                    </div>
-                    <div class="col-5 custom-next-arrow">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+                        <svg class="custom-next-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
                         </svg> 
-                    </div>
                 </div>
 
             </div>
@@ -123,7 +120,7 @@
                         <div class="value">
                             {{ aboutMini.0.value }}
                         </div>
-                        <div class="title">
+                        <div class="value-name">
                             {{ aboutMini.0.name }}
                         </div>
                     </div>
@@ -131,21 +128,21 @@
                         <div class="value">
                             {{ aboutMini.1.value }}
                         </div>
-                        <div class="title">
+                        <div class="value-name">
                             {{ aboutMini.1.name }}
                         </div>
                     </div>
                     <div class="about-us-text-dop-block">
                         <div class="value">
                         </div>
-                        <div class="title">
+                        <div class="value-name">
                         </div>
                     </div>
                     <div class="about-us-text-dop-block">
                         <div class="value">
                             {{ aboutMini.2.value }}
                         </div>
-                        <div class="title">
+                        <div class="value-name">
                             {{ aboutMini.2.name }}
                         </div>
                     </div>
@@ -153,14 +150,14 @@
                         <div class="value">
                             {{ aboutMini.3.value }}
                         </div>
-                        <div class="title">
+                        <div class="value-name">
                             {{ aboutMini.3.name }}
                         </div>
                     </div>
                     <div class="about-us-text-dop-block">
                         <div class="value">
                         </div>
-                        <div class="title">
+                        <div class="value-name">
                         </div>
                     </div>
                 {% else %}
@@ -169,7 +166,7 @@
                             <div class="value">
                                 {{ mini.value }}
                             </div>
-                            <div class="title">
+                            <div class="value-name">
                                 {{ mini.name }}
                             </div>
                         </div>
@@ -268,12 +265,73 @@
     </div>
 </section>
 
+<section id="project-and-reviews">
+    <div class="row title">
+        <h2 class="col-11 px-0">Наши проекты и отзывы</h2>
+        <div class="col row nav-project-and-reviews px-0 text-end align-items-center">
+            <div class="col px-0">
+                <svg class="custom-prev-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"/>
+                </svg> 
+                <svg class="custom-next-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"/>
+                </svg> 
+            </div>
+        </div>
+    </div>
+
+    <div class="project-and-reviews-slider">
+        {% for review in reviews %}
+        <div class="project-and-reviews-slider-slide">
+            <div class="row">
+                <div class="col-lg-6 col-12 px-0">
+                    <img src="{{ review.image.url }}" alt="">
+                </div>
+                <div class="col-lg-6 col-12 review-content pe-0">
+                    <div class="project-and-reviews-kitchen-name">
+                        {{ review.project_name }}
+                    </div>
+                    <div class="row project-and-reviews-slider-price-square">
+                        <div class="col pe-0">
+                            <div class="value">
+                                {{ review.price }} €
+                            </div>
+                            <div class="value-name">
+                                цена проекта под ключ
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="value">
+                                {{ review.squeare }} м²
+                            </div>
+                            <div class="value-name">
+                                площадь кухни
+                            </div>
+                        </div>
+                        <div class="col">
+                        </div>
+                    </div>
+                    <div class="project-and-reviews-name">
+                        {{ review.review_name }}
+                    </div>
+                    <div class="project-and-reviews-text">
+                        {{ review.text }}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        {%endfor%}
+    </div>
+</section>
+
 
 <!-- slider -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>	
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="{% static 'main/js/main-carousel-kitchen.js' %}"></script>
+<script src="{% static 'main/js/main-review-carousel.js' %}"></script>
 
 <script src="{% static 'main/js/katalog-kitchen-carousel.js' %}"></script>
 
