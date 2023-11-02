@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <section id="first-block-main-kitchen-carousel">
-    <div class="row align-items-center px-0">
+    <div class="row align-items-center px-0 mx-0">
         <div class="col-lg-6 col-12 px-0">
             <div class="parent">
                 <h1>Встроенные кухни именно для вас</h1>
@@ -194,9 +194,10 @@
                             {{ kitchen.short_desc }}
                         </div>
                         <a href="{{ kitchen.slug }}">
-                            Подробнее <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            Подробнее 
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z" fill="#1E1E1E"/>
-                                </svg> 
+                            </svg> 
                         </a>
                     </div>
                 </div>
@@ -266,7 +267,7 @@
 </section>
 
 <section id="project-and-reviews">
-    <div class="row title">
+    <div class="row title mx-0">
         <h2 class="col-11 px-0">Наши проекты и отзывы</h2>
         <div class="col row nav-project-and-reviews px-0 text-end align-items-center">
             <div class="col px-0">
@@ -338,12 +339,9 @@
         </div>
         <div class="col-lg-6 col-12 px-0">
             <div class="proggress row">
-                <div class="col">
-
-                
                 {% for review in reviews %}
                     {% if review.id < 10 %}
-                        <div class="show_number">
+                        <div class="col-2 show_number">
                             <div class="num">
                                 0{{ review.id }}
                             </div>
@@ -355,7 +353,7 @@
                               </div>
                         </div>
                     {% else %}
-                        <div class="show_number">
+                        <div class="col-2 show_number">
                             <div class="num">
                                 {{ review.id }}
                             </div>
@@ -369,7 +367,6 @@
                     {% endif %}
                 {% endfor %}
             </div>
-        </div>
         </div>
     </div>
 </section>

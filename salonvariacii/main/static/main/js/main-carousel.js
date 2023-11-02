@@ -59,7 +59,7 @@ $(document).ready(function(){
       slidesToScroll: 1,
       prevArrow: $('.project-and-reviews-slider .custom-prev-arrow'),
       nextArrow: $('.project-and-reviews-slider .custom-next-arrow'),
-      autoplay: true,
+      
       autoplaySpeed: interval,
       infinite: false, 
       edgeFriction: 0.2,

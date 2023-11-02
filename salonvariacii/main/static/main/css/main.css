@@ -6,12 +6,6 @@ body{
     overflow-x: hidden;
 }
 
-.custom-container{
-    width: 90%; 
-    max-width: 1664px; 
-    margin-left: auto; 
-    margin-right: auto;
-}
 
 .row{
     max-width: 1402px;
@@ -93,8 +87,15 @@ h2{
 /*----------------- header -----------------*/
 
 header{
-    margin-top: 24px;
     margin-bottom: 16px;
+    position: fixed;
+    z-index: 1;
+    background: #FFF;
+    width: 100%; 
+    margin-left: auto; 
+    margin-right: auto;
+    padding: 0 70px;
+
 }
 
 a{
@@ -177,6 +178,10 @@ a{
 
 
 /*----------------- first-block-main-kitchen-carousel -----------------*/
+#first-block-main-kitchen-carousel{
+    padding-top: 120px;
+}
+
 .text-width{
     width: 70%;
     margin-bottom: 80px;
@@ -474,7 +479,7 @@ a{
   }
 
   .project-and-reviews-slider{
-    padding-left: 62px;
+    padding-left: 70px;
   }
 
   .project-and-reviews-slider-slide img{
