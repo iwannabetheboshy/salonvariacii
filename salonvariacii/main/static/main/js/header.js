@@ -3,7 +3,6 @@ $(document).ready(function() {
     var close = document.getElementsByClassName('burger-close')[0];
     var burger_nav = document.getElementsByClassName('burger-menu')[0];
 
-    console.log(burger);
       burger.onclick = function() {
         close.style.display = 'block';
         burger.style.display = 'none';

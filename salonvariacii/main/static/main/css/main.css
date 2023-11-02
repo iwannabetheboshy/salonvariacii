@@ -221,9 +221,6 @@ a{
     margin-right: 15px;
 }
 
-.slick-slide{
-    width: auto !important;
-}
 
 .main-kitchen-carousel-slide-kithen-name{
     position: absolute;
@@ -490,15 +487,13 @@ a{
     font-family: Stolzl;
     font-size: 14px;    
     padding: 4px 12px; 
-    margin-bottom: 24px;
-    width: 118px;
     border-radius: 24px;
     background: #1E1E1E;
     color: #FFF;
   }
 
   .review-content{
-    padding-left: 40px;
+    padding-left: 50px;
   }
 
   .project-and-reviews-slider-price-square{
@@ -511,9 +506,33 @@ a{
     margin-bottom: 12px;
   }
 
-  .project-and-reviews-slider-slide{
-    width: 1154px !important;
+  .project-and-reviews-slider .slick-slide{
+    opacity: 0.5; 
   }
+  
+  .project-and-reviews-slider .slick-active{
+    opacity: 1; 
+  }
+
+  .project-and-reviews-slider-name-svg{
+    position: relative;
+  }
+
+  .project-and-reviews-slider-name-svg svg{
+    position: absolute;
+    z-index: -1;
+    top: -10px;
+    left: -15px;
+  }
+
+  .project-and-reviews-nav{
+    margin: 52px 0px 70px 70px;
+  }
+
+  .project-and-reviews-nav .num{
+    margin-bottom: 4px;
+  }
+
 
 
 

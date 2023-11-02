@@ -69,7 +69,7 @@
                             </div>
                         {% endif %}
                     {% endfor %}
-                    {{ photo.show_slider }}
+                  
                 </div>
                 
                 <div class="col nav-main-kitchen-carousel-buttton ps-0">
@@ -283,13 +283,17 @@
     <div class="project-and-reviews-slider">
         {% for review in reviews %}
         <div class="project-and-reviews-slider-slide">
+            <div>
             <div class="row">
                 <div class="col-lg-6 col-12 px-0">
                     <img src="{{ review.image.url }}" alt="">
                 </div>
-                <div class="col-lg-6 col-12 review-content pe-0">
-                    <div class="project-and-reviews-kitchen-name">
-                        {{ review.project_name }}
+                <div class="col-lg-5 col-12 review-content px-0">
+                    <div class="mb-4">
+                        <a class="project-and-reviews-kitchen-name">
+                            {{ review.project_name }}
+                        </a>
+                        
                     </div>
                     <div class="row project-and-reviews-slider-price-square">
                         <div class="col pe-0">
@@ -312,6 +316,11 @@
                         </div>
                     </div>
                     <div class="project-and-reviews-name">
+                        <div class="project-and-reviews-slider-name-svg">
+                            <svg width="39" height="28" viewBox="0 0 39 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M36.5079 0C37.0853 0 37.5617 0.187243 37.937 0.561728C38.3123 0.907407 38.5 1.35391 38.5 1.90123C38.5 2.76543 37.9514 3.4856 36.8543 4.06173C34.227 5.44444 32.3071 6.78395 31.0945 8.08025C29.9685 9.31893 29.4055 10.2263 29.4055 10.8025C29.4055 11.3498 29.8386 11.6811 30.7047 11.7963L31.2244 11.8395L31.9173 11.9259C33.794 12.1852 35.3097 13.0494 36.4646 14.5185C37.6194 15.9588 38.1968 17.7305 38.1968 19.8333C38.1968 21.9362 37.4751 23.7798 36.0315 25.3642C34.4147 27.1214 32.3215 28 29.752 28C27.269 28 25.1614 27.035 23.4291 25.1049C21.6102 23.1461 20.7008 20.6831 20.7008 17.716C20.7008 15.0947 21.6102 12.3868 23.4291 9.59259C25.248 6.76955 27.6155 4.40741 30.5315 2.50617C33.0722 0.835391 35.0643 0 36.5079 0ZM15.8071 0C16.3845 0 16.8609 0.187243 17.2362 0.561728C17.6115 0.907407 17.7992 1.35391 17.7992 1.90123C17.7992 2.76543 17.2507 3.4856 16.1535 4.06173C13.5262 5.44444 11.6063 6.78395 10.3937 8.08025C9.26772 9.31893 8.70472 10.2263 8.70472 10.8025C8.70472 11.3498 9.13779 11.6811 10.0039 11.7963L10.5236 11.8395L11.2165 11.9259C13.0932 12.1852 14.6089 13.0494 15.7638 14.5185C16.9186 15.9588 17.4961 17.7305 17.4961 19.8333C17.4961 21.9362 16.7743 23.7798 15.3307 25.3642C13.7139 27.1214 11.6207 28 9.05118 28C6.56824 28 4.46063 27.035 2.72835 25.1049C0.909449 23.1461 0 20.6831 0 17.716C0 15.0947 0.909449 12.3868 2.72835 9.59259C4.54724 6.76955 6.9147 4.40741 9.83071 2.50617C12.3714 0.835391 14.3635 0 15.8071 0Z" fill="#EAE9E6"/>
+                            </svg> 
+                        </div>
                         {{ review.review_name }}
                     </div>
                     <div class="project-and-reviews-text">
@@ -319,9 +328,49 @@
                     </div>
                 </div>
             </div>
-            
+        </div> 
         </div>
         {%endfor%}
+    </div>
+    <div class="row project-and-reviews-nav">
+        <div class="col-lg-6 col-12 px-0">
+            <a class="custom-button ">Оставить заявку</a>
+        </div>
+        <div class="col-lg-6 col-12 px-0">
+            <div class="proggress row">
+                <div class="col">
+
+                
+                {% for review in reviews %}
+                    {% if review.id < 10 %}
+                        <div class="show_number">
+                            <div class="num">
+                                0{{ review.id }}
+                            </div>
+                            
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                  <div class="progress-fill"></div>
+                                </div>
+                              </div>
+                        </div>
+                    {% else %}
+                        <div class="show_number">
+                            <div class="num">
+                                {{ review.id }}
+                            </div>
+                            
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                  <div class="progress-fill"></div>
+                                </div>
+                              </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        </div>
     </div>
 </section>
 
@@ -330,9 +379,9 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>	
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="{% static 'main/js/main-carousel-kitchen.js' %}"></script>
-<script src="{% static 'main/js/main-review-carousel.js' %}"></script>
 
-<script src="{% static 'main/js/katalog-kitchen-carousel.js' %}"></script>
+<script src="{% static 'main/js/main-carousel.js' %}"></script>
+
+
 
 {% endblock %}
