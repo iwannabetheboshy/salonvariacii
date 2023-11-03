@@ -22,6 +22,7 @@ html > div {
 
 .row{
     max-width: 1402px;
+    margin: auto;
 }
 
 /* ----------------- fonts -----------------*/
@@ -261,16 +262,16 @@ a{
 }
 
 .hero-marquee-item__info {
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
     grid-auto-rows: 100px!important;
     align-items: baseline !important; 
 }
 
 
 .row_hero_1 {
-    grid-column: 2;
+    grid-column: 1/4;
     grid-row: 2;
-    align-self: center;
+    margin: auto;
 }
 
 .row_hero_2_col_1 {
@@ -297,8 +298,8 @@ a{
 }
 
 .heart {
-    max-width: 100px;
-    min-width: 100px;
+    max-width: 90px;
+    min-width: 90px;
     bottom: 50%;
 }
 
