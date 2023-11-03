@@ -84,6 +84,11 @@ h2{
 }
 
 
+a{
+  text-decoration: none;
+  color: #FFF;
+}
+
 /*----------------- header -----------------*/
 
 header{
@@ -98,9 +103,8 @@ header{
 
 }
 
-a{
-    text-decoration: none;
-    color: black;
+header a{
+  color: #1E1E1E;
 }
 
 .contacts a{
@@ -147,7 +151,6 @@ a{
     position: absolute;
     background: #FFF;
     width: 100%;
-    padding-left: 16px;
     padding-bottom: 31px;
     display: none;
 }
@@ -175,6 +178,10 @@ a{
     margin-right: 12px;
 }
 
+.watch-video{
+  color: #1E1E1E;
+}
+
 
 
 /*----------------- first-block-main-kitchen-carousel -----------------*/
@@ -196,15 +203,17 @@ a{
     left: 36%;
 }
 
-.custom-button{
+.custom-button {
     border-radius: 130px;
     background: #1E1E1E; 
-    color: #F9F9F9;
     padding: 20px 32px; 
     border: none;
 }
+.custom-button a{
+  color: #F9F9F9 !important;
+}
 
-.custom-button:hover{
+.custom-button a:hover{
     background: #494949; 
 }
 
@@ -219,11 +228,11 @@ a{
 }
 
 .main-kitchen-carousel img{
-    width: 500px !important;
+    width: 100% !important;
     height: 500px;
     object-fit: cover;
     object-position: bottom;
-    margin-right: 15px;
+    padding-right: 15px;
 }
 
 
@@ -303,7 +312,9 @@ a{
     margin-right: 40px;
   }
 
-
+  .bottom-block-main-block-mobile-a{
+    color: #1E1E1E;
+  }
 
 
  /*----------------- about us -----------------*/
@@ -483,9 +494,10 @@ a{
   }
 
   .project-and-reviews-slider-slide img{
-    width: 580px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    max-height: 537px;
   }
 
   .project-and-reviews-kitchen-name{
@@ -539,17 +551,15 @@ a{
   }
 
 
-
+  .mobile-button{
+    display: none;
+  }
 
 
 
    /*----------------- adaptive -----------------*/
 
   @media (max-width: 1295px) {
-
-    .bottom-block-main-block-mobile{
-        text-align: center !important;
-    }
     .parent .line{
         left: 0;
     }
@@ -557,26 +567,22 @@ a{
 
 
  @media (max-width: 1080px) {
-
-    .bottom-block-main-block-mobile{
-        text-align: center !important;
-    }
     .parent .line{
         left: 0;
     }
   }
 
   @media (max-width: 1000px) {
-    .main-kitchen-carousel, #about-us-block{
-        padding-left: 5%;
+    .main-kitchen-carousel, #about-us-block, header{
+        padding: 0 5%;
     }
 
-    #about-us-block{
-        padding-right: 5%;
+    .project-and-reviews-slider, #project-and-reviews .title{
+      padding-left: 5%;
     }
+
 
     .main-kitchen-carousel img {
-        width: calc(100vw * 0.8) !important;
         height: calc(100vw * 0.8) !important;
     }
 
@@ -589,7 +595,7 @@ a{
     }
 
     .parent .line {
-        left: -12% !important;
+        left: 15% !important;
     }
 
     .parent{
@@ -614,10 +620,9 @@ a{
         margin-bottom: 20px;
     }
 
-    .main-kitchen-carousel-slide-kithen-name, .num, .nav-main-kitchen-carousel-buttton, .bottom-block-main-block, .desk{
+    .main-kitchen-carousel-slide-kithen-name, .num, .nav-main-kitchen-carousel-buttton, .bottom-block-main-block, .desk, .header-desk{
         display: none !important;
     }
-
 
     .text-width {
         width: 100%;
@@ -627,7 +632,7 @@ a{
         justify-content: center;
     }
 
-    .mobile, .bottom-block-main-block-mobile{
+    .mobile, .bottom-block-main-block-mobile, .mobile-header{
         display: block;
     }
 
@@ -639,22 +644,47 @@ a{
         justify-content: center;
     }
 
-    .header-desk{
-        display: none;
-    }
-
     .mobile-header{
-        display: block;
-        margin-left: 27px;
         margin-top: 16px;
     }
+  }
 
-    .custom-container{
-        margin: 0;
-        width: 100%;
+  @media (max-width: 992px) {
+
+    .custom-button{
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .nav-project-and-reviews{
+      display: none;
+    }
+    .review-content{
+      margin-top: 16px;
+      padding: 0px;
     }
 
+    .project-and-reviews-slider .slick-slide{
+      opacity: 1;
+      margin-right: 16px;
+    }
 
+    .project-and-reviews-slider-price-square{
+      margin-bottom: 24px;
+    }
+
+    .project-and-reviews-slider-slide img{
+      height: calc(100vw*0.6);
+    }
+
+    .mobile-button{
+      display: block;
+    }
+
+    .project-and-reviews-nav{
+      margin: 18px 0px 0px 0px;
+      text-align: center;
+    }
   }
 
   @media (max-width: 950px) {
@@ -734,11 +764,6 @@ a{
     .plain-text {
         font-size: 17px;
     }
-
-    .custom-container{
-        margin-bottom: 24px;
-    }
-
     .parent .line {
         left: 0% !important;
     }
@@ -755,11 +780,6 @@ a{
     .bottom-block-main-block-mobile .row{
         justify-content: center !important;
         text-align: center;
-    }
-
-    .main-kitchen-carousel img {
-        width: calc(100vw * 0.8) !important;
-        height: calc(100vw * 0.8) !important;
     }
 
     .proggress{

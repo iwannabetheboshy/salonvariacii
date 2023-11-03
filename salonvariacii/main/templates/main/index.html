@@ -1,5 +1,7 @@
 {% extends 'main/main.html' %}
 {% load static %}
+{% load humanize %}
+
 {% block content %}
 <section id="first-block-main-kitchen-carousel">
     <div class="row align-items-center px-0 mx-0">
@@ -86,12 +88,15 @@
         </div>
     </div>
     <div class="bottom-block-main-block-mobile">
-        <div class="row align-items-center">
+        <div class="row text-center">
             <div class="col-lg-6 col-12">
-                <button class="custom-button">Оставить заявку</button>
+                <div class="custom-button">
+                    <a >Оставить заявку</a>
+                </div>
+               
             </div>  
             <div class="col-lg-6 col-12">
-                <a href="">
+                <a class="bottom-block-main-block-mobile-a" href="">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM10.6219 8.41459L15.5008 11.6672C15.6846 11.7897 15.7343 12.0381 15.6117 12.2219C15.5824 12.2658 15.5447 12.3035 15.5008 12.3328L10.6219 15.5854C10.4381 15.708 10.1897 15.6583 10.0672 15.4745C10.0234 15.4088 10 15.3316 10 15.2526V8.74741C10 8.52649 10.1791 8.34741 10.4 8.34741C10.479 8.34741 10.5562 8.37078 10.6219 8.41459Z" fill="#1E1E1E"/>
                     </svg> 
@@ -103,7 +108,7 @@
 </section>
 
 <section id="about-us-block">
-    <div class="row about-us-block">
+    <div class="row about-us-block mx-0">
         <h2 class="mobile px-0">О нас</h2>
         <div class="col-lg-6 col-12 about-us-block-image px-0">
             <img src="{{ about.image.url }}" alt="">
@@ -206,7 +211,10 @@
       </div>
       <div class="row text-center catalog-carousel-button">
         <div class="col">
-            <a href="" class="custom-button">Смотреть все кухни</a>
+            <a href="" class="desk custom-button">Смотреть все кухни</a>
+            <div class="mobile-button custom-button">
+                <a href="" >Смотреть все кухни</a>
+            </div>
         </div>
       </div>
 </section>
@@ -281,15 +289,15 @@
         </div>
     </div>
 
-    <div class="project-and-reviews-slider">
+    <div class="project-and-reviews-slider ">
         {% for review in reviews %}
         <div class="project-and-reviews-slider-slide">
             <div>
-            <div class="row">
+            <div class="row mx-0">
                 <div class="col-lg-6 col-12 px-0">
                     <img src="{{ review.image.url }}" alt="">
                 </div>
-                <div class="col-lg-5 col-12 review-content px-0">
+                <div class="col-lg-5 col-12 review-content pe-0">
                     <div class="mb-4">
                         <a class="project-and-reviews-kitchen-name">
                             {{ review.project_name }}
@@ -299,13 +307,13 @@
                     <div class="row project-and-reviews-slider-price-square">
                         <div class="col pe-0">
                             <div class="value">
-                                {{ review.price }} €
+                                {{ review.price|intcomma }} €
                             </div>
                             <div class="value-name">
                                 цена проекта под ключ
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col px-0">
                             <div class="value">
                                 {{ review.squeare }} м²
                             </div>
@@ -313,8 +321,7 @@
                                 площадь кухни
                             </div>
                         </div>
-                        <div class="col">
-                        </div>
+                        
                     </div>
                     <div class="project-and-reviews-name">
                         <div class="project-and-reviews-slider-name-svg">
@@ -335,9 +342,13 @@
     </div>
     <div class="row project-and-reviews-nav">
         <div class="col-lg-6 col-12 px-0">
-            <a class="custom-button ">Оставить заявку</a>
+            <a href="" class="desk custom-button">Оставить заявку</a>
+            <div class="mobile-button custom-button">
+                <a href="" >Оставить заявку</a>
+            </div>
+            
         </div>
-        <div class="col-lg-6 col-12 px-0">
+        <div class="col-lg-6 order-lg-last col-12 order-first px-0">
             <div class="proggress row">
                 {% for review in reviews %}
                     {% if review.id < 10 %}
