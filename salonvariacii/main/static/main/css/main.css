@@ -555,6 +555,15 @@ header a{
     display: none;
   }
 
+  /*----------------- footer -----------------*/
+    footer{
+      padding: 24px 70px;
+    }
+
+    .under-contacts, .footer-adress{
+      margin-top: 16px;
+    }
+
 
 
    /*----------------- adaptive -----------------*/
