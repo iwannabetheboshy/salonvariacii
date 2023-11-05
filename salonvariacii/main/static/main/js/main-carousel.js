@@ -25,8 +25,8 @@ $(document).ready(function () {
   $('#project-and-reviews .project-and-reviews-slider').slick({
     slidesToShow: 1.05,
     slidesToScroll: 1,
-    prevArrow: $('.project-and-reviews-slider .custom-prev-arrow'),
-    nextArrow: $('.project-and-reviews-slider .custom-next-arrow'),
+    prevArrow: $('.nav-project-and-reviews .custom-prev-arrow'),
+    nextArrow: $('.nav-project-and-reviews .custom-next-arrow'),
     autoplaySpeed: 1000,
     infinite: false,
     dots: true,
