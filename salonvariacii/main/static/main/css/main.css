@@ -220,10 +220,10 @@ first-block-main-kitchen-carousel
 }
 
 .main-kitchen-carousel img {
-  width: 500px;
+  width: 100%;
   height: 500px;
   object-fit: cover;
-  object-position: bottom;
+  
 }
 
 .main-kitchen-carousel-slide-kithen-name {
@@ -237,6 +237,7 @@ first-block-main-kitchen-carousel
 
 .main-kitchen-carousel-slide {
   position: relative;
+  padding-right: 16px;
 }
 
 .nav-main-kitchen-carousel {
@@ -244,9 +245,10 @@ first-block-main-kitchen-carousel
 }
 
 .nav-main-kitchen-carousel-buttton {
-  padding-right: 70px;
   margin-top: -40px;
   text-align: end;
+  position: absolute;
+  right: 70px;
 }
 
 .nav-main-kitchen-carousel-buttton svg {
@@ -295,7 +297,11 @@ first-block-main-kitchen-carousel
   color: #000;
 }
 
-.slick-dots a:hover {
+.slick-dots a {
+  cursor: pointer;
+}
+
+.slick-dots .slick-active a:hover {
   cursor: pointer;
   color: #000 !important;
 }
@@ -698,7 +704,6 @@ footer {
   }
 
   .main-kitchen-carousel img {
-    width: calc(100vw*0.7);
     height: calc(100vw*0.77);
   }
 

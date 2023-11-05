@@ -1,15 +1,14 @@
 $(document).ready(function () {
   $('.main-kitchen-carousel').slick({
     slidesToShow: 1.35,
-    prevArrow: $('.main-kitchen-carousel-buttton .custom-prev-arrow'),
-    nextArrow: $('.main-kitchen-carousel-buttton .custom-next-arrow'),
+    prevArrow: $('.nav-main-kitchen-carousel-buttton .custom-prev-arrow'),
+    nextArrow: $('.nav-main-kitchen-carousel-buttton .custom-next-arrow'),
     autoplaySpeed: 1000,
-   
+    //autoplay:true,
     infinite: false,
     dots: true,
 
     customPaging: function (slider, i) {
-      var thumb = $(slider.$slides[i]).data();
       return '<a> 0' +( i + 1 ) + '</a>';
     },
   });
@@ -31,8 +30,8 @@ $(document).ready(function () {
     autoplaySpeed: 1000,
     infinite: false,
     dots: true,
+     //autoplay:true,
     customPaging: function (slider, i) {
-      var thumb = $(slider.$slides[i]).data();
       return '<a> 0' +( i + 1 ) + '</a>';
     },
   });
