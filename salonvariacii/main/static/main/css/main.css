@@ -1,6 +1,13 @@
 body {
-  max-width: 1402px;
   font-family: Stolzl;
+}
+
+#first-block-main-kitchen-carousel,
+#about-us-block,
+#catalog-carousel,
+#project-and-reviews,
+#feedback {
+  max-width: 1402px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -15,42 +22,47 @@ body {
 }
 
 .custom-button {
-  border-radius: 130px;
-  background: #1E1E1E;
-  padding: 20px 32px;
-  border: none;
-  color: #FFF;
+    font-family: 'Stolzl Regular';
+    border-radius: 130px;
+    background: #1E1E1E;
+    padding: 20px 32px;
+    border: none;
+    color: #F9F9F9;
 }
 
 .custom-button:hover {
-  background: #494949;
   cursor: pointer;
   transition: .3s;
+  /* Дополнить, как появятся макеты */
 }
 
 /* ----------------------------------
 fonts
 ----------------------------------*/
-
 @font-face {
-  font-family: 'Stolzl';
-  src: local('font/Stolzl Book'), local('font/Stolzl-Book'),
-    url('font/Stolzl-Book.woff2') format('woff2'),
-    url('font/Stolzl-Book.woff') format('woff'),
-    url('font/Stolzl-Book.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Stolzl Bold';
+    font-style: normal;
+    src: url('font/stolzl_bold.otf') format('opentype');
 }
 
 @font-face {
-  font-family: 'Stolzl Bold';
-  src: local('font/Stolzl Bold'), local('font/Stolzl-Bold'),
-    url('font/Stolzl-Bold.woff2') format('woff2'),
-    url('font/Stolzl-Bold.woff') format('woff'),
-    url('font/Stolzl-Bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'Stolzl Regular';
+    font-style: normal;
+    src: url('font/stolzl_regular.otf') format('opentype');
 }
+
+@font-face {
+    font-family: 'Stolzl Light';
+    font-style: normal;
+    src: url('font/stolzl_light.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Stolzl Book';
+    font-style: normal;
+    src: url('font/stolzl_book.otf') format('opentype');
+}
+
 
 .plain-text {
   font-family: Stolzl;
@@ -74,12 +86,15 @@ h2 {
 }
 
 .gray-text-16 {
-  color: #787878;
-  font-size: 16px;
-  font-weight: 400;
+    font-family: 'Stolzl Light' !important;
+    color: #787878;
+    font-size: 16px;
+    font-weight: 400;
+    padding-top: 10px;
 }
 
 .gray-text-14 {
+  font-family: 'Stolzl Book' !important;
   color: #787878;
   font-size: 14px;
   font-weight: 400;
@@ -90,105 +105,143 @@ a {
   color: #000;
 }
 
-/*----------------------------------
-  header
-----------------------------------*/
-
-header {
-  margin-bottom: 16px;
-  position: fixed;
-  z-index: 1;
-  background: #FFF;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 70px;
-
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 16px;
+    transition: background-color 0.5s, padding 1s;
 }
 
-header a {
-  color: #1E1E1E;
+.header.sticky {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: 1px solid #E7E7E7;
+    background-color: rgba(255, 255, 255, .9);
 }
 
-.contacts a {
-  padding-left: 16px;
+.header nav {
+    max-width: 1280px;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
-.contacts svg {
-  fill: #1E1E1E;
+.header .nav-item a {
+    font-family: 'Stolzl Book' !important;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    color: #787878;
 }
 
-.contacts svg:hover {
-  cursor: pointer;
-  fill: #494949;
-  transition: .3s;
+.header .navbar-toggler:focus {
+    box-shadow: none;
 }
 
-.link a {
-  color: #787878;
-  margin-left: 32px;
+.header #phone {
+    display: none;
+    margin-top: 34px;
+    margin-bottom: 24px;
 }
 
-.link a:hover {
-  color: #1E1E1E;
-  text-decoration-color: #787878;
-  text-decoration-line: revert;
-  cursor: pointer;
-  transition: .3s;
+.header #phone a {
+	border-bottom: 1px solid transparent;
+	transition: 0.3s;
 }
 
-.link a:first-child {
-  margin: 0;
+.header #navbarNav .nav-item button {
+    display: none;
+    padding: 12px 32px;
+    border-radius: 130px;
+    background-color: #1E1E1E;
 }
 
-.mobile-header,
-.burger-close {
-  display: none;
+@media (max-width: 1280px) {
+    .header nav {
+        width: 95%;
+    }
 }
 
-.link-mobile {
-  margin-top: 31px;
-  height: 44px;
-  color: #1E1E1E;
-  font-family: Stolzl;
-  font-size: 16px;
+@media (max-width: 1200px) {
+    .header {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .header .navbar-brand img {
+        width: 40px;
+    }
+
+    .header #navbarNav {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .header #navbarNav a {
+        font-size: 16px;
+        margin-bottom: 24px;
+        color: #1E1E1E;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .header #navbarNav #social a {
+        padding-right: 14px;
+    }
+
+    .header #navbarNav .nav-item button {
+        width: 328px;
+    }
+
+    .header #phone, .header #navbarNav .nav-item button {
+        display: block;
+    }
 }
 
-.burger-menu {
-  z-index: 1;
-  position: absolute;
-  background: #FFF;
-  width: 100%;
-  padding-bottom: 31px;
-  display: none;
+@media (max-width: 768px) {
+    .header #navbarNav .nav-item button {
+        width: 100%;
+    }
 }
 
-.mobile-adress {
-  margin-top: 24px;
-  margin-bottom: 24px;
+
+/*--------------------------------------------------------------
+# Desktop Navigation
+--------------------------------------------------------------*/
+.navbar a {
+	align-items: center;
+	justify-content: space-between;
 }
 
-.mobile-adress .number {
-  margin-bottom: 12px;
+#navbarNav ul:nth-child(1) a {
+	margin-left: 32px;
+	padding-top: 0;
+	padding-bottom: 0;
+	border-bottom: 1px solid transparent;
+	transition: 0.3s;
 }
 
-.contacts-mobile-block a svg {
-  fill: #1E1E1E;
+#navbarNav ul:nth-child(2) a {
+	padding-left: 20px;
 }
 
-.contacts-mobile-block a svg:hover {
-  fill: #494949;
-  cursor: pointer;
-  transition: .3s;
+#navbarNav ul:nth-child(1) a:hover, .header #phone a:hover{
+	color: #1E1E1E !important;
+	border-bottom: 1px solid #787878;
+	transition: 0.3s;
 }
 
-.contacts-mobile {
-  margin-left: 12px;
-  margin-right: 12px;
+.navbar svg path {
+	transition: 0.2s;
 }
 
-.watch-video {
-  color: #1E1E1E;
+.navbar svg:hover path {
+    fill: #494949;
+	transition: 0.2s;
 }
 
 
@@ -208,10 +261,12 @@ first-block-main-kitchen-carousel
   padding-left: 70px;
 }
 
-
-
 .watch-video {
-  padding-left: 24px;
+    padding-left: 24px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    font-family: 'Stolzl Book' !important;
 }
 
 /* carousel */
@@ -227,6 +282,7 @@ first-block-main-kitchen-carousel
 }
 
 .main-kitchen-carousel-slide-kithen-name {
+  font-family: 'Stolzl Book' !important;
   position: absolute;
   bottom: 24px;
   left: 24px;
@@ -271,7 +327,10 @@ first-block-main-kitchen-carousel
 }
 
 .bottom-block-main-block-mobile-a {
-  color: #1E1E1E;
+    font-family: 'Stolzl Book' !important;
+    font-size: 18px;
+    font-weight: 400;
+    color: #1E1E1E;
 }
 
 .slick-dots {
@@ -280,30 +339,25 @@ first-block-main-kitchen-carousel
 }
 
 .slick-dots li {
-  display: inline-block;
-  margin-right: 16px;
-  padding-right: 12px;
-  padding-bottom: 4px;
-  border-bottom: 2px solid #C9C7DB;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 17px;
-  color: transparent;
-  transition: .3s;
-  position: relative;
+    display: inline-block;
+    margin-right: 16px;
+    padding-right: 12px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid #C9C7DB;
+    font-family: 'Stolzl Regular' !important;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    color: transparent;
+    position: relative;
 }
 
-.slick-dots .slick-active a {
-  color: #000;
+.slick-dots li:hover {
+    cursor: pointer;
 }
 
-.slick-dots a {
-  cursor: pointer;
-}
-
-.slick-dots .slick-active a:hover {
-  cursor: pointer;
-  color: #000 !important;
+.slick-dots .slick-active {
+    color: #1E1E1E;
 }
 
 .slick-dots .slick-active:after {
@@ -353,19 +407,21 @@ first-block-main-kitchen-carousel
   overflow: hidden;
 }
 
-
 .about-us-text {
-  margin-top: 24px;
+    font-family: 'Stolzl Book' !important;
+    margin-top: 24px;
 }
 
 .value {
-  font-size: 36px;
-  font-weight: 400;
+    font-family: 'Stolzl Book' !important;
+    font-size: 36px;
+    font-weight: 400;
 }
 
 .value-name {
-  font-size: 14px;
-  font-weight: 400;
+    font-family: 'Stolzl Book' !important;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 
@@ -435,21 +491,30 @@ catalog-carousel
   transition: .5s cubic-bezier(0.05, 0.61, 0.41, 0.95), opacity .5s ease-out;
 }
 
-
 #catalog-carousel .content svg {
   margin-left: 8px;
 }
 
+#catalog-carousel .content a {
+  font-family: 'Stolzl Book' !important;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 19px;
+}
+
+
 .slider-catalog-kitchen-short-desc {
   font-size: 16px;
   margin: 16px 0;
+  font-family: 'Stolzl Book' !important;
 }
 
 .slider-catalog-kitchen-name {
-  color: #1E1E1E;
-  font-family: Stolzl Bold;
-  font-size: 18px;
-  font-weight: 500;
+    color: #1E1E1E;
+    font-family: 'Stolzl Regular' !important;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
 }
 
 .catalog-carousel-button {
@@ -467,6 +532,13 @@ advantages
   background: #F8F7F4;
 }
 
+#advantages .custom-bg {
+    max-width: 1420px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 70px;
+}
+
 .advantages-content {
   margin-top: 52px;
 }
@@ -476,9 +548,9 @@ advantages
 }
 
 .advantages-content-title {
-  color: #1E1E1E;
-  font-family: Stolzl;
-  font-size: 24px;
+    color: #1E1E1E;
+    font-family: 'Stolzl Book' !important;
+    font-size: 24px;
 }
 
 .advantages-content-title svg {
@@ -486,10 +558,11 @@ advantages
 }
 
 .advantages-content-title-text {
-  color: #787878;
-  font-family: Stolzl;
-  font-size: 14px;
-  margin-top: 20px;
+    color: #787878;
+    font-family: 'Stolzl Book' !important;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 20px;
 }
 
 
@@ -526,12 +599,13 @@ project-and-reviews
 }
 
 .project-and-reviews-kitchen-name {
-  font-family: Stolzl;
-  font-size: 14px;
-  padding: 4px 12px;
-  border-radius: 24px;
-  background: #1E1E1E;
-  color: #FFF;
+    font-family: 'Stolzl Light';
+    font-size: 14px;
+    font-weight: 400;
+    padding: 4px 12px;
+    border-radius: 24px;
+    background: #1E1E1E;
+    color: #FFF;
 }
 
 .review-content {
@@ -543,9 +617,18 @@ project-and-reviews
 }
 
 .project-and-reviews-name {
-  font-family: Stolzl Bold;
-  font-size: 14px;
-  margin-bottom: 12px;
+    font-family: 'Stolzl Bold';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 12px;
+}
+
+.project-and-reviews-text {
+    font-family: 'Stolzl Book';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
 }
 
 .project-and-reviews-slider .slick-slide {
@@ -568,9 +651,8 @@ project-and-reviews
 }
 
 .project-and-reviews-nav {
+  margin-top: -55px;
   margin-left: 70px;
-  position: absolute;
-  bottom: -20px;
 }
 
 .project-and-reviews-nav .num {
@@ -583,10 +665,6 @@ project-and-reviews
   margin-top: 50px;
 }
 
-#project-and-reviews .wrapper{
-  position: relative;
-}
-
 
 /*----------------------------------
 feedback
@@ -596,8 +674,12 @@ feedback
 }
 
 .feedback-text{
-  margin-top: 40px;
-  margin-bottom: 46px;
+    font-family: 'Stolzl Book';
+    margin-top: 40px;
+    margin-bottom: 46px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
 }
 
 .feedback-wrapper{
@@ -619,8 +701,19 @@ feedback
 }
 
 #feedback label{
-  padding-bottom: 8px;
-  font-size: 14px; 
+    padding-bottom: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    font-family: 'Stolzl Book';
+}
+
+#feedback input::placeholder, #feedback textarea::placeholder {
+    font-family: 'Stolzl Book';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    color: #787878;
 }
 
 #label_number, #label_message{
@@ -654,19 +747,22 @@ feedback
 }
 
 .feedback-form-annotation{
-  margin-top: 16px;
-  color: #787878;
-  font-size: 14px;
+    font-family: 'Stolzl Book';
+    margin-top: 16px;
+    color: #787878;
+    font-size: 14px;
+    font-weight: 400;
 }
 
 .feedback-form-annotation a{
-  color: #0466FF; 
+    font-family: 'Stolzl Book';
+    color: #0466FF;
 }
 
 
 /*----------------------------------
 footer
-----------------------------------*/
+----------------------------------
 footer {
   padding: 24px 70px;
 }
@@ -675,7 +771,7 @@ footer {
 .footer-adress {
   margin-top: 16px;
 }
-
+*/
 
 
 /*----------------- adaptive -----------------*/
