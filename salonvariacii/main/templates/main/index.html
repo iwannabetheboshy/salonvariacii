@@ -193,6 +193,33 @@
                 {% endfor %}
             </div>
         </div>
+        <div class="slider-catalog-container-mobile">
+            <h2>Каталог</h2>
+            <div class="slide-line-mobile">
+                {% for kitchen in catalog_carousel %}
+                <div class="slid-mobile">
+                    <img src="{{ kitchen.mainImage.url }}">
+                    <div class="content-mobile">
+                        <div class="slider-catalog-kitchen-name">
+                            Кухни {{ kitchen.name }}
+                        </div>
+                        <div class="slider-catalog-kitchen-short-desc-mobile">
+                            {{ kitchen.short_desc }}
+                        </div>
+                        <a href="{{ kitchen.slug }}">
+                            Подробнее
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                        d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
+                                        fill="#1E1E1E" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
         <div class="row text-center catalog-carousel-button">
             <div class="col px-0">
                 <a href=""><button class="custom-button">Смотреть все кухни</button></a>

@@ -22,6 +22,17 @@ $(document).ready(function () {
     $(this).find('.content').addClass('active');
   });
 
+  if ($(window).width()<=1200) {
+
+    $('.slider-catalog-container-mobile .slide-line-mobile').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+    });
+  }
+  
+
+
   $('#project-and-reviews .project-and-reviews-slider').slick({
     slidesToShow: 1.05,
     slidesToScroll: 1,

@@ -524,6 +524,30 @@ catalog-carousel
   margin-top: 60px;
 }
 
+.slider-catalog-container-mobile{
+  display: none;
+}
+
+.slider-catalog-container-mobile .slick-slide img {
+  display: block;
+  width: 100%;
+  height: calc(100vw*0.8);
+  object-fit: cover;
+  padding-right: 2.5%;
+}
+
+.slider-catalog-kitchen-name, .slider-catalog-kitchen-short-desc-mobile{
+  margin-bottom: 2.5%;
+}
+
+.slider-catalog-container-mobile .slick-active{
+  padding-left: 0.84%;
+}
+
+.slider-catalog-kitchen-name{
+  padding-top: 2.5%;
+}
+
 
 
 /*----------------------------------
@@ -784,6 +808,8 @@ footer {
     width: calc(100vw*0.3);
   }
 
+  
+
   #about-us-block{
     padding: 0 2.5%;
   }
@@ -813,7 +839,8 @@ footer {
   .project-and-reviews-slider,
   #project-and-reviews .title,
   .slider-catalog-container,
-  .main-kitchen-carousel {
+  .main-kitchen-carousel,
+  .slider-catalog-container-mobile {
     padding-left: 2.5%;
   }
 
@@ -850,7 +877,6 @@ footer {
   .custom-button {
     width: 63%;
     padding: 17px 32px;
-    margin-bottom: 2.5%;
     margin-top: 4%;
     margin-left: auto;
     margin-right: auto;
@@ -872,8 +898,14 @@ footer {
   .bottom-block-main-block,
   .desk,
   .header-desk,
-  .nav-project-and-reviews {
+  .nav-project-and-reviews,
+  .slider-catalog-container,
+  .slick-dots a {
     display: none !important;
+  }
+
+  .slider-catalog-container-mobile{
+    display: block;
   }
 
   .text-width {
@@ -909,9 +941,6 @@ footer {
     margin-bottom: 0;
   }
 
-  .slick-dots a {
-    display: none;
-  }
 
   .slick-dots li {
     width: 28px;
@@ -937,7 +966,7 @@ footer {
     text-align: center;
   }
 
-  .contacts, .footer-number{
+  .contacts, .footer-number, #advantages{
     margin-top: 4%;
   }
 
