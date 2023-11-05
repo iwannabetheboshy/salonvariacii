@@ -568,8 +568,9 @@ project-and-reviews
 }
 
 .project-and-reviews-nav {
-  margin-top: -55px;
   margin-left: 70px;
+  position: absolute;
+  bottom: -20px;
 }
 
 .project-and-reviews-nav .num {
@@ -580,6 +581,10 @@ project-and-reviews
   text-align: end;
   padding-right: 31px;
   margin-top: 50px;
+}
+
+#project-and-reviews .wrapper{
+  position: relative;
 }
 
 
