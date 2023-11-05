@@ -7,14 +7,14 @@ body {
 #catalog-carousel,
 #project-and-reviews,
 #feedback {
-  max-width: 1402px;
+  max-width: 1420px;
   margin-left: auto;
   margin-right: auto;
 }
 
 
 .row {
-  max-width: 1402px;
+  max-width: 1420px;
 }
 
 .wrapper {
@@ -250,6 +250,7 @@ first-block-main-kitchen-carousel
 ----------------------------------*/
 #first-block-main-kitchen-carousel {
   padding-top: 120px;
+  position: relative;
 }
 
 .text-width {
