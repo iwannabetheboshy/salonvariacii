@@ -1,5 +1,6 @@
 from django import forms
-from .models import KitchenStyle, KitchenMaterial, KitchenOpeningMethod
+from django.forms import ModelForm, TextInput, Textarea
+from .models import KitchenStyle, KitchenMaterial, KitchenOpeningMethod, FeedBack
 
 
 class FilterForm(forms.Form):
@@ -13,3 +14,25 @@ class FilterForm(forms.Form):
    openingMethod = forms.MultipleChoiceField(choices=KitchenOpeningMethod.objects.values_list("name", "name").distinct(),
                                                   widget=forms.CheckboxSelectMultiple, required=False,
                                                   label="Метод открытия кухни")
+   
+class FeedbackForm(ModelForm):
+   class Meta:
+        model = FeedBack
+        fields = ['name', 'number', 'message']
+
+        widgets = {
+            "name": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Введите имя',
+            }),
+
+            "number": TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': '+7',
+                'id': 'fb_phone',
+            }),
+            "message": Textarea(attrs={
+                'class': 'form-control-area',
+                'placeholder': 'Введите текст сообщения',
+            }),
+        }

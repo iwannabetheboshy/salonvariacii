@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from .models import *
-from .forms import FilterForm
+from .forms import FilterForm, FeedbackForm
 
 
 def get_related_items_for_admin(request):
@@ -29,6 +29,7 @@ def main(request):
     numberOfBlocksAboutMini = aboutMini.count() 
     catalog_carousel = Kitchen.objects.exclude(show_number=None).order_by('show_number')
     reviews = ReviewsAndProject.objects.all()
+    feedbackForm = FeedbackForm()
     
     
     data = {
@@ -38,6 +39,7 @@ def main(request):
         "numberOfBlocksAboutMini": numberOfBlocksAboutMini,
         "catalog_carousel": catalog_carousel,
         "reviews": reviews,
+        "feedbackForm": feedbackForm,
     }
 
     return render(request, "main/index.html", data)

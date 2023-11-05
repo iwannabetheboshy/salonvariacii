@@ -120,5 +120,14 @@ class ReviewsAndProject(models.Model):
     class Meta:
         verbose_name = "отзыв"
         verbose_name_plural = "Отзывы"
+
+class FeedBack(models.Model):
+    name = models.CharField('Имя', max_length=50)
+    number = models.CharField('Номер телефона', max_length=20)
+    message = models.TextField('Сообщение')
+    
+    class Meta:
+        verbose_name = "заявка"
+        verbose_name_plural = "Заявки"
  
         
