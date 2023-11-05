@@ -1,6 +1,9 @@
 body {
-  max-width: 1402px;
   font-family: Stolzl;
+}
+
+section {
+  max-width: 1402px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -90,105 +93,148 @@ a {
   color: #000;
 }
 
-/*----------------------------------
-  header
-----------------------------------*/
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-top: 24px;
+    padding-bottom: 16px;
+    transition: background-color 0.5s, padding 1s;
+}
 
-header {
-  margin-bottom: 16px;
-  position: fixed;
-  z-index: 1;
-  background: #FFF;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 70px;
+.header.sticky {
+    padding-top: 0;
+    padding-bottom: 0;
+    border-bottom: 1px solid #E7E7E7;
+    background-color: rgba(255, 255, 255, .9);
+}
+
+.header nav {
+    max-width: 1280px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.header .nav-item a {
+    font-family: 'Stolzl Regular' !important;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    color: #787878;
+}
+
+.header .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.header #phone {
+    display: none;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.header #navbarNav .nav-item button {
+    display: none;
+    padding: 12px 32px;
+    border-radius: 130px;
+    background-color: #1E1E1E;
+}
+
+@media (max-width: 1280px) {
+    .header nav {
+        width: 95%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .header {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .header .navbar-brand img {
+        width: 40px;
+    }
+
+    .header #navbarNav {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .header #navbarNav a {
+        margin-bottom: 20px;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+        font-size: 16px;
+    }
+
+    .header #navbarNav #social a {
+        padding-right: 14px;
+    }
+
+    .header #navbarNav .nav-item button {
+        width: 328px;
+    }
+
+    .header #phone, .header #navbarNav .nav-item button {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .header #navbarNav .nav-item button {
+        width: 100%;
+    }
+}
+
+
+/*--------------------------------------------------------------
+# Desktop Navigation
+--------------------------------------------------------------*/
+.navbar a {
+	align-items: center;
+	justify-content: space-between;
+}
+
+#navbarNav ul:nth-child(1) a {
+	margin-left: 32px;
+	padding-top: 0;
+	padding-bottom: 0;
+	border-bottom: 1px solid transparent;
+}
+
+#navbarNav ul:nth-child(2) a {
+	padding-left: 20px;
+}
+
+#navbarNav ul:nth-child(1) a:hover{
+	color: #1E1E1E !important;
+	border-bottom: 1px solid #787878;
 
 }
 
-header a {
-  color: #1E1E1E;
+.navbar svg path {
+	transition: 0.2s;
 }
 
-.contacts a {
-  padding-left: 16px;
+.navbar svg:hover path {
+    fill: #494949;
+	transition: 0.2s;
 }
 
-.contacts svg {
-  fill: #1E1E1E;
+.navbar-toggler{
+	width: auto;
+	height: auto;
+	color: #fff;
 }
 
-.contacts svg:hover {
-  cursor: pointer;
-  fill: #494949;
-  transition: .3s;
-}
-
-.link a {
-  color: #787878;
-  margin-left: 32px;
-}
-
-.link a:hover {
-  color: #1E1E1E;
-  text-decoration-color: #787878;
-  text-decoration-line: revert;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.link a:first-child {
-  margin: 0;
-}
-
-.mobile-header,
-.burger-close {
-  display: none;
-}
-
-.link-mobile {
-  margin-top: 31px;
-  height: 44px;
-  color: #1E1E1E;
-  font-family: Stolzl;
-  font-size: 16px;
-}
-
-.burger-menu {
-  z-index: 1;
-  position: absolute;
-  background: #FFF;
-  width: 100%;
-  padding-bottom: 31px;
-  display: none;
-}
-
-.mobile-adress {
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-
-.mobile-adress .number {
-  margin-bottom: 12px;
-}
-
-.contacts-mobile-block a svg {
-  fill: #1E1E1E;
-}
-
-.contacts-mobile-block a svg:hover {
-  fill: #494949;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.contacts-mobile {
-  margin-left: 12px;
-  margin-right: 12px;
-}
-
-.watch-video {
-  color: #1E1E1E;
+@media (max-width: 767px) {
+	.fixed-element {
+		width: 81%;
+	}
 }
 
 

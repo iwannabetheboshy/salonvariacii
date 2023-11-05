@@ -1,17 +1,15 @@
 $(document).ready(function() {
-    var burger = document.getElementsByClassName('burger')[0];
-    var close = document.getElementsByClassName('burger-close')[0];
-    var burger_nav = document.getElementsByClassName('burger-menu')[0];
+    var navbarToggler = document.querySelector('.navbar-toggler');
+    var navbar = document.querySelector('.navbar');
 
-      burger.onclick = function() {
-        close.style.display = 'block';
-        burger.style.display = 'none';
-        burger_nav.style.display = 'block';
-    };
-
-    close.onclick =function() {
-        close.style.display = 'none';
-        burger.style.display = 'block';
-        burger_nav.style.display = 'none';
-    };
-  });
+    navbarToggler.addEventListener('click', function() {
+        if (navbar.classList.contains('navbar-opened')) {
+            navbar.classList.remove('navbar-opened');
+            document.getElementById("header").style.background = "rgba(255, 255, 255, .9)"
+        }
+        else {
+            navbar.classList.add('navbar-opened');
+            document.getElementById("header").style.background = "rgba(255, 255, 255, 1)"
+        }
+    });
+});
