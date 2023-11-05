@@ -529,7 +529,6 @@ advantages
 ----------------------------------*/
 #advantages {
   margin-top: 110px;
-  padding: 80px 70px;
   background: #F8F7F4;
 }
 
@@ -537,7 +536,7 @@ advantages
     max-width: 1420px;
     margin-left: auto !important;
     margin-right: auto !important;
-    padding-left: 70px;
+    padding: 80px 70px;
 }
 
 .advantages-content {
@@ -916,7 +915,7 @@ footer {
     width: 28px;
   }
 
-  #advantages {
+  #advantages .custom-bg  {
     padding: 4% 2.5%;
     margin-top: 4%;
   }
