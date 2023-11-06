@@ -52,6 +52,3 @@ class ReviewsAndProjectAdmin(admin.ModelAdmin):
 @admin.register(FeedBack)
 class FeedBackAdmin(admin.ModelAdmin):
     list_display = ("name", "number", "message")
-
-
-

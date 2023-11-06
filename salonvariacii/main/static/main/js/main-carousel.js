@@ -111,4 +111,3 @@ $('#feedback-form').on('submit', function( event ) {
 
 //маска для ввода номера
 $("input[name=number]").mask("+7(099) 999-99-99");
-

@@ -351,6 +351,7 @@ first-block-main-kitchen-carousel
     line-height: 17px;
     color: transparent;
     position: relative;
+}
 
 .slick-dots li:hover {
     cursor: pointer;
@@ -987,7 +988,8 @@ footer {
   .contacts, 
   .footer-number, 
   #advantages, 
-  .feedback-img-mobile{
+  .feedback-img-mobile,
+  .bottom-block-main-block-mobile-a{
     margin-top: 4%;
   }
 
@@ -999,7 +1001,10 @@ footer {
   .feedback-text{
     margin-bottom: 1.8%;
   }
-
+  
+  .bottom-block-main-block-mobile .custom-button{
+    margin-bottom: 4%;
+  }
   .feedback-form{
     position: relative;
     width: 100%;
