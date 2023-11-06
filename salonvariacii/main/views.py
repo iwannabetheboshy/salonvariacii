@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from .models import *
 from .forms import FilterForm, FeedbackForm
@@ -80,3 +80,14 @@ def filter(request):
             # Вывод ошибок в консоль
             print(form.errors)
             return render(request, "main/catalog.html")
+        
+def sendFeedBack(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            return HttpResponse("Заявка отправлена! Мы скоро перезвоним вам")
+        
+        
+
+    

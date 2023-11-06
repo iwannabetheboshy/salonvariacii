@@ -16,7 +16,7 @@ class FilterForm(forms.Form):
                                                   label="Метод открытия кухни")
    
 class FeedbackForm(ModelForm):
-   class Meta:
+    class Meta:
         model = FeedBack
         fields = ['name', 'number', 'message']
 
@@ -24,15 +24,22 @@ class FeedbackForm(ModelForm):
             "name": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите имя',
+                'required': 'true',
             }),
 
             "number": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': '+7',
                 'id': 'fb_phone',
+                'required': 'true',
             }),
             "message": Textarea(attrs={
                 'class': 'form-control-area',
                 'placeholder': 'Введите текст сообщения',
-            }),
+                'required': 'false',
+            }) ,
         }
+    def __init__(self, *args, **kwargs):
+        super(FeedbackForm, self).__init__(*args, **kwargs)
+        self.fields['message'].required = False
+

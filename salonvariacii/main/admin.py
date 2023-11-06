@@ -48,6 +48,10 @@ class AboutUslAdmin(admin.ModelAdmin):
 @admin.register(ReviewsAndProject)
 class ReviewsAndProjectAdmin(admin.ModelAdmin):
     list_display = ("project_name", "price", "squeare", "review_name", "text", "image")
+    
+@admin.register(FeedBack)
+class FeedBackAdmin(admin.ModelAdmin):
+    list_display = ("name", "number", "message")
 
 
 

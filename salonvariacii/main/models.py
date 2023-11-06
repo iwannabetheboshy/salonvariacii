@@ -124,7 +124,7 @@ class ReviewsAndProject(models.Model):
 class FeedBack(models.Model):
     name = models.CharField('Имя', max_length=50)
     number = models.CharField('Номер телефона', max_length=20)
-    message = models.TextField('Сообщение')
+    message = models.TextField('Сообщение', blank=True, null=True)
     
     class Meta:
         verbose_name = "заявка"

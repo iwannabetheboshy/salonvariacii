@@ -1,6 +1,6 @@
 $(document).ready(function () {
   $('.main-kitchen-carousel').slick({
-    slidesToShow: 1.35,
+    slidesToShow: 1.1,
     prevArrow: $('.nav-main-kitchen-carousel-buttton .custom-prev-arrow'),
     nextArrow: $('.nav-main-kitchen-carousel-buttton .custom-next-arrow'),
     autoplaySpeed: 1000,
@@ -11,6 +11,21 @@ $(document).ready(function () {
     customPaging: function (slider, i) {
       return '<a> 0' +( i + 1 ) + '</a>';
     },
+
+    responsive: [  
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 1.5
+      }
+    },
+    {
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 1.8
+      }
+    },
+    ]
   });
 
   $('.slider-catalog-container .slide').first().addClass('large-image');
@@ -22,14 +37,28 @@ $(document).ready(function () {
     $(this).find('.content').addClass('active');
   });
 
-  if ($(window).width()<=1200) {
 
     $('.slider-catalog-container-mobile .slide-line-mobile').slick({
-      slidesToShow: 1,
+      slidesToShow: 1.3,
       slidesToScroll: 1,
       arrows: false,
+      infinite: false,
+      responsive: [  
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToShow: 1.5
+          }
+        },
+        {
+          breakpoint: 1000,
+          settings: {
+            slidesToShow: 1.6
+          }
+        },
+      ]
     });
-  }
+  
   
 
 
@@ -45,5 +74,41 @@ $(document).ready(function () {
     customPaging: function (slider, i) {
       return '<a> 0' +( i + 1 ) + '</a>';
     },
+
+    responsive: [  
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 1.2
+        }
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 1.4
+        }
+      },
+    ]
   });
 });
+
+
+//обработка отправки формы модального окна
+$('#feedback-form').on('submit', function( event ) {
+    event.preventDefault();
+    var form = $(this).serialize();
+    
+    $.ajax({
+      data: form,
+      type: $(this).attr('method'),
+      datatype: 'json',
+      url: "/feedback/",
+      success: function(response){
+        
+      },
+    })
+});
+
+//маска для ввода номера
+$("input[name=number]").mask("+7(099) 999-99-99");
+

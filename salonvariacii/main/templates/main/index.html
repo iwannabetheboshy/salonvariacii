@@ -386,12 +386,13 @@
             </div>
         </div>
     </div>
-    <div class="feedback-img">
+    <div class="feedback-img-desc">
         <img src="{%static 'main/image/Rectangle-27.png' %}" alt="">
     </div>
 
     <div class="feedback-form">
-        <form>
+        <form id="feedback-form" method="post">
+            {% csrf_token %}
             <label for="id_name">Имя (обязательно)</label>
             {{feedbackForm.name}}
             <label for="id_number" id="label_number">Телефон (обязательно)</label>
@@ -404,6 +405,9 @@
             Нажимая на кнопку “Отправить заявку”, Вы даете согласие на обработку <a href="">персональных данных</a> и соглашаетесь с <a href="">политикой конфиденциальности.</a>
         </div>
     </div>
+    <div class="feedback-img-mobile">
+        <img src="{%static 'main/image/Rectangle-27.png' %}" alt="">
+    </div>
 
 
 </section>
@@ -414,6 +418,7 @@
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+<script src="{% static 'main/js/jquery.maskedinput.js' %}"></script>
 <script src="{% static 'main/js/main-carousel.js' %}"></script>
 
 

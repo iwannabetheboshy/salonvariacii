@@ -531,7 +531,7 @@ catalog-carousel
 .slider-catalog-container-mobile .slick-slide img {
   display: block;
   width: 100%;
-  height: calc(100vw*0.8);
+  height: calc(100vw*0.5);
   object-fit: cover;
   padding-right: 2.5%;
 }
@@ -540,14 +540,19 @@ catalog-carousel
   margin-bottom: 2.5%;
 }
 
-.slider-catalog-container-mobile .slick-active{
-  padding-left: 0.84%;
-}
+
 
 .slider-catalog-kitchen-name{
   padding-top: 2.5%;
 }
 
+#catalog-carousel .slide:hover{
+  cursor: pointer;
+}
+
+.slider-catalog-container-mobile .content-mobile:hover{
+  cursor: pointer;
+}
 
 
 /*----------------------------------
@@ -785,6 +790,17 @@ feedback
     color: #0466FF;
 }
 
+.feedback-img-mobile{
+  display: none;
+  width: 100%;
+}
+
+.feedback-img-mobile img{
+  width: 100%;
+}
+
+
+
 
 /*----------------------------------
 footer
@@ -803,18 +819,19 @@ footer {
 /*----------------- adaptive -----------------*/
 
 
-@media (max-width: 1199px) {
+@media (max-width: 1200px) {
   .line svg {
     width: calc(100vw*0.3);
   }
 
-  
-
-  #about-us-block{
+  #about-us-block,
+  .feedback-wrapper{
     padding: 0 2.5%;
   }
-  
 
+  .feedback-wrapper{
+    width: 100%;
+  }
   
   .about-us-text-dop-block,
   .wrapper,
@@ -900,11 +917,13 @@ footer {
   .header-desk,
   .nav-project-and-reviews,
   .slider-catalog-container,
-  .slick-dots a {
+  .slick-dots a,
+  .feedback-img-desc{
     display: none !important;
   }
 
-  .slider-catalog-container-mobile{
+  .slider-catalog-container-mobile,
+  .feedback-img-mobile{
     display: block;
   }
 
@@ -966,12 +985,28 @@ footer {
     text-align: center;
   }
 
-  .contacts, .footer-number, #advantages{
+  .contacts, 
+  .footer-number, 
+  #advantages, 
+  .feedback-img-mobile{
     margin-top: 4%;
   }
 
-  .footer-adress{
+  .footer-adress, 
+  .feedback-text{
     margin-top: 1.8%;
+  }
+
+  .feedback-text{
+    margin-bottom: 1.8%;
+  }
+
+  .feedback-form{
+    position: relative;
+    width: 100%;
+    right: 0;
+    padding: 2.5%;
+    box-shadow: none;
   }
 
   .project-and-reviews-nav{
@@ -1001,6 +1036,28 @@ footer {
   .link a:last-child{
     padding-bottom: 0;
    }
+
+   .slider-catalog-kitchen-name,
+   .feedback-text{
+    font-size: 16px; 
+  }
+
+  .slider-catalog-kitchen-short-desc-mobile,
+  .project-and-reviews-text{
+    font-size: 14px; 
+  }
+
+  .advantages-content-title{
+    font-size: 18px; 
+  }
+
+  h2{
+    font-size: 30px;
+  }
+
+  #first-block-main-kitchen-carousel{
+    padding-top: 53px;
+  }
 }
 
 @media (max-width: 992px) {
