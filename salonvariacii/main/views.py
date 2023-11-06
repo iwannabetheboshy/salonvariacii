@@ -47,8 +47,18 @@ def main(request):
 
 def catalog(request):
     kitchen = Kitchen.objects.all()
+    openingMethod = KitchenOpeningMethod.objects.all().distinct()
+    material = KitchenMaterial.objects.all()
+    style = KitchenStyle.objects.all()
     form = FilterForm()
-    return render(request, "main/catalog.html", {'kitchen': kitchen, 'form': form})
+    data = {
+        "kitchen": kitchen,
+        "form": form,
+        "openingMethod": openingMethod,
+        "material": material,
+        "style": style,
+    }
+    return render(request, "main/catalog.html", data)
 
 
 def filter(request):

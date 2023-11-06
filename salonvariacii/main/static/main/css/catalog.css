@@ -1,0 +1,98 @@
+#catalog-header, #catalog-filter{
+    max-width: 1420px;
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+
+#catalog-header{
+    margin-top: 170px;
+    text-align: center;
+    padding: 0 70px;
+}
+
+.catalog-name{
+    font-family: 'Stolzl Bold';
+    font-size: 52px; 
+    color: #1E1E1E; 
+    font-weight: 700; 
+}
+
+.catalog-annotation{
+    color: #787878;
+    font-family: 'Stolzl Light' !important;
+    font-size: 16px;
+}
+
+.catalog-annotation span{
+    color: #1E1E1E; 
+}
+
+#catalog-filter{
+    margin-top: 96px;
+   
+}
+
+.filtered-results-wrapper{
+    margin-top: 24px;
+    padding: 0 50px;
+}
+
+#filtered-results img{
+    width: 100%;
+    height: 343px;
+    object-fit: cover;
+}
+
+.filtered-results-wrapper .result{
+    margin-bottom: 80px;
+}
+
+#catalog-filter .result{
+    padding: 0 20px;
+}
+
+#catalog-filter .kitchen-name svg{
+    display: none;
+}
+
+#catalog-filter .kitchen-name:hover svg{
+    display: inline !important;
+}
+
+.kitchen-name:hover{
+    cursor: pointer;
+}
+
+.filter{
+    padding: 0 70px;
+}
+
+#catalog-filter .hidden{
+    display: none;
+}
+
+#catalog-filter .filter-name:hover{
+    cursor: pointer;
+}
+
+.sub-menu{
+    position: absolute;
+    background: #FFF;
+    box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.12);
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.sub-menu ul{
+    padding: 8px 12px;
+    margin: 0;
+}
+
+
+.sub-menu li{
+    list-style-type:none;
+    padding: 4px 0;
+}
+
+

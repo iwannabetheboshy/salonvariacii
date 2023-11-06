@@ -1,29 +1,104 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<link href="{%static 'main/css/catalog.css' %}" rel="stylesheet">
 
-<div class="col-2">
-    <form id="filter-form" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-  <button type="submit">Применить</button>
-</form>
-
-</div>
-<div class="col-11">
-    <div class="row" id="filtered-results">
-         {%for kit in kitchen%}
-        <div class="col">
-            <br>
-          {{kit.name}} <br>
-          {{kit.style}}<br>
-          {{kit.material}}<br>
-          {{kit.openingMethod}}<br>
-            <br>
-        </div>
-        {%endfor%}
+<section id="catalog-header">
+  <div class="row">
+    <div class="col">
+      <div class="catalog-name">
+        Каталог кухонь
+      </div>
+      <div class="catalog-annotation">
+        Мы делаем не просто кухни, мы <span>создаём стиль</span>
+      </div>
+      <div class="catalog-annotation-line">
+        <svg width="127" height="11" viewBox="0 0 127 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M53.9383 1.05347C47.9718 1.41449 42.0754 1.85839 36.3254 2.34369C28.1856 3.03022 20.049 3.74042 11.9614 4.86489C9.41559 5.21999 6.83031 5.44487 4.30044 5.88875C2.71234 6.16691 0.606566 6.56338 0.33021 6.64623C0.185664 6.69358 0.122603 6.76467 0.102227 6.78834C-0.0410457 6.95405 -0.0149038 7.11378 0.0659656 7.23806C0.0984407 7.29133 0.180561 7.42158 0.408523 7.43934C15.654 8.65259 31.2433 6.28527 46.5072 6.0367C72.9776 5.61059 100.25 7.30322 126.511 10.9962C126.74 11.0258 126.963 10.8778 126.995 10.6589C127.033 10.4458 126.867 10.2387 126.638 10.2091C100.333 6.51012 73.0158 4.81156 46.4945 5.2436C32.2691 5.47441 17.763 7.55178 3.51785 6.84158C3.84515 6.7824 4.1661 6.72319 4.45901 6.66993C6.97869 6.22606 9.55314 6.0071 12.0887 5.652C20.1591 4.52752 28.2792 3.81733 36.4081 3.13673C46.4945 2.28449 57.0202 1.55062 67.6288 1.20736C71.4239 1.26062 75.2063 1.31391 78.9887 1.37901C87.1711 1.52105 95.3918 1.93533 103.555 2.49165C106.013 2.66328 108.471 2.84082 110.929 2.99469C111.744 3.04796 113.845 3.20181 114.138 3.18997C114.501 3.17813 114.571 2.89408 114.578 2.84673C114.597 2.74021 114.584 2.59224 114.406 2.46795C114.387 2.4502 114.272 2.39098 114.017 2.35547C99.1742 0.260393 83.3251 -0.0887311 67.6415 0.414324C51.0983 0.195347 34.4915 0.100611 17.9903 0C17.7541 0 17.5611 0.177575 17.5592 0.396552C17.5579 0.615529 17.7483 0.793109 17.9845 0.799028C29.9328 0.870047 41.9416 0.941026 53.9383 1.05347Z" fill="#1E1E1E"/>
+          </svg> 
+      </div>
     </div>
-</div>
+  </div>
+</section>
+<section id="catalog-filter">
+  <div class="filter">
+    <div class="filter-desc">
+      <div class="row mx-0">
+        <div class="col filter-name px-0"> 
+          Стиль
+          <svg class="close" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.99948 8.78077L11.2993 5.48096L12.2421 6.42376L7.99948 10.6664L3.75684 6.42376L4.69965 5.48096L7.99948 8.78077Z" fill="#1E1E1E"/>
+          </svg> 
+          <svg class="open hidden" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.0015 7.21923L4.70163 10.519L3.75883 9.57624L8.0015 5.33356L12.2441 9.57624L11.3013 10.519L8.0015 7.21923Z" fill="#1E1E1E"/>
+          </svg> 
+          <div class="sub-menu hidden">
+            <ul>
+              {% for s in style%}
+              <li>{{ s.name }}</li>
+              {%endfor%}
+            </ul>
+          </div>
+        </div>
+        <div class="col filter-name px-0"> 
+          Материал
+          <svg class="close" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.99948 8.78077L11.2993 5.48096L12.2421 6.42376L7.99948 10.6664L3.75684 6.42376L4.69965 5.48096L7.99948 8.78077Z" fill="#1E1E1E"/>
+          </svg> 
+          <svg class="open hidden" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.0015 7.21923L4.70163 10.519L3.75883 9.57624L8.0015 5.33356L12.2441 9.57624L11.3013 10.519L8.0015 7.21923Z" fill="#1E1E1E"/>
+          </svg>
+          <div class="sub-menu hidden">
+            <ul>
+              {% for m in material%}
+              <li>{{ m.name }}</li>
+              {%endfor%}
+            </ul>
+          </div> 
+        </div>
+        <div class="col filter-name px-0"> 
+          Система открывания 
+          <svg class="close" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.99948 8.78077L11.2993 5.48096L12.2421 6.42376L7.99948 10.6664L3.75684 6.42376L4.69965 5.48096L7.99948 8.78077Z" fill="#1E1E1E"/>
+          </svg> 
+          <svg class="open hidden" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.0015 7.21923L4.70163 10.519L3.75883 9.57624L8.0015 5.33356L12.2441 9.57624L11.3013 10.519L8.0015 7.21923Z" fill="#1E1E1E"/>
+          </svg> 
+          <div class="sub-menu hidden">
+            <ul>
+              {% for op in openingMethod%}
+              <li>{{ op.name }}</li>
+              {%endfor%}
+            </ul>
+          </div> 
+        </div>
+      </div>
+      <div class="select">
+
+      </div>
+    </div>
+  </div>
+  <div class="filtered-results-wrapper">
+    <div class="row row-cols-lg-2 mx-0" id="filtered-results">
+      {%for kit in kitchen%}
+        <div class="result">
+          <img class="mb-3" src="{{kit.mainImage.url}}">
+          <div class="kitchen-name">
+            {{kit.name}} 
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10.7814 7.33327L7.20539 3.75726L8.14819 2.81445L13.3337 7.99993L8.14819 13.1853L7.20539 12.2425L10.7814 8.6666H2.66699V7.33327H10.7814Z" fill="#1E1E1E"/>
+            </svg> 
+          </div>
+        </div>
+      {%endfor%}
+    </div>
+  </div>
+  
+</section>
+
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="{% static 'main/js/filter.js' %}"></script>
-<script src="{% static 'main/js/filter_style.js' %}"></script>
+
 {% endblock %}
