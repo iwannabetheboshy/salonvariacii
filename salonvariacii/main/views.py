@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from .models import *
 from .forms import FilterForm, FeedbackForm
+import json
 
 
 def get_related_items_for_admin(request):
@@ -47,9 +48,9 @@ def main(request):
 
 def catalog(request):
     kitchen = Kitchen.objects.all()
-    openingMethod = KitchenOpeningMethod.objects.all().distinct()
-    material = KitchenMaterial.objects.all()
-    style = KitchenStyle.objects.all()
+    openingMethod = KitchenOpeningMethod.objects.values("name").distinct()
+    material = KitchenMaterial.objects.values("name").distinct()
+    style = KitchenStyle.objects.values("name").distinct()
     form = FilterForm()
     data = {
         "kitchen": kitchen,
@@ -63,30 +64,36 @@ def catalog(request):
 
 def filter(request):
     if request.method == 'POST':
-        form = FilterForm(request.POST)
-        kitchen = Kitchen.objects.all()
-        if form.is_valid():
-            name_value = form.cleaned_data.get('name')
-            style_values = form.cleaned_data.get('style', [])
-            material_values = form.cleaned_data.get('material', [])
-            openingMethod_values = form.cleaned_data.get('openingMethod', [])
-
+        data = json.loads(request.body.decode('utf-8'))
+        style_values = data.get('style', [])
+        material_values = data.get('material', [])
+        openingMethod_values = data.get('openingMethod', [])
+        search = data.get('search', [])
+        
+        if not style_values and not material_values and not openingMethod_values and not search:
+            kitchen = Kitchen.objects.all().values('name', 'slug', 'mainImage')
+            filtered_kitchens = list(kitchen)
+        else:
+            kitchen = Kitchen.objects.all()
             filter_parameters = {
-                'name__icontains': name_value,
-                'style__in': style_values,
-                'material__name__in': material_values,
-                'openingMethod__name__in': openingMethod_values,
+                'name__icontains': search,
+                'style__name': style_values,
+                'material__name': material_values,
+                'openingMethod__name': openingMethod_values,
             }
 
             kitchen = Kitchen.objects.all()
+
             for field, values in filter_parameters.items():
                 if values:
-                    kitchen = kitchen.filter(**{field: values}).values('name','style__name', 'material__name', 'openingMethod__name')
+                    #если в фильтрации несколько значений по одному полю
+                    if isinstance(values, list):
+                        kitchen = kitchen.filter(**{field + '__in': values}).values('name', 'slug', 'mainImage')
+                    else:
+                        kitchen = kitchen.filter(**{field : values}).values('name', 'slug', 'mainImage')
 
-            filtered_kitchens = list(kitchen)  # Преобразование queryset в список словарей
-            print(filtered_kitchens)
-            return JsonResponse({'filtered_kitchens': filtered_kitchens})
-        else:
-            # Вывод ошибок в консоль
-            print(form.errors)
-            return render(request, "main/catalog.html")
+            filtered_kitchens = list(kitchen)
+       
+        return JsonResponse({'filtered_kitchens': filtered_kitchens})
+        
+
