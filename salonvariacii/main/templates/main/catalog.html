@@ -233,7 +233,11 @@
     <div class="row row-cols-xl-2 mx-0" id="filtered-results">
       {%for kit in kitchen%}
       <div class="result">
-        <img class="mb-3" src="{{kit.mainImage.url}}">
+        <div class="catalog-video-container mb-3" >
+          <img src="{{kit.mainImage.url}}" alt="">
+          <video  height="100%" src="{{kit.catalogVideo.url}}" preload="auto" muted loop disablePictureInPicture></video>
+        </div>
+        
         <div class="kitchen-name">
           <a href="{{ kit.slug }}">
             {{kit.name}}
@@ -371,6 +375,6 @@
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="{% static 'main/js/filter.js' %}"></script>
+<script src="{% static 'main/js/catalog.js' %}"></script>
 
 {% endblock %}

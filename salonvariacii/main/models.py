@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.core.validators import FileExtensionValidator
 
 
 class KitchenStyle(models.Model):
@@ -52,6 +53,7 @@ class Kitchen(models.Model):
     material = models.ForeignKey(KitchenMaterial, on_delete=models.CASCADE, verbose_name="Материал кухни")
     openingMethod = models.ForeignKey(KitchenOpeningMethod, on_delete=models.CASCADE, verbose_name="Метод открытия кухни")
     mainImage = models.ImageField('Главное фото', upload_to='kitchen/')
+    catalogVideo = models.FileField('Видео для каталога', upload_to ='kitchen/',validators=[FileExtensionValidator(allowed_extensions=["mp4"])])
     images = models.ManyToManyField(KitchenPhoto, blank=True, verbose_name="Дополнительные фотографии кухни")
     show_number = models.IntegerField('Номер показа в карусели каталога', null=True, blank=True)
     slug = models.SlugField(blank=True)

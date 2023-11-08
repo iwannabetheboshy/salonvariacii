@@ -71,7 +71,7 @@ def filter(request):
         search = data.get('search', [])
         
         if not style_values and not material_values and not openingMethod_values and not search:
-            kitchen = Kitchen.objects.all().values('name', 'slug', 'mainImage')
+            kitchen = Kitchen.objects.all().values('name', 'slug', 'mainImage', 'catalogVideo')
             filtered_kitchens = list(kitchen)
         else:
             kitchen = Kitchen.objects.all()
@@ -88,9 +88,9 @@ def filter(request):
                 if values:
                     #если в фильтрации несколько значений по одному полю
                     if isinstance(values, list):
-                        kitchen = kitchen.filter(**{field + '__in': values}).values('name', 'slug', 'mainImage')
+                        kitchen = kitchen.filter(**{field + '__in': values}).values('name', 'slug', 'mainImage', 'catalogVideo')
                     else:
-                        kitchen = kitchen.filter(**{field : values}).values('name', 'slug', 'mainImage')
+                        kitchen = kitchen.filter(**{field : values}).values('name', 'slug', 'mainImage', 'catalogVideo')
 
             filtered_kitchens = list(kitchen)
        

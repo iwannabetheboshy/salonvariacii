@@ -5,6 +5,7 @@
     margin-right: auto;
 
 }
+
 /*--------------------------------------------------
 catalog-header
 --------------------------------------------------*/
@@ -60,11 +61,23 @@ catalog-filter-result
     padding: 0 50px;
 }
 
-#filtered-results img {
-    width: 100%;
-    height: 343px;
-    object-fit: cover;
+.catalog-video-container {
+    position: relative;
 }
+
+.catalog-video-container video {
+    width: 100%;
+    height: 100%;
+}
+
+.catalog-video-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 7px);
+}
+
 
 .filtered-results-wrapper .result {
     margin-bottom: 80px;
@@ -88,8 +101,12 @@ catalog-filter-result
     transition: .3s;
 }
 
-.kitchen-name:hover {
+.kitchen-name:hover,
+#filtered-results img:hover,
+#catalog-filter .kitchen-name svg:hover,
+#catalog-filter .filter-name:hover {
     cursor: pointer;
+    transition: .3s;
 }
 
 .filter,
@@ -106,9 +123,6 @@ catalog-filter-result
     display: none;
 }
 
-#catalog-filter .filter-name:hover {
-    cursor: pointer;
-}
 
 /*--------------------------------------------------
 filter desc
@@ -120,6 +134,7 @@ filter desc
     box-shadow: 0px 4px 12px 0px rgba(0, 0, 0, 0.12);
     max-height: 240px;
     overflow-y: auto;
+    z-index: 1;
 }
 
 .sub-menu ul {
@@ -161,7 +176,7 @@ filter desc
 
 .none-result .none-result-title {
     color: #1E1E1E;
-    font-family: Stolzl;
+    font-family: 'Stolzl Book' !important;
     font-size: 18px;
     font-weight: 400;
     margin-top: 16px;
@@ -169,7 +184,7 @@ filter desc
 
 .none-result .none-result-text {
     color: #787878;
-    font-family: Stolzl;
+    font-family: 'Stolzl Book' !important;
     font-size: 16px;
     font-weight: 400;
     margin-top: 8px;
@@ -177,7 +192,7 @@ filter desc
 
 .filter-name {
     float: left;
-    font-family: 'Stolzl Light' !important;
+    font-family: 'Stolzl Book' !important;
     font-size: 14px;
 }
 
@@ -195,6 +210,7 @@ filter desc
     border-radius: 36px;
     background: #F1EFED;
     padding: 12px 16px !important;
+    border: 1px solid transparent;
 }
 
 .search-div input {
@@ -223,97 +239,105 @@ filter mobile
 --------------------------------------------------*/
 
 
-.filter-mobile{
+.filter-mobile {
     display: none;
 }
 
-.filter-mobile-name{
+.filter-mobile-name {
     margin-top: 2.5%;
     font-family: 'Stolzl Book' !important;
-    font-size: 14px; 
+    font-size: 14px;
     cursor: pointer;
-    
+
 }
 
-#catalog-filter .modal-title{
+#catalog-filter .modal-title {
     font-family: 'Stolzl Bold' !important;
-    font-size: 14px;    
+    font-size: 14px;
     font-weight: 100;
 }
 
-#catalog-filter .modal-header{
-   border: none;   
+#catalog-filter .modal-header {
+    border: none;
 }
 
-#catalog-filter .modal-clean{
+#catalog-filter .modal-clean {
     font-family: 'Stolzl Light' !important;
-    font-size: 14px;  
+    font-size: 14px;
     background: #FFF;
-    
 }
 
-#catalog-filter .modal-body{
+#catalog-filter .modal-clean:hover,
+.control__indicator {
+    cursor: pointer;
+    transition: .3s;
+}
+
+#catalog-filter .modal-body {
     margin-top: 31px;
- }
+}
 
 
-.modal-filter-button-close, #catalog-filter .modal-footer{
+.modal-filter-button-close,
+#catalog-filter .modal-footer {
     background: #fff;
     border: none;
 }
 
-#catalog-filter .modal-content{
+#catalog-filter .modal-content {
     padding: 16px;
     height: 560px;
 }
 
-#catalog-filter .modal-body .sub-menu{
+#catalog-filter .modal-body .sub-menu {
     position: relative;
     box-shadow: none;
     margin-bottom: 12px;
 }
 
-#catalog-filter .modal-body .filter-name{
+#catalog-filter .modal-body .filter-name {
     float: initial;
     font-size: 16px;
     line-height: 44px;
 }
 
-#catalog-filter .modal-body .filter-name svg{
+#catalog-filter .modal-body .filter-name svg {
     float: right;
 }
 
-#catalog-filter .filter-save{
+#catalog-filter .filter-save {
     margin-bottom: 24px !important;
 }
 
-#catalog-filter .modal-body label{
+#catalog-filter .modal-body label {
     font-size: 16px;
     font-family: 'Stolzl Light' !important;
     line-height: 40px;
     position: relative;
     padding-left: 24px;
 }
-#catalog-filter .modal-body .filter-name svg{
+
+#catalog-filter .modal-body .filter-name svg {
     margin-top: 13px;
 }
 
 /* Скрываем оригинальный чекбокс */
-input[type="checkbox"], input[type="radio"] {
+input[type="checkbox"],
+input[type="radio"] {
     display: none;
-  }
-  
-  
-  .control__indicator{
+}
+
+
+.control__indicator {
     position: absolute;
     top: 27%;
     left: 0;
     height: 16px;
     width: 16px;
     background: #E9E7E5;
-  }
+}
 
-  .control--checkbox .control__indicator::after {
+.control--checkbox .control__indicator::after {
     left: 7px;
     top: 4px;
     width: 3px;
@@ -321,30 +345,30 @@ input[type="checkbox"], input[type="radio"] {
     border: solid #1E1E1E;
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
-  }
+}
 
-  .control--radio .control__indicator::after {
+.control--radio .control__indicator::after {
     left: 5.2px;
     top: 5.2px;
     height: 6px;
     width: 6px;
     border-radius: 50%;
     background: #000;
-  }
-  
-  .control input:checked ~ .control__indicator::after {
-    display: block;
-  }
+}
 
-  .control__indicator::after {
+.control input:checked~.control__indicator::after {
+    display: block;
+}
+
+.control__indicator::after {
     content: '';
     position: absolute;
     display: none;
-  }
+}
 
-  #style .control__indicator{
+#style .control__indicator {
     border-radius: 50%;
-  }
+}
 
 
 
@@ -420,7 +444,7 @@ scrollbar
         display: none;
     }
 
-    .filter-mobile{
+    .filter-mobile {
         display: block;
     }
 
