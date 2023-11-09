@@ -49,5 +49,17 @@ class AboutUslAdmin(admin.ModelAdmin):
 class ReviewsAndProjectAdmin(admin.ModelAdmin):
     list_display = ("project_name", "price", "squeare", "review_name", "text", "image")
 
+@admin.register(KitchenFiles)
+class KitchenFilesAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(KitchenColors)
+class KitchenColorsAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(KitchenFinishing)
+class KitchenFinishingAdmin(admin.ModelAdmin):
+    pass
+
 
 

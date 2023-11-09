@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.core.validators import FileExtensionValidator
 
 
 class KitchenStyle(models.Model):
@@ -43,16 +44,58 @@ class KitchenPhoto(models.Model):
     class Meta:
         verbose_name = "фотографию кухни"
         verbose_name_plural = "Фотографии кухонь"
+
+
+class KitchenColors(models.Model):
+    name = models.CharField('Наименование цвета', max_length=50)
+    image = models.ImageField('Фото цвета', upload_to='kitchen/colors/')
+
+    class Meta:
+        verbose_name = "цвет кухни"
+        verbose_name_plural = "Цвета кухонь"  
+
+    def __str__(self):
+        return self.name 
+
+class KitchenFinishing(models.Model):
+    name = models.CharField('Наименование отделки', max_length=50)
+    colors = models.ManyToManyField(KitchenColors, blank=True, verbose_name="Цвета кухни")
+
+    class Meta:
+        verbose_name = "отделку кухни"
+        verbose_name_plural = "Отделки кухонь"   
+
+    def __str__(self):
+        return self.name 
+
+class KitchenFiles(models.Model):
+    name = models.CharField('Имя файла', max_length=50)
+    files = models.FileField('Файл', upload_to ='kitchen/files/',
+                             validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
+
+    class Meta:
+        verbose_name = "файл кухни"
+        verbose_name_plural = "Файлы кухонь"   
+
+    def __str__(self):
+        return self.name      
     
 
 class Kitchen(models.Model):
     name = models.CharField('Наименование', max_length=50)
-    short_desc = models.CharField('Краткое описание для карусели каталога', blank=True, max_length=300)
+    short_desc = models.CharField('Краткое описание для карусели каталога', max_length=300)
+    desc = models.TextField('Описание для страницы кухни')
     style = models.ForeignKey(KitchenStyle, on_delete=models.CASCADE, verbose_name="Вид кухни", related_name='kitchens')
     material = models.ForeignKey(KitchenMaterial, on_delete=models.CASCADE, verbose_name="Материал кухни")
     openingMethod = models.ForeignKey(KitchenOpeningMethod, on_delete=models.CASCADE, verbose_name="Метод открытия кухни")
+    finishing = models.ManyToManyField(KitchenFinishing, verbose_name="Отделка кухни")
+    files = models.ManyToManyField(KitchenFiles, verbose_name="Файлы кухни")
     mainImage = models.ImageField('Главное фото', upload_to='kitchen/')
-    images = models.ManyToManyField(KitchenPhoto, blank=True, verbose_name="Дополнительные фотографии кухни")
+    catalogVideo = models.FileField('Видео для каталога', upload_to ='kitchen/videos/',
+                                    validators=[FileExtensionValidator(allowed_extensions=["mp4"])])
+    kitchenCardVideo = models.FileField('Видео для страницы кухни', upload_to ='kitchen/videos/',
+                                    validators=[FileExtensionValidator(allowed_extensions=["mp4"])])
+    images = models.ManyToManyField(KitchenPhoto, verbose_name="Дополнительные фотографии кухни")
     show_number = models.IntegerField('Номер показа в карусели каталога', null=True, blank=True)
     slug = models.SlugField(blank=True)
     

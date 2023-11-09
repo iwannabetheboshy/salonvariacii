@@ -80,3 +80,11 @@ def filter(request):
             # Вывод ошибок в консоль
             print(form.errors)
             return render(request, "main/catalog.html")
+
+
+def kitchenCard(request, slug):
+    kitchen = Kitchen.objects.get(slug=slug)
+    data = {
+        "kitchen": kitchen,
+    }
+    return render(request, "main/kitchenCard.html", data)
