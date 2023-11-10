@@ -24,12 +24,14 @@ class FeedbackForm(ModelForm):
             "name": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': 'Введите имя',
+                'required': 'true',
             }),
 
             "number": TextInput(attrs={
                 'class': 'form-control',
                 'placeholder': '+7',
                 'id': 'fb_phone',
+                'required': 'true',
             }),
             "message": Textarea(attrs={
                 'class': 'form-control-area',

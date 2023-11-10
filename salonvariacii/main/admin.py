@@ -49,5 +49,11 @@ class AboutUslAdmin(admin.ModelAdmin):
 class ReviewsAndProjectAdmin(admin.ModelAdmin):
     list_display = ("project_name", "price", "squeare", "review_name", "text", "image")
 
+@admin.register(FeedBack)
+class FeedBackAdmin(admin.ModelAdmin):
+    list_display = ("name", "number", "message")
 
+@admin.register(LookAt)
+class LookAtAdmin(admin.ModelAdmin):
+    list_display = ("name", "likes", "show_number")
 

@@ -8,14 +8,8 @@
         <div class="row align-items-center px-0 mx-0">
             <div class="col-xl-6 col-12 px-0">
                 <div class="parent">
-                    <h1>Встроенные кухни именно для вас</h1>
-                    <div class="line">
-                        <svg width="234" height="21" viewBox="0 0 234 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                  d="M99.2654 1.96791C88.285 2.64229 77.4334 3.47151 66.8514 4.37806C51.8713 5.6605 36.8971 6.98716 22.0131 9.0877C17.328 9.75103 12.5702 10.1711 7.91432 11.0003C4.99167 11.5199 1.1163 12.2605 0.607702 12.4153C0.341686 12.5037 0.225633 12.6365 0.188133 12.6807C-0.0755385 12.9903 -0.0274282 13.2887 0.1214 13.5208C0.181165 13.6203 0.332295 13.8636 0.751826 13.8968C28.8088 16.1632 57.4987 11.741 85.5897 11.2767C134.304 10.4807 184.496 13.6425 232.824 20.5412C233.246 20.5964 233.656 20.32 233.715 19.9109C233.785 19.5129 233.48 19.126 233.058 19.0707C184.648 12.161 134.375 8.98809 85.5662 9.79514C59.3865 10.2263 32.6901 14.1069 6.47408 12.7802C7.07643 12.6696 7.66708 12.559 8.20614 12.4595C12.8432 11.6304 17.5811 11.2214 22.2475 10.558C37.0999 8.45749 52.0436 7.13084 67.0038 5.85946C85.5663 4.26747 104.937 2.89658 124.461 2.25536C131.445 2.35486 138.406 2.4544 145.367 2.57601C160.425 2.84134 175.554 3.61523 190.578 4.65445C195.101 4.97506 199.625 5.30669 204.148 5.59414C205.648 5.69363 209.515 5.98103 210.054 5.95892C210.722 5.93681 210.851 5.40619 210.863 5.31775C210.898 5.11875 210.875 4.84235 210.547 4.61018C210.511 4.57702 210.3 4.46639 209.832 4.40006C182.515 0.486419 153.347 -0.165751 124.484 0.773964C94.0389 0.364912 63.4764 0.187943 33.1085 0C32.6737 0 32.3186 0.331713 32.3151 0.740765C32.3128 1.14982 32.6631 1.48154 33.0979 1.4926C55.0869 1.62526 77.1873 1.75785 99.2654 1.96791Z"
-                                  fill="#1E1E1E" />
-                        </svg>
-                    </div>
+                    <h1>Итальянские кухни именно<br> для вас</h1>
+                    <img src="{% static 'main/image/decoration-line.png' %}" alt="">
                     <div class="text-width">
                         <p class="gray-text-16"> Идеальное качество в сочетании с современным и простым дизайном</p>
                     </div>
@@ -24,14 +18,14 @@
                             <button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
                                 Оставить заявку
                             </button>
-                            <a href="" class="watch-video">
+                            <a class="watch-video" onclick="watchVideo()">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
                                             d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM10.6219 8.41459L15.5008 11.6672C15.6846 11.7897 15.7343 12.0381 15.6117 12.2219C15.5824 12.2658 15.5447 12.3035 15.5008 12.3328L10.6219 15.5854C10.4381 15.708 10.1897 15.6583 10.0672 15.4745C10.0234 15.4088 10 15.3316 10 15.2526V8.74741C10 8.52649 10.1791 8.34741 10.4 8.34741C10.479 8.34741 10.5562 8.37078 10.6219 8.41459Z"
                                             fill="#1E1E1E" />
                                 </svg>
-                                Смотреть видео
+                                <span>Смотреть видео</span>
                             </a>
                         </div>
                     </div>
@@ -79,7 +73,7 @@
                                     d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM10.6219 8.41459L15.5008 11.6672C15.6846 11.7897 15.7343 12.0381 15.6117 12.2219C15.5824 12.2658 15.5447 12.3035 15.5008 12.3328L10.6219 15.5854C10.4381 15.708 10.1897 15.6583 10.0672 15.4745C10.0234 15.4088 10 15.3316 10 15.2526V8.74741C10 8.52649 10.1791 8.34741 10.4 8.34741C10.479 8.34741 10.5562 8.37078 10.6219 8.41459Z"
                                     fill="#1E1E1E" />
                         </svg>
-                        Смотреть видео
+                        <span>Смотреть видео</span>
                     </a>
                 </div>
             </div>
@@ -177,9 +171,9 @@
                         <div class="slider-catalog-kitchen-name">
                             Кухни {{ kitchen.name }}
                         </div>
-                        <div class="slider-catalog-kitchen-short-desc">
+                        <!--<div class="slider-catalog-kitchen-short-desc">
                             {{ kitchen.short_desc }}
-                        </div>
+                        </div>-->
                         <a href="{{ kitchen.slug }}">
                             Подробнее
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -378,7 +372,82 @@
 
     </div>
 </section>
-<section id="feedback">
+
+
+<section id="look-at-block" class="">
+    <div class="custom-bg py-0">
+        <div class="gray-text-14">Дизайн и качество</div>
+        <h2 class="">Взгляните сами</h2>
+    </div>
+
+
+    <div class="hero-marquee py-0" style="--card-count: 12;" >
+        <div class="hero-marquee__track">
+            <div class="hero-marquee__grid">
+
+                {% for i in '1234' %}
+                {% for item in look_at %}
+
+                <div class="hero-marquee-item" data-lazy-parent>
+                    <div class="hero-marquee-item__info">
+                        <div class="lottie"></div>
+                        <div class="hero-marquee-item__title num-white row_hero_2_col_1">{{item.name}}</div>
+                        <div class="hero-marquee-item__tags row_hero_2_col_2" >
+                            <div class="hero-marquee-item__tag little-text">
+                                <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.2234 1.4727C15.2394 1.48633 15.2549 1.50064 15.2699 1.5156C17.2881 3.53431 17.2878 6.80688 15.2692 8.82529C15.2691 8.8253 15.2692 8.82528 15.2692 8.82529L10.5074 13.5871C10.5048 13.5897 10.5025 13.592 10.5005 13.5939C10.5003 13.5941 10.5001 13.5943 10.4999 13.5945C9.33303 14.7578 7.44406 14.7561 6.27946 13.59C6.2794 13.59 6.27934 13.5899 6.27928 13.5899C6.27918 13.5898 6.27909 13.5897 6.27899 13.5896L1.514 8.82451C-0.504655 6.80576 -0.504681 3.53281 1.51401 1.51412C3.39354 -0.365327 6.36019 -0.494967 8.38961 1.12528C10.404 -0.483136 13.342 -0.367297 15.2234 1.4727ZM9.05232 2.62379L8.94137 2.73474C8.63663 3.03948 8.14255 3.03948 7.83781 2.73474L7.72075 2.61769C6.31156 1.2085 4.02685 1.20848 2.61756 2.6177C1.20837 4.02689 1.20837 6.31166 2.61758 7.72095C2.61758 7.72095 2.61758 7.72095 2.61758 7.72095L7.38351 12.487C7.93862 13.043 8.83892 13.0446 9.39613 12.4912C9.39828 12.489 9.40023 12.4871 9.40194 12.4854C9.40208 12.4852 9.40222 12.4851 9.40235 12.485L14.1656 7.72172C15.5632 6.32434 15.5749 4.06581 14.2007 2.65404C14.1873 2.64239 14.1743 2.63026 14.1617 2.61766C12.7527 1.20847 10.468 1.20835 9.05886 2.61733C9.05669 2.6195 9.05451 2.62165 9.05232 2.62379Z" fill="white" fill-opacity="0.58"/>
+                                </svg>
+                                <div class="likes-count">{{item.likes}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-marquee-item__media">
+                        {% if item.content.url|slice:"-3:" == "mp4" %}
+                        <video
+                                width="273"
+                                height="340"
+                                playsinline
+                                class="lazyload lazypreload"
+                                preload="none"
+                                autoplay
+                                loop
+                                muted
+                                src="{{item.content.url}}">
+                        </video>
+                        {% else %}
+                        <img
+                                alt="{{item.name}}"
+                                width="273"
+                                height="340"
+                                class="lazyload lazypreload"
+                                data-sizes="auto"
+                                src="{{item.content.url}}"
+                        />
+                        {%endif%}
+                    </div>
+                </div>
+                {%endfor%}
+                {%endfor%}
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" id="player">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<section id="feedback" class="feedback">
     <div class="wrapper">
         <div class="feedback-wrapper">
             <h2>Заказать персональную консультацию</h2>
@@ -387,12 +456,13 @@
             </div>
         </div>
     </div>
-    <div class="feedback-img">
+    <div class="feedback-img-desc">
         <img src="{%static 'main/image/Rectangle-27.png' %}" alt="">
     </div>
 
     <div class="feedback-form">
-        <form>
+        <form id="feedback-form" method="post">
+            {% csrf_token %}
             <label for="id_name">Имя (обязательно)</label>
             {{feedbackForm.name}}
             <label for="id_number" id="label_number">Телефон (обязательно)</label>
@@ -406,7 +476,9 @@
         </div>
     </div>
 
-
+    <div class="feedback-img-mobile">
+        <img src="{%static 'main/image/Rectangle-27.png' %}" alt="">
+    </div>
 </section>
 
 <!-- slider -->
@@ -414,9 +486,122 @@
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
 <script src="{% static 'main/js/main-carousel.js' %}"></script>
 
+<script>
+    // ensure namespace is available
+    Dribbble = window.Dribbble || {};
+    Dribbble.JsConfig = Dribbble.JsConfig || {};
+    Dribbble.isHistorySupported = () => (window.history && 'pushState' in window.history);
 
+    // add global constants
+    DEVICE_WIDTH_BREAKPOINT = '800px';
+    HIDPI_BREAKPOINT = '(-webkit-min-device-pixel-ratio: 1.5),(min--moz-device-pixel-ratio: 1.5),(-o-min-device-pixel-ratio: 3/2),(min-device-pixel-ratio: 1.5),(min-resolution: 1.5dppx)';
+
+    User = {
+      loggedIn: function() {
+        return !!document.querySelector('body.logged-in')
+      },
+      loggedOut: function() {
+        return !this.loggedIn()
+      },
+    };
+</script>
+
+<script>
+    var config = Dribbble.JsConfig || {}
+    Dribbble.JsConfig = Object.assign(config, {
+        user: {"isLoggedIn":false,"reCaptchaSiteKey":"6LdmBTIUAAAAAM4NIokaWu8p3BBuYEw3CxuDdyg_","canPurchasePro":true,"isHiringTrialEligible":false},
+        hiringProfile: {},
+        features: {"braintreeHiring":false,"proDiscountToasty":false,"collaborators":false,"hiringBundleDiscount":true,"purchaseFreelance":true,"learnRedesign":false,"proTrial":false,"jobBoardTrial":true,"klTags":true,"hideCohortSelection":true,"shotFeedUpdates":false},
+        isRobot: null,
+        remoteIp: "101.127.248.174",
+        isProduction: true,
+        permissions: {"userPermissions":["canBuyBoostWithBraintree","canSeeThirdPartyPaymentMethods"]},
+        screenshot_boost: {"buttonText":[{"label":"Buy Now","value":"buy-now"},{"label":"Download","value":"download"},{"label":"Learn More","value":"learn-more"},{"label":"Shop Now","value":"shop-now"},{"label":"Apply Now","value":"apply-now"},{"label":"Try Now","value":"try-now"},{"label":"Get Offer","value":"get-offer"},{"label":"Contact Us","value":"contact-us"}],"tiers":{"lowTier":{"daysToServe":7,"range":{"lowerLimit":0,"upperLimit":10000}},"midTier":{"daysToServe":14,"range":{"lowerLimit":10001,"upperLimit":100000}},"highTier":{"daysToServe":28,"range":{"lowerLimit":100001,"upperLimit":null}}},"pricePerImpression":"0.01","purchase":{"stripePublicKey":"pk_live_9EfFSEE6iTCgHghKqBqnixxR","savedCreditCardInformation":null},"discount":null,"minimumImpressions":2000,"targetPlacements":{"following":"Following Feed","popular":"Popular Feed","search":"Search Feed","goods":"Goods Feed","recent":"New \u0026 Noteworthy Feed","shot_modal":"Shot Modal","similar_work":"Similar Work","tags":"Tag Feed","popular_first":"Popular Feed First"},"priorities":["self_serve","sales","remnant","sales_priority"]},
+    })
+</script>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.4/lottie_svg.min.js"></script>
+
+<script>
+    const data = 'https://assets1.lottiefiles.com/datafiles/d9bc9kYC2VttaKb/data.json';
+    let isActive = false;
+    let isTouch = false;
+    const ttest = document.querySelectorAll('.hero-marquee-item__tags');
+
+    for (i = 0; i < ttest.length; i++) {
+        ttest[i].addEventListener('click', function(e) {
+
+            if (isActive == true) {
+                return;
+            }
+
+            isTouch = true;
+
+            likes_count = this.querySelectorAll('.likes-count')[0]
+            likes_count.innerHTML = parseInt(likes_count.innerHTML) + 1
+
+            lottie_div = this.parentNode.querySelectorAll('.lottie')[0]
+            lottie_div.style.opacity = 1;
+
+            var animation = bodymovin.loadAnimation({
+                  container: lottie_div,
+                  path: data,
+                  renderer: 'svg',
+                  loop: false,
+                  autoplay: false
+             });
+
+            animation.play();
+            isActive = true;
+
+            animation.addEventListener('complete', e => {
+                animation.destroy();
+                isActive = false;
+                isTouch = false;
+            })
+         });
+    };
+
+    media_div = document.querySelectorAll(".hero-marquee-item");
+    for (i = 0; i < media_div.length; i++) {
+
+        media_div[i].addEventListener('click', function(e) {
+
+           if (isTouch == false) {
+            str = '<div class="ratio ratio-16x9">'
+            str += '<video playsinline controls id="player-video">'
+            str += '<source src="' + this.querySelectorAll("video")[0].src +'" type="video/mp4" />'
+            str += '</video></div>'
+            document.getElementById('player').innerHTML = str
+
+            $('#videoModal').modal('show');
+
+
+
+           }
+        });
+    }
+
+
+    document.querySelectorAll(".watch-video")[0].onclick = function(){
+        str = '<div class="ratio ratio-16x9">'
+        str += '<iframe width="2491" height="1105" src="https://www.youtube.com/embed/z8xoGi5pK70?list=PLVouVB07M5FDbAdaSWv2MqtgK4oms1msW" title="Eurocucina 2022 - Salone del Mobile Milano" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>'
+        str += '</div>'
+
+        document.querySelectorAll('#videoModal .modal-dialog')[0].style.maxWidth = "90%";
+
+        document.getElementById('player').innerHTML = str
+        $('#videoModal').modal('show');
+    };
+
+
+
+</script>
+
+<script src="https://cdn.dribbble.com/assets/packs/js/application.aae9ed62b46bef969bcb.js"></script>
+<script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 
 {% endblock %}

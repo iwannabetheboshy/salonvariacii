@@ -142,6 +142,7 @@ ADMIN_REORDER = (
             "main.AboutUs",
             'main.AboutUsDopBlock',
             'main.ReviewsAndProject',
+            'main.LookAt',
 
         )
     },

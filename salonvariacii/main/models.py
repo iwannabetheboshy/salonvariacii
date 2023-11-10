@@ -121,10 +121,24 @@ class ReviewsAndProject(models.Model):
         verbose_name = "отзыв"
         verbose_name_plural = "Отзывы"
 
+
+class LookAt(models.Model):
+    content = models.FileField('Фото или видео',
+                              help_text=("png, jpg, webp, mp4, webm"),
+                              upload_to='look_at/')
+
+    name = models.CharField('Название видео', max_length=50)
+    likes = models.IntegerField('Количество лайков')
+    show_number = models.IntegerField('Номер показа', default=0)
+
+    class Meta:
+        verbose_name = "взгляни сам"
+        verbose_name_plural = "Взгляните сами"
+
 class FeedBack(models.Model):
     name = models.CharField('Имя', max_length=50)
     number = models.CharField('Номер телефона', max_length=20)
-    message = models.TextField('Сообщение')
+    message = models.TextField('Сообщение', blank=True, null=True)
     
     class Meta:
         verbose_name = "заявка"
