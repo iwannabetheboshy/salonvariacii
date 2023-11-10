@@ -27,6 +27,7 @@ catalog-header
     color: #787878;
     font-family: 'Stolzl Light' !important;
     font-size: 16px;
+    margin-top: 24px;
 }
 
 .catalog-annotation span {
@@ -52,7 +53,7 @@ catalog-header
 catalog-filter-result
 --------------------------------------------------*/
 #catalog-filter {
-    margin-top: 96px;
+    margin-top: 58px;
 
 }
 
@@ -155,7 +156,7 @@ filter desc
 
 .select {
     overflow: hidden;
-    margin-top: 16px;
+    margin-top: 10px;
 }
 
 .clean,
@@ -422,7 +423,7 @@ scrollbar
     }
 
     #catalog-filter {
-        margin-top: 6.3%;
+        margin-top: 5%;
     }
 
     .filter,
