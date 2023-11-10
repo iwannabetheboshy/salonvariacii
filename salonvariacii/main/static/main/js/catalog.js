@@ -93,10 +93,10 @@ async function filtration() {
   }
 
   $("#catalog-filter .select .selected").click(function () {
-    if ($(this).parent().attr('id') === "clean") {
-      $(".select").empty();
-      $('.search-div input[name=search]').val('');
-      cleanCheck();
+    if ($(this).attr('id') === "clean") {
+        $(".select").empty();
+        $('.search-div input[name=search]').val('');
+        cleanCheck();
     } else {
       $(this).remove();
       if ($("#catalog-filter .select div").length === 1) {
@@ -129,7 +129,7 @@ $(".filter-desc li").click(function () {
 
   // если фильтрация еще не проводилась и нет блока "очистить"
   if ($("#catalog-filter .select .clean").length == 0) {
-    var div = $('<div class="clean" id="clean">Очистить</div>');
+    var div = $('<div class="selected clean" id="clean">Очистить</div>');
     var svg = $('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/></svg>');
 
     div.append(svg);
@@ -176,18 +176,22 @@ $("#catalog-filter .search-div svg").click(function () {
 $("#catalog-filter .modal-dialog .filter-save").click(function () {
   var checkedCheckboxes = $(".modal-body input[type='checkbox']:checked");
   var selectedRadioValue = $(".modal-body input[type='radio']:checked");
+  
+  $(".select").empty();
+
+  if ($("#catalog-filter .select .clean").length == 0) {
+      
+    var div = $('<div class="selected clean" id="clean">Очистить</div>');
+    var svg = $('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/></svg>');
+
+    div.append(svg);
+    $("#catalog-filter .select").prepend(div);
+  }
 
   if (checkedCheckboxes.length !== 0) {
     //отчищаем сразу все выбранное до этого
-    $(".select").empty();
-
-    if ($("#catalog-filter .select .clean").length == 0) {
-      var div = $('<div class="clean" id="clean">Очистить</div>');
-      var svg = $('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/></svg>');
-
-      div.append(svg);
-      $("#catalog-filter .select").prepend(div);
-    }
+    
+    
     //добавляем блок в выбранные фильтры
     checkedCheckboxes.each(function () {
       var select = $(`
@@ -202,6 +206,11 @@ $("#catalog-filter .modal-dialog .filter-save").click(function () {
   }
   //добавляем блок в выбранные фильтры стилей
   if (selectedRadioValue.length !== 0) {
+    //если стиль уже выбран
+    if($("#catalog-filter .select #style" !== 0)){
+      $('#catalog-filter .select').find(`#style`).remove()
+    }
+
     var select = $(`
         <div class="selected" id="${selectedRadioValue.attr('id')}"> 
         ${selectedRadioValue.val()}
