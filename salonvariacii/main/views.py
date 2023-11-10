@@ -95,4 +95,7 @@ def filter(request):
             filtered_kitchens = list(kitchen)
        
         return JsonResponse({'filtered_kitchens': filtered_kitchens})
-        
+
+def kitchenCard(request, slug):
+    kitchen = Kitchen.objects.get(slug=slug)
+    return render(request, "main/kitchenCard.html", {"kitchen": kitchen}) 

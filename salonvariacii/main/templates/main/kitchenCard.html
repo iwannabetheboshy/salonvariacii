@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link href="{%static 'main/css/kitchen-card.css' %}" rel="stylesheet">
+
+
+<section id="kitchen-annotation">
+    <div class="kitchen-card-header-mobile">
+        <div class="kitchen-card-back">
+            <a href="">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M6.52434 9.16658H16.6673V10.8332H6.52434L10.9943 15.3032L9.81582 16.4817L3.33398 9.99992L9.81582 3.51807L10.9943 4.69657L6.52434 9.16658Z"
+                        fill="#787878" />
+                </svg>
+                <button>
+                    Назад
+                </button>
+
+            </a>
+        </div>
+        <div class="kitchen-card-name">
+            <h1>Кухни {{ kitchen.name }}</h1>
+        </div>
+    </div>
+    <div class="row mx-0">
+        <div class="col-xl-6 order-xl-first col-12 order-last ps-0 kitchen-annotation-left">
+            <div>
+                <div class="kitchen-card-header-desc">
+                    <div class="kitchen-card-back">
+                        <a href="">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M6.52434 9.16658H16.6673V10.8332H6.52434L10.9943 15.3032L9.81582 16.4817L3.33398 9.99992L9.81582 3.51807L10.9943 4.69657L6.52434 9.16658Z"
+                                    fill="#787878" />
+                            </svg>
+                            <button>
+                                Назад
+                            </button>
+
+                        </a>
+                    </div>
+                    <div class="kitchen-card-name">
+                        <h1>Кухни {{ kitchen.name }}</h1>
+                    </div>
+                </div>
+
+                <div class="kitchen-card-desc">
+                    <p>{{ kitchen.desc|linebreaks }}</p>
+                </div>
+                <div class="kitchen-card-files">
+                    {% for file in kitchen.files.all %}
+                    <div class="file">
+                        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M10.8333 10.5001H13.3333L10 13.8334L6.66667 10.5001H9.16667V7.16675H10.8333V10.5001ZM12.5 3.83341H4.16667V17.1667H15.8333V7.16675H12.5V3.83341ZM2.5 2.99325C2.5 2.53679 2.87291 2.16675 3.33208 2.16675H13.3333L17.4998 6.33341L17.5 17.9938C17.5 18.4575 17.1292 18.8334 16.6722 18.8334H3.32783C2.87063 18.8334 2.5 18.454 2.5 18.0069V2.99325Z" />
+                        </svg>
+                        <a href="{{ file.files.url }}" download>{{file.name}}</a>
+                    </div>
+                    {%endfor%}
+                </div>
+                <div class="kitchen-card-custom-button">
+                    <button class="custom-button">
+                        Оставить заявку
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xl-6 order-xl-last col-12 order-first pe-0 kitchen-annotation-right">
+            <video src="{{ kitchen.kitchenCardVideo.url }}" muted loop></video>
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M36 66C19.4314 66 6 52.5684 6 36C6 19.4314 19.4314 6 36 6C52.5684 6 66 19.4314 66 36C66 52.5684 52.5684 66 36 66ZM36 60C49.2549 60 60 49.2549 60 36C60 22.7452 49.2549 12 36 12C22.7452 12 12 22.7452 12 36C12 49.2549 22.7452 60 36 60ZM31.8657 25.2438L46.5024 35.0016C47.0538 35.3691 47.2029 36.1143 46.8351 36.6657C46.7472 36.7974 46.6341 36.9105 46.5024 36.9984L31.8657 46.7562C31.3143 47.124 30.5691 46.9749 30.2016 46.4235C30.0702 46.2264 30 45.9948 30 45.7578V26.2422C30 25.5795 30.5373 25.0422 31.2 25.0422C31.437 25.0422 31.6686 25.1123 31.8657 25.2438Z" />
+            </svg>
+        </div>
+    </div>
+</section>
+
+<section id="kitchen-card-slider">
+    <div class="kitchen-card-slider">
+        {% for photo in kitchen.images.all %}
+        <div class="kitchen-card-slide">
+            <img src="{{ photo.image.url }}" alt="">
+        </div>
+        {%endfor%}
+    </div>
+    <div class="nav-kitchen-card-slider">
+        <svg class="custom-prev-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"
+                fill="#1E1E1E" />
+        </svg>
+        <svg class="custom-next-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                fill="#1E1E1E" />
+        </svg>
+    </div>
+</section>
+
+<section id="color-and-fishing">
+    <h2>Цвет и отделка</h2>
+    <div class="finishing-wrapper">
+        {% for finishing in kitchen.finishing.all%}
+        <div class="finishing">
+            <div class="finishing-name">
+                {{ finishing.name }}
+            </div>
+            <div class="finishing-colors">
+                {% for color in finishing.colors.all%}
+                <div class="finishing-color">
+                    <img src="{{ color.image.url }}" alt="">
+                    <div class="finishing-color-name">{{ color.name }}</div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+
+        {%endfor%}
+    </div>
+
+</section>
+
+<section id="certified-quality">
+    <div class="certified-quality-wrapper">
+        <div class="row mx-0 text-center">
+            <div class="col px-0">
+                <h2 class="mb-5">Сертифицированное качество</h2>
+                <div class="row sertificate">
+                    <div class="col-xl-4 col-12 px-0">
+                        <img src="{% static 'main/image/CERTIFICAZIONE-ISO.png' %}" alt="">
+                        <p class="mb-0">CERTIFICAZIONE <br>ISO 9001:2015</p>
+                    </div>
+                    <div class="col-xl-4 col-12 px-xl-4 px-0">
+                        <img src="{% static 'main/image/CERTIFICAZIONE-DI-ORIGINE.png' %}" alt="">
+                        <p class="mb-0">CERTIFICAZIONE 100% <br>MADE IN ITALY</p>
+
+                    </div>
+                    <div class="col-xl-4 col-12 px-0">
+                        <img src="{% static 'main/image/CERTIFICAZIONE-100%.png' %}" alt="">
+                        <p class="mb-0">CERTIFICAZIONE DI ORIGINE <br>ITALIANA DEL MOBILE</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script src="{% static 'main/js/kitchen-card.js' %}"></script>
+{% endblock %}
