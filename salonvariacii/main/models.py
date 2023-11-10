@@ -81,7 +81,7 @@ class KitchenFiles(models.Model):
     
 class Kitchen(models.Model):
     name = models.CharField('Наименование', max_length=50)
-    short_desc = models.CharField('Краткое описание для карусели каталога', max_length=300)
+    short_desc = models.CharField('Краткое описание для карусели каталога', max_length=300, blank=True)
     desc = models.TextField('Описание для страницы кухни')
     style = models.ForeignKey(KitchenStyle, on_delete=models.CASCADE, verbose_name="Вид кухни", related_name='kitchens')
     material = models.ForeignKey(KitchenMaterial, on_delete=models.CASCADE, verbose_name="Материал кухни")

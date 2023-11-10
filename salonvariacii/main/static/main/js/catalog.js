@@ -72,7 +72,7 @@ async function filtration() {
               <video  height="100%" src="/media/${kit.catalogVideo}" preload="auto" muted loop disablePictureInPicture></video>
               </div>
                 <div class="kitchen-name">
-                  <a href="${kit.slug}">
+                  <a href="/kitchen/${kit.slug}">
                     ${kit.name}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M10.7814 7.33327L7.20539 3.75726L8.14819 2.81445L13.3337 7.99993L8.14819 13.1853L7.20539 12.2425L10.7814 8.6666H2.66699V7.33327H10.7814Z" fill="#1E1E1E"/>

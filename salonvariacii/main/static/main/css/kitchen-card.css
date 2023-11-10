@@ -221,6 +221,7 @@ color-and-fishing
 
 .finishing-color-name {
     width: 120px;
+    margin-top: 12px;
 }
 
 /*--------------------------------------------------
@@ -330,8 +331,8 @@ certified-quality
     }
 
     .kitchen-annotation-right svg {
-        top: 40.5313% !important;
-        left: 47.6927% !important;
+        top: 43% !important;
+        left: 46% !important;
     }
 
     .kitchen-card-slider img {
