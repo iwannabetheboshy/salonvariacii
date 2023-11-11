@@ -26,6 +26,10 @@ kitchen-annotation
     position: relative;
 }
 
+.kitchen-annotation-right:hover {
+    cursor: pointer;
+}
+
 .kitchen-annotation-right svg {
     position: absolute;
     top: 38.7175% !important;
