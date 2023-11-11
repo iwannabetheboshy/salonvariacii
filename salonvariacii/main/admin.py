@@ -57,3 +57,14 @@ class FeedBackAdmin(admin.ModelAdmin):
 class LookAtAdmin(admin.ModelAdmin):
     list_display = ("name", "likes", "show_number")
 
+@admin.register(KitchenFiles)
+class KitchenFilesAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(KitchenColors)
+class KitchenColorsAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(KitchenFinishing)
+class KitchenFinishingAdmin(admin.ModelAdmin):
+    pass

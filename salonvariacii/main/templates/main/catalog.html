@@ -233,9 +233,13 @@
     <div class="row row-cols-xl-2 mx-0" id="filtered-results">
       {%for kit in kitchen%}
       <div class="result">
-        <img class="mb-3" src="{{kit.mainImage.url}}">
+        <div class="catalog-video-container mb-3" >
+          <img src="{{kit.mainImage.url}}" alt="">
+          <video  height="100%" src="{{kit.catalogVideo.url}}" preload="auto" muted loop disablePictureInPicture></video>
+        </div>
+        
         <div class="kitchen-name">
-          <a href="{{ kit.slug }}">
+          <a href="/kitchen/{{ kit.slug }}">
             {{kit.name}}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -368,51 +372,9 @@
 
 </section>
 
-<script>
-  /*
-  result = document.querySelectorAll('.result');
-  for (i = 0; i < result.length; i++) {
-
-    result[i].querySelectorAll("img")[0].onmouseover = function () {
-
-      console.log(this);
-
-      str = '<video width="273" height="340" playsinline preload="none" autoplay loop muted src="/media/look_at/video-2.mp4">'
-      str += '</video>'
-
-      this.parentNode.innerHTML = str
-    };
-
-    result[i].onmouseout = function () {
-      console.log(12312321321321213);
-
-      str = <img class="mb-3" src="/media/kitchen/Rectangle_33.png">'
-      str += '</video>'
-
-      this.parentNode.innerHTML = str
-
-      <div class="result">
-
-        <div class="kitchen-name">
-          <a href="stosa-natural">
-            Stosa Natural
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10.7814 7.33327L7.20539 3.75726L8.14819 2.81445L13.3337 7.99993L8.14819 13.1853L7.20539 12.2425L10.7814 8.6666H2.66699V7.33327H10.7814Z" fill="#1E1E1E"></path>
-            </svg>
-          </a>
-
-        </div>
-      </div>
-
-
-    };
-  }
-*/
-</script>
-
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="{% static 'main/js/filter.js' %}"></script>
+<script src="{% static 'main/js/catalog.js' %}"></script>
 
 {% endblock %}
