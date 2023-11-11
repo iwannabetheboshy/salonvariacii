@@ -53,12 +53,14 @@ def catalog(request):
     material = KitchenMaterial.objects.values("name").distinct()
     style = KitchenStyle.objects.values("name").distinct()
     form = FilterForm()
+    feedbackForm = FeedbackForm()
     data = {
         "kitchen": kitchen,
         "form": form,
         "openingMethod": openingMethod,
         "material": material,
         "style": style,
+        "feedbackForm": feedbackForm,
     }
     return render(request, "main/catalog.html", data)
 
@@ -107,4 +109,5 @@ def sendFeedBack(request):
 
 def kitchenCard(request, slug):
     kitchen = Kitchen.objects.get(slug=slug)
-    return render(request, "main/kitchenCard.html", {"kitchen": kitchen}) 
+    feedbackForm = FeedbackForm()
+    return render(request, "main/kitchenCard.html", {"kitchen": kitchen, "feedbackForm": feedbackForm}) 

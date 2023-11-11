@@ -104,6 +104,42 @@
 {% block content %}
 {% endblock %}
 
+
+<section id="feedback" class="feedback">
+  <div class="wrapper">
+      <div class="feedback-wrapper">
+          <h2>Заказать персональную консультацию</h2>
+          <div class="feedback-text">
+              Вас заинтересовали наши кухни или вы хотите записаться на детальную консультацию? Не стесняйтесь оставить нам свой номер телефона, и наш консультант свяжется с вами как можно скорее.
+          </div>
+      </div>
+  </div>
+  <div class="feedback-img-desc">
+      <img src="{%static 'main/image/Rectangle-27.png' %}" alt="">
+  </div>
+
+  <div class="feedback-form">
+      <form id="feedback-form" method="post">
+          {% csrf_token %}
+          <label for="id_name">Имя (обязательно)</label>
+          {{feedbackForm.name}}
+          <label for="id_number" id="label_number">Телефон (обязательно)</label>
+          {{feedbackForm.number}}
+          <label for="id_message" id="label_message">Сообщение</label>
+          {{feedbackForm.message}}
+          <button class="custom-button">Оставить заявку</button>
+      </form>
+      <div class="feedback-form-annotation">
+          Нажимая на кнопку “Отправить заявку”, Вы даете согласие на обработку <a href="">персональных данных</a> и соглашаетесь с <a href="">политикой конфиденциальности.</a>
+      </div>
+  </div>
+
+  <div class="feedback-img-mobile">
+      <img src="{%static 'main/image/Rectangle-27.png' %}" alt="">
+  </div>
+</section>
+
+
 <footer id="footer">
   <div id="footer-wrapper" class="row align-items-center">
     <div class="col-xl-3 order-xl-1 col-12 order-3 px-0">
@@ -119,19 +155,19 @@
       <div class="col text-center plain-text">
         <div class="link">
           <span>
-            <a href="">Каталог</a>
+            <a href="/catalog/">Каталог</a>
           </span>
           <span>
-            <a href="">Наши проекты</a>
+            <a href="/#project-and-reviews">Наши проекты</a>
           </span>
           <span>
-            <a href="">Отзывы</a>
+            <a href="/#look-at-block">Отзывы</a>
           </span>
           <span>
-            <a href="">Контакты</a>
+            <a href="/#feedback">Контакты</a>
           </span>
           <span>
-            <a href="">О нас</a>
+            <a href="/#about-us-block">О нас</a>
           </span>
         </div>
       </div>
@@ -236,14 +272,15 @@
 <script src="https://unpkg.com/imask"></script>
 
 <script>
-  var phoneMask = IMask(
-    document.querySelectorAll('#fb_phone')[0], {
+  phoneInputs = document.querySelectorAll('.fb_phone');
+  phoneInputs.forEach(function(input) {
+    var phoneMask = IMask(input, {
         mask: '+{7} (000) 000-00-00'
-        }
-    );
+    });
+  });
 
 
-$('#fb_phone').on('input', function() {
+$('.fb_phone').on('input', function() {
     validatePhoneNumber($(this).val(),$(this));
  });
 
@@ -268,6 +305,26 @@ function validatePhoneNumber(phoneNumber, phone_input) {
     } catch (err)
     {}
   })
+</script>
+
+<script>
+$('#feedback-form').on('submit', function( event ) {
+    event.preventDefault();
+    var form = $(this).serialize();
+
+    $.ajax({
+      data: form,
+      type: $(this).attr('method'),
+      datatype: 'json',
+      url: "/feedback/",
+      success: function(response){},
+    })
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(document.getElementById('liveToast'))
+    toastBootstrap.show()
+    document.querySelectorAll("#feedback-form input")[1].value = ''
+    document.querySelectorAll("#feedback-form input")[2].value = ''
+    document.querySelectorAll("#feedback-form textarea")[0].value = ''
+});
 </script>
 
 <script>

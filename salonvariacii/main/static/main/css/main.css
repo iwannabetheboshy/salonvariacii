@@ -237,11 +237,13 @@ a {
 	padding-left: 20px;
 }
 
-#navbarNav ul:nth-child(1) a:hover, .header #phone a:hover{
+#navbarNav ul:nth-child(1) a:hover, .header #phone a:hover, .link a:hover{
 	color: #1E1E1E !important;
 	border-bottom: 1px solid #787878;
 	transition: 0.3s;
 }
+
+
 
 .navbar svg path {
 	transition: 0.2s;
@@ -915,7 +917,7 @@ footer .under-contacts {
 }
 
 footer .plain-text a {
-    padding-right: 32px;
+    margin-right: 32px;
     font-family: 'Stolzl Book';
     font-size: 14px;
     font-weight: 400;

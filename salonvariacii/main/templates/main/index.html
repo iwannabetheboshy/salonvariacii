@@ -441,41 +441,6 @@
 </div>
 
 
-
-<section id="feedback" class="feedback">
-    <div class="wrapper">
-        <div class="feedback-wrapper">
-            <h2>Заказать персональную консультацию</h2>
-            <div class="feedback-text">
-                Вас заинтересовали наши кухни или вы хотите записаться на детальную консультацию? Не стесняйтесь оставить нам свой номер телефона, и наш консультант свяжется с вами как можно скорее.
-            </div>
-        </div>
-    </div>
-    <div class="feedback-img-desc">
-        <img src="{%static 'main/image/Rectangle-27.png' %}" alt="">
-    </div>
-
-    <div class="feedback-form">
-        <form id="feedback-form" method="post">
-            {% csrf_token %}
-            <label for="id_name">Имя (обязательно)</label>
-            {{feedbackForm.name}}
-            <label for="id_number" id="label_number">Телефон (обязательно)</label>
-            {{feedbackForm.number}}
-            <label for="id_message" id="label_message">Сообщение</label>
-            {{feedbackForm.message}}
-            <button class="custom-button">Оставить заявку</button>
-        </form>
-        <div class="feedback-form-annotation">
-            Нажимая на кнопку “Отправить заявку”, Вы даете согласие на обработку <a href="">персональных данных</a> и соглашаетесь с <a href="">политикой конфиденциальности.</a>
-        </div>
-    </div>
-
-    <div class="feedback-img-mobile">
-        <img src="{%static 'main/image/Rectangle-27.png' %}" alt="">
-    </div>
-</section>
-
 <!-- slider -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>

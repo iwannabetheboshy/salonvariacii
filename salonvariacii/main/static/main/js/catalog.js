@@ -206,9 +206,6 @@ $("#catalog-filter .modal-dialog .filter-save").click(function () {
   }
 
   if (checkedCheckboxes.length !== 0) {
-    //отчищаем сразу все выбранное до этого
-    
-    
     //добавляем блок в выбранные фильтры
     checkedCheckboxes.each(function () {
       var select = $(`

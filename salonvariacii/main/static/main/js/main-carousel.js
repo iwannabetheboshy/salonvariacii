@@ -109,24 +109,3 @@ $(document).ready(function () {
 
   });
 });
-
-
-
-//обработка отправки формы модального окна
-$('#feedback-form').on('submit', function( event ) {
-    event.preventDefault();
-    var form = $(this).serialize();
-
-    $.ajax({
-      data: form,
-      type: $(this).attr('method'),
-      datatype: 'json',
-      url: "/feedback/",
-      success: function(response){},
-    })
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(document.getElementById('liveToast'))
-    toastBootstrap.show()
-    document.querySelectorAll("#feedback-form input")[1].value = ''
-    document.querySelectorAll("#feedback-form input")[2].value = ''
-    document.querySelectorAll("#feedback-form textarea")[0].value = ''
-});
