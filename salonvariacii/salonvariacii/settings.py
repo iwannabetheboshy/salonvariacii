@@ -130,6 +130,9 @@ ADMIN_REORDER = (
             "main.KitchenStyle",
             "main.KitchenMaterial",
             "main.KitchenOpeningMethod",
+            "main.KitchenFinishing",
+            "main.KitchenColors",
+            "main.KitchenFiles",
             "main.KitchenPhoto",
         )
     },
