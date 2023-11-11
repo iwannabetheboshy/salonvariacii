@@ -206,6 +206,15 @@
     white-space: nowrap
 }
 
+.hero-marquee-item__tag:hover{
+    border: 1px solid #FFF !important;
+}
+.hero-marquee-item__tag svg{
+    fill: rgba(255, 255, 255, 0.58);
+}
+.hero-marquee-item__tag:hover svg{
+    fill: #FFF !important;
+}
 @media (min-width: 768px) {
     .hero-marquee-item__tag {
         padding: 5px 12px 5px

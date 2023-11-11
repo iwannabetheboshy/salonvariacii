@@ -12,6 +12,10 @@ body {
     overflow-x: hidden !important;
 }
 
+body.modal-open {
+  padding-right: 0 !important;
+}
+
 .row {
   max-width: 1420px;
 }
@@ -688,6 +692,10 @@ project-and-reviews
   max-height: 537px;
 }
 
+.project-and-reviews-slider-slide img:hover {
+  cursor: pointer;
+}
+
 .project-and-reviews-kitchen-name {
     font-family: 'Stolzl Light';
     font-size: 14px;
@@ -975,8 +983,9 @@ footer .footer-adress {
 
   .wrapper,
   #catalog-carousel,
-  .parent {
-    margin-top: 4%;
+  .parent,
+  #look-at-block {
+    margin-top: 4% !important;
   }
 
   .about-us-text{
@@ -1131,7 +1140,8 @@ footer .footer-adress {
   }
 
   .footer-adress,
-  .feedback-text {
+  .feedback-text,
+  .slider-catalog-kitchen-name {
     margin-top: 1.8%;
   }
 
