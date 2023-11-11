@@ -36,6 +36,7 @@
             </svg>
             <div class="sub-menu hidden">
               <ul>
+                <li>Любой</li>
                 {% for s in style%}
                 <li>{{ s.name }}</li>
                 {%endfor%}
@@ -58,6 +59,7 @@
             </svg>
             <div class="sub-menu hidden">
               <ul>
+                <li>Любой</li>
                 {% for m in material%}
                 <li>{{ m.name }}</li>
                 {%endfor%}
@@ -80,6 +82,7 @@
             </svg>
             <div class="sub-menu hidden">
               <ul>
+                <li>Любой</li>
                 {% for op in openingMethod%}
                 <li>{{ op.name }}</li>
                 {%endfor%}
@@ -178,6 +181,13 @@
             </svg>
             </div>
             <div class="sub-menu hidden">
+              <div>
+                <label class="control control--checkbox">Любой
+                  <input type="checkbox" name="material" id="material" value="Любой">
+                  <div class="control__indicator">
+                  </div>
+                </label>
+              </div>
                 {% for m in material%}
                 <div>
                   <label class="control control--checkbox">{{ m.name }}
@@ -207,10 +217,17 @@
             </svg>
             </div>
             <div class="sub-menu hidden">
+              <div>
+                <label class="control control--checkbox">Любой
+                  <input type="checkbox" name="openingMethod" id="openingMethod" value="Любой">
+                  <div class="control__indicator">
+                  </div>
+                </label>
+              </div>
                 {% for op in openingMethod%}
                 <div>
                   <label class="control control--checkbox">{{ op.name }}
-                  <input type="checkbox" name="material" id="openingMethod" value="{{ op.name }}">
+                  <input type="checkbox" name="openingMethod" id="openingMethod" value="{{ op.name }}">
                   <div class="control__indicator">
                   </div>
                 </label>
@@ -234,8 +251,10 @@
       {%for kit in kitchen%}
       <div class="result">
         <div class="catalog-video-container mb-3" >
-          <img src="{{kit.mainImage.url}}" alt="">
-          <video  height="100%" src="{{kit.catalogVideo.url}}" preload="auto" muted loop disablePictureInPicture></video>
+          <a href="/kitchen/{{ kit.slug }}">
+            <img src="{{kit.mainImage.url}}" alt="">
+            <video  height="100%" src="{{kit.catalogVideo.url}}" preload="auto" muted loop disablePictureInPicture></video>
+          </a>
         </div>
         
         <div class="kitchen-name">

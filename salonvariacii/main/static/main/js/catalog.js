@@ -1,3 +1,13 @@
+$(document).on("click", function (e) {
+  // Проверяем, был ли клик внутри .filter-name или .sub-menu
+  if (!$(e.target).closest(".filter-name, .sub-menu").length) {
+      // Закрываем все открытые dropdown
+      $(".sub-menu").slideUp();
+      $(".open").addClass("hidden");
+      $(".close").removeClass("hidden");
+  }
+});
+
 $(".filter-name").click(function () {
   $(".open, .close", this).toggleClass("hidden");
 
@@ -170,6 +180,13 @@ $(".filter-desc li").click(function () {
 //поиск
 $("#catalog-filter .search-div svg").click(function () {
   filtration();
+});
+
+//поиск по enter
+$(".filter-seacrh").on("keyup", function (event) {
+  if (event.key === "Enter") {
+    filtration();
+  }
 });
 
 //создание плиток фильтрации для mobile
