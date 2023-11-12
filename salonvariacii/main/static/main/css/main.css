@@ -2,19 +2,19 @@
 #about-us-block,
 #catalog-carousel,
 #project-and-reviews,
-#feedback, footer {
+#feedback,
+footer {
   max-width: 1420px;
   margin-left: auto;
   margin-right: auto;
 }
 
 body {
-    overflow-x: hidden !important;
+  overflow-x: hidden !important;
+  padding-right: 0px !important;
+  overflow-y: visible !important;
 }
 
-body.modal-open {
-  padding-right: 0 !important;
-}
 
 .row {
   max-width: 1420px;
@@ -25,13 +25,13 @@ body.modal-open {
 }
 
 .custom-button {
-    font-family: 'Stolzl Regular';
-    border-radius: 130px;
-    background: #1E1E1E;
-    padding: 20px 32px;
-    border: none;
-    color: #F9F9F9;
-    transition: .3s;
+  font-family: 'Stolzl Regular';
+  border-radius: 130px;
+  background: #1E1E1E;
+  padding: 20px 32px;
+  border: none;
+  color: #F9F9F9;
+  transition: .3s;
 }
 
 .custom-button:hover {
@@ -44,27 +44,27 @@ body.modal-open {
 fonts
 ----------------------------------*/
 @font-face {
-    font-family: 'Stolzl Bold';
-    font-style: normal;
-    src: url('font/stolzl_bold.otf') format('opentype');
+  font-family: 'Stolzl Bold';
+  font-style: normal;
+  src: url('font/stolzl_bold.otf') format('opentype');
 }
 
 @font-face {
-    font-family: 'Stolzl Regular';
-    font-style: normal;
-    src: url('font/stolzl_regular.otf') format('opentype');
+  font-family: 'Stolzl Regular';
+  font-style: normal;
+  src: url('font/stolzl_regular.otf') format('opentype');
 }
 
 @font-face {
-    font-family: 'Stolzl Light';
-    font-style: normal;
-    src: url('font/stolzl_light.otf') format('opentype');
+  font-family: 'Stolzl Light';
+  font-style: normal;
+  src: url('font/stolzl_light.otf') format('opentype');
 }
 
 @font-face {
-    font-family: 'Stolzl Book';
-    font-style: normal;
-    src: url('font/stolzl_book.otf') format('opentype');
+  font-family: 'Stolzl Book';
+  font-style: normal;
+  src: url('font/stolzl_book.otf') format('opentype');
 }
 
 
@@ -90,11 +90,11 @@ h2 {
 }
 
 .gray-text-16 {
-    font-family: 'Stolzl Light' !important;
-    color: #787878;
-    font-size: 16px;
-    font-weight: 400;
-    padding-top: 10px;
+  font-family: 'Stolzl Light' !important;
+  color: #787878;
+  font-size: 16px;
+  font-weight: 400;
+  padding-top: 10px;
 }
 
 .gray-text-14 {
@@ -113,107 +113,108 @@ a {
 # Header
 --------------------------------------------------------------*/
 .header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding-top: 24px;
-    padding-bottom: 16px;
-    transition: background-color 0.5s, padding 1s;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding-top: 24px;
+  padding-bottom: 16px;
+  transition: background-color 0.5s, padding 1s;
 }
 
 .header.sticky {
-    padding-top: 0;
-    padding-bottom: 0;
-    border-bottom: 1px solid #E7E7E7;
-    background-color: rgba(255, 255, 255, .9);
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: 1px solid #E7E7E7;
+  background-color: rgba(255, 255, 255, .9);
 }
 
 .header nav {
-    max-width: 1280px;
-    margin-left: auto !important;
-    margin-right: auto !important;
+  max-width: 1280px;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .header .nav-item a {
-    font-family: 'Stolzl Book' !important;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    color: #787878;
+  font-family: 'Stolzl Book' !important;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #787878;
 }
 
 .header .navbar-toggler:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .header #phone {
-    display: none;
-    margin-top: 34px;
-    margin-bottom: 24px;
+  display: none;
+  margin-top: 34px;
+  margin-bottom: 24px;
 }
 
 .header #phone a {
-	border-bottom: 1px solid transparent;
-	transition: 0.3s;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
 }
 
 .header #navbarNav .nav-item button {
-    display: none;
-    padding: 12px 32px;
-    border-radius: 130px;
-    background-color: #1E1E1E;
+  display: none;
+  padding: 12px 32px;
+  border-radius: 130px;
+  background-color: #1E1E1E;
 }
 
 @media (max-width: 1280px) {
-    .header nav {
-        width: 95%;
-    }
+  .header nav {
+    width: 95%;
+  }
 
-    footer #footer-wrapper {
-        width: 95%;
-    }
+  footer #footer-wrapper {
+    width: 95%;
+  }
 }
 
 @media (max-width: 1200px) {
-    .header {
-        padding-top: 16px;
-        padding-bottom: 16px;
-    }
+  .header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
 
-    .header .navbar-brand img {
-        width: 40px;
-    }
+  .header .navbar-brand img {
+    width: 40px;
+  }
 
-    .header #navbarNav {
-        margin-top: 40px;
-        margin-bottom: 40px;
-    }
+  .header #navbarNav {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
 
-    .header #navbarNav a {
-        font-size: 16px;
-        margin-bottom: 24px;
-        color: #1E1E1E;
-        margin-left: 0 !important;
-        padding-left: 0 !important;
-    }
+  .header #navbarNav a {
+    font-size: 16px;
+    margin-bottom: 24px;
+    color: #1E1E1E;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
 
-    .header #navbarNav #social a {
-        padding-right: 14px;
-    }
+  .header #navbarNav #social a {
+    padding-right: 14px;
+  }
 
-    .header #navbarNav .nav-item button {
-        width: 328px;
-    }
+  .header #navbarNav .nav-item button {
+    width: 328px;
+  }
 
-    .header #phone, .header #navbarNav .nav-item button {
-        display: block;
-    }
+  .header #phone,
+  .header #navbarNav .nav-item button {
+    display: block;
+  }
 }
 
 @media (max-width: 768px) {
-    .header #navbarNav .nav-item button {
-        width: 100%;
-    }
+  .header #navbarNav .nav-item button {
+    width: 100%;
+  }
 }
 
 
@@ -221,37 +222,39 @@ a {
 # Desktop Navigation
 --------------------------------------------------------------*/
 .navbar a {
-	align-items: center;
-	justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #navbarNav ul:nth-child(1) a {
-	margin-left: 32px;
-	padding-top: 0;
-	padding-bottom: 0;
-	border-bottom: 1px solid transparent;
-	transition: 0.3s;
+  margin-left: 32px;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: 1px solid transparent;
+  transition: 0.3s;
 }
 
 #navbarNav ul:nth-child(2) a {
-	padding-left: 20px;
+  padding-left: 20px;
 }
 
-#navbarNav ul:nth-child(1) a:hover, .header #phone a:hover, .link a:hover{
-	color: #1E1E1E !important;
-	border-bottom: 1px solid #787878;
-	transition: 0.3s;
+#navbarNav ul:nth-child(1) a:hover,
+.header #phone a:hover,
+.link a:hover {
+  color: #1E1E1E !important;
+  border-bottom: 1px solid #787878;
+  transition: 0.3s;
 }
 
 
 
 .navbar svg path {
-	transition: 0.2s;
+  transition: 0.2s;
 }
 
 .navbar svg:hover path {
-    fill: #494949;
-	transition: 0.2s;
+  fill: #494949;
+  transition: 0.2s;
 }
 
 
@@ -264,7 +267,7 @@ first-block-main-kitchen-carousel
 }
 
 #first-block-main-kitchen-carousel .parent img {
-    margin-top: -25px;
+  margin-top: -25px;
 }
 
 .text-width {
@@ -277,51 +280,55 @@ first-block-main-kitchen-carousel
 }
 
 .watch-video {
-    padding-left: 24px;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 22px;
-    font-family: 'Stolzl Book' !important;
-    cursor: pointer;
-    transition: .3s;
-    position: relative;
+  padding-left: 24px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  font-family: 'Stolzl Book' !important;
+  cursor: pointer;
+  transition: .3s;
+  position: relative;
 }
 
-.watch-video:hover span, .bottom-block-main-block-mobile-a:hover span {
-    color: #787878;
-    transition: .3s;
+.watch-video:hover span,
+.bottom-block-main-block-mobile-a:hover span {
+  color: #787878;
+  transition: .3s;
 }
 
 .watch-video:hover span:after {
-    content: '';
-	position: absolute;
-	left: 54px ;
-	bottom: 0;
-	width: 0;
-    border-bottom: 1px solid #787878;
-	animation: border_anim .15s linear forwards;
+  content: '';
+  position: absolute;
+  left: 54px;
+  bottom: 0;
+  width: 0;
+  border-bottom: 1px solid #787878;
+  animation: border_anim .15s linear forwards;
 }
 
 @keyframes border_anim {
-	0%{
-		width: 0%;
-	}
-	100%{
-		width: calc(100% - 54px);
-	}
+  0% {
+    width: 0%;
+  }
+
+  100% {
+    width: calc(100% - 54px);
+  }
 }
 
 .bottom-block-main-block-mobile-a:hover span {
-    border-bottom: 1px solid #787878;
+  border-bottom: 1px solid #787878;
 }
 
-.watch-video svg path, .bottom-block-main-block-mobile-a svg path {
-    transition: .3s;
+.watch-video svg path,
+.bottom-block-main-block-mobile-a svg path {
+  transition: .3s;
 }
 
-.watch-video:hover svg path, .bottom-block-main-block-mobile-a:hover svg path {
-    fill: #787878;
-    transition: .3s;
+.watch-video:hover svg path,
+.bottom-block-main-block-mobile-a:hover svg path {
+  fill: #787878;
+  transition: .3s;
 }
 
 
@@ -330,7 +337,7 @@ first-block-main-kitchen-carousel
   width: 100%;
   height: 500px;
   object-fit: cover;
-  
+
 }
 
 .main-kitchen-carousel-slide-kithen-name {
@@ -379,11 +386,11 @@ first-block-main-kitchen-carousel
 }
 
 .bottom-block-main-block-mobile-a {
-    font-family: 'Stolzl Book' !important;
-    font-size: 18px;
-    font-weight: 400;
-    color: #1E1E1E;
-    transition: .3s;
+  font-family: 'Stolzl Book' !important;
+  font-size: 18px;
+  font-weight: 400;
+  color: #1E1E1E;
+  transition: .3s;
 }
 
 .slick-dots {
@@ -392,25 +399,25 @@ first-block-main-kitchen-carousel
 }
 
 .slick-dots li {
-    display: inline-block;
-    margin-right: 16px;
-    padding-right: 12px;
-    padding-bottom: 4px;
-    border-bottom: 2px solid #C9C7DB;
-    font-family: 'Stolzl Regular' !important;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 17px;
-    color: transparent;
-    position: relative;
+  display: inline-block;
+  margin-right: 16px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #C9C7DB;
+  font-family: 'Stolzl Regular' !important;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  color: transparent;
+  position: relative;
 }
 
 .slick-dots li:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .slick-dots .slick-active {
-    color: #1E1E1E;
+  color: #1E1E1E;
 }
 
 .slick-dots .slick-active:after {
@@ -437,7 +444,7 @@ first-block-main-kitchen-carousel
 }
 
 h1 br {
-    display: none !important;
+  display: none !important;
 }
 
 @media (max-width: 1200px) {
@@ -477,20 +484,20 @@ h1 br {
 }
 
 .about-us-text {
-    font-family: 'Stolzl Book' !important;
-    margin-top: 24px;
+  font-family: 'Stolzl Book' !important;
+  margin-top: 24px;
 }
 
 .value {
-    font-family: 'Stolzl Book' !important;
-    font-size: 36px;
-    font-weight: 400;
+  font-family: 'Stolzl Book' !important;
+  font-size: 36px;
+  font-weight: 400;
 }
 
 .value-name {
-    font-family: 'Stolzl Book' !important;
-    font-size: 14px;
-    font-weight: 400;
+  font-family: 'Stolzl Book' !important;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 
@@ -583,19 +590,19 @@ catalog-carousel
 }
 
 .slider-catalog-kitchen-name {
-    color: #1E1E1E;
-    font-family: 'Stolzl Regular' !important;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
-    padding-bottom: 10px;
+  color: #1E1E1E;
+  font-family: 'Stolzl Regular' !important;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  padding-bottom: 10px;
 }
 
 .catalog-carousel-button {
   margin-top: 60px;
 }
 
-.slider-catalog-container-mobile{
+.slider-catalog-container-mobile {
   display: none;
 }
 
@@ -607,15 +614,15 @@ catalog-carousel
   padding-right: 2.5%;
 }
 
-.slider-catalog-kitchen-short-desc-mobile{
+.slider-catalog-kitchen-short-desc-mobile {
   margin-bottom: 2.5%;
 }
 
-#catalog-carousel .slide:hover{
+#catalog-carousel .slide:hover {
   cursor: pointer;
 }
 
-.slider-catalog-container-mobile .content-mobile:hover{
+.slider-catalog-container-mobile .content-mobile:hover {
   cursor: pointer;
 }
 
@@ -629,10 +636,10 @@ advantages
 }
 
 .custom-bg {
-    max-width: 1420px;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 80px 70px;
+  max-width: 1420px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 80px 70px;
 }
 
 .advantages-content {
@@ -644,9 +651,9 @@ advantages
 }
 
 .advantages-content-title {
-    color: #1E1E1E;
-    font-family: 'Stolzl Book' !important;
-    font-size: 24px;
+  color: #1E1E1E;
+  font-family: 'Stolzl Book' !important;
+  font-size: 24px;
 }
 
 .advantages-content-title svg {
@@ -654,11 +661,11 @@ advantages
 }
 
 .advantages-content-title-text {
-    color: #787878;
-    font-family: 'Stolzl Book' !important;
-    font-size: 14px;
-    font-weight: 400;
-    margin-top: 20px;
+  color: #787878;
+  font-family: 'Stolzl Book' !important;
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 20px;
 }
 
 
@@ -699,13 +706,13 @@ project-and-reviews
 }
 
 .project-and-reviews-kitchen-name {
-    font-family: 'Stolzl Light';
-    font-size: 14px;
-    font-weight: 400;
-    padding: 4px 12px;
-    border-radius: 24px;
-    background: #1E1E1E;
-    color: #FFF;
+  font-family: 'Stolzl Light';
+  font-size: 14px;
+  font-weight: 400;
+  padding: 4px 12px;
+  border-radius: 24px;
+  background: #1E1E1E;
+  color: #FFF;
 }
 
 .review-content {
@@ -717,18 +724,18 @@ project-and-reviews
 }
 
 .project-and-reviews-name {
-    font-family: 'Stolzl Bold';
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 24px;
-    margin-bottom: 12px;
+  font-family: 'Stolzl Bold';
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  margin-bottom: 12px;
 }
 
 .project-and-reviews-text {
-    font-family: 'Stolzl Book';
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
+  font-family: 'Stolzl Book';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
 }
 
 .project-and-reviews-slider .slick-slide {
@@ -770,28 +777,28 @@ project-and-reviews
 /*----------------------------------
 feedback
 ----------------------------------*/
-.feedback-wrapper{
+.feedback-wrapper {
   padding-left: 70px;
 }
 
-.feedback-text{
-    font-family: 'Stolzl Book';
-    margin-top: 40px;
-    margin-bottom: 46px;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 24px;
+.feedback-text {
+  font-family: 'Stolzl Book';
+  margin-top: 40px;
+  margin-bottom: 46px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
 }
 
-.feedback-wrapper{
+.feedback-wrapper {
   width: 50%;
 }
 
-#feedback{
+#feedback {
   position: relative;
 }
 
-.feedback-form{
+.feedback-form {
   position: absolute;
   right: 70px;
   width: 30%;
@@ -801,54 +808,58 @@ feedback
   box-shadow: 0px -8px 16px 0px rgba(0, 0, 0, 0.08), 0px 0px 4px 0px rgba(0, 0, 0, 0.04);
 }
 
-.feedback label{
-    padding-bottom: 8px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    font-family: 'Stolzl Book';
+.feedback label {
+  padding-bottom: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  font-family: 'Stolzl Book';
 }
 
-.feedback input::placeholder, .feedback textarea::placeholder {
-    font-family: 'Stolzl Book';
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19px;
-    color: #787878;
+.feedback input::placeholder,
+.feedback textarea::placeholder {
+  font-family: 'Stolzl Book';
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  color: #787878;
 }
 
-#label_number, #label_message{
+#label_number,
+#label_message {
   margin-top: 24px;
 }
 
-.form-control{
-    font-family: 'Stolzl Book';
-    border-radius: 36px;
-    background: #F1EFED;
-    padding: 12px 16px;
-    color: #1E1E1E;
-    font-size: 16px;
-    border: 1px solid transparent;
+.form-control {
+  font-family: 'Stolzl Book';
+  border-radius: 36px;
+  background: #F1EFED;
+  padding: 12px 16px;
+  color: #1E1E1E;
+  font-size: 16px;
+  border: 1px solid transparent;
 }
 
 .form-control-area {
-    font-family: 'Stolzl Book';
-    border-radius: 16px;
-    background: #F1EFED;
-    padding: 16px;
-    color: #1E1E1E;
-    font-size: 16px;
-    width: 100%;
-    height: 100px;
-    resize:none;
-    border: 1px solid transparent;
+  font-family: 'Stolzl Book';
+  border-radius: 16px;
+  background: #F1EFED;
+  padding: 16px;
+  color: #1E1E1E;
+  font-size: 16px;
+  width: 100%;
+  height: 100px;
+  resize: none;
+  border: 1px solid transparent;
 }
 
-.form-control:hover, .form-control-area:hover {
+.form-control:hover,
+.form-control-area:hover {
   background: #E5E4E3;
 }
 
-.form-control:focus, .form-control-area:focus {
+.form-control:focus,
+.form-control-area:focus {
   background-color: #FFFFFF;
   border: 1px solid #1E1E1E;
   box-shadow: none;
@@ -856,36 +867,36 @@ feedback
 }
 
 .form-control.is-invalid {
-    background: #FAE4E4;
-    border-color: transparent !important;
-    box-shadow: none !important;
-    outline: none;
+  background: #FAE4E4;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  outline: none;
 }
 
-.feedback-form .custom-button{
+.feedback-form .custom-button {
   margin-top: 24px;
   width: 100%;
 }
 
-.feedback-form-annotation{
-    font-family: 'Stolzl Book';
-    margin-top: 16px;
-    color: #787878;
-    font-size: 14px;
-    font-weight: 400;
+.feedback-form-annotation {
+  font-family: 'Stolzl Book';
+  margin-top: 16px;
+  color: #787878;
+  font-size: 14px;
+  font-weight: 400;
 }
 
-.feedback-form-annotation a{
-    font-family: 'Stolzl Book';
-    color: #0466FF;
+.feedback-form-annotation a {
+  font-family: 'Stolzl Book';
+  color: #0466FF;
 }
 
-.feedback-img-mobile{
+.feedback-img-mobile {
   display: none;
   width: 100%;
 }
 
-.feedback-img-mobile img{
+.feedback-img-mobile img {
   width: 100%;
 }
 
@@ -894,48 +905,58 @@ feedback
 footer
 ----------------------------------*/
 footer {
-    margin-top: 25px;
-    margin-bottom: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 footer #footer-wrapper {
-    max-width: 1280px;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 footer .contacts a {
-    padding-left: 13px;
+  padding-left: 13px;
 }
 
-footer .under-contacts {
-    font-family: 'Stolzl Book';
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    color: #787878;
+footer .under-contacts,
+footer .under-contacts a {
+  font-family: 'Stolzl Book';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #787878;
+}
+
+footer .under-contacts a:hover,
+.footer-adress a:hover,
+.footer-number a:hover {
+  color: #1E1E1E !important;
+  border-bottom: 1px solid #787878;
+  transition: 0.3s;
 }
 
 footer .plain-text a {
-    margin-right: 32px;
-    font-family: 'Stolzl Book';
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    color: #787878;
+  margin-right: 32px;
+  font-family: 'Stolzl Book';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #787878;
 }
 
-footer .footer-number, footer .footer-adress {
-    font-family: 'Stolzl Book';
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    text-align: right;
-    color: #1E1E1E;
+footer .footer-number,
+footer .footer-adress {
+  font-family: 'Stolzl Book';
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: right;
+  color: #1E1E1E;
 }
 
 footer .footer-adress {
-    margin-top: 12px;
+  margin-top: 12px;
 }
 
 
@@ -944,37 +965,40 @@ footer .footer-adress {
 
 
 @media (max-width: 1200px) {
-    .footer-number, .footer-adress, footer .contacts {
-        text-align: left !important;
-    }
 
-    footer .contacts {
-        margin-top: 4% !important;
-        padding-bottom: 16px;
-    }
+  .footer-number,
+  .footer-adress,
+  footer .contacts {
+    text-align: left !important;
+  }
 
-    footer .contacts a {
-        padding-left: 0;
-        padding-right: 16px;
-    }
+  footer .contacts {
+    margin-top: 4% !important;
+    padding-bottom: 16px;
+  }
 
-    #look-at-block {
-        padding-top: 24px !important;
-        padding-bottom: 24px !important;
+  footer .contacts a {
+    padding-left: 0;
+    padding-right: 16px;
+  }
 
-    }
+  #look-at-block {
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
 
-    #look-at-block .custom-bg {
-        margin-top: 0 !important;
-    }
+  }
+
+  #look-at-block .custom-bg {
+    margin-top: 0 !important;
+  }
 
   #first-block-main-kitchen-carousel .parent img {
     width: calc(100% * 0.3);
   }
 
-   #about-us-block,
-   .feedback-wrapper{
-     padding: 0 2.5%;
+  #about-us-block,
+  .feedback-wrapper {
+    padding: 0 2.5%;
   }
 
 
@@ -990,7 +1014,7 @@ footer .footer-adress {
     margin-top: 4% !important;
   }
 
-  .about-us-text{
+  .about-us-text {
     margin-top: 2.5%;
   }
 
@@ -1072,7 +1096,7 @@ footer .footer-adress {
     display: none !important;
   }
 
-  .slider-catalog-container-mobile{
+  .slider-catalog-container-mobile {
     display: block;
   }
 
@@ -1156,41 +1180,41 @@ footer .footer-adress {
     right: 2.5%;
   }
 
-  .project-and-reviews-nav{
+  .project-and-reviews-nav {
     margin: 0;
   }
 
-  #project-and-reviews .slick-dots{
+  #project-and-reviews .slick-dots {
     text-align: center;
     padding: 0;
     margin-top: 5%;
   }
 
-  .project-and-reviews-name{
+  .project-and-reviews-name {
     margin-bottom: 1.25%;
   }
 
-  .link{
+  .link {
     display: grid;
     text-align: start;
   }
 
   .link span {
-   margin-left: 0;
-   padding: 12px 0;
+    margin-left: 0;
+    padding: 12px 0;
   }
 
-  .link a:last-child{
+  .link a:last-child {
     padding-bottom: 0;
-   }
+  }
 
   .slider-catalog-kitchen-name,
-  .feedback-text{
+  .feedback-text {
     font-size: 16px;
   }
 
   .slider-catalog-kitchen-short-desc-mobile,
-  .project-and-reviews-text{
+  .project-and-reviews-text {
     font-family: 'Stolzl Book' !important;
     font-size: 14px;
   }
@@ -1201,15 +1225,15 @@ footer .footer-adress {
     font-weight: 400;
   }
 
-  .advantages-content-title{
+  .advantages-content-title {
     font-size: 18px;
   }
 
-  h2{
+  h2 {
     font-size: 30px;
   }
 
-  #first-block-main-kitchen-carousel{
+  #first-block-main-kitchen-carousel {
     padding-top: 53px;
   }
 }
@@ -1273,7 +1297,7 @@ footer .footer-adress {
     display: block;
   }
 
-  footer{
+  footer {
     padding: 0;
     margin-bottom: 4%;
   }
@@ -1359,68 +1383,68 @@ footer .footer-adress {
 }
 
 
- /*----------------- look at -----------------*/
- #look-at-block {
-    margin-top: 110px;
-    padding-top: 80px;
-    padding-bottom: 80px;
-	background-color: #F8F7F4;
- }
+/*----------------- look at -----------------*/
+#look-at-block {
+  margin-top: 110px;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-color: #F8F7F4;
+}
 
 
 .hero-marquee-item__info {
-    grid-template-columns: 1fr 1fr 1fr !important;
-    grid-auto-rows: 100px!important;
-    align-items: baseline !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  grid-auto-rows: 100px !important;
+  align-items: baseline !important;
 }
 
 .row_hero_1 {
-    grid-column: 1/4;
-    grid-row: 2;
-    margin: auto;
+  grid-column: 1/4;
+  grid-row: 2;
+  margin: auto;
 }
 
 .row_hero_2_col_1 {
-    grid-column: 1;
-    grid-row: 3;
-    align-self: flex-end;
+  grid-column: 1;
+  grid-row: 3;
+  align-self: flex-end;
 }
 
 .row_hero_2_col_2 {
-    grid-column: 3;
-    grid-row: 3;
-    align-self: flex-end;
+  grid-column: 3;
+  grid-row: 3;
+  align-self: flex-end;
 }
 
 .hero-marquee-item__tag {
-    align-items: center;
-    height: auto !important;
-    padding-top: 16px;
-    padding: 0 20px;
-    border: 1px solid rgba(255, 255, 255, .5) !important;
+  align-items: center;
+  height: auto !important;
+  padding-top: 16px;
+  padding: 0 20px;
+  border: 1px solid rgba(255, 255, 255, .5) !important;
 }
 
 .hero-marquee-item__title {
-    font-family: 'Stolzl Book' !important;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 24px;
+  font-family: 'Stolzl Book' !important;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
 }
 
 
-.hero-marquee-item__tag svg{
-    margin-right: 6px;
+.hero-marquee-item__tag svg {
+  margin-right: 6px;
 }
 
 .hero-marquee-item__tag div {
-    font-family: 'Stolzl Book' !important;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
+  font-family: 'Stolzl Book' !important;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
 }
 
 .hero-marquee-item:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 
@@ -1433,22 +1457,22 @@ footer .footer-adress {
 
 
 .hero-marquee-item__tags {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 
 #detach-button-host {
-    display: none !important;
+  display: none !important;
 }
 
 .modal-dialog {
-      max-width: 800px;
-      margin: 30px auto;
-  }
+  max-width: 800px;
+  margin: 30px auto;
+}
 
 .modal-body {
-  position:relative;
-  padding:0px;
+  position: relative;
+  padding: 0px;
 }
 
 
@@ -1456,36 +1480,35 @@ footer .footer-adress {
 Modal Feedback
 -----------------------*/
 #mainFeedBackModal h3 {
-    font-family: 'Stolzl Book' !important;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
-    margin-bottom: 24px;
+  font-family: 'Stolzl Book' !important;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  margin-bottom: 24px;
 }
 
 #mainFeedBackModal .modal-content {
-    padding: 32px;
-    border-radius: 0;
-    border: none;
-    box-shadow: 0px 4px 30px 0px #0000003D;
+  padding: 32px;
+  border-radius: 0;
+  border: none;
+  box-shadow: 0px 4px 30px 0px #0000003D;
 }
 
 #mainFeedBackModal .custom-button {
-    margin-top: 24px;
-    width: 100%;
+  margin-top: 24px;
+  width: 100%;
 }
 
 #mainFeedBackModal .close {
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    top: 17.64px;
-    right: 17.64px;
-    transition: .3s;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 17.64px;
+  right: 17.64px;
+  transition: .3s;
 }
 
 #mainFeedBackModal .close:hover svg path {
-    fill: #1E1E1E;
-    transition: .3s;
+  fill: #1E1E1E;
+  transition: .3s;
 }
-
