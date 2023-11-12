@@ -1,7 +1,7 @@
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from .models import *
-from .forms import FilterForm, FeedbackForm
+from .forms import FeedbackForm
 import json
 
 
@@ -52,11 +52,9 @@ def catalog(request):
     openingMethod = KitchenOpeningMethod.objects.values("name").distinct()
     material = KitchenMaterial.objects.values("name").distinct()
     style = KitchenStyle.objects.values("name").distinct()
-    form = FilterForm()
     feedbackForm = FeedbackForm()
     data = {
         "kitchen": kitchen,
-        "form": form,
         "openingMethod": openingMethod,
         "material": material,
         "style": style,
