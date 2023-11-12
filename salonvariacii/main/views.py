@@ -65,40 +65,6 @@ def catalog(request):
     return render(request, "main/catalog.html", data)
 
 
-def filter(request):
-    if request.method == 'POST':
-        data = json.loads(request.body.decode('utf-8'))
-        style_values = data.get('style', [])
-        material_values = data.get('material', [])
-        openingMethod_values = data.get('openingMethod', [])
-        search = data.get('search', [])
-        
-        if not style_values and not material_values and not openingMethod_values and not search:
-            kitchen = Kitchen.objects.all().values('name', 'slug', 'mainImage', 'catalogVideo')
-            filtered_kitchens = list(kitchen)
-        else:
-            kitchen = Kitchen.objects.all()
-            filter_parameters = {
-                'name__icontains': search,
-                'style__name': style_values,
-                'material__name': material_values,
-                'openingMethod__name': openingMethod_values,
-            }
-
-            kitchen = Kitchen.objects.all()
-
-            for field, values in filter_parameters.items():
-                if values:
-                    #если в фильтрации несколько значений по одному полю
-                    if isinstance(values, list):
-                        kitchen = kitchen.filter(**{field + '__in': values}).values('name', 'slug', 'mainImage', 'catalogVideo')
-                    else:
-                        kitchen = kitchen.filter(**{field : values}).values('name', 'slug', 'mainImage', 'catalogVideo')
-
-            filtered_kitchens = list(kitchen)
-       
-        return JsonResponse({'filtered_kitchens': filtered_kitchens})
-
 def sendFeedBack(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)

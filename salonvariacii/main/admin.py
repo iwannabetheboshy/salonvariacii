@@ -4,7 +4,7 @@ from .models import *
 
 @admin.register(Kitchen)
 class KitchenAdmin(admin.ModelAdmin):
-    list_display = ("name", "style", "material", "openingMethod", "show_number")
+    list_display = ("name", "style", "show_number")
     exclude = ['slug']
 
     class Media:

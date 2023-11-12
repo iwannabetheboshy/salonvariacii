@@ -249,7 +249,9 @@
   <div class="filtered-results-wrapper">
     <div class="row row-cols-xl-2 mx-0" id="filtered-results">
       {%for kit in kitchen%}
-      <div class="result">
+      <div class="result" data-style="{{ kit.style }}" 
+        data-material="{% for material in kit.material.all %}{{material.name}}{% if not forloop.last %},{% endif %}{%endfor%}"
+        data-openingMethod="{% for openingMethod in kit.openingMethod.all %}{{openingMethod.name}}{% if not forloop.last %},{% endif %}{%endfor%}">
         <div class="catalog-video-container mb-3" >
           <a href="/kitchen/{{ kit.slug }}">
             <img src="{{kit.mainImage.url}}" alt="">

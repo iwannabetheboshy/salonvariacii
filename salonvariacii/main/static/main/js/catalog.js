@@ -1,10 +1,10 @@
 $(document).on("click", function (e) {
   // Проверяем, был ли клик внутри .filter-name или .sub-menu
   if (!$(e.target).closest(".filter-name, .sub-menu").length) {
-      // Закрываем все открытые dropdown
-      $(".sub-menu").slideUp();
-      $(".open").addClass("hidden");
-      $(".close").removeClass("hidden");
+    // Закрываем все открытые dropdown
+    $(".sub-menu").slideUp();
+    $(".open").addClass("hidden");
+    $(".close").removeClass("hidden");
   }
 });
 
@@ -25,6 +25,7 @@ $(".filter-name").click(function () {
 });
 
 const resultsDiv = $('#filtered-results');
+const rezKitchen = $(".result")
 
 async function filtration() {
   const selectedValues = {};
@@ -32,8 +33,7 @@ async function filtration() {
     const id = $(this).attr('id');
     const value = $(this).text().trim();
 
-    // Добавляем данные в объект JSON
-    if (value !== 'Любой') {
+    if (value !== 'Любой' && value !== 'Очистить') {
       if (!selectedValues[id]) {
         selectedValues[id] = value;
       } else {
@@ -44,88 +44,50 @@ async function filtration() {
         }
       }
     }
-
-
   });
 
-  selectedValues['search'] = $('input[name=search]').val();
+  var filtered = rezKitchen;
+  rezKitchen.each(function () {
+    var show = true;
 
-  try {
-    const csrfToken = $('#catalog-filter input[name=csrfmiddlewaretoken]').val();
-    const response = await fetch('/filter/', {
-      method: 'POST',
-      headers: {
-        'X-CSRFToken': csrfToken  // Включить CSRF-токен в заголовки
-      },
-      body: JSON.stringify(selectedValues),
-    });
+    for (var key in selectedValues) {
+      var data = $(this).attr('data-' + key).split(',');
 
-    if (response.ok) {
-
-      const data = await response.json();
-      const filteredKitchens = data.filtered_kitchens;
-      // Отчищаем предыдущие результаты
-      resultsDiv.empty();
-      // Отобразить отфильтрованные результаты в цикле
-      if (filteredKitchens.length === 0) {
-        $(".none-result").removeClass("hidden");
-        $(".filtered-results-wrapper").addClass("hidden");
+      let intersection = data.filter(x => selectedValues[key].includes(x));
+      if (intersection.length === 0) {
+        show = false;
       }
-      else {
-        $(".none-result").addClass("hidden");
-        $(".filtered-results-wrapper").removeClass("hidden");
-        filteredKitchens.forEach(function (kit) {
-          var resultHTML = `
-              <div class="result">
-              <div class="catalog-video-container mb-3" >
-              <img src="/media/${kit.mainImage}" alt="">
-              <video  height="100%" src="/media/${kit.catalogVideo}" preload="auto" muted loop disablePictureInPicture></video>
-              </div>
-                <div class="kitchen-name">
-                  <a href="/kitchen/${kit.slug}">
-                    ${kit.name}
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M10.7814 7.33327L7.20539 3.75726L8.14819 2.81445L13.3337 7.99993L8.14819 13.1853L7.20539 12.2425L10.7814 8.6666H2.66699V7.33327H10.7814Z" fill="#1E1E1E"/>
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            `;
-          resultsDiv.append($(resultHTML));
-        });
-
-      }
-    } else {
-      resultsDiv.innerHTML = 'Ошибка при выполнении запроса';
     }
-  } catch (error) {
-    resultsDiv.innerHTML = 'Ошибка при выполнении запроса: ' + error;
-  }
+
+    if (show) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
+  });
+
 
   $("#catalog-filter .select .selected").click(function () {
     if ($(this).attr('id') === "clean") {
-        $(".select").empty();
-        $('.search-div input[name=search]').val('');
-        cleanCheck();
+      $(".select").empty();
+      cleanCheck();
     } else {
       $(this).remove();
       if ($("#catalog-filter .select div").length === 1) {
-
         $("#catalog-filter .select .clean").remove();
-        $('.search-div input[name=search]').val('');
         cleanCheck();
       }
     }
     filtration();
   });
 
-  $(".catalog-video-container").on("mouseenter", function() {
+  $(".catalog-video-container").on("mouseenter", function () {
     $(this).find("img").hide();
     $(this).find("video").trigger('play');
-    
+
   });
 
-  $(".catalog-video-container").on("mouseleave", function() {
+  $(".catalog-video-container").on("mouseleave", function () {
     $(this).find("video").trigger('pause');
     $(this).find("img").show();
   });
@@ -193,11 +155,11 @@ $(".filter-seacrh").on("keyup", function (event) {
 $("#catalog-filter .modal-dialog .filter-save").click(function () {
   var checkedCheckboxes = $(".modal-body input[type='checkbox']:checked");
   var selectedRadioValue = $(".modal-body input[type='radio']:checked");
-  
+
   $(".select").empty();
 
   if ($("#catalog-filter .select .clean").length == 0) {
-      
+
     var div = $('<div class="selected clean" id="clean">Очистить</div>');
     var svg = $('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/></svg>');
 
@@ -221,7 +183,7 @@ $("#catalog-filter .modal-dialog .filter-save").click(function () {
   //добавляем блок в выбранные фильтры стилей
   if (selectedRadioValue.length !== 0) {
     //если стиль уже выбран
-    if($("#catalog-filter .select #style" !== 0)){
+    if ($("#catalog-filter .select #style" !== 0)) {
       $('#catalog-filter .select').find(`#style`).remove()
     }
 
@@ -247,10 +209,10 @@ $("#catalog-filter .modal-header .modal-clean").click(function () {
   cleanCheck();
 
   $(".select").empty();
-  $('.search-div input[name=search]').val('');
 })
 
 function cleanCheck() {
+  $('.search-div input[name=search]').val('');
   var checkedCheckboxes = $(".modal-body input[type='checkbox']:checked");
   var selectedRadioValue = $(".modal-body input[type='radio']:checked");
 
@@ -261,14 +223,14 @@ function cleanCheck() {
   selectedRadioValue.prop('checked', false);
 }
 
-$(document).ready(function() {
-  $(".catalog-video-container").on("mouseenter", function() {
+$(document).ready(function () {
+  $(".catalog-video-container").on("mouseenter", function () {
     $(this).find("img").hide();
     $(this).find("video").trigger('play');
-    
+
   });
 
-  $(".catalog-video-container").on("mouseleave", function() {
+  $(".catalog-video-container").on("mouseleave", function () {
     $(this).find("video").trigger('pause');
     $(this).find("img").show();
   });
