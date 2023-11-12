@@ -759,8 +759,14 @@ project-and-reviews
 }
 
 .project-and-reviews-nav {
-  margin-top: -55px;
+  position: relative;
   margin-left: 70px;
+}
+
+.project-and-reviews-nav button{
+  z-index: 1;
+  position: absolute;
+  bottom: -4%;
 }
 
 .project-and-reviews-nav .num {
@@ -959,6 +965,10 @@ footer .footer-adress {
   margin-top: 12px;
 }
 
+footer .contacts svg:hover path {
+  fill: #494949;
+  transition: 0.2s;
+}
 
 
 /*----------------- adaptive -----------------*/
@@ -1235,6 +1245,10 @@ footer .footer-adress {
 
   #first-block-main-kitchen-carousel {
     padding-top: 53px;
+  }
+
+  .project-and-reviews-nav button{
+    position: initial;
   }
 }
 
