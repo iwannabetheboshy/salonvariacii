@@ -1,6 +1,12 @@
 from django.db import models
 from django.utils.text import slugify
 from django.core.validators import FileExtensionValidator
+from io import BytesIO
+from PIL import Image
+from django.core.files.uploadedfile import InMemoryUploadedFile
+from moviepy.editor import VideoFileClip
+import uuid
+import os
 
 
 class KitchenStyle(models.Model):
@@ -41,6 +47,24 @@ class KitchenOpeningMethod(models.Model):
 class KitchenPhoto(models.Model):
     image = models.ImageField('Фото кухни', upload_to='kitchen/')
 
+    def save(self, *args, **kwargs):
+        file_name = os.path.basename(self.image.name)
+        file_extension = os.path.splitext(file_name)[1][1:].lower()
+
+        if file_extension not in ('webp'):
+            # Проверка наличия файла с таким же именем
+            existing_file = KitchenPhoto.objects.filter(image__icontains=self.image).first()
+            if existing_file:
+                self.image = existing_file.image
+            else:
+                name = str(uuid.uuid1())
+                img = Image.open(self.image)
+                img_io = BytesIO()
+                img.save(img_io, format="WebP")
+                img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+                self.image.save(f"{name}.webp", img_file, save=False)
+        super().save(*args, **kwargs)
+                
     class Meta:
         verbose_name = "фотографию кухни"
         verbose_name_plural = "Фотографии кухонь"
@@ -49,6 +73,26 @@ class KitchenPhoto(models.Model):
 class KitchenColors(models.Model):
     name = models.CharField('Наименование цвета', max_length=50)
     image = models.ImageField('Фото цвета', upload_to='kitchen/colors/')
+
+
+    def save(self, *args, **kwargs):
+        if self.image:
+            file_name = os.path.basename(self.image.name)
+            file_extension = os.path.splitext(file_name)[1][1:].lower()
+
+            if file_extension not in ('webp'):
+                # Проверка наличия файла с таким же именем
+                existing_file = KitchenColors.objects.filter(image__icontains=self.image).first()
+                if existing_file:
+                    self.image = existing_file.image
+                else:
+                    name = str(uuid.uuid1())
+                    img = Image.open(self.image)
+                    img_io = BytesIO()
+                    img.save(img_io, format="WebP")
+                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+                    self.image.save(f"{name}.webp", img_file, save=False)
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "цвет кухни"
@@ -91,9 +135,9 @@ class Kitchen(models.Model):
     files = models.ManyToManyField(KitchenFiles, verbose_name="Файлы кухни")
     mainImage = models.ImageField('Главное фото', upload_to='kitchen/')
     catalogVideo = models.FileField('Видео для каталога', upload_to ='kitchen/videos/',
-                                    validators=[FileExtensionValidator(allowed_extensions=["mp4"])])
+                                    validators=[FileExtensionValidator(allowed_extensions=["webm"])])
     kitchenCardVideo = models.FileField('Видео для страницы кухни', upload_to ='kitchen/videos/',
-                                    validators=[FileExtensionValidator(allowed_extensions=["mp4"])])
+                                    validators=[FileExtensionValidator(allowed_extensions=["webm"])])
     images = models.ManyToManyField(KitchenPhoto, verbose_name="Дополнительные фотографии кухни")
     show_number = models.IntegerField('Номер показа в карусели каталога', null=True, blank=True)
     slug = models.SlugField(blank=True)
@@ -102,6 +146,24 @@ class Kitchen(models.Model):
     def save(self, *args, **kwargs):
         # Генерируем slug из названия кухни
         self.slug = slugify(self.name)
+
+        if self.mainImage:
+            file_name = os.path.basename(self.mainImage.name)
+            file_extension = os.path.splitext(file_name)[1][1:].lower()
+
+            if file_extension not in ('webp'):
+            # Проверка наличия файла с таким же именем
+                existing_file = Kitchen.objects.filter(mainImage__icontains=self.mainImage).first()
+                if existing_file:
+                    self.mainImage = existing_file.mainImage
+                else:
+                    name = str(uuid.uuid1())
+                    img = Image.open(self.mainImage)
+                    img_io = BytesIO()
+                    img.save(img_io, format="WebP")
+                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+                    self.mainImage.save(f"{name}.webp", img_file, save=False)
+
         super().save(*args, **kwargs)
 
     class Meta:
@@ -117,6 +179,25 @@ class MainPageCarousel(models.Model):
     name = models.CharField('Название кухни', max_length=50)
     image = models.ImageField('Фото кухни',  upload_to='carousel/')
     show_number = models.IntegerField()
+
+    def save(self, *args, **kwargs):
+        if self.image:
+            file_name = os.path.basename(self.image.name)
+            file_extension = os.path.splitext(file_name)[1][1:].lower()
+
+            if file_extension not in ('webp'):
+                # Проверка наличия файла с таким же именем
+                existing_file = MainPageCarousel.objects.filter(image__icontains=self.image).first()
+                if existing_file:
+                    self.image = existing_file.image
+                else:
+                    name = str(uuid.uuid1())
+                    img = Image.open(self.image)
+                    img_io = BytesIO()
+                    img.save(img_io, format="WebP")
+                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+                    self.image.save(f"{name}.webp", img_file, save=False)
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "кухню"
@@ -159,6 +240,25 @@ class ReviewsAndProject(models.Model):
     review_name = models.CharField('Имя заказчика', max_length=100)
     text = models.TextField('Текст отзыва')
     
+    def save(self, *args, **kwargs):
+        if self.image:
+            file_name = os.path.basename(self.image.name)
+            file_extension = os.path.splitext(file_name)[1][1:].lower()
+
+            if file_extension not in ('webp'):
+                # Проверка наличия файла с таким же именем
+                existing_file = ReviewsAndProject.objects.filter(image__icontains=self.image).first()
+                if existing_file:
+                    self.image = existing_file.image
+                else:
+                    name = str(uuid.uuid1())
+                    img = Image.open(self.image)
+                    img_io = BytesIO()
+                    img.save(img_io, format="WebP")
+                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+                    self.image.save(f"{name}.webp", img_file, save=False)
+        super().save(*args, **kwargs)
+
     class Meta:
         verbose_name = "отзыв"
         verbose_name_plural = "Отзывы"
@@ -176,6 +276,20 @@ class LookAt(models.Model):
     class Meta:
         verbose_name = "взгляни сам"
         verbose_name_plural = "Взгляните сами"
+
+    def save(self, *args, **kwargs):
+        if self.content:
+            file_name = os.path.basename(self.content.name)
+            file_extension = os.path.splitext(file_name)[1][1:].lower()
+
+            if file_extension in ('png', 'jpg'):
+                # Проверка наличия файла с таким же именем
+                name = str(uuid.uuid1())
+                img = Image.open(self.content)
+                img_io = BytesIO()
+                img.save(img_io, format="WebP")
+                img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+                self.content.save(f"{name}.webp", img_file, save=False)
 
 class FeedBack(models.Model):
     name = models.CharField('Имя', max_length=50)
