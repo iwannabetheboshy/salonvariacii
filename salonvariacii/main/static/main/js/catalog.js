@@ -28,6 +28,8 @@ const resultsDiv = $('#filtered-results');
 const rezKitchen = $(".result")
 
 async function filtration() {
+  $(".none-result").addClass("hidden");
+  $(".filtered-results-wrapper").removeClass("hidden");
   const selectedValues = {};
   $('.selected').each(function () {
     const id = $(this).attr('id');
@@ -47,6 +49,7 @@ async function filtration() {
   });
 
   var filtered = rezKitchen;
+  var count = 0;
   rezKitchen.each(function () {
     var show = true;
 
@@ -61,10 +64,19 @@ async function filtration() {
 
     if (show) {
       $(this).show();
+      count = count + 1;
     } else {
       $(this).hide();
     }
+
+
   });
+
+  if(count === 0){
+    $(".none-result").removeClass("hidden");
+    $(".filtered-results-wrapper").addClass("hidden");
+  }
+
 
 
   $("#catalog-filter .select .selected").click(function () {

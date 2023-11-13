@@ -2,7 +2,8 @@ from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
 from .models import *
 from .forms import FeedbackForm
-import json
+import telebot
+from decouple import config
 
 
 def get_related_items_for_admin(request):
@@ -67,7 +68,15 @@ def sendFeedBack(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
-            print(form.cleaned_data)
+            f = FeedBack(
+                name=form.cleaned_data['name'],
+                number=form.cleaned_data['number'],
+                message=form.cleaned_data['message'])
+            f.save()
+            
+            bot = telebot.TeleBot(config('BotToken'))
+            bot.send_message(1029774332, 'Имя: {0}\nТелефон: {2}\nСообщение: {1}'.
+                             format(form.cleaned_data['name'], form.cleaned_data['message'], form.cleaned_data['number'], ))
             return HttpResponse("Заявка отправлена! Мы скоро перезвоним вам")
 
 
