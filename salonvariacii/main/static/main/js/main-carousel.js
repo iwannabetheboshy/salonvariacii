@@ -9,7 +9,7 @@ $(document).ready(function () {
     dots: true,
 
     customPaging: function (slider, i) {
-      return '<a> 0' +( i + 1 ) + '</a>';
+      return '<span> 0' +( i + 1 ) + '</span>';
     },
 
     responsive: [
@@ -89,7 +89,7 @@ $(document).ready(function () {
     dots: true,
 
     customPaging: function (slider, i) {
-      return '<a> 0' +( i + 1 ) + '</a>';
+      return '<span> 0' +( i + 1 ) + '</span>';
     },
 
     responsive: [

@@ -33,7 +33,10 @@ def main(request):
     reviews = ReviewsAndProject.objects.all()
     look_at = LookAt.objects.all().exclude(show_number=None).order_by('show_number')
     feedbackForm = FeedbackForm()
-    
+    title = "TITLEMAIN"
+    pageDescription = "pageDescription"
+    keyWords = "keyWords"
+
     data = {
         "sliderPhoto": sliderPhoto,
         "about": about,
@@ -43,6 +46,9 @@ def main(request):
         "reviews": reviews,
         "look_at": look_at,
         "feedbackForm": feedbackForm,
+        "title": title,
+        "pageDescription": pageDescription,
+        "keyWords": keyWords,
     }
 
     return render(request, "main/index.html", data)

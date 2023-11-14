@@ -18,7 +18,7 @@
                             <button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
                                 Оставить заявку
                             </button>
-                            <a class="watch-video">
+                            <span class="watch-video">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -26,7 +26,7 @@
                                             fill="#1E1E1E" />
                                 </svg>
                                 <span>Смотреть видео</span>
-                            </a>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                     </button>
                 </div>
                 <div class="col-xl-6 col-12 px-0">
-                    <a class="watch-video">
+                    <span class="watch-video">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -75,7 +75,7 @@
                                     fill="#1E1E1E" />
                         </svg>
                         <span>Смотреть видео</span>
-                    </a>
+                    </span>
                 </div>
             </div>
         </div>
@@ -167,7 +167,7 @@
             <div class="slide-line">
                 {% for kitchen in catalog_carousel %}
                 <div class="slide">
-                    <img src="{{ kitchen.mainImage.url }}">
+                    <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
                     <div class="content">
                         <div class="slider-catalog-kitchen-name">
                             Кухни {{ kitchen.name }}
@@ -191,7 +191,7 @@
             <div class="slide-line-mobile">
                 {% for kitchen in catalog_carousel %}
                 <div class="slid-mobile">
-                    <img src="{{ kitchen.mainImage.url }}">
+                    <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
                     <div class="content-mobile">
                         <div class="slider-catalog-kitchen-name">
                             Кухни {{ kitchen.name }}
@@ -315,9 +315,9 @@
                     </div>
                     <div class="col-xl-5 col-12 review-content pe-0">
                         <div class="mb-4">
-                            <a class="project-and-reviews-kitchen-name">
+                            <span class="project-and-reviews-kitchen-name">
                                 {{ review.project_name }}
-                            </a>
+                            </span>
 
                         </div>
                         <div class="row project-and-reviews-slider-price-square mx-0">
