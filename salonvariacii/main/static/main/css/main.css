@@ -276,6 +276,8 @@ first-block-main-kitchen-carousel
 
 #first-block-main-kitchen-carousel .parent img {
   margin-top: -25px;
+  height: 100%;
+  width: 36%;
 }
 
 .text-width {

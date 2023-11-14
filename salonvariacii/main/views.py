@@ -60,12 +60,18 @@ def catalog(request):
     material = KitchenMaterial.objects.values("name").distinct()
     style = KitchenStyle.objects.values("name").distinct()
     feedbackForm = FeedbackForm()
+    title = "TITLEMAIN"
+    pageDescription = "pageDescription"
+    keyWords = "keyWords"
     data = {
         "kitchen": kitchen,
         "openingMethod": openingMethod,
         "material": material,
         "style": style,
         "feedbackForm": feedbackForm,
+        "title": title,
+        "pageDescription": pageDescription,
+        "keyWords": keyWords,
     }
     return render(request, "main/catalog.html", data)
 
