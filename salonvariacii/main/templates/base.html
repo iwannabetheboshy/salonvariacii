@@ -8,6 +8,7 @@
   <meta name="description" content="{{ pageDescription }}">
   <meta name="keywprds" content="{{ keyWords }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="{% static 'main/image/favicon.ico' %}">
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -216,7 +217,36 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="mainFeedBackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 431px;">
+    <div class="modal-content feedback">
+      <div class="modal-header border-0 p-0">
+        <h3>Заказать персональную<br>консультацию</h3>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Закрыть">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.0007 5.5865L11.9504 0.636719L13.3646 2.05093L8.4149 7.0007L13.3646 11.9504L11.9504 13.3646L7.0007 8.4149L2.05093 13.3646L0.636719 11.9504L5.5865 7.0007L0.636719 2.05093L2.05093 0.636719L7.0007 5.5865Z" fill="#787878"/>
+          </svg>
 
+        </button>
+      </div>
+      <div class="modal-body test p-0" aria-hidden="true">
+        <form id="feedback-form-modal" class="feedback-form-form" method="post">
+          {% csrf_token %}
+          <label for="id_name">Имя (обязательно)</label>
+          {{feedbackForm.name}}
+          <label for="id_number" id="label_number">Телефон (обязательно)</label>
+          {{feedbackForm.number}}
+          <label for="id_message" id="label_message">Сообщение</label>
+          {{feedbackForm.message}}
+          <button class="custom-button">Оставить заявку</button>
+        </form>
+        <div class="feedback-form-annotation">
+          Нажимая на кнопку “Отправить заявку”, Вы даете согласие на обработку <a href="">персональных данных</a> и соглашаетесь с <a href="">политикой конфиденциальности.</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
   window.onscroll = function () {
@@ -242,7 +272,7 @@
 </script>
 
 <script src="{% static 'main/js/header.js' %}"></script>
-<script src="https://unpkg.com/imask"></script>
+<script  src="https://unpkg.com/imask"></script>
 
 <script>
   phoneInputs = document.querySelectorAll('.fb_phone');

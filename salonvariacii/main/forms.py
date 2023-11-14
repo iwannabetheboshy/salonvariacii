@@ -27,3 +27,10 @@ class FeedbackForm(ModelForm):
                 'placeholder': 'Введите текст сообщения',
             }),
         }
+    
+   def __init__(self, *args, **kwargs):
+        super(FeedbackForm, self).__init__(*args, **kwargs)
+
+        # Удаление id для каждого поля
+        for field_name in self.fields:
+            self.fields[field_name].widget.attrs['id'] = ''

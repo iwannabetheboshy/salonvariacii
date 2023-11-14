@@ -1267,6 +1267,10 @@ footer .contacts svg:hover path {
   .project-and-reviews-nav button{
     position: initial;
   }
+
+  .slick-dots li span{
+    display: none;
+  }
 }
 
 
