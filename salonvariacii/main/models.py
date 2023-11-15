@@ -4,7 +4,6 @@ from django.core.validators import FileExtensionValidator
 from io import BytesIO
 from PIL import Image
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from moviepy.editor import VideoFileClip
 import uuid
 import os
 
@@ -22,7 +21,6 @@ class KitchenStyle(models.Model):
 
 class KitchenMaterial(models.Model):
     name = models.CharField('Наименование', max_length=50)
-    kitchen_styles = models.ForeignKey(KitchenStyle, on_delete=models.CASCADE, verbose_name="Вид кухни")
 
     class Meta:
         verbose_name = "материал"
@@ -34,7 +32,6 @@ class KitchenMaterial(models.Model):
 
 class KitchenOpeningMethod(models.Model):
     name = models.CharField('Наименование', max_length=50)
-    kitchen_styles = models.ForeignKey(KitchenStyle, on_delete=models.CASCADE, verbose_name="Вид кухни")
 
     class Meta:
         verbose_name = "cпособ открытия"
@@ -128,7 +125,7 @@ class KitchenFiles(models.Model):
 class Kitchen(models.Model):
     name = models.CharField('Наименование', max_length=50)
     desc = models.TextField('Описание для страницы кухни')
-    style = models.ForeignKey(KitchenStyle, on_delete=models.CASCADE, verbose_name="Вид кухни", related_name='kitchens')
+    style = models.ForeignKey(KitchenStyle, on_delete=models.CASCADE, verbose_name="Стиль кухни", related_name='kitchens')
     material = models.ManyToManyField(KitchenMaterial, verbose_name="Материал кухни")
     openingMethod = models.ManyToManyField(KitchenOpeningMethod, verbose_name="Метод открытия кухни")
     finishing = models.ManyToManyField(KitchenFinishing, verbose_name="Отделка кухни")

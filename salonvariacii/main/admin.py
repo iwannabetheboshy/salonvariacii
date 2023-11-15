@@ -7,19 +7,14 @@ class KitchenAdmin(admin.ModelAdmin):
     list_display = ("name", "style", "show_number")
     exclude = ['slug']
 
-    class Media:
-        js = ("main/js/custom_admin.js",)
-
 
 @admin.register(KitchenOpeningMethod)
 class KitchenOpeningMethodAdmin(admin.ModelAdmin):
-    list_display = ("name", "kitchen_styles")
-
+    pass
 
 @admin.register(KitchenMaterial)
 class KitchenMaterialAdmin(admin.ModelAdmin):
-    list_display = ("name", "kitchen_styles")
-
+    pass
 
 @admin.register(KitchenStyle)
 class KitchenStyleAdmin(admin.ModelAdmin):
