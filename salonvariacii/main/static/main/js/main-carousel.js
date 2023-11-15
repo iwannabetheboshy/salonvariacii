@@ -87,6 +87,7 @@ $(document).ready(function () {
     autoplaySpeed: 1000,
     infinite: false,
     dots: true,
+    lazyLoad: 'ondemand',
 
     customPaging: function (slider, i) {
       return '<span> 0' +( i + 1 ) + '</span>';
