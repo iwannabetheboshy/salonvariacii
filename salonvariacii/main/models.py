@@ -9,7 +9,9 @@ import os
 
 
 class KitchenStyle(models.Model):
-    name = models.CharField('Наименование', max_length=50)
+    name = models.CharField('Введите стиль кухни', 
+                            help_text=("Пример: «Классический стиль»"),
+                            max_length=50)
 
     class Meta:
         verbose_name = "стиль кухни"
@@ -20,7 +22,9 @@ class KitchenStyle(models.Model):
 
 
 class KitchenMaterial(models.Model):
-    name = models.CharField('Наименование', max_length=50)
+    name = models.CharField('Введите материал кухни',
+                            help_text=("Пример: «Лакированный»"),
+                            max_length=50)
 
     class Meta:
         verbose_name = "материал"
@@ -31,7 +35,9 @@ class KitchenMaterial(models.Model):
 
 
 class KitchenOpeningMethod(models.Model):
-    name = models.CharField('Наименование', max_length=50)
+    name = models.CharField('Введите способ открытия', 
+                            help_text=("Пример: «Ручка Pocket»"),
+                            max_length=50)
 
     class Meta:
         verbose_name = "cпособ открытия"
@@ -68,8 +74,12 @@ class KitchenPhoto(models.Model):
     
 
 class KitchenColors(models.Model):
-    name = models.CharField('Наименование цвета', max_length=50)
-    image = models.ImageField('Фото цвета', upload_to='kitchen/colors/')
+    name = models.CharField('Наименование цвета', 
+                            max_length=50, 
+                            help_text=("Введите наименование цвета"),)
+    image = models.ImageField('Фото цвета', 
+                              help_text=("Фотография плитки цвета. Доступные форматы: jpg, png, webp"),
+                              upload_to='kitchen/colors/')
 
 
     def save(self, *args, **kwargs):
@@ -99,8 +109,13 @@ class KitchenColors(models.Model):
         return self.name 
 
 class KitchenFinishing(models.Model):
-    name = models.CharField('Наименование отделки', max_length=50)
-    colors = models.ManyToManyField(KitchenColors, blank=True, verbose_name="Цвета кухни")
+    name = models.CharField('Введите наименование отделки',
+                            help_text=("Пример: «Дубовая древесина»"),
+                            max_length=50)
+    colors = models.ManyToManyField(KitchenColors, 
+                                    help_text=("Выберите один или несколько цветов, которые соответствуют данной отделке"),
+                                    blank=True, 
+                                    verbose_name="Цвета кухни")
 
     class Meta:
         verbose_name = "отделку кухни"
@@ -108,6 +123,12 @@ class KitchenFinishing(models.Model):
 
     def __str__(self):
         return self.name 
+    
+    def get_colors(self):
+        return "; ".join([str(color) for color in self.colors.all()])
+        
+
+    
 
 class KitchenFiles(models.Model):
     name = models.CharField('Имя файла', max_length=50)
@@ -123,20 +144,45 @@ class KitchenFiles(models.Model):
     
 
 class Kitchen(models.Model):
-    name = models.CharField('Наименование', max_length=50)
-    desc = models.TextField('Описание для страницы кухни')
-    style = models.ForeignKey(KitchenStyle, on_delete=models.CASCADE, verbose_name="Стиль кухни", related_name='kitchens')
-    material = models.ManyToManyField(KitchenMaterial, verbose_name="Материал кухни")
-    openingMethod = models.ManyToManyField(KitchenOpeningMethod, verbose_name="Метод открытия кухни")
-    finishing = models.ManyToManyField(KitchenFinishing, verbose_name="Отделка кухни")
-    files = models.ManyToManyField(KitchenFiles, verbose_name="Файлы кухни")
-    mainImage = models.ImageField('Главное фото', upload_to='kitchen/')
-    catalogVideo = models.FileField('Видео для каталога', upload_to ='kitchen/videos/',
-                                    validators=[FileExtensionValidator(allowed_extensions=["webm"])])
-    kitchenCardVideo = models.FileField('Видео для страницы кухни', upload_to ='kitchen/videos/',
-                                    validators=[FileExtensionValidator(allowed_extensions=["webm"])])
-    images = models.ManyToManyField(KitchenPhoto, verbose_name="Дополнительные фотографии кухни")
-    show_number = models.IntegerField('Номер показа в карусели каталога', null=True, blank=True)
+    name = models.CharField('Название кухни', max_length=50,  
+                            help_text=("Пример: «Stosa Young»"),)
+    desc = models.TextField('Описание для страницы кухни',  
+                            help_text=("Отображается в карточке кухни. Обратите внимание - учитываются отступы и знаки переноса"),)
+    style = models.ForeignKey(KitchenStyle, 
+                              on_delete=models.CASCADE, 
+                              verbose_name="Стиль кухни", 
+                              related_name='kitchens',  
+                              help_text=("«Любой» - означает, что кухня одновременно относится к классическому и современному стилю"),)
+    material = models.ManyToManyField(KitchenMaterial, 
+                                      verbose_name="Материал кухни",
+                                      help_text=("Выберите один или несколько материалов"))
+    openingMethod = models.ManyToManyField(KitchenOpeningMethod, 
+                                           verbose_name="Метод открытия кухни",
+                                           help_text=("Выберите один или несколько методов открытия кухни"))
+    finishing = models.ManyToManyField(KitchenFinishing, 
+                                       verbose_name="Отделка кухни",
+                                       help_text=("Выберите одну или несколько отделок кухни"))
+    files = models.ManyToManyField(KitchenFiles, 
+                                   verbose_name="PDF-файлы",
+                                   help_text=("Загрузите не более трех файлов в формате PDF. Присваиваете файлам корректные имена, например, «Техническое описание.pdf»"))
+    mainImage = models.ImageField('Главное фото кухни', 
+                                  upload_to='kitchen/',
+                                  help_text=("Отображается: 1) на главное странице в блоке «Каталог»; 2) на странице каталога"))
+    catalogVideo = models.FileField('Видео для каталога', 
+                                    upload_to ='kitchen/videos/',
+                                    validators=[FileExtensionValidator(allowed_extensions=["webm"])],
+                                    help_text=("Проигрывается на странице каталога при наведении курсора на изображение кухни. Доступные форматы: mp4, webm"))
+    kitchenCardVideo = models.FileField('Видео для карточки кухни', 
+                                        upload_to ='kitchen/videos/',
+                                        validators=[FileExtensionValidator(allowed_extensions=["webm"])],
+                                        help_text=("Отображается в карточке кухни. Доступные форматы: mp4, webm"))
+    images = models.ManyToManyField(KitchenPhoto, 
+                                    verbose_name="Дополнительные фотографии кухни",
+                                    help_text=("Объекты отображаются в порядке их добавления"))
+    show_number = models.IntegerField('Номер показа в карусели каталога', 
+                                      null=True, 
+                                      blank=True,
+                                      help_text=("Объекты отображаются в порядке возрастания"))
     slug = models.SlugField(blank=True)
     
 
@@ -173,9 +219,14 @@ class Kitchen(models.Model):
 
 
 class MainPageCarousel(models.Model):
-    name = models.CharField('Название кухни', max_length=50)
-    image = models.ImageField('Фото кухни',  upload_to='carousel/')
-    show_number = models.IntegerField()
+    name = models.CharField('Название кухни', 
+                            max_length=50,
+                            help_text=("Пример: «Stosa Young»"))
+    image = models.ImageField('Фото кухни',  
+                              upload_to='carousel/',
+                              help_text=("Доступные форматы: jpg, png, webp"))
+    show_number = models.IntegerField('Номер показа в карусели ', 
+                                      help_text=("Объекты отображаются в порядке возрастания"))
 
     def save(self, *args, **kwargs):
         if self.image:
@@ -198,7 +249,7 @@ class MainPageCarousel(models.Model):
 
     class Meta:
         verbose_name = "кухню"
-        verbose_name_plural = "Кухни в карусели на главной странице"
+        verbose_name_plural = "Карусель кухонь на первом экране"
 
     def __str__(self):
         return self.name
@@ -206,36 +257,54 @@ class MainPageCarousel(models.Model):
     
 
 class AboutUsDopBlock(models.Model):
-    name = models.CharField('Подпись', max_length=50)
-    value = models.CharField('Значение', max_length=50)
+    value = models.CharField('Значение', 
+                             max_length=50,
+                             help_text=("Укажите число, включая единицы измерения. Например, 100%"))
+    name = models.CharField('Подпись', 
+                            max_length=50,
+                            help_text=("Пример: «сделано в Италии»"))
+    show_number = models.IntegerField('Номер показа ', 
+                                      help_text=("Объекты отображаются в порядке возрастания (слева направо)"))
     
     class Meta:
-        verbose_name = "Маленький блок в блоке о нас"
-        verbose_name_plural = "Дополнительные значения в блоке о нас"
+        verbose_name = "О нас в цифрах"
+        verbose_name_plural = "О нас в цифрах "
 
     def __str__(self):
         return self.name 
 
 
 class AboutUs(models.Model):
-    image = models.ImageField('Фото', upload_to='about/')
-    text = models.TextField('Текст')
+    text = models.TextField('Текст',
+                            help_text=("Обратите внимание - учитываются отступы и знаки переноса"))
+    image = models.ImageField('Главное фото в блоке «О нас»', 
+                              upload_to='about/',
+                              help_text=("Доступные форматы: jpg, png, webp"))
     
     class Meta:
-        verbose_name = "блок о нас"
-        verbose_name_plural = "Блок о нас"
+        verbose_name = "основную информацию «О нас»"
+        verbose_name_plural = "Основная информация «О нас»"
 
     def __str__(self):
         return self.image.url  
 
 
 class ReviewsAndProject(models.Model):
-    image = models.ImageField('Фото', upload_to='review/')
-    project_name = models.CharField('Название кухни', max_length=50)
-    price = models.IntegerField('Стоимость проекта')
-    squeare = models.IntegerField('Площадь кухни')
-    review_name = models.CharField('Имя заказчика', max_length=100)
-    text = models.TextField('Текст отзыва')
+    image = models.ImageField('Главная фотография проекта', 
+                              upload_to='review/',
+                              help_text=("Доступные форматы: jpg, png, webp"))
+    project_name = models.CharField('Название кухни', 
+                                    max_length=50,
+                                    help_text=("Пример: «Stosa Young»"))
+    price = models.IntegerField('Стоимость проекта',
+                                help_text=("Введите стоимость проекта в евро"))
+    squeare = models.IntegerField('Площадь проекта',
+                                  help_text=("Введите площадь проекта в квадратных метрах"))
+    review_name = models.CharField('Фамилия и имя заказчика', 
+                                   max_length=100,
+                                   help_text=("Пример: «Иванов Иван»"))
+    text = models.TextField('Текст отзыва',
+                            help_text=("Обратите внимание - учитываются отступы и знаки переноса"))
     
     def save(self, *args, **kwargs):
         if self.image:
@@ -257,18 +326,21 @@ class ReviewsAndProject(models.Model):
         super().save(*args, **kwargs)
 
     class Meta:
-        verbose_name = "отзыв"
-        verbose_name_plural = "Отзывы"
+        verbose_name = "наш проект"
+        verbose_name_plural = "Наши проекты"
 
 
 class LookAt(models.Model):
     content = models.FileField('Фото или видео',
-                              help_text=("png, jpg, webp, mp4, webm"),
+                              help_text=("Доступные форматы: jpg, png, webp, mp4, webm"),
                               upload_to='look_at/')
 
-    name = models.CharField('Название видео', max_length=50)
+    name = models.CharField('Название видео', max_length=50,
+                            help_text=("Обратите внимание - учитывается регистр введенных символов"))
     likes = models.IntegerField('Количество лайков')
-    show_number = models.IntegerField('Номер показа', default=0)
+    show_number = models.IntegerField('Номер показа', 
+                                      default=0,
+                                      help_text=("Объекты отображаются в порядке возрастания"))
 
     class Meta:
         verbose_name = "взгляни сам"

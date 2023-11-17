@@ -126,35 +126,43 @@ ADMIN_REORDER = (
         "app" : "main",
         "label" : "Кухни",
         "models" : (
-            "main.Kitchen",
             "main.KitchenStyle",
-            "main.KitchenMaterial",
             "main.KitchenOpeningMethod",
-            "main.KitchenFinishing",
+            "main.KitchenMaterial",
             "main.KitchenColors",
-            "main.KitchenFiles",
-            "main.KitchenPhoto",
+            "main.KitchenFinishing",
+            "main.Kitchen",
         )
     },
 
      {
         'app': 'main',
-        'label': 'Отображаемое на главной странице',
+        'label': 'Блок о нас',
         'models': (
-            'main.MainPageCarousel',
             "main.AboutUs",
             'main.AboutUsDopBlock',
+
+        )
+    },
+
+    {
+        'app': 'main',
+        'label': 'Главная страница',
+        'models': (
+            'main.MainPageCarousel',
             'main.ReviewsAndProject',
             'main.LookAt',
 
         )
     },
 
-    {'app': 'auth', 'models': (
-        'auth.Group',
-        {'model': 'auth.User', 'label': 'Пользователи'},
-    )}
+    {
+        'app': 'main',
+        'label': 'Заявки',
+        'models': (
+            'main.FeedBack',
 
+        )
+    },
 
-    
 )

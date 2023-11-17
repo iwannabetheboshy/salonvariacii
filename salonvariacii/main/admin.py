@@ -4,7 +4,20 @@ from .models import *
 
 @admin.register(Kitchen)
 class KitchenAdmin(admin.ModelAdmin):
-    list_display = ("name", "style", "show_number")
+    fieldsets = (
+      ('Основные сведения', {
+          'fields': ('name', 'desc', 'style', 'material', 'openingMethod', 'finishing', 'show_number')
+      }),
+      ('Медиа-файлы кухни', {
+          'fields': ('mainImage', 'catalogVideo', 'kitchenCardVideo')
+      }),
+      ('Карусель фотографий в карточке кухни', {
+          'fields': ('images',)
+      }),
+      ('Сопроводительные PDF-файлы для кухни', {
+          'fields': ('files',)
+      }),
+   )
     exclude = ['slug']
 
 
@@ -28,12 +41,12 @@ class KitchenPhotoAdmin(admin.ModelAdmin):
 
 @admin.register(MainPageCarousel)
 class MainPageCarouselAdmin(admin.ModelAdmin):
-    list_display = ("name", "image", "show_number")
+    list_display = ("name", "show_number")
 
 
 @admin.register(AboutUsDopBlock)
 class AboutUsDopBlocklAdmin(admin.ModelAdmin):
-    list_display = ("name", "value")
+    list_display = ("value", "name", "show_number")
 
 
 @admin.register(AboutUs)
@@ -42,7 +55,7 @@ class AboutUslAdmin(admin.ModelAdmin):
 
 @admin.register(ReviewsAndProject)
 class ReviewsAndProjectAdmin(admin.ModelAdmin):
-    list_display = ("project_name", "price", "squeare", "review_name", "text", "image")
+    list_display = ("project_name", "price", "squeare", "review_name", "text")
 
 @admin.register(FeedBack)
 class FeedBackAdmin(admin.ModelAdmin):
@@ -62,4 +75,4 @@ class KitchenColorsAdmin(admin.ModelAdmin):
 
 @admin.register(KitchenFinishing)
 class KitchenFinishingAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("name", "get_colors")

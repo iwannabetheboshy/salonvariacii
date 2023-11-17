@@ -27,7 +27,7 @@ def get_related_items_for_admin(request):
 def main(request):
     sliderPhoto = MainPageCarousel.objects.all().order_by('show_number')
     about = AboutUs.objects.first()
-    aboutMini = AboutUsDopBlock.objects.all()
+    aboutMini = AboutUsDopBlock.objects.all().order_by('show_number')
     numberOfBlocksAboutMini = aboutMini.count() 
     catalog_carousel = Kitchen.objects.exclude(show_number=None).order_by('show_number')
     reviews = ReviewsAndProject.objects.all()
