@@ -255,8 +255,8 @@
         <div class="catalog-video-container mb-3" >
           <a href="/kitchen/{{ kit.slug }}">
             <img src="{{kit.mainImage.url}}" alt="">
-            <div id="{{kit.slug}}-yt" data-load="0" class="youtube-container"></div>
-            <!--<video  height="100%" src="{{kit.catalogVideo.url}}" preload="auto" muted loop disablePictureInPicture></video>-->
+            <div id="{{kit.slug}}-yt" data-load="0" class="youtube-container" data-url="{{kit.catalogVideoUrl}}"></div>
+            
           </a>
         </div>
         

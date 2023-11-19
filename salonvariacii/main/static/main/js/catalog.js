@@ -237,13 +237,14 @@ function cleanCheck() {
 
 $(document).ready(function () {
   $(".catalog-video-container").on("mouseenter", function () {
-
-    $(this).find("img").hide();
+      $(this).find("img").addClass("hide-image");
 
     yt_container = this.querySelector(".youtube-container")
     if (yt_container.getAttribute("data-load") == 0) {
-        yt_container.innerHTML = '<iframe src="https://www.youtube.com/embed/z8xoGi5pK70?autoplay=1&mute=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
-        yt_container.setAttribute("data-load", "1")
+        var url = yt_container.getAttribute("data-url");
+       
+        yt_container.innerHTML = `<iframe src="https://www.youtube.com/embed/${url}?autoplay=1&mute=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        yt_container.setAttribute("data-load", "1");
     }
     else {
         var iframe = yt_container.getElementsByTagName("iframe")[0].contentWindow;
@@ -252,9 +253,21 @@ $(document).ready(function () {
   });
 
   $(".catalog-video-container").on("mouseleave", function () {
-    $(this).find("img").show();
+    $(this).find("img").removeClass("hide-image");
     yt_container = this.querySelector(".youtube-container")
         var iframe = yt_container.getElementsByTagName("iframe")[0].contentWindow;
-        iframe.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
+        try{
+          if(iframe.constructor.name === 'Window'){
+            setTimeout(function() {
+              iframe.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
+            }, 1000);
+          }
+        }
+        catch{
+          iframe.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
+        }
+        
+        
+       
   });
 });

@@ -68,11 +68,9 @@
             </div>
         </div>
         <div class="col-xl-6 order-xl-last col-12 order-first pe-0 kitchen-annotation-right">
-            <video src="{{ kitchen.kitchenCardVideo.url }}" muted loop></video>
-            <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M36 66C19.4314 66 6 52.5684 6 36C6 19.4314 19.4314 6 36 6C52.5684 6 66 19.4314 66 36C66 52.5684 52.5684 66 36 66ZM36 60C49.2549 60 60 49.2549 60 36C60 22.7452 49.2549 12 36 12C22.7452 12 12 22.7452 12 36C12 49.2549 22.7452 60 36 60ZM31.8657 25.2438L46.5024 35.0016C47.0538 35.3691 47.2029 36.1143 46.8351 36.6657C46.7472 36.7974 46.6341 36.9105 46.5024 36.9984L31.8657 46.7562C31.3143 47.124 30.5691 46.9749 30.2016 46.4235C30.0702 46.2264 30 45.9948 30 45.7578V26.2422C30 25.5795 30.5373 25.0422 31.2 25.0422C31.437 25.0422 31.6686 25.1123 31.8657 25.2438Z" />
-            </svg>
+            <div class="kitchenCard-video-container" >
+                <iframe src="https://www.youtube.com/embed/{{ kitchenCardVideoUrl }}?rel=0&autoplay=0&mute=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&enablejsapi=1&theme=dark" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; rel=0" allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 </section>

@@ -4,6 +4,8 @@ from .models import *
 
 @admin.register(Kitchen)
 class KitchenAdmin(admin.ModelAdmin):
+    list_display=('name', 'style', 'get_material', 'get_openingMethod', 'get_finishing', 'show_number')
+    filter_horizontal = ('material','openingMethod', 'finishing','files', 'images') 
     fieldsets = (
       ('Основные сведения', {
           'fields': ('name', 'desc', 'style', 'material', 'openingMethod', 'finishing', 'show_number')
@@ -18,7 +20,10 @@ class KitchenAdmin(admin.ModelAdmin):
           'fields': ('files',)
       }),
    )
-    exclude = ['slug']
+    exclude = ['slug', 'catalogVideoUrl']
+
+    
+
 
 
 @admin.register(KitchenOpeningMethod)
@@ -76,3 +81,4 @@ class KitchenColorsAdmin(admin.ModelAdmin):
 @admin.register(KitchenFinishing)
 class KitchenFinishingAdmin(admin.ModelAdmin):
     list_display = ("name", "get_colors")
+    filter_horizontal = ('colors',) 

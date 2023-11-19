@@ -29,7 +29,7 @@ def main(request):
     about = AboutUs.objects.first()
     aboutMini = AboutUsDopBlock.objects.all().order_by('show_number')
     numberOfBlocksAboutMini = aboutMini.count() 
-    catalog_carousel = Kitchen.objects.exclude(show_number=None).order_by('show_number')
+    catalog_carousel = Kitchen.objects.exclude(show_number=None).order_by('show_number')[:5]  
     reviews = ReviewsAndProject.objects.all()
     look_at = LookAt.objects.all().exclude(show_number=None).order_by('show_number')
     feedbackForm = FeedbackForm()
@@ -55,7 +55,7 @@ def main(request):
 
 
 def catalog(request):
-    kitchen = Kitchen.objects.all()
+    kitchen = Kitchen.objects.all().order_by('show_number')
     openingMethod = KitchenOpeningMethod.objects.values("name").distinct()
     material = KitchenMaterial.objects.values("name").distinct()
     style = KitchenStyle.objects.values("name").distinct()
@@ -94,5 +94,17 @@ def sendFeedBack(request):
 
 def kitchenCard(request, slug):
     kitchen = Kitchen.objects.get(slug=slug)
+    kitchenCardVideoUrl = kitchen.kitchenCardVideo.split("v=")[1]
     feedbackForm = FeedbackForm()
-    return render(request, "main/kitchenCard.html", {"kitchen": kitchen, "feedbackForm": feedbackForm}) 
+    title = "TITLEMAIN"
+    pageDescription = "pageDescription"
+    keyWords = "keyWords"
+    data = {
+        "kitchen": kitchen,
+        "feedbackForm": feedbackForm,
+        "title": title,
+        "pageDescription": pageDescription,
+        "keyWords": keyWords,
+        "kitchenCardVideoUrl": kitchenCardVideoUrl,
+    }
+    return render(request, "main/kitchenCard.html", data) 
