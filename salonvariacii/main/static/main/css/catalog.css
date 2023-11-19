@@ -1,3 +1,15 @@
+.youtube-container {
+	overflow: hidden;
+	width: 100%;
+	pointer-events: none;
+}
+
+.youtube-container iframe {
+	width: 300%;
+	height: 343px;
+	margin-left: -100%;
+}
+
 #catalog-header,
 #catalog-filter {
     max-width: 1420px;
@@ -64,6 +76,7 @@ catalog-filter-result
 
 .catalog-video-container {
     position: relative;
+    height: 343px;
 }
 
 .catalog-video-container video {

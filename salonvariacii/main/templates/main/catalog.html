@@ -255,7 +255,8 @@
         <div class="catalog-video-container mb-3" >
           <a href="/kitchen/{{ kit.slug }}">
             <img src="{{kit.mainImage.url}}" alt="">
-            <video  height="100%" src="{{kit.catalogVideo.url}}" preload="auto" muted loop disablePictureInPicture></video>
+            <div id="{{kit.slug}}-yt" data-load="0" class="youtube-container"></div>
+            <!--<video  height="100%" src="{{kit.catalogVideo.url}}" preload="auto" muted loop disablePictureInPicture></video>-->
           </a>
         </div>
         
@@ -393,7 +394,7 @@
 
 </section>
 
-
+<script async src="https://www.youtube.com/iframe_api"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
   integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="{% static 'main/js/catalog.js' %}"></script>

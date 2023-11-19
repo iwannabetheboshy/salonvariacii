@@ -237,13 +237,24 @@ function cleanCheck() {
 
 $(document).ready(function () {
   $(".catalog-video-container").on("mouseenter", function () {
-    $(this).find("img").hide();
-    $(this).find("video").trigger('play');
 
+    $(this).find("img").hide();
+
+    yt_container = this.querySelector(".youtube-container")
+    if (yt_container.getAttribute("data-load") == 0) {
+        yt_container.innerHTML = '<iframe src="https://www.youtube.com/embed/z8xoGi5pK70?autoplay=1&mute=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+        yt_container.setAttribute("data-load", "1")
+    }
+    else {
+        var iframe = yt_container.getElementsByTagName("iframe")[0].contentWindow;
+        iframe.postMessage('{"event":"command","func":"playVideo","args":""}', "*");
+    }
   });
 
   $(".catalog-video-container").on("mouseleave", function () {
-    $(this).find("video").trigger('pause');
     $(this).find("img").show();
+    yt_container = this.querySelector(".youtube-container")
+        var iframe = yt_container.getElementsByTagName("iframe")[0].contentWindow;
+        iframe.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");
   });
 });
