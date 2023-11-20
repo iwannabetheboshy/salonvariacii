@@ -5,23 +5,16 @@ from .forms import FeedbackForm
 import telebot
 from decouple import config
 
-
-def get_related_items_for_admin(request):
-    selected_styles = request.GET.get('styles')
-    selected_styles = selected_styles.split(',')
-
-    materials = KitchenMaterial.objects.filter(kitchen_styles__pk__in=selected_styles)
-    opening_methods = KitchenOpeningMethod.objects.filter(kitchen_styles__pk__in=selected_styles)
-
-    material_data = [{'id': material.id, 'name': material.name} for material in materials]
-    opening_method_data = [{'id': opening_method.id, 'name': opening_method.name} for opening_method in opening_methods]
-
-    response_data = {
-        'materials': material_data,
-        'opening_methods': opening_method_data,
-    }
-
-    return JsonResponse(response_data)
+def get_url_youtube(url):
+    if(url.rfind('share') != -1):
+        questionMark = url.rfind('?')
+        slash = url.rfind('/')
+        return url[slash+1:questionMark]        
+    elif(url.rfind('v=') != -1): 
+        return url.split("v=")[1]
+    else:
+        slash = url.rfind('/')
+        return url[slash+1:]
 
 
 def main(request):
@@ -56,6 +49,8 @@ def main(request):
 
 def catalog(request):
     kitchen = Kitchen.objects.all().order_by('show_number')
+    for kit in kitchen:
+        kit.catalogVideo = get_url_youtube(kit.catalogVideo)
     openingMethod = KitchenOpeningMethod.objects.values("name").distinct()
     material = KitchenMaterial.objects.values("name").distinct()
     style = KitchenStyle.objects.values("name").distinct()
@@ -94,7 +89,7 @@ def sendFeedBack(request):
 
 def kitchenCard(request, slug):
     kitchen = Kitchen.objects.get(slug=slug)
-    kitchenCardVideoUrl = kitchen.kitchenCardVideo.split("v=")[1]
+    kitchen.kitchenCardVideo = get_url_youtube(kitchen.kitchenCardVideo)
     feedbackForm = FeedbackForm()
     title = "TITLEMAIN"
     pageDescription = "pageDescription"
@@ -105,6 +100,5 @@ def kitchenCard(request, slug):
         "title": title,
         "pageDescription": pageDescription,
         "keyWords": keyWords,
-        "kitchenCardVideoUrl": kitchenCardVideoUrl,
     }
     return render(request, "main/kitchenCard.html", data) 

@@ -1282,6 +1282,8 @@ footer .contacts svg:hover path {
   .slick-dots li span{
     display: none;
   }
+  
+
 }
 
 
@@ -1513,11 +1515,32 @@ footer .contacts svg:hover path {
   margin: 30px auto;
 }
 
+#videoModal .modal-content{
+  background-color: transparent;
+  border: transparent;
+}
+
 .modal-body {
   position: relative;
   padding: 0px;
 }
 
+#player .ratio{
+  max-width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@media (max-width: 1200px) {
+  #player .ratio{
+    max-width: 100%;
+  }
+
+  #videoModal .modal-dialog{
+    max-width: 95%;
+  }
+}
 
 /*-----------------------
 Modal Feedback

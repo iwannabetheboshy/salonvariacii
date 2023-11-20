@@ -95,7 +95,7 @@ catalog-filter-result
 }
 
 .catalog-video-container .hide-image{
-    transition: opacity 2.5s ease !important;
+    transition: opacity 1s ease !important;
     opacity: 0;
 }
 

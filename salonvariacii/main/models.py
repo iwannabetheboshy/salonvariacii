@@ -169,10 +169,10 @@ class Kitchen(models.Model):
                                   upload_to='kitchen/',
                                   help_text=("Отображается: 1) на главное странице в блоке «Каталог»; 2) на странице каталога"))
     catalogVideo = models.CharField('Видео для каталога', 
-                                    max_length=50,
+                                    max_length=100,
                                     help_text=("Проигрывается на странице каталога при наведении курсора на изображение кухни. Например: https://www.youtube.com/watch?v=z8xoGi5pK70") )
     kitchenCardVideo = models.CharField('Видео для карточки кухни',
-                                        max_length=50,
+                                        max_length=100,
                                         help_text=("Отображается в карточке кухни. Например: https://www.youtube.com/watch?v=z8xoGi5pK70"))
     images = models.ManyToManyField(KitchenPhoto, 
                                     verbose_name="Дополнительные фотографии кухни",
@@ -182,12 +182,11 @@ class Kitchen(models.Model):
                                       blank=True,
                                       help_text=("Объекты отображаются в порядке возрастания"))
     slug = models.SlugField(blank=True)
-    catalogVideoUrl = models.CharField(blank=True, max_length=10)
+    
 
     def save(self, *args, **kwargs):
         # Генерируем slug из названия кухни
         self.slug = slugify(self.name)
-        self.catalogVideoUrl = self.catalogVideo.split("v=")[1]
         if self.mainImage:
             file_name = os.path.basename(self.mainImage.name)
             file_extension = os.path.splitext(file_name)[1][1:].lower()

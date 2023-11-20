@@ -20,14 +20,4 @@ $(document).ready(function () {
         ]
     });
 
-    $('.kitchen-annotation-right').click(function () {
-        console.log($(this).find("video")[0].paused);
-        if ($(this).find("video")[0].paused) {
-            $(this).find("svg").hide();
-            $(this).find("video").trigger('play');
-        } else {
-            $(this).find("video").trigger('pause');
-            $(this).find("svg").show();
-        }
-    });
 });
