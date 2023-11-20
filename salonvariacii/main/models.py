@@ -145,7 +145,7 @@ class KitchenFiles(models.Model):
 
 class Kitchen(models.Model):
     name = models.CharField('Название кухни', max_length=50,  
-                            help_text=("Пример: «Stosa Young»"),)
+                            help_text=("Пример: «Young»"),)
     desc = models.TextField('Описание для страницы кухни',  
                             help_text=("Отображается в карточке кухни. Обратите внимание - учитываются отступы и знаки переноса"),)
     style = models.ForeignKey(KitchenStyle, 
@@ -186,7 +186,7 @@ class Kitchen(models.Model):
 
     def save(self, *args, **kwargs):
         # Генерируем slug из названия кухни
-        self.slug = slugify(self.name)
+        self.slug = "stosa_" + slugify(self.name).replace('-', '_')
         if self.mainImage:
             file_name = os.path.basename(self.mainImage.name)
             file_extension = os.path.splitext(file_name)[1][1:].lower()

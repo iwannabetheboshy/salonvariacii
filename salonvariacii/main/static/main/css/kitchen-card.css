@@ -216,7 +216,7 @@ color-and-fishing
 }
 
 .finishing-color {
-    float: left;
+    display: inline-grid;
     margin-right: 16px;
     margin-top: 16px;
     color: #1E1E1E;
@@ -241,6 +241,10 @@ color-and-fishing
 .finishing-color-name {
     width: 120px;
     margin-top: 12px;
+}
+
+.test{
+    padding-right: 16px;
 }
 
 /*--------------------------------------------------
@@ -310,6 +314,7 @@ certified-quality
     .custom-button {
         margin-top: 0;
     }
+
 
     .kitchen-card-files{
         margin-top: 4%;

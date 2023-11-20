@@ -1,9 +1,10 @@
-from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponse
 from django.shortcuts import render
 from .models import *
 from .forms import FeedbackForm
 import telebot
 from decouple import config
+
 
 def get_url_youtube(url):
     if(url.rfind('share') != -1):
@@ -23,12 +24,14 @@ def main(request):
     aboutMini = AboutUsDopBlock.objects.all().order_by('show_number')
     numberOfBlocksAboutMini = aboutMini.count() 
     catalog_carousel = Kitchen.objects.exclude(show_number=None).order_by('show_number')[:5]  
+    for kit in catalog_carousel:
+        kit.name = kit.name.capitalize()
     reviews = ReviewsAndProject.objects.all()
     look_at = LookAt.objects.all().exclude(show_number=None).order_by('show_number')
     feedbackForm = FeedbackForm()
-    title = "TITLEMAIN"
-    pageDescription = "pageDescription"
-    keyWords = "keyWords"
+    title = "Кухни на заказ в итальянском стиле по индивидуальным размерам. Stosa Cucine"
+    pageDescription = "Заказать итальянскую кухонную мебель и гарнитур во Владивостоке. Современная или классическая кухня. Дизайн под заказ. Можем изготовить по индивидуальным размерам с установкой"
+    keyWords = "итальянские кухни, итальянская кухня фото,  кухня в итальянском стиле фото, купить итальянскую кухню, кухня в итальянском стиле, кухонная мебель италии, ручки для кухонной мебели италия, современные итальянские кухни, кухонный гарнитур италия, итальянская кухня цена, итальянская мебель для кухни, купить кухню, купить кухню под заказ, кухня из дерева купить, мебель для кухни, купить мебель для кухни, сайт мебели для кухни, мебель для кухни фото и цены, кухня фото дизайн, заказать индивидуальную кухню, заказать кухню по индивидуальным размерам"
 
     data = {
         "sliderPhoto": sliderPhoto,
@@ -51,13 +54,14 @@ def catalog(request):
     kitchen = Kitchen.objects.all().order_by('show_number')
     for kit in kitchen:
         kit.catalogVideo = get_url_youtube(kit.catalogVideo)
+        kit.name = kit.name.capitalize()
     openingMethod = KitchenOpeningMethod.objects.values("name").distinct()
     material = KitchenMaterial.objects.values("name").distinct()
     style = KitchenStyle.objects.values("name").distinct()
     feedbackForm = FeedbackForm()
-    title = "TITLEMAIN"
-    pageDescription = "pageDescription"
-    keyWords = "keyWords"
+    title = "Каталог кухонь из Италии с фото и ценами. Купить кухню во Владивостоке. Stosa Cucine"
+    pageDescription = "Каталог кухонь. Кухни на заказ по индивидуальным размерам. Отделка и материал на выбор. Встраиваемые кухонные гарнитуры, различные системы открывания. Фабрика мебель STOSA CUCINE"
+    keyWords = "итальянские кухни, итальянская кухня фото,  кухня в итальянском стиле фото, купить итальянскую кухню, кухня в итальянском стиле, кухонная мебель италии, ручки для кухонной мебели италия, современные итальянские кухни, кухонный гарнитур италия, итальянская кухня цена, итальянская мебель для кухни, купить кухню под заказ, кухня из дерева купить, мебель для кухни, купить мебель для кухни, сайт мебели для кухни, мебель для кухни фото и цены, кухня фото дизайн, заказать индивидуальную кухню, заказать кухню по индивидуальным размерам,"
     data = {
         "kitchen": kitchen,
         "openingMethod": openingMethod,
@@ -89,11 +93,17 @@ def sendFeedBack(request):
 
 def kitchenCard(request, slug):
     kitchen = Kitchen.objects.get(slug=slug)
+    kitchen.name = kitchen.name.capitalize()
     kitchen.kitchenCardVideo = get_url_youtube(kitchen.kitchenCardVideo)
     feedbackForm = FeedbackForm()
-    title = "TITLEMAIN"
-    pageDescription = "pageDescription"
-    keyWords = "keyWords"
+    descriptionStyle = (
+        "современном" if str(kitchen.style).strip() == "Современный стиль" else
+        "классическом" if str(kitchen.style).strip() == "Классический стиль" else
+        "современном, классическом"
+    )
+    title = "Итальянская кухня Stosa" +  kitchen.name + ". Индивидуальные размеры, отделка на выбор. Stosa Cucine"
+    pageDescription = "Stosa " + kitchen.name + ". Мебель для кухни Stosa Cucine. Качественный кухонный гарнитур, индивидуальный проект. Кухни в " + descriptionStyle + ' стиле. ' + ', '.join([str(mat) for mat in kitchen.material.all()])
+    keyWords =  "Stosa " + kitchen.name + ", " + ', '.join([str(mat) for mat in kitchen.material.all()])  +', '+ ', '.join([str(mat) for mat in kitchen.openingMethod.all()]) +', ' +', '.join([str(mat) for mat in kitchen.finishing.all()]) + ', ' + ', '.join([str(color) for mat in kitchen.finishing.all() for color in mat.colors.all()])
     data = {
         "kitchen": kitchen,
         "feedbackForm": feedbackForm,

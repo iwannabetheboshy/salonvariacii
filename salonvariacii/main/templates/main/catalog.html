@@ -148,14 +148,14 @@
             </svg>
             </div>
             <div class="sub-menu hidden">
-              <label class="control control--radio">Любой
+              <label class="control control--checkbox">Любой
                 <input name="style" type="radio" id="style" value="Любой"> 
                 <div class="control__indicator">
                 </div>
               </label>
                 {% for s in style%}
                 <div>
-                  <label class="control control--radio">{{ s.name }}
+                  <label class="control control--checkbox">{{ s.name }}
                   <input name="style" type="radio" id="style" value="{{ s.name }}"> 
                   <div class="control__indicator">
                   </div>

@@ -173,10 +173,11 @@
                 <div class="slide">
                     <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
                     <div class="content">
-                        <div class="slider-catalog-kitchen-name">
-                            Кухни {{ kitchen.name }}
-                        </div>
                         <a href="/kitchen/{{ kitchen.slug }}">
+                        <div class="slider-catalog-kitchen-name">
+                            Кухни Stosa {{ kitchen.name }}
+                        </div>
+                            <div>
                             Подробнее
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -184,6 +185,7 @@
                                         d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
                                         fill="#1E1E1E" />
                             </svg>
+                        </div>
                         </a>
                     </div>
                 </div>
@@ -197,10 +199,11 @@
                 <div class="slid-mobile">
                     <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
                     <div class="content-mobile">
+                        <a href="/kitchen/{{ kitchen.slug }}">
                         <div class="slider-catalog-kitchen-name">
                             Кухни {{ kitchen.name }}
                         </div>
-                        <a href="/kitchen/{{ kitchen.slug }}">
+                            <div>
                             Подробнее
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                  xmlns="http://www.w3.org/2000/svg">
@@ -208,6 +211,7 @@
                                         d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
                                         fill="#1E1E1E" />
                             </svg>
+                        </div>
                         </a>
                     </div>
                 </div>
@@ -384,10 +388,8 @@
     <div class="hero-marquee py-0" style="--card-count: 12;" >
         <div class="hero-marquee__track">
             <div class="hero-marquee__grid">
-
-                {% for i in '1234' %}
+                
                 {% for item in look_at %}
-
                 <div class="hero-marquee-item" data-lazy-parent>
                     <div class="hero-marquee-item__info">
                         <div class="lottie"></div>
@@ -428,14 +430,13 @@
                     </div>
                 </div>
                 {%endfor%}
-                {%endfor%}
 
             </div>
         </div>
     </div>
 </section>
 
-<div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade px-0" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body" id="player">   
