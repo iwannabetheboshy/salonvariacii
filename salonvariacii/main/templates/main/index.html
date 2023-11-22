@@ -71,7 +71,7 @@
                     </button>
                 </div>
                 <div class="col-xl-6 col-12 px-0">
-                    <span class="watch-video">
+                    <span class="watch-video px-0">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -98,7 +98,7 @@
             <div class="col-xl-6 col-12 about-us-text-block">
                 <h2 class="desk">О нас</h2>
                 <div class="about-us-text">
-                    {{ about.text|safe }}
+                    {{ about.text|linebreaksbr }}
                 </div>
                 <div class="about-us-text-dop row row-cols-3">
                     {% if numberOfBlocksAboutMini == 4%}
@@ -174,18 +174,18 @@
                     <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
                     <div class="content">
                         <a href="/kitchen/{{ kitchen.slug }}">
-                        <div class="slider-catalog-kitchen-name">
-                            Кухни Stosa {{ kitchen.name }}
-                        </div>
+                            <div class="slider-catalog-kitchen-name">
+                                Кухни Stosa {{ kitchen.name }}
+                            </div>
                             <div>
-                            Подробнее
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                        d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
-                                        fill="#1E1E1E" />
-                            </svg>
-                        </div>
+                                Подробнее
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                            d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
+                                            fill="#1E1E1E" />
+                                </svg>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -200,18 +200,18 @@
                     <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
                     <div class="content-mobile">
                         <a href="/kitchen/{{ kitchen.slug }}">
-                        <div class="slider-catalog-kitchen-name">
-                            Кухни {{ kitchen.name }}
-                        </div>
+                            <div class="slider-catalog-kitchen-name">
+                                Кухни {{ kitchen.name }}
+                            </div>
                             <div>
-                            Подробнее
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                 xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                        d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
-                                        fill="#1E1E1E" />
-                            </svg>
-                        </div>
+                                Подробнее
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                            d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
+                                            fill="#1E1E1E" />
+                                </svg>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -245,8 +245,7 @@
                     Компетентность
                 </div>
                 <div class="col advantages-content-title-text">
-                    Мы предоставляем вам персонального консультанта по кухне с самого первого телефонного звонка.
-                </div>
+                    Итальянская кухня под заказ - это искусство, которым мы занимаемся уже более 50 лет. Тщательный контроль за процессом изготовления и надежные материалы - залог нашего успеха                </div>
             </div>
             <div class="block col-lg-6 col-xl-3 col-12 ps-0">
                 <div class="col advantages-content-title">
@@ -258,8 +257,7 @@
                     Индивидуальность
                 </div>
                 <div class="col advantages-content-title-text">
-                    Выбор материала для фасада или корпуса, адаптация столешницы к дизайну и оборудование, идеально
-                    адаптированное к вашей повседневной жизни.
+                    Вы можете заказать кухню по индивидуальным размерам, а мы подберем дизайн кухни именно для вас. Вы можете выбрать цвет и материал для вашей идеальной кухни
                 </div>
             </div>
             <div class="block col-lg-6 col-xl-3 col-12 ps-0">
@@ -272,8 +270,7 @@
                     Надежность
                 </div>
                 <div class="col advantages-content-title-text">
-                    Фасады толщиной 23 мм в кухнях, созданных из долговечных и прочных материалов, с использованием самых
-                    надежных марок мебельной фурнитуры.
+                    Кухонная мебель с фасадами толщиной до 23 мм создается из прочных материалов,а мебельная фурнитура самых надежных марок обеспечивает надежность в деталях
                 </div>
             </div>
             <div class="col-lg-6 col-xl-3 col-12 ps-0">
@@ -286,8 +283,7 @@
                     От А до Я
                 </div>
                 <div class="col advantages-content-title-text">
-                    Мы сопровождаем вас шаг за шагом на пути к кухне вашей мечты. Планировка кухни превратится из
-                    препятствия в изюминку.
+                    Мы предоставляем персонального консультанта с первого телефонного звонка. Вместе с ним кухня мечты прямиком из Италии станет вашей реальностью
                 </div>
             </div>
         </div>
@@ -363,16 +359,19 @@
                         </div>
                     </div>
                 </div>
+                    <div class="read-more gray-text-14">
+                        <span onclick="readMore(this)">Читать далее...</span>
+                    </div>
             </div>
             {%endfor%}
-            
+
         </div>
         <div class=" project-and-reviews-nav">
             <button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
                 Оставить заявку
             </button>
         </div>
-        
+
 
     </div>
 </section>
@@ -388,7 +387,7 @@
     <div class="hero-marquee py-0" style="--card-count: 12;" >
         <div class="hero-marquee__track">
             <div class="hero-marquee__grid">
-                
+
                 {% for item in look_at %}
                 <div class="hero-marquee-item" data-lazy-parent>
                     <div class="hero-marquee-item__info">
@@ -415,7 +414,8 @@
                                 autoplay
                                 loop
                                 muted
-                                src="{{item.content.url}}">
+                                src="{{item.content.url}}"
+                                data-url="{{item.shorts}}">
                         </video>
                         {% else %}
                         <img
@@ -439,7 +439,7 @@
 <div class="modal fade px-0" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <div class="modal-body" id="player">   
+            <div class="modal-body" id="player">
 
             </div>
         </div>
@@ -503,7 +503,6 @@
             if (isActive == true) {
                 return;
             }
-
             isTouch = true;
 
             likes_count = this.querySelectorAll('.likes-count')[0]
@@ -533,40 +532,29 @@
 
     media_div = document.querySelectorAll(".hero-marquee-item");
     for (i = 0; i < media_div.length; i++) {
-
         media_div[i].addEventListener('click', function(e) {
-
            if (isTouch == false) {
-            str = '<div class="ratio ratio-16x9">'
-            str += '<video playsinline controls id="player-video">'
-            str += '<source src="' + this.querySelectorAll("video")[0].src +'" type="video/mp4" />'
-            str += '</video></div>'
+            str = '<div class="shorts-youtube-container">'
+            str += '<iframe src="https://www.youtube.com/embed/'
+            str += this.querySelector("video").getAttribute("data-url")
+            str += '?autoplay=1&mute=1&loop=1&color=white&controls=1&modestbranding=1&playsinline=1&rel=0" title="Infinity restyle 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+            str += '</div>'
             document.getElementById('player').innerHTML = str
-
             $('#videoModal').modal('show');
-
-
-
            }
         });
     }
-
     watchVideoBlocks = document.querySelectorAll(".watch-video")
     watchVideoBlocks.forEach(function(block, index) {
         block.onclick = function() {
             str = '<div class="main-youtube-container">'
             str += '<iframe src="https://www.youtube.com/embed/z8xoGi5pK70?autoplay=1&mute=1&loop=1&color=white&controls=1&modestbranding=1&playsinline=1&rel=0" title="Infinity restyle 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
             str += '</div>'
-
-            //document.querySelectorAll('#videoModal .modal-dialog')[0].style.maxWidth = "90%";
-
             document.getElementById('player').innerHTML = str
             $('#videoModal').modal('show');
         };
     });
 </script>
-
-
 <script async src="https://cdn.dribbble.com/assets/packs/js/application.aae9ed62b46bef969bcb.js"></script>
 <script async src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 {% endblock %}

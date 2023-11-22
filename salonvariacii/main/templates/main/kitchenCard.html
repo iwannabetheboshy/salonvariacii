@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="kitchen-card-desc">
-                    <p>{{ kitchen.desc|linebreaks }}</p>
+                    <p>{{ kitchen.desc|linebreaksbr }}</p>
                 </div>
                 <div class="kitchen-card-files">
                     {% for file in kitchen.files.all %}

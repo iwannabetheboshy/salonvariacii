@@ -34,13 +34,19 @@ $(document).ready(function () {
     {
       breakpoint: 800,
       settings: {
-        slidesToShow: 1.4
+        slidesToShow: 1.25
       }
     },
     {
       breakpoint: 700,
       settings: {
         slidesToShow: 1.15
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1.1
       }
     },
     ]
@@ -87,7 +93,6 @@ $(document).ready(function () {
     autoplaySpeed: 1000,
     infinite: false,
     dots: true,
-    lazyLoad: 'ondemand',
 
     customPaging: function (slider, i) {
       return '<span> 0' +( i + 1 ) + '</span>';
@@ -103,13 +108,29 @@ $(document).ready(function () {
       {
         breakpoint: 1000,
         settings: {
-          slidesToShow: 1.4
+          slidesToShow: 1.2
+        }
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1.1
         }
       },
     ]
-
   });
 });
 
-
+function readMore (e) {
+  ful_text_review = e.parentNode.parentNode.querySelector(".project-and-reviews-text");
+  console.log(ful_text_review);
+  if (e.innerHTML == "Читать далее...") {
+    e.innerHTML = "Свернуть";
+    ful_text_review.style.height = `${ ful_text_review.scrollHeight }px`;
+  }
+  else {
+    e.innerHTML = "Читать далее...";
+    ful_text_review.style.height = "120px";
+  }
+}
 

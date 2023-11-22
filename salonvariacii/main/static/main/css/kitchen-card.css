@@ -178,6 +178,7 @@ kitchen-slider
 .kitchen-card-slider button {
     color: transparent;
     border: none;
+    outline: none;
     background: transparent;
 }
 

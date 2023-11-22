@@ -9,6 +9,19 @@
 	height: 100%;
 }
 
+.shorts-youtube-container {
+	overflow: hidden;
+	width: 100%;
+	pointer-events: none;
+	aspect-ratio: 16 / 9;
+}
+
+.shorts-youtube-container iframe {
+	width: 300%;
+	margin-left: -100%;
+	height: 100%;
+}
+
 #first-block-main-kitchen-carousel,
 #about-us-block,
 #catalog-carousel,
@@ -18,6 +31,24 @@ footer {
   max-width: 1420px;
   margin-left: auto;
   margin-right: auto;
+}
+
+#look-at-block,
+#about-us-block,
+#catalog-carousel,
+#project-and-reviews,
+#feedback {
+  scroll-margin-top: 90px;
+}
+
+@media (max-width: 1200px) {
+    #about-us-block,
+    #catalog-carousel,
+    #project-and-reviews,
+    #look-at-block,
+    #feedback {
+      scroll-margin-top: 45px;
+    }
 }
 
 body {
@@ -189,7 +220,7 @@ a {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1199px) {
   .header {
     padding-top: 16px;
     padding-bottom: 16px;
@@ -260,8 +291,6 @@ a {
   border-bottom: 1px solid #787878;
   transition: 0.3s;
 }
-
-
 
 .navbar svg path {
   transition: 0.2s;
@@ -358,7 +387,29 @@ first-block-main-kitchen-carousel
   width: 100%;
   height: 500px;
   object-fit: cover;
+}
 
+
+@media (max-width: 550px) {
+  .main-kitchen-carousel img {
+    height: 370px;
+  }
+}
+@media (max-width: 470px) {
+  .main-kitchen-carousel img {
+    height: 330px;
+  }
+}
+@media (max-width: 420px) {
+  .main-kitchen-carousel img {
+    height: 310px;
+  }
+}
+
+@media (max-width: 390px) {
+  .main-kitchen-carousel img {
+    height: 290px;
+  }
 }
 
 .main-kitchen-carousel-slide-kithen-name {
@@ -758,6 +809,31 @@ project-and-reviews
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+  
+}
+
+#project-and-reviews .read-more {
+    display: none;
+}
+
+@media (max-width: 550px) {
+  .project-and-reviews-text {
+    height: 120px;
+    overflow: hidden;
+    transition: all 1s ease 0s;
+  }
+
+  #project-and-reviews .read-more {
+    display: block;
+    background-color: #fff;
+    padding-top: 10px;
+    position: relative;
+    transition: 1s;
+  }
+
+  #project-and-reviews .read-more span{
+    cursor: pointer;
+  }
 }
 
 .project-and-reviews-slider .slick-slide {
@@ -851,6 +927,10 @@ feedback
   font-weight: 400;
   line-height: 19px;
   color: #787878;
+}
+
+.feedback textarea {
+    overflow-y: hidden;
 }
 
 #label_number,
@@ -1000,10 +1080,7 @@ footer .contacts svg:hover path {
 
 
 /*----------------- adaptive -----------------*/
-
-
 @media (max-width: 1200px) {
-
   .footer-number,
   .footer-adress,
   footer .contacts {
@@ -1018,6 +1095,15 @@ footer .contacts svg:hover path {
   footer .contacts a {
     padding-left: 0;
     padding-right: 16px;
+  }
+
+  footer .contacts a svg {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  footer .link a {
+    color: #000;
   }
 
   #look-at-block {
@@ -1415,6 +1501,10 @@ footer .contacts svg:hover path {
     justify-content: center;
   }
 
+  #feedback .feedback-form-annotation {
+    margin-top: -8px;
+  }
+
   .custom-button {
     width: 96%;
     padding: 12px 32px;
@@ -1491,8 +1581,6 @@ footer .contacts svg:hover path {
 .hero-marquee-item:hover {
   cursor: pointer;
 }
-
-
 
 .lottie {
   position: absolute;

@@ -7,6 +7,7 @@ $(document).ready(function() {
             navbar.classList.remove('navbar-opened');
             document.getElementById("header").style.background = "rgba(255, 255, 255, .9)"
             /*document.getElementById("header").style.height = "auto"*/
+            в
         }
         else {
             navbar.classList.add('navbar-opened');
@@ -14,4 +15,10 @@ $(document).ready(function() {
             /*document.getElementById("header").style.height = "100%"*/
         }
     });
+
+    $("#navbarNav").on('show.bs.collapse', function() {
+    $('a.nav-link').click(function() {
+        $("#navbarNav").collapse('hide');
+    });
+});
 });

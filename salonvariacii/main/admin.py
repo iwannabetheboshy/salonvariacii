@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import *
+from django import forms
 
 
 @admin.register(Kitchen)
@@ -20,9 +21,11 @@ class KitchenAdmin(admin.ModelAdmin):
           'fields': ('files',)
       }),
    )
-    exclude = ['slug', 'catalogVideoUrl']
+    exclude = ['slug']
 
-    
+    formfield_overrides = {
+        models.CharField: {'widget': forms.TextInput(attrs={'size':'60'})},
+    }
 
 
 
@@ -41,7 +44,10 @@ class KitchenStyleAdmin(admin.ModelAdmin):
 
 @admin.register(KitchenPhoto)
 class KitchenPhotoAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("image_title",)
+    
+    def image_title(self, object):
+        return str(object.image).split('/')[-1]
 
 
 @admin.register(MainPageCarousel)

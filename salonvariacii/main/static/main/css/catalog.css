@@ -177,7 +177,6 @@ filter desc
 .select {
     overflow: hidden;
     margin-top: 10px;
-    height: 29px;
 }
 
 .clean,
@@ -261,6 +260,20 @@ filter desc
     background: #FFF;
 }
 
+.search-div input:focus {
+    background: #FFF !important;
+}
+
+.search-div:hover {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    background: #E5E4E3;
+}
+
+.search-div:hover input {
+    background: #E5E4E3;
+}
+
 
 .search-div:focus-within {
     border: 1px solid #1E1E1E;
@@ -277,11 +290,16 @@ filter mobile
 }
 
 .filter-mobile-name {
-    margin-top: 2.5%;
     font-family: 'Stolzl Book' !important;
     font-size: 14px;
-    cursor: pointer;
+    line-height: 50px;
+}
 
+
+@media (max-width: 1200px) {
+    #catalog-filter .filter {
+        margin-top: 40px;
+    }
 }
 
 #catalog-filter .modal-title {

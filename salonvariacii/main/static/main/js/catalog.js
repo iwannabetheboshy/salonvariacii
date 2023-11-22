@@ -48,6 +48,8 @@ async function filtration() {
     }
   });
 
+  var searcInput = $('input[name=search]').val();
+ 
   var filtered = rezKitchen;
   var count = 0;
   rezKitchen.each(function () {
@@ -58,6 +60,13 @@ async function filtration() {
 
       let intersection = data.filter(x => selectedValues[key].includes(x));
       if (intersection.length === 0) {
+        show = false;
+      }
+    }
+
+    if (searcInput){
+      
+      if(!($(this).attr('data-name').toLowerCase().includes(searcInput.toLowerCase()))){
         show = false;
       }
     }
