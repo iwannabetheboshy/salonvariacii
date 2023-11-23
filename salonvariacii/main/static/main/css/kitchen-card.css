@@ -266,6 +266,11 @@ certified-quality
     margin-right: auto;
 }
 
+.sertificate img{
+    width: 180px;
+    height: 180px;
+}
+
 .sertificate {
     font-family: 'Stolzl Light' !important;
     font-size: 14px;
@@ -273,7 +278,7 @@ certified-quality
 
 @media (max-width: 1200px) {
 
-    .kitchen-annotation-right {
+    .kitchen-annotation-right, .slick-dots {
         padding-left: 0 !important;
     }
 

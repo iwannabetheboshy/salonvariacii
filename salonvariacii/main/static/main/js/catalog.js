@@ -49,8 +49,7 @@ async function filtration() {
   });
 
   var searcInput = $('input[name=search]').val();
- 
-  var filtered = rezKitchen;
+  
   var count = 0;
   rezKitchen.each(function () {
     var show = true;
@@ -66,7 +65,8 @@ async function filtration() {
 
     if (searcInput){
       
-      if(!($(this).attr('data-name').toLowerCase().includes(searcInput.toLowerCase()))){
+      if(!($(this).attr('data-name').toLowerCase().includes(searcInput.toLowerCase()
+      ))){
         show = false;
       }
     }
@@ -115,35 +115,37 @@ async function filtration() {
 
 }
 
+function addSelect(parentId, selectName){
+  var select = $(`
+    <div class="selected" id="${parentId}"> 
+    ${selectName}
+    <svg  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/>
+    </svg>
+    `);
+    $("#catalog-filter .select").append(select);
+}
 
 //создание плиток фильтрации для desc
 $(".filter-desc li").click(function () {
   const clickedContent = this.innerHTML;
-
   // если фильтрация еще не проводилась и нет блока "очистить"
-  if ($("#catalog-filter .select .clean").length == 0) {
-    var div = $('<div class="selected clean" id="clean">Очистить</div>');
-    var svg = $('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/></svg>');
-
-    div.append(svg);
-    $("#catalog-filter .select").prepend(div);
-  }
-
+  addClean()
+  const parentId = $(this).closest('.filter-name').attr('id');
 
   //добавляем блок в выбранные фильтры, если его там нет
   if ($('#catalog-filter .select .selected').filter(function () {
     return $(this).text().trim() === clickedContent;
-  }).length == 0) {
+  }).length == 0 ) {
 
-    const parentId = $(this).closest('.filter-name').attr('id');
-
-
-    //проверяем выбран ли уже стиль
+    //если уже есть какой нибудь фильтр с parentId, то удаляем (единственный выбор)
     if ($('#catalog-filter .select .selected').filter(function () {
       return $(this).attr('id') === parentId;
-    }).length > 0 && parentId === 'style') {
+    }).length != 0){
       $('#catalog-filter .select').find(`#${parentId}`).remove()
     }
+
+
     if (this.innerHTML == 'Любой'){
       if(parentId == 'material'){
         selectName = this.innerHTML + ' материал';
@@ -154,120 +156,94 @@ $(".filter-desc li").click(function () {
       }
     }else{
       selectName = this.innerHTML;
+      
     }
-    var select = $(`
-    <div class="selected" id="${parentId}"> 
-    ${selectName}
-    <svg  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/>
-    </svg>
-    `);
-    $("#catalog-filter .select").append(select);
-
+    
+    addSelect(parentId, selectName)
     filtration();
   }
 
 
 });
 
+function addClean(){
+  if ($("#catalog-filter .select .clean").length == 0) {
+    var div = $('<div class="selected clean" id="clean">Очистить</div>');
+    var svg = $('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/></svg>');
+
+    div.append(svg);
+    
+
+    $("#catalog-filter .select").prepend(div);
+    $("#catalog-filter .select").css("max-height", $("#catalog-filter .select")[0].scrollHeight + "px");
+  }
+}
+
 //поиск
 $("#catalog-filter .search-div svg").click(function () {
+  addClean()
   filtration();
 });
 
 //поиск по enter
 $(".filter-seacrh").on("keyup", function (event) {
   if (event.key === "Enter") {
+    addClean()
     filtration();
   }
 });
 
 //создание плиток фильтрации для mobile
 $("#catalog-filter .modal-dialog .filter-save").click(function () {
-  var checkedCheckboxes = $(".modal-body input[type='checkbox']:checked");
   var selectedRadioValue = $(".modal-body input[type='radio']:checked");
 
   $(".select").empty();
 
-  if ($("#catalog-filter .select .clean").length == 0) {
+  addClean();
 
-    var div = $('<div class="selected clean" id="clean">Очистить</div>');
-    var svg = $('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/></svg>');
-
-    div.append(svg);
-    $("#catalog-filter .select").prepend(div);
-  }
-
-  if (checkedCheckboxes.length !== 0) {
-    //добавляем блок в выбранные фильтры
-    checkedCheckboxes.each(function () {
-      console.log(this.value);
-      if (this.value == 'Любой'){
-        if(this.id == 'material'){
-          selectName = this.value + ' материал';
-        }else{
-          selectName = this.value + ' метод открытия';
-        }
-
-      }else{
-        selectName = this.value;
+  //добавляем блок в выбранные фильтры 
+  if (selectedRadioValue.length !== 0) {
+    selectedRadioValue.each( function(){
+      var parentId = $(this).attr('id');
+      if ($('#catalog-filter .select .selected').filter(function () {
+        return $(this).attr('id') === parentId;
+      }).length != 0){
+        $('#catalog-filter .select').find(`#${parentId}`).remove()
       }
-      var select = $(`
-        <div class="selected" id="${this.id}"> 
-        ${selectName}
-        <svg  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/>
-        </svg>
-        `);
-      $("#catalog-filter .select").append(select);
+      if ($(this).val() == 'Любой'){
+        if(parentId == 'material'){
+          selectName = $(this).val() + ' материал';
+        }else if (parentId == 'openingMethod'){
+          selectName = $(this).val() + ' метод открытия';
+        }else{
+          selectName = $(this).val() + ' стиль';
+        }
+  
+      }else{
+        selectName = $(this).val();
+      }
+  
+      addSelect(parentId, selectName)
+      filtration();
     });
   }
-  //добавляем блок в выбранные фильтры стилей
-  if (selectedRadioValue.length !== 0) {
-    //если стиль уже выбран
-    if ($("#catalog-filter .select #style" !== 0)) {
-      $('#catalog-filter .select').find(`#style`).remove()
-    }
-    if (selectedRadioValue.val() == 'Любой'){
-        selectName = selectedRadioValue.val() + ' стиль';
-
-    }else{
-      selectName = selectedRadioValue.val();
-    }
-    var select = $(`
-        <div class="selected" id="${selectedRadioValue.attr('id')}"> 
-        ${selectName}
-        <svg  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/>
-        </svg>
-        `);
-    $("#catalog-filter .select").append(select);
-
-  }
-
-  filtration();
-
+  
 });
 
 
-//отчистка checkbox и radio из модального окна mobile
+//отчистка radio из модального окна mobile
 $("#catalog-filter .modal-header .modal-clean").click(function () {
-
   cleanCheck();
-
   $(".select").empty();
 })
 
 function cleanCheck() {
   $('.search-div input[name=search]').val('');
-  var checkedCheckboxes = $(".modal-body input[type='checkbox']:checked");
   var selectedRadioValue = $(".modal-body input[type='radio']:checked");
-
-  checkedCheckboxes.each(function () {
+  selectedRadioValue.each(function() {
     $(this).prop('checked', false);
   });
-
-  selectedRadioValue.prop('checked', false);
+  
 }
 
 $(document).ready(function () {
@@ -290,8 +266,8 @@ $(document).ready(function () {
   $(".catalog-video-container").on("mouseleave", function () {
     $(this).find("img").removeClass("hide-image");
     yt_container = this.querySelector(".youtube-container")
-        var iframe = yt_container.getElementsByTagName("iframe")[0].contentWindow;
         try{
+          var iframe = yt_container.getElementsByTagName("iframe")[0].contentWindow;
           if(iframe.constructor.name === 'Window'){
             setTimeout(function() {
               iframe.postMessage('{"event":"command","func":"pauseVideo","args":""}', "*");

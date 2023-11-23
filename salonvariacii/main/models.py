@@ -360,6 +360,25 @@ class LookAt(models.Model):
         verbose_name = "взгляни сам"
         verbose_name_plural = "Взгляните сами"
 
+    def save(self, *args, **kwargs):
+        if self.content:
+            file_name = os.path.basename(self.content.name)
+            file_extension = os.path.splitext(file_name)[1][1:].lower()
+
+            if file_extension not in ('mp4'):
+                # Проверка наличия файла с таким же именем
+                existing_file = LookAt.objects.filter(content__icontains=self.content).first()
+                if existing_file:
+                    self.content = existing_file.content
+                else:
+                    name = str(uuid.uuid1())
+                    img = Image.open(self.content)
+                    img_io = BytesIO()
+                    img.save(img_io, format="WebP")
+                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+                    self.content.save(f"{name}.webp", img_file, save=False)
+        super().save(*args, **kwargs)
+
 class FeedBack(models.Model):
     name = models.CharField('Имя', max_length=50)
     number = models.CharField('Номер телефона', max_length=20)
@@ -368,5 +387,7 @@ class FeedBack(models.Model):
     class Meta:
         verbose_name = "заявка"
         verbose_name_plural = "Заявки"
+
+    
  
         

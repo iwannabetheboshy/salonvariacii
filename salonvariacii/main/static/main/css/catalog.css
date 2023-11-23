@@ -177,6 +177,8 @@ filter desc
 .select {
     overflow: hidden;
     margin-top: 10px;
+    max-height: 0;
+    transition: max-height 0.3s ease;
 }
 
 .clean,
@@ -424,7 +426,7 @@ scrollbar
 
 /* Webkit (Google Chrome, Safari) */
 ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
     background-color: #F1EFED;
 
 }
@@ -443,7 +445,7 @@ scrollbar
 /* Internet Explorer и Edge */
 
 *::-ms-scrollbar {
-    width: 8px;
+    width: 6px;
     background-color: #F1EFED;
 }
 

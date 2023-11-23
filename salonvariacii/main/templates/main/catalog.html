@@ -99,7 +99,7 @@
                       d="M9.16797 1.6665C13.308 1.6665 16.668 5.0265 16.668 9.1665C16.668 13.3065 13.308 16.6665 9.16797 16.6665C5.02797 16.6665 1.66797 13.3065 1.66797 9.1665C1.66797 5.0265 5.02797 1.6665 9.16797 1.6665ZM9.16797 14.9998C12.3909 14.9998 15.0013 12.3894 15.0013 9.1665C15.0013 5.94359 12.3909 3.33317 9.16797 3.33317C5.94505 3.33317 3.33464 5.94359 3.33464 9.1665C3.33464 12.3894 5.94505 14.9998 9.16797 14.9998ZM16.2391 15.0591L18.5961 17.4161L17.4176 18.5946L15.0606 16.2376L16.2391 15.0591Z"
                       fill="#9F9F9F" />
             </svg>
-            <input name="search" class="filter-seacrh" type="text" placeholder="Найти кухню">
+            <input name="search" class="filter-seacrh" type="text" placeholder="Найти кухню" autocomplete="off"> 
           </div>
         </div>
         <div class="filter-mobile col-xl col-md-6 col-12 px-0 order-2 order-md-1">
@@ -135,8 +135,8 @@
           <div class="modal-clean clean p-0 m-0">Очистить</div>
         </div>
         <div class="modal-body p-0">
-          <div class="px-0" id="style">
-            <div class="filter-name">
+          <div class="px-0" >
+            <div class="filter-name" id="style">
               Стиль
               <svg class="close" width="20" height="20" viewBox="0 0 20 20" fill="none"
                    xmlns="http://www.w3.org/2000/svg">
@@ -168,8 +168,8 @@
               {%endfor%}
             </div>
           </div>
-          <div class="px-0" id="material">
-            <div class="filter-name ">
+          <div class="px-0">
+            <div class="filter-name" id="material">
               Материал
               <svg class="close" width="20" height="20" viewBox="0 0 20 20" fill="none"
                    xmlns="http://www.w3.org/2000/svg">
@@ -187,7 +187,7 @@
             <div class="sub-menu hidden">
               <div>
                 <label class="control control--checkbox">Любой
-                  <input type="checkbox" name="material" id="material" value="Любой">
+                  <input type="radio" name="material" id="material" value="Любой">
                   <div class="control__indicator">
                   </div>
                 </label>
@@ -195,7 +195,7 @@
               {% for m in material%}
               <div>
                 <label class="control control--checkbox">{{ m.name }}
-                  <input type="checkbox" name="material" id="material" value="{{ m.name }}">
+                  <input type="radio" name="material" id="material" value="{{ m.name }}">
                   <div class="control__indicator">
                   </div>
                 </label>
@@ -204,8 +204,8 @@
               {%endfor%}
             </div>
           </div>
-          <div class="px-0" id="openingMethod">
-            <div class="filter-name">
+          <div class="px-0">
+            <div class="filter-name" id="openingMethod">
               Система открывания
               <svg class="close" width="20" height="20" viewBox="0 0 20 20" fill="none"
                    xmlns="http://www.w3.org/2000/svg">
@@ -223,7 +223,7 @@
             <div class="sub-menu hidden">
               <div>
                 <label class="control control--checkbox">Любой
-                  <input type="checkbox" name="openingMethod" id="openingMethod" value="Любой">
+                  <input type="radio" name="openingMethod" id="openingMethod" value="Любой">
                   <div class="control__indicator">
                   </div>
                 </label>
@@ -231,7 +231,7 @@
               {% for op in openingMethod%}
               <div>
                 <label class="control control--checkbox">{{ op.name }}
-                  <input type="checkbox" name="openingMethod" id="openingMethod" value="{{ op.name }}">
+                  <input type="radio" name="openingMethod" id="openingMethod" value="{{ op.name }}">
                   <div class="control__indicator">
                   </div>
                 </label>
@@ -400,8 +400,6 @@
 </section>
 
 <script async src="https://www.youtube.com/iframe_api"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script src="{% static 'main/js/catalog.js' %}"></script>
 
 {% endblock %}

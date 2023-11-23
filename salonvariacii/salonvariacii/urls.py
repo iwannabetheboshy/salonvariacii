@@ -3,6 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+#handler404 = "main.views.page_not_found_view"
 
 urlpatterns = [
     path('admin/', admin.site.urls),

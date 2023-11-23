@@ -820,7 +820,7 @@ project-and-reviews
   .project-and-reviews-text {
     height: 120px;
     overflow: hidden;
-    transition: all 1s ease 0s;
+    transition: all .5s ease 0s;
   }
 
   #project-and-reviews .read-more {
@@ -877,6 +877,28 @@ project-and-reviews
   margin-top: 50px;
 }
 
+/*----------------------------------
+404
+----------------------------------*/
+#section-404{
+  margin-top: 254px;
+  padding: 0 70px;
+  max-width: 1420px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 195px;
+}
+
+.section404-button{
+  margin-top: 40px;
+}
+
+.section404-text{
+  color: #1E1E1E;
+  text-align: center;
+  font-family: 'Stolzl Book';
+  font-size: 18px;
+}
 
 /*----------------------------------
 feedback
@@ -1121,8 +1143,14 @@ footer .contacts svg:hover path {
   }
 
   #about-us-block,
-  .feedback-wrapper {
+  .feedback-wrapper,
+  #section-404{
     padding: 0 2.5%;
+  }
+
+  #section-404{
+    margin-top: 80px;
+    margin-bottom: 100px;
   }
 
 

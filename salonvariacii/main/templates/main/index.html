@@ -4,8 +4,8 @@
 
 {% block content %}
 
-<link rel="stylesheet" media="screen" href="{%static 'main/css/hero.css' %}" />
-<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+<link type="text/css" rel="stylesheet" media="screen" href="{%static 'main/css/hero.css' %}" />
+<link type="text/css" rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 
 <div style="background: linear-gradient(180deg, #F8F7F4 0%, rgba(255, 255, 255, 0) 100%);">
     <section id="first-block-main-kitchen-carousel">
@@ -172,8 +172,9 @@
                 {% for kitchen in catalog_carousel %}
                 <div class="slide">
                     <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
-                    <div class="content">
+                    
                         <a href="/kitchen/{{ kitchen.slug }}">
+                            <div class="content">
                             <div class="slider-catalog-kitchen-name">
                                 Кухни Stosa {{ kitchen.name }}
                             </div>
@@ -186,8 +187,8 @@
                                             fill="#1E1E1E" />
                                 </svg>
                             </div>
+                        </div>
                         </a>
-                    </div>
                 </div>
                 {% endfor %}
             </div>
@@ -448,11 +449,9 @@
 
 
 <!-- slider -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="{% static 'main/js/main-carousel.js' %}"></script>
+<script type="text/javascript" src="{% static 'main/js/index.js' %}"></script>
 
 <script>
     // ensure namespace is available
@@ -475,7 +474,7 @@
 </script>
 
 <script>
-    var config = Dribbble.JsConfig || {}
+     var config = Dribbble.JsConfig || {}
     Dribbble.JsConfig = Object.assign(config, {
         user: {"isLoggedIn":false,"reCaptchaSiteKey":"6LdmBTIUAAAAAM4NIokaWu8p3BBuYEw3CxuDdyg_","canPurchasePro":true,"isHiringTrialEligible":false},
         hiringProfile: {},
@@ -486,12 +485,16 @@
         permissions: {"userPermissions":["canBuyBoostWithBraintree","canSeeThirdPartyPaymentMethods"]},
         screenshot_boost: {"buttonText":[{"label":"Buy Now","value":"buy-now"},{"label":"Download","value":"download"},{"label":"Learn More","value":"learn-more"},{"label":"Shop Now","value":"shop-now"},{"label":"Apply Now","value":"apply-now"},{"label":"Try Now","value":"try-now"},{"label":"Get Offer","value":"get-offer"},{"label":"Contact Us","value":"contact-us"}],"tiers":{"lowTier":{"daysToServe":7,"range":{"lowerLimit":0,"upperLimit":10000}},"midTier":{"daysToServe":14,"range":{"lowerLimit":10001,"upperLimit":100000}},"highTier":{"daysToServe":28,"range":{"lowerLimit":100001,"upperLimit":null}}},"pricePerImpression":"0.01","purchase":{"stripePublicKey":"pk_live_9EfFSEE6iTCgHghKqBqnixxR","savedCreditCardInformation":null},"discount":null,"minimumImpressions":2000,"targetPlacements":{"following":"Following Feed","popular":"Popular Feed","search":"Search Feed","goods":"Goods Feed","recent":"New \u0026 Noteworthy Feed","shot_modal":"Shot Modal","similar_work":"Similar Work","tags":"Tag Feed","popular_first":"Popular Feed First"},"priorities":["self_serve","sales","remnant","sales_priority"]},
     })
+ 
 </script>
 
 <script async src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.4/lottie_svg.min.js"></script>
 
 <script>
+    window.CanvasRenderer = class {
+        setProjectInterface() {}
+    }
     const data = 'https://assets1.lottiefiles.com/datafiles/d9bc9kYC2VttaKb/data.json';
     let isActive = false;
     let isTouch = false;
@@ -499,8 +502,7 @@
 
     for (i = 0; i < ttest.length; i++) {
         ttest[i].addEventListener('click', function(e) {
-
-            if (isActive == true) {
+                if (isActive == true) {
                 return;
             }
             isTouch = true;
@@ -510,8 +512,8 @@
 
             lottie_div = this.parentNode.querySelectorAll('.lottie')[0]
             lottie_div.style.opacity = 1;
-
-            var animation = bodymovin.loadAnimation({
+            try{
+                var animation = bodymovin.loadAnimation({
                   container: lottie_div,
                   path: data,
                   renderer: 'svg',
@@ -526,7 +528,11 @@
                 animation.destroy();
                 isActive = false;
                 isTouch = false;
-            })
+            }) 
+            }catch{
+
+            }
+            
          });
     };
 
@@ -555,6 +561,14 @@
         };
     });
 </script>
+<script>
+    $('#videoModal').on('hide.bs.modal', function (e) {
+      try {
+        document.getElementById("player-video").src = "";
+      } catch (err)
+      {}
+    })
+  </script>
 <script async src="https://cdn.dribbble.com/assets/packs/js/application.aae9ed62b46bef969bcb.js"></script>
 <script async src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
 {% endblock %}
