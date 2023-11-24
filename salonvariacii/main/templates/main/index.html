@@ -37,10 +37,12 @@
                 <div class="main-kitchen-carousel" role="toolbar">
                     {% for photo in sliderPhoto %}
                     <div class="main-kitchen-carousel-slide">
-                        <img src="{{ photo.image.url }}" alt="Фотография кухни {{ photo.name }}">
-                        <div class="main-kitchen-carousel-slide-kithen-name">
-                            {{ photo.name }}
-                        </div>
+                        <a href="/kitchen/{{ photo.slug }}">
+                            <img src="{{ photo.image.url }}" alt="Фотография кухни {{ photo.name }}">
+                            <div class="main-kitchen-carousel-slide-kithen-name">
+                                Stosa {{ photo.name }}
+                            </div>
+                        </a>
                     </div>
                     {%endfor%}
                 </div>

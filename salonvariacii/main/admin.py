@@ -88,3 +88,8 @@ class KitchenColorsAdmin(admin.ModelAdmin):
 class KitchenFinishingAdmin(admin.ModelAdmin):
     list_display = ("name", "get_colors")
     filter_horizontal = ('colors',) 
+
+
+@admin.register(Politic)
+class PoliticAdmin(admin.ModelAdmin):
+    pass

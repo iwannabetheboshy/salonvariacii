@@ -228,14 +228,16 @@ class Kitchen(models.Model):
 class MainPageCarousel(models.Model):
     name = models.CharField('Название кухни',
                             max_length=50,
-                            help_text=("Пример: «Stosa Young»"))
+                            help_text=("Пример: «Young»"))
     image = models.ImageField('Фото кухни',
                               upload_to='carousel/',
                               help_text=("Доступные форматы: jpg, png, webp"))
     show_number = models.IntegerField('Номер показа в карусели ',
                                       help_text=("Объекты отображаются в порядке возрастания"))
+    slug = models.SlugField(blank=True)
 
     def save(self, *args, **kwargs):
+        self.slug = "stosa_" + slugify(self.name).replace('-', '_')
         if self.image:
             file_name = os.path.basename(self.image.name)
             file_extension = os.path.splitext(file_name)[1][1:].lower()
@@ -387,6 +389,14 @@ class FeedBack(models.Model):
     class Meta:
         verbose_name = "заявка"
         verbose_name_plural = "Заявки"
+
+class Politic(models.Model):
+    politucFile = models.FileField('Файл', upload_to ='politic/',
+                             validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
+
+    class Meta:
+        verbose_name = "файл"
+        verbose_name_plural = "Файл политики обработки персональных данных"
 
     
  

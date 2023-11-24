@@ -671,9 +671,6 @@ catalog-carousel
   padding-bottom: 10px;
 }
 
-.catalog-carousel-button {
-  margin-top: 60px;
-}
 
 .slider-catalog-container-mobile {
   display: none;
@@ -693,6 +690,10 @@ catalog-carousel
 
 #catalog-carousel .slide:hover {
   cursor: pointer;
+}
+
+#catalog-carousel .large-image:hover {
+  cursor: auto;
 }
 
 .slider-catalog-container-mobile .content-mobile:hover {
@@ -1301,8 +1302,7 @@ footer .contacts svg:hover path {
   }
 
   .advantages-content,
-  .advantages-content-title-text,
-  .catalog-carousel-button {
+  .advantages-content-title-text{
     margin: 0;
   }
 

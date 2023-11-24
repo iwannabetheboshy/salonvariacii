@@ -11,6 +11,7 @@ def page_not_found_view(request, exception):
         "404.html",
         {
             "feedbackForm": FeedbackForm(),
+            "feedbackFile": Politic.objects.first(),
             "title": f"Похоже мы не нашли что вы искали",
             "description": "Заказать итальянскую кухонную мебель и гарнитур во Владивостоке. Современная или классическая кухня. Дизайн под заказ. Можем изготовить по индивидуальным размерам с установкой",
             "keywords": "итальянские кухни, итальянская кухня фото,  кухня в итальянском стиле фото, купить итальянскую кухню, кухня в итальянском стиле, кухонная мебель италии, ручки для кухонной мебели италия, современные итальянские кухни, кухонный гарнитур италия, итальянская кухня цена, итальянская мебель для кухни, купить кухню, купить кухню под заказ, кухня из дерева купить, мебель для кухни, купить мебель для кухни, сайт мебели для кухни, мебель для кухни фото и цены, кухня фото дизайн, заказать индивидуальную кухню, заказать кухню по индивидуальным размерам",
@@ -44,7 +45,6 @@ def main(request):
     for look_at_item in look_at:
         if look_at_item.shorts:
             look_at_item.shorts = get_url_youtube(look_at_item.shorts) 
-    feedbackForm = FeedbackForm()
     title = "Кухни на заказ в итальянском стиле по индивидуальным размерам. Stosa Cucine"
     pageDescription = "Заказать итальянскую кухонную мебель и гарнитур во Владивостоке. Современная или классическая кухня. Дизайн под заказ. Можем изготовить по индивидуальным размерам с установкой"
     keyWords = "итальянские кухни, итальянская кухня фото,  кухня в итальянском стиле фото, купить итальянскую кухню, кухня в итальянском стиле, кухонная мебель италии, ручки для кухонной мебели италия, современные итальянские кухни, кухонный гарнитур италия, итальянская кухня цена, итальянская мебель для кухни, купить кухню, купить кухню под заказ, кухня из дерева купить, мебель для кухни, купить мебель для кухни, сайт мебели для кухни, мебель для кухни фото и цены, кухня фото дизайн, заказать индивидуальную кухню, заказать кухню по индивидуальным размерам"
@@ -57,7 +57,8 @@ def main(request):
         "catalog_carousel": catalog_carousel,
         "reviews": reviews,
         "look_at": look_at,
-        "feedbackForm": feedbackForm,
+        "feedbackForm": FeedbackForm(),
+        "feedbackFile": Politic.objects.first(),
         "title": title,
         "pageDescription": pageDescription,
         "keyWords": keyWords,
@@ -74,7 +75,6 @@ def catalog(request):
     openingMethod = KitchenOpeningMethod.objects.values("name").distinct()
     material = KitchenMaterial.objects.values("name").distinct()
     style = KitchenStyle.objects.values("name").distinct()
-    feedbackForm = FeedbackForm()
     title = "Каталог кухонь из Италии с фото и ценами. Купить кухню во Владивостоке. Stosa Cucine"
     pageDescription = "Каталог кухонь. Кухни на заказ по индивидуальным размерам. Отделка и материал на выбор. Встраиваемые кухонные гарнитуры, различные системы открывания. Фабрика мебель STOSA CUCINE"
     keyWords = "итальянские кухни, итальянская кухня фото,  кухня в итальянском стиле фото, купить итальянскую кухню, кухня в итальянском стиле, кухонная мебель италии, ручки для кухонной мебели италия, современные итальянские кухни, кухонный гарнитур италия, итальянская кухня цена, итальянская мебель для кухни, купить кухню под заказ, кухня из дерева купить, мебель для кухни, купить мебель для кухни, сайт мебели для кухни, мебель для кухни фото и цены, кухня фото дизайн, заказать индивидуальную кухню, заказать кухню по индивидуальным размерам,"
@@ -83,7 +83,8 @@ def catalog(request):
         "openingMethod": openingMethod,
         "material": material,
         "style": style,
-        "feedbackForm": feedbackForm,
+        "feedbackForm": FeedbackForm(),
+        "feedbackFile": Politic.objects.first(),
         "title": title,
         "pageDescription": pageDescription,
         "keyWords": keyWords,
@@ -113,7 +114,6 @@ def kitchenCard(request, slug):
     kitchen = Kitchen.objects.get(slug=slug)
     kitchen.name = kitchen.name.title()
     kitchen.kitchenCardVideo = get_url_youtube(kitchen.kitchenCardVideo)
-    feedbackForm = FeedbackForm()
     descriptionStyle = (
         "современном" if str(kitchen.style).strip() == "Современный стиль" else
         "классическом" if str(kitchen.style).strip() == "Классический стиль" else
@@ -124,7 +124,8 @@ def kitchenCard(request, slug):
     keyWords =  "Stosa " + kitchen.name + ", " + ', '.join([str(mat) for mat in kitchen.material.all()])  +', '+ ', '.join([str(mat) for mat in kitchen.openingMethod.all()]) +', ' +', '.join([str(mat) for mat in kitchen.finishing.all()]) + ', ' + ', '.join([str(color) for mat in kitchen.finishing.all() for color in mat.colors.all()])
     data = {
         "kitchen": kitchen,
-        "feedbackForm": feedbackForm,
+        "feedbackForm": FeedbackForm(),
+        "feedbackFile": Politic.objects.first(),
         "title": title,
         "pageDescription": pageDescription,
         "keyWords": keyWords,

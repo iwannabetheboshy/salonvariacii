@@ -158,6 +158,15 @@ ADMIN_REORDER = (
 
     {
         'app': 'main',
+        'label': 'Плитика и персональные данные',
+        'models': (
+            'main.Politic',
+
+        )
+    },
+
+    {
+        'app': 'main',
         'label': 'Заявки',
         'models': (
             'main.FeedBack',
