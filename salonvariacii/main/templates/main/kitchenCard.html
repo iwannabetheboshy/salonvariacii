@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<link href="{%static 'main/css/kitchen-card.css' %}" rel="stylesheet">
-
 
 <section id="kitchen-annotation">
     <div class="kitchen-card-header-mobile">
@@ -79,7 +77,7 @@
     <div class="kitchen-card-slider">
         {% for photo in kitchen.images.all %}
         <div class="kitchen-card-slide">
-            <img src="{{ photo.image.url }}" alt="">
+            <img src="{{ photo.image.url }}" alt="Фотография кухни">
         </div>
         {%endfor%}
     </div>
@@ -115,7 +113,7 @@
                 {% for color in finishing.colors.all%}
                 
                 <div class="finishing-color">
-                    <img src="{{ color.image.url }}" alt="">
+                    <img src="{{ color.image.url }}" alt="Фотография цвета">
                     <div class="finishing-color-name">{{ color.name }}</div>
                     
                 </div>
@@ -136,16 +134,16 @@
                 <h2 class="mb-5">Сертифицированное качество</h2>
                 <div class="row sertificate">
                     <div class="col-xl-4 col-12 px-0">
-                        <img src="{% static 'main/image/CERTIFICAZIONE-ISO.png' %}" alt="">
+                        <img src="{% static 'main/image/CERTIFICAZIONE-ISO.png' %}" alt="Сертификат качества">
                         <p class="mb-0">CERTIFICAZIONE <br>ISO 9001:2015</p>
                     </div>
                     <div class="col-xl-4 col-12 px-xl-4 px-0">
-                        <img src="{% static 'main/image/CERTIFICAZIONE-DI-ORIGINE.png' %}" alt="">
+                        <img src="{% static 'main/image/CERTIFICAZIONE-DI-ORIGINE.png' %}" alt="Сертификат качества">
                         <p class="mb-0">CERTIFICAZIONE 100% <br>MADE IN ITALY</p>
 
                     </div>
                     <div class="col-xl-4 col-12 px-0">
-                        <img src="{% static 'main/image/CERTIFICAZIONE-100%.png' %}" alt="">
+                        <img src="{% static 'main/image/CERTIFICAZIONE-100%.png' %}" alt="Сертификат качества">
                         <p class="mb-0">CERTIFICAZIONE DI ORIGINE <br>ITALIANA DEL MOBILE</p>
 
                     </div>
@@ -156,7 +154,6 @@
 </section>
 
 
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script src="{% static 'main/js/kitchen-card.js' %}"></script>
 {% endblock %}

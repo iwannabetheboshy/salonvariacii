@@ -31,6 +31,8 @@ def get_url_youtube(url):
 
 def main(request):
     sliderPhoto = MainPageCarousel.objects.all().order_by('show_number')
+    for slide in sliderPhoto:
+        slide.name = slide.name.title()
     about = AboutUs.objects.first()
     aboutMini = AboutUsDopBlock.objects.all().order_by('show_number')
     numberOfBlocksAboutMini = aboutMini.count() 
@@ -39,6 +41,9 @@ def main(request):
         kit.name = kit.name.capitalize()
     reviews = ReviewsAndProject.objects.all()
     look_at = LookAt.objects.all().exclude(show_number=None).order_by('show_number')
+    for look_at_item in look_at:
+        if look_at_item.shorts:
+            look_at_item.shorts = get_url_youtube(look_at_item.shorts) 
     feedbackForm = FeedbackForm()
     title = "Кухни на заказ в итальянском стиле по индивидуальным размерам. Stosa Cucine"
     pageDescription = "Заказать итальянскую кухонную мебель и гарнитур во Владивостоке. Современная или классическая кухня. Дизайн под заказ. Можем изготовить по индивидуальным размерам с установкой"
@@ -65,7 +70,7 @@ def catalog(request):
     kitchen = Kitchen.objects.all().order_by('show_number')
     for kit in kitchen:
         kit.catalogVideo = get_url_youtube(kit.catalogVideo)
-        kit.name = kit.name.capitalize()
+        kit.name = kit.name.title()
     openingMethod = KitchenOpeningMethod.objects.values("name").distinct()
     material = KitchenMaterial.objects.values("name").distinct()
     style = KitchenStyle.objects.values("name").distinct()
@@ -99,12 +104,14 @@ def sendFeedBack(request):
             bot = telebot.TeleBot(config('BotToken'))
             bot.send_message(629793380, 'Имя: {0}\nТелефон: {2}\nСообщение: {1}'.
                              format(form.cleaned_data['name'], form.cleaned_data['message'], form.cleaned_data['number'], ))
+            bot.send_message(1215051253, 'Имя: {0}\nТелефон: {2}\nСообщение: {1}'.
+                             format(form.cleaned_data['name'], form.cleaned_data['message'], form.cleaned_data['number'], ))
             return HttpResponse("Заявка отправлена! Мы скоро перезвоним вам")
 
 
 def kitchenCard(request, slug):
     kitchen = Kitchen.objects.get(slug=slug)
-    kitchen.name = kitchen.name.capitalize()
+    kitchen.name = kitchen.name.title()
     kitchen.kitchenCardVideo = get_url_youtube(kitchen.kitchenCardVideo)
     feedbackForm = FeedbackForm()
     descriptionStyle = (

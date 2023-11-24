@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<link href="{%static 'main/css/catalog.css' %}" rel="stylesheet">
 
 <section id="catalog-header">
   <div class="row mx-0">
@@ -259,7 +258,7 @@
            data-name="Stosa {{kit.name}}">
         <div class="catalog-video-container mb-3" >
           <a href="/kitchen/{{ kit.slug }}">
-            <img src="{{kit.mainImage.url}}" alt="">
+            <img src="{{kit.mainImage.url}}" alt="Фотография кухни Stosa {{kit.name}}">
             <div id="{{kit.slug}}-yt" data-load="0" class="youtube-container" data-url="{{ kit.catalogVideo }}"></div>
 
           </a>
