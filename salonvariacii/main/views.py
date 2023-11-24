@@ -70,7 +70,8 @@ def main(request):
 def catalog(request):
     kitchen = Kitchen.objects.all().order_by('show_number')
     for kit in kitchen:
-        kit.catalogVideo = get_url_youtube(kit.catalogVideo)
+        if kit.catalogVideo:
+            kit.catalogVideo = get_url_youtube(kit.catalogVideo)
         kit.name = kit.name.title()
     openingMethod = KitchenOpeningMethod.objects.values("name").distinct()
     material = KitchenMaterial.objects.values("name").distinct()
@@ -112,12 +113,10 @@ def sendFeedBack(request):
 
 def kitchenCard(request, slug):
     kitchen = Kitchen.objects.get(slug=slug)
-    kitchenFiles = kitchen.files.all()
-    for kitFile in  kitchenFiles:
-        dot = kitFile.name.find('.')
-        kitFile.name = kitFile.name[dot+2:]
     kitchen.name = kitchen.name.title()
     kitchen.kitchenCardVideo = get_url_youtube(kitchen.kitchenCardVideo)
+    if kitchen.kitchenCardVideo:
+        kitchen.kitchenCardVideo = get_url_youtube(kitchen.kitchenCardVideo)
     descriptionStyle = (
         "современном" if str(kitchen.style).strip() == "Современный стиль" else
         "классическом" if str(kitchen.style).strip() == "Классический стиль" else
@@ -128,7 +127,6 @@ def kitchenCard(request, slug):
     keyWords =  "Stosa " + kitchen.name + ", " + ', '.join([str(mat) for mat in kitchen.material.all()])  +', '+ ', '.join([str(mat) for mat in kitchen.openingMethod.all()]) +', ' +', '.join([str(mat) for mat in kitchen.finishing.all()]) + ', ' + ', '.join([str(color) for mat in kitchen.finishing.all() for color in mat.colors.all()])
     data = {
         "kitchen": kitchen,
-        "kitchenFiles": kitchenFiles,
         "feedbackForm": FeedbackForm(),
         "feedbackFile": Politic.objects.first(),
         "title": title,

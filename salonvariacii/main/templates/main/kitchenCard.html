@@ -47,7 +47,7 @@
                     <p>{{ kitchen.desc|linebreaksbr }}</p>
                 </div>
                 <div class="kitchen-card-files">
-                    {% for kitFile in kitchenFiles %}
+                    {% for kitFile in kitchen.files.all %}
                     <div class="file">
                         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -66,8 +66,15 @@
             </div>
         </div>
         <div class="col-xl-6 order-xl-last col-12 order-first pe-0 kitchen-annotation-right">
-            <div class="kitchenCard-video-container" >
-                <iframe src="https://www.youtube.com/embed/{{ kitchen.kitchenCardVideo }}?rel=0&autoplay=1&mute=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&enablejsapi=1&theme=dark" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; rel=0" allowfullscreen></iframe>
+            {% if kitchen.kitchenCardVideoPhotoChoices == 'photo' %}
+                <div class="kitchenCard-photo-container" >
+                    <img src="{{ kitchen.kitchenCardPhoto.url }}" alt="">
+                </div>
+            {% elif kitchen.kitchenCardVideoPhotoChoices == 'video' %}
+                <div class="kitchenCard-video-container" >
+                    <iframe src="https://www.youtube.com/embed/{{ kitchen.kitchenCardVideo }}?rel=0&autoplay=1&mute=1&loop=1&color=white&controls=0&modestbranding=1&playsinline=1&enablejsapi=1&theme=dark" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; rel=0" allowfullscreen></iframe>
+                </div>  
+            {%endif%}
             </div>
         </div>
     </div>

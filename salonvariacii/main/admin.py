@@ -12,7 +12,7 @@ class KitchenAdmin(admin.ModelAdmin):
           'fields': ('name', 'desc', 'style', 'material', 'openingMethod', 'finishing', 'show_number')
       }),
       ('Медиа-файлы кухни', {
-          'fields': ('mainImage', 'catalogVideo', 'kitchenCardVideo')
+          'fields': ('mainImage', 'catalogVideo', 'kitchenCardVideoPhotoChoices', 'kitchenCardVideo', 'kitchenCardPhoto')
       }),
       ('Карусель фотографий в карточке кухни', {
           'fields': ('images',)
@@ -27,6 +27,8 @@ class KitchenAdmin(admin.ModelAdmin):
         models.CharField: {'widget': forms.TextInput(attrs={'size':'60'})},
     }
 
+    class Media:
+        js = ("main/js/custom_admin.js",)
 
 
 @admin.register(KitchenOpeningMethod)

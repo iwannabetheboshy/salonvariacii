@@ -2567,6 +2567,20 @@ kitchen-annotation
     left: 0;
 }
 
+.kitchenCard-photo-container::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 70px solid #fff;
+  border-top: 70px solid transparent;
+  border-right: 70px solid transparent;
+  border-bottom: 70px solid #fff;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
 
 
 .kitchen-card-back {
@@ -2658,6 +2672,17 @@ kitchen-annotation
     overflow: hidden;
     height: 100%;
     max-height: 580px;
+}
+
+.kitchenCard-photo-container{
+  position: relative;
+  height: 580px;
+}
+
+.kitchenCard-photo-container img{
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
 }
 
 .kitchenCard-video-container iframe{
@@ -2866,7 +2891,7 @@ certified-quality
         margin-top: 6.25%;
     }
 
-    .kitchenCard-video-container::after {
+    .kitchenCard-video-container::after,.kitchenCard-photo-container::after  {
         display: none;
     }
 

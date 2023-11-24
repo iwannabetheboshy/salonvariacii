@@ -131,8 +131,7 @@ class KitchenFinishing(models.Model):
 
 
 class KitchenFiles(models.Model):
-    name = models.CharField('Имя файла', max_length=100,
-                             help_text=("Например: «City. Техническое описание»"))
+    name = models.CharField('Имя файла', max_length=100)
     files = models.FileField('Файл', upload_to ='kitchen/files/',
                              validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
 
@@ -143,6 +142,10 @@ class KitchenFiles(models.Model):
     def __str__(self):
         return f"{self.name}"
 
+VIDEOPHOTO_CHOICES = (
+    ('photo', "Фото"),
+    ('video', "Видео")
+)
 
 class Kitchen(models.Model):
     name = models.CharField('Название кухни', max_length=50,
@@ -171,10 +174,20 @@ class Kitchen(models.Model):
                                   help_text=("Отображается: 1) на главное странице в блоке «Каталог»; 2) на странице каталога"))
     catalogVideo = models.CharField('Видео для каталога',
                                     max_length=100,
+                                    null=True,
+                                    blank=True,
                                     help_text=("Проигрывается на странице каталога при наведении курсора на изображение кухни. Например: https://www.youtube.com/watch?v=z8xoGi5pK70") )
+    kitchenCardVideoPhotoChoices = models.CharField('Выбирите видео или фото для карточки кухни', choices=VIDEOPHOTO_CHOICES, max_length=50)
     kitchenCardVideo = models.CharField('Видео для карточки кухни',
+                                        null=True,
+                                        blank=True,
                                         max_length=100,
                                         help_text=("Отображается в карточке кухни. Например: https://www.youtube.com/watch?v=z8xoGi5pK70"))
+    kitchenCardPhoto = models.ImageField('Фото для карточки кухни',
+                                         null=True,
+                                        blank=True,
+                                        upload_to='kitchen/card/',
+                                        help_text=("Доступные форматы: jpg, png, webp"))
     images = models.ManyToManyField(KitchenPhoto,
                                     verbose_name="Дополнительные фотографии кухни",
                                     help_text=("Объекты отображаются в порядке их добавления"))
@@ -204,6 +217,24 @@ class Kitchen(models.Model):
                     img.save(img_io, format="WebP")
                     img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
                     self.mainImage.save(f"{name}.webp", img_file, save=False)
+        
+        if self.kitchenCardPhoto:
+            file_name = os.path.basename(self.kitchenCardPhoto.name)
+            file_extension = os.path.splitext(file_name)[1][1:].lower()
+            print(file_extension)
+            if file_extension not in ('webp'):
+                
+                # Проверка наличия файла с таким же именем
+                existing_file = Kitchen.objects.filter(kitchenCardPhoto__icontains=self.kitchenCardPhoto).first()
+                if existing_file:
+                    self.kitchenCardPhoto = existing_file.kitchenCardPhoto
+                else:
+                    name = str(uuid.uuid1())
+                    img = Image.open(self.kitchenCardPhoto)
+                    img_io = BytesIO()
+                    img.save(img_io, format="WebP")
+                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+                    self.kitchenCardPhoto.save(f"{name}.webp", img_file, save=False)
 
         super().save(*args, **kwargs)
 
@@ -217,13 +248,18 @@ class Kitchen(models.Model):
     def get_material(self):
         return "; ".join([str(mat) for mat in self.material.all()])
 
+    get_material.short_description = 'Материал кухни'
 
     def get_openingMethod(self):
         return "; ".join([str(opMed) for opMed in self.openingMethod.all()])
 
+    get_openingMethod.short_description = 'Методы открытия кухни'
+
 
     def get_finishing(self):
         return "; ".join([str(fish) for fish in self.finishing.all()])
+    
+    get_finishing.short_description = 'Отделка кухни'
 
 
 class MainPageCarousel(models.Model):
@@ -342,7 +378,7 @@ class ReviewsAndProject(models.Model):
 
 class LookAt(models.Model):
     content = models.FileField('Фото или видео',
-                               help_text=("Доступные форматы: webp, mp4"),
+                               help_text=("Доступные форматы: webp, jpg, png, mp4"),
                                upload_to='look_at/')
 
     shorts = models.CharField('Ссылка на полное видео',
@@ -368,7 +404,7 @@ class LookAt(models.Model):
             file_name = os.path.basename(self.content.name)
             file_extension = os.path.splitext(file_name)[1][1:].lower()
 
-            if file_extension not in ('mp4'):
+            if file_extension not in ('mp4', 'webp'):
                 # Проверка наличия файла с таким же именем
                 existing_file = LookAt.objects.filter(content__icontains=self.content).first()
                 if existing_file:
@@ -399,6 +435,4 @@ class Politic(models.Model):
         verbose_name = "файл"
         verbose_name_plural = "Файл политики обработки персональных данных"
 
-    
- 
         
