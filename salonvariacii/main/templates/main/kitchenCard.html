@@ -47,13 +47,13 @@
                     <p>{{ kitchen.desc|linebreaksbr }}</p>
                 </div>
                 <div class="kitchen-card-files">
-                    {% for file in kitchen.files.all %}
+                    {% for kitFile in kitchenFiles %}
                     <div class="file">
                         <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M10.8333 10.5001H13.3333L10 13.8334L6.66667 10.5001H9.16667V7.16675H10.8333V10.5001ZM12.5 3.83341H4.16667V17.1667H15.8333V7.16675H12.5V3.83341ZM2.5 2.99325C2.5 2.53679 2.87291 2.16675 3.33208 2.16675H13.3333L17.4998 6.33341L17.5 17.9938C17.5 18.4575 17.1292 18.8334 16.6722 18.8334H3.32783C2.87063 18.8334 2.5 18.454 2.5 18.0069V2.99325Z" />
                         </svg>
-                        <a href="{{ file.files.url }}" download>{{file.name}}</a>
+                        <a href="{{ kitFile.files.url }}" download>{{kitFile.name}}</a>
                     </div>
                     {%endfor%}
                 </div>

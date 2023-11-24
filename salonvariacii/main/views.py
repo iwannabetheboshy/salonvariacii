@@ -112,6 +112,10 @@ def sendFeedBack(request):
 
 def kitchenCard(request, slug):
     kitchen = Kitchen.objects.get(slug=slug)
+    kitchenFiles = kitchen.files.all()
+    for kitFile in  kitchenFiles:
+        dot = kitFile.name.find('.')
+        kitFile.name = kitFile.name[dot+2:]
     kitchen.name = kitchen.name.title()
     kitchen.kitchenCardVideo = get_url_youtube(kitchen.kitchenCardVideo)
     descriptionStyle = (
@@ -124,6 +128,7 @@ def kitchenCard(request, slug):
     keyWords =  "Stosa " + kitchen.name + ", " + ', '.join([str(mat) for mat in kitchen.material.all()])  +', '+ ', '.join([str(mat) for mat in kitchen.openingMethod.all()]) +', ' +', '.join([str(mat) for mat in kitchen.finishing.all()]) + ', ' + ', '.join([str(color) for mat in kitchen.finishing.all() for color in mat.colors.all()])
     data = {
         "kitchen": kitchen,
+        "kitchenFiles": kitchenFiles,
         "feedbackForm": FeedbackForm(),
         "feedbackFile": Politic.objects.first(),
         "title": title,

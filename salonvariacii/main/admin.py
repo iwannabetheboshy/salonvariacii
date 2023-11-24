@@ -53,6 +53,7 @@ class KitchenPhotoAdmin(admin.ModelAdmin):
 @admin.register(MainPageCarousel)
 class MainPageCarouselAdmin(admin.ModelAdmin):
     list_display = ("name", "show_number")
+    exclude = ['slug']
 
 
 @admin.register(AboutUsDopBlock)

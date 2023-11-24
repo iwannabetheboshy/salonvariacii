@@ -131,7 +131,8 @@ class KitchenFinishing(models.Model):
 
 
 class KitchenFiles(models.Model):
-    name = models.CharField('Имя файла', max_length=50)
+    name = models.CharField('Имя файла', max_length=100,
+                             help_text=("Например: «City. Техническое описание»"))
     files = models.FileField('Файл', upload_to ='kitchen/files/',
                              validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
 
