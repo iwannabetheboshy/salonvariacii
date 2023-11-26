@@ -3,7 +3,7 @@ $(document).ready(function () {
     slidesToShow: 1.1,
     prevArrow: $('.nav-main-kitchen-carousel-buttton .custom-prev-arrow'),
     nextArrow: $('.nav-main-kitchen-carousel-buttton .custom-next-arrow'),
-    autoplaySpeed: 2000,
+    autoplaySpeed: 2500,
     autoplay:true,
     infinite: false,
     dots: true,
@@ -57,7 +57,7 @@ $(document).ready(function () {
     slidesToScroll: 1,
     prevArrow: $('.nav-project-and-reviews .custom-prev-arrow'),
     nextArrow: $('.nav-project-and-reviews .custom-next-arrow'),
-    autoplaySpeed: 2000,
+    autoplaySpeed: 2500 ,
     autoplay: true,
     infinite: false,
     dots: true,
@@ -185,7 +185,8 @@ Dribbble = window.Dribbble || {};
                 path: data,
                 renderer: 'svg',
                 loop: false,
-                autoplay: false
+                autoplay: false,
+                
            });
           animation.play();
           isActive = true;
@@ -203,10 +204,16 @@ Dribbble = window.Dribbble || {};
           str = '<div class="shorts-youtube-container">'
           str += '<iframe src="https://www.youtube.com/embed/'
           str += this.querySelector("video").getAttribute("data-url")
-          str += '?autoplay=1&mute=1&loop=1&color=white&controls=1&modestbranding=1&playsinline=1&rel=0" title="Infinity restyle 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          str += '?autoplay=1&mute=1&loop=1&color=white&controls=1&modestbranding=1&playsinline=1&rel=0&enablejsapi=1" title="Infinity restyle 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
           str += '</div>'
           document.getElementById('player').innerHTML = str
-          $('#videoModal').modal('show');
+          setTimeout(function() {
+            $('#videoModal').modal('show');
+            var iframe = document.getElementById('player').getElementsByTagName("iframe")[0].contentWindow;
+            iframe.postMessage('{"event":"command","func":"playVideo","args":""}', "*");
+          }, 300);
+
+          
          }
       });
   }
@@ -214,10 +221,15 @@ Dribbble = window.Dribbble || {};
   watchVideoBlocks.forEach(function(block, index) {
       block.onclick = function() {
           str = '<div class="main-youtube-container">'
-          str += '<iframe src="https://www.youtube.com/embed/z8xoGi5pK70?autoplay=1&mute=1&loop=1&color=white&controls=1&modestbranding=1&playsinline=1&rel=0" title="Infinity restyle 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          str += '<iframe src="https://www.youtube.com/embed/z8xoGi5pK70?autoplay=1&mute=1&loop=1&color=white&controls=1&modestbranding=1&playsinline=1&rel=0&enablejsapi=1" title="Infinity restyle 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
           str += '</div>'
           document.getElementById('player').innerHTML = str
-          $('#videoModal').modal('show');
+          setTimeout(function() {
+            $('#videoModal').modal('show');
+            var iframe = document.getElementById('player').getElementsByTagName("iframe")[0].contentWindow;
+            iframe.postMessage('{"event":"command","func":"playVideo","args":""}', "*");
+          }, 300);
+          
       };
   });
 
@@ -228,4 +240,3 @@ Dribbble = window.Dribbble || {};
     } catch (err)
     {}
   })
-

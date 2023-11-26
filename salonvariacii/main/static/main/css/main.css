@@ -389,12 +389,12 @@ first-block-main-kitchen-carousel
 
 .watch-video:hover svg path,
 .bottom-block-main-block-mobile-a:hover svg path,
-.slider-catalog-kitchen-href:hover svg path{
+.slide-line .large-image .active:hover svg path{
   fill: #787878;
   transition: .3s;
 }
 
-.slider-catalog-kitchen-href:hover{
+.slide-line .large-image .active:hover .slider-catalog-kitchen-href{
   color: #787878;
   border-bottom: 1px solid #787878;
   transition: .3s;
@@ -612,6 +612,9 @@ h1 br {
 /*----------------------------------
 catalog-carousel 
 ----------------------------------*/
+#catalog-carousel{
+  margin-top: 110px;
+}
 #catalog-carousel .slide-line {
   display: flex;
 }
@@ -1139,12 +1142,12 @@ footer .contacts svg:hover path {
 
   footer .contacts {
     margin-top: 6.7% !important;
-    padding-bottom: 16px;
+    padding-bottom: 4.4%;
   }
 
   footer .contacts a {
     padding-left: 0;
-    padding-right: 16px;
+    padding-right: 4.4%;
   }
 
   footer .contacts a svg {
@@ -1157,8 +1160,8 @@ footer .contacts svg:hover path {
   }
 
   #look-at-block {
-    padding-top: 24px !important;
-    padding-bottom: 24px !important;
+    padding-top: 6.7% !important;
+    padding-bottom: 6.7% !important;
 
   }
 
@@ -1183,7 +1186,7 @@ footer .contacts svg:hover path {
 
 
   .about-us-text-dop-block {
-    margin-top: 16px;
+    margin-top: 4.4%;
   }
 
 
@@ -1235,7 +1238,7 @@ footer .contacts svg:hover path {
   }
 
   .project-and-reviews-slider-slide {
-    padding-right: 16px;
+    padding-right: 4.4%;
   }
 
   .parent {
@@ -1246,14 +1249,14 @@ footer .contacts svg:hover path {
   .custom-button {
     width: 33%;
     padding: 17px 32px;
-    margin-top: 24px;
+    margin-top: 6.7%;
     margin-left: auto;
     margin-right: auto;
   }
 
   #first-block-main-kitchen-carousel .custom-button {
-    margin-top: 24px;
-    margin-bottom: 24px;
+    margin-top: 6.7%;
+    margin-bottom: 6.7%;
   }
 
   h1 {
@@ -1306,7 +1309,7 @@ footer .contacts svg:hover path {
   }
 
   .mobile-header {
-    margin-top: 16px;
+    margin-top: 4.4%;
   }
 
   .slick-dots {
@@ -1328,6 +1331,10 @@ footer .contacts svg:hover path {
   .advantages-content-title {
     margin-top: 24px;
     margin-bottom: 12px;
+  }
+
+  .slider-catalog-container-mobile{
+    padding-top: 7px;
   }
 
   .advantages-content,
@@ -1543,12 +1550,6 @@ footer .contacts svg:hover path {
     width: 100%;
   }
 
-  .bottom-block-main-block-mobile {
-    display: block;
-    margin-top: 24px;
-    margin-bottom: 24px;
-  }
-
   .bottom-block-main-block-mobile .row {
     justify-content: center !important;
     text-align: center;
@@ -1565,7 +1566,6 @@ footer .contacts svg:hover path {
   .custom-button {
     width: 87.2%;
     padding: 12px 32px;
-    margin-bottom: 24px;
   }
 
   h2 {
@@ -1641,8 +1641,9 @@ footer .contacts svg:hover path {
 
 .lottie {
   position: absolute;
-  left: -34px;
+  left: -6.6px;
   transition: filter .25s ease-in;
+  height: 50px;
 }
 
 
@@ -1797,6 +1798,10 @@ catalog-header
     position: relative;
 }
 
+#catalog-filter .modal-dialog{
+  max-width: 92.5%;
+}
+
 
 /*--------------------------------------------------
 catalog-filter-result
@@ -1868,6 +1873,12 @@ catalog-filter-result
 
 #catalog-filter .filter-name:hover{
   cursor: pointer;
+
+}
+
+
+
+#catalog-filter .filter-desc .filter-name:hover{
   transition: .3s;
   color: #787878;
   border-bottom: 1px solid #787878;
@@ -2950,7 +2961,7 @@ certified-quality
     }
 
     .certified-quality-wrapper{
-        padding: 24px 16px; 
+      padding: 6.7% 4.4%;
     }
 
     #certified-quality{
