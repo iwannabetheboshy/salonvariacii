@@ -3,8 +3,8 @@ $(document).ready(function () {
     slidesToShow: 1.1,
     prevArrow: $('.nav-main-kitchen-carousel-buttton .custom-prev-arrow'),
     nextArrow: $('.nav-main-kitchen-carousel-buttton .custom-next-arrow'),
-    autoplaySpeed: 1000,
-    //autoplay:true,
+    autoplaySpeed: 2000,
+    autoplay:true,
     infinite: false,
     dots: true,
 
@@ -52,7 +52,41 @@ $(document).ready(function () {
     ]
 
   });
+  $('#project-and-reviews .project-and-reviews-slider').slick({
+    slidesToShow: 1.05,
+    slidesToScroll: 1,
+    prevArrow: $('.nav-project-and-reviews .custom-prev-arrow'),
+    nextArrow: $('.nav-project-and-reviews .custom-next-arrow'),
+    autoplaySpeed: 2000,
+    autoplay: true,
+    infinite: false,
+    dots: true,
 
+    customPaging: function (slider, i) {
+      return '<span> 0' +( i + 1 ) + '</span>';
+    },
+
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          slidesToShow: 1.2
+        }
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 1.2
+        }
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1.1
+        }
+      },
+    ]
+  });
   $('.slider-catalog-container .slide').first().addClass('large-image');
   $('.slider-catalog-container .slide .content').first().addClass('active');
   $('.slide').click(function () {
@@ -85,40 +119,7 @@ $(document).ready(function () {
       ]
     });
 
-  $('#project-and-reviews .project-and-reviews-slider').slick({
-    slidesToShow: 1.05,
-    slidesToScroll: 1,
-    prevArrow: $('.nav-project-and-reviews .custom-prev-arrow'),
-    nextArrow: $('.nav-project-and-reviews .custom-next-arrow'),
-    autoplaySpeed: 1000,
-    infinite: false,
-    dots: true,
-
-    customPaging: function (slider, i) {
-      return '<span> 0' +( i + 1 ) + '</span>';
-    },
-
-    responsive: [
-      {
-        breakpoint: 1200,
-        settings: {
-          slidesToShow: 1.2
-        }
-      },
-      {
-        breakpoint: 1000,
-        settings: {
-          slidesToShow: 1.2
-        }
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 1.1
-        }
-      },
-    ]
-  });
+  
 });
 
 function readMore (e) {

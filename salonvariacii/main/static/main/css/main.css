@@ -230,6 +230,11 @@ a {
     width: 40px !important;
   }
 
+  .header.sticky {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
   .header #navbarNav {
     margin-top: 40px;
     margin-bottom: 40px;
@@ -340,8 +345,15 @@ first-block-main-kitchen-carousel
   position: relative;
 }
 
+.slider-catalog-kitchen-href{
+  font-family: 'Stolzl Book' !important;
+  border-bottom: 1px solid transparent;
+  margin-right: 70px;
+}
+
 .watch-video:hover span,
-.bottom-block-main-block-mobile-a:hover span {
+.bottom-block-main-block-mobile-a:hover span,
+.slider-catalog-kitchen-href svg {
   color: #787878;
   transition: .3s;
 }
@@ -376,8 +388,15 @@ first-block-main-kitchen-carousel
 }
 
 .watch-video:hover svg path,
-.bottom-block-main-block-mobile-a:hover svg path {
+.bottom-block-main-block-mobile-a:hover svg path,
+.slider-catalog-kitchen-href:hover svg path{
   fill: #787878;
+  transition: .3s;
+}
+
+.slider-catalog-kitchen-href:hover{
+  color: #787878;
+  border-bottom: 1px solid #787878;
   transition: .3s;
 }
 
@@ -501,7 +520,7 @@ first-block-main-kitchen-carousel
   color: #1E1E1E;
   bottom: -2px;
   border-bottom: 2px solid #1E1E1E;
-  animation: progress-bar 2s ease-out;
+  animation: progress-bar 3s ease-out;
   animation-fill-mode: forwards;
 }
 
@@ -617,8 +636,16 @@ catalog-carousel
   object-fit: cover;
 }
 
+.slider-catalog-container img:hover {
+  filter: brightness(80%);
+}
+
 .large-image {
   flex: 10 !important;
+}
+
+.large-image img:hover{
+  filter: none;
 }
 
 .slider-catalog-container {
@@ -681,11 +708,11 @@ catalog-carousel
   width: 100%;
   height: calc(100vw*0.5);
   object-fit: cover;
-  padding-right: 2.5%;
+  padding-right: 4.4%;
 }
 
 .slider-catalog-kitchen-short-desc-mobile {
-  margin-bottom: 2.5%;
+  margin-bottom: 4.4%;
 }
 
 #catalog-carousel .slide:hover {
@@ -1111,7 +1138,7 @@ footer .contacts svg:hover path {
   }
 
   footer .contacts {
-    margin-top: 4% !important;
+    margin-top: 6.7% !important;
     padding-bottom: 16px;
   }
 
@@ -1146,7 +1173,7 @@ footer .contacts svg:hover path {
   #about-us-block,
   .feedback-wrapper,
   #section-404{
-    padding: 0 2.5%;
+    padding: 0 4.4%;
   }
 
   #section-404{
@@ -1163,17 +1190,19 @@ footer .contacts svg:hover path {
   .wrapper,
   #catalog-carousel,
   .parent,
-  #look-at-block {
-    margin-top: 4% !important;
+  #look-at-block,
+  .catalog-carousel-button,
+  .project-and-reviews-nav {
+    margin-top: 6.7% !important;
   }
 
   .about-us-text {
-    margin-top: 2.5%;
+    margin-top: 4.4%;
   }
 
 
   .mobile {
-    margin-bottom: 4%;
+    margin-bottom: 6.7%;
   }
 
   .project-and-reviews-slider,
@@ -1181,7 +1210,7 @@ footer .contacts svg:hover path {
   .slider-catalog-container,
   .main-kitchen-carousel,
   .slider-catalog-container-mobile {
-    padding-left: 2.5%;
+    padding-left: 4.4%;
   }
 
   h1 {
@@ -1189,16 +1218,16 @@ footer .contacts svg:hover path {
   }
 
   h2 {
-    margin-bottom: 2.5%;
+    margin-bottom: 4.4%;
   }
 
   .review-content {
     padding-left: 0;
-    margin-top: 2.5%;
+    margin-top: 4.4%;
   }
 
   .project-and-reviews-slider-price-square {
-    margin-bottom: 4%;
+    margin-bottom: 6.7%;
   }
 
   .project-and-reviews-slider-name-svg svg {
@@ -1210,7 +1239,7 @@ footer .contacts svg:hover path {
   }
 
   .parent {
-    padding-left: 2.5%;
+    padding-left: 4.4%;
     width: 73%;
   }
 
@@ -1255,7 +1284,7 @@ footer .contacts svg:hover path {
 
   .text-width {
     width: 100%;
-    margin-bottom: 4%;
+    margin-bottom: 6.7%;
   }
 
   .proggress {
@@ -1292,8 +1321,8 @@ footer .contacts svg:hover path {
   }
 
   .custom-bg {
-    padding: 4% 2.5%;
-    margin-top: 4%;
+    padding: 6.7% 4.4%;
+    margin-top: 6.7%;
   }
 
   .advantages-content-title {
@@ -1314,22 +1343,22 @@ footer .contacts svg:hover path {
   .footer-number,
   #advantages,
   .feedback-img-mobile {
-    margin-top: 4%;
+    margin-top: 6.7%;
   }
 
   .footer-adress,
   .feedback-text,
   .slider-catalog-kitchen-name {
-    margin-top: 1.8%;
+    margin-top: 3.4%;
   }
 
   .feedback-text {
-    margin-bottom: 1.8%;
+    margin-bottom: 3.4%;
   }
 
   .feedback-form {
     width: 40%;
-    right: 2.5%;
+    right: 4.4%;
   }
 
   .project-and-reviews-nav {
@@ -1339,11 +1368,11 @@ footer .contacts svg:hover path {
   #project-and-reviews .slick-dots {
     text-align: center;
     padding: 0;
-    margin-top: 5%;
+    margin-top: 8.9%;
   }
 
   .project-and-reviews-name {
-    margin-bottom: 1.25%;
+    margin-bottom: 2.4%;
   }
 
   .link {
@@ -1418,7 +1447,7 @@ footer .contacts svg:hover path {
     position: relative;
     width: 100%;
     right: 0;
-    padding: 2.5%;
+    padding: 4.4%;
     box-shadow: none;
   }
 
@@ -1458,7 +1487,7 @@ footer .contacts svg:hover path {
 
   footer {
     padding: 0;
-    margin-bottom: 4%;
+    margin-bottom: 6.7%;
   }
 
 }
@@ -1496,7 +1525,7 @@ footer .contacts svg:hover path {
 
   .custom-button {
     padding: 15px 32px;
-    width: 80%;
+    width: 75%;
   }
 }
 
@@ -1534,7 +1563,7 @@ footer .contacts svg:hover path {
   }
 
   .custom-button {
-    width: 96%;
+    width: 87.2%;
     padding: 12px 32px;
     margin-bottom: 24px;
   }
@@ -1612,13 +1641,14 @@ footer .contacts svg:hover path {
 
 .lottie {
   position: absolute;
-  top: 10px;
+  left: -34px;
   transition: filter .25s ease-in;
 }
 
 
 .hero-marquee-item__tags {
   cursor: pointer;
+  position: relative;
 }
 
 
@@ -1831,10 +1861,20 @@ catalog-filter-result
 
 .kitchen-name:hover,
 #filtered-results img:hover,
-#catalog-filter .kitchen-name svg:hover,
-#catalog-filter .filter-name:hover {
+#catalog-filter .kitchen-name svg:hover {
     cursor: pointer;
     transition: .3s;
+}
+
+#catalog-filter .filter-name:hover{
+  cursor: pointer;
+  transition: .3s;
+  color: #787878;
+  border-bottom: 1px solid #787878;
+}
+
+#catalog-filter .filter-name{
+  border-bottom: 1px solid transparent;
 }
 
 .filter,
@@ -2169,26 +2209,26 @@ scrollbar
     #catalog-header {
         margin-top: calc(4% + 40px) !important;
         text-align: start;
-        padding: 0 2.5%;
+        padding: 0 4.4%;
     }
 
     #catalog-filter {
-        margin-top: 5%;
+        margin-top: 8.9%;
     }
 
     .filter,
     .select,
     .filtered-results-wrapper {
-        padding: 0 2.5%;
+        padding: 0 4.4%;
     }
 
     .filtered-results-wrapper,
     .select {
-        margin-top: 1.8%;
+        margin-top: 3.4%;
     }
 
     .filtered-results-wrapper .result {
-        margin-bottom: 4% !important;
+        margin-bottom: 6.7% !important;
     }
 
     .dropdowns {
@@ -2822,7 +2862,7 @@ certified-quality
     }
 
     #color-and-fishing h2 {
-        margin-bottom: 1.8% !important;
+        margin-bottom: 3.4% !important;
     }
 
     #kitchen-annotation {
@@ -2839,7 +2879,7 @@ certified-quality
     .kitchen-card-desc,
     .kitchen-card-files,
     #color-and-fishing {
-        padding: 0 2.5%;
+        padding: 0 4.4%;
     }
 
     .kitchen-card-header-mobile {
@@ -2847,7 +2887,7 @@ certified-quality
     }
 
     .kitchen-card-header-mobile {
-        margin-bottom: 2.5%;
+        margin-bottom: 4.4%;
     }
 
     .kitchen-card-name,
@@ -2858,25 +2898,25 @@ certified-quality
 
 
     .kitchen-card-files{
-        margin-top: 4%;
+        margin-top: 6.7%;
     }
     .kitchen-card-desc,
     #kitchen-card-slider .slick-dots {
-        margin-top: 2.5%;
+        margin-top: 4.4%;
     }
 
     .kitchen-card-custom-button {
         text-align: center;
-        margin-bottom: 6.25%;
-        margin-top: 6.25%;
+        margin-bottom: 11%;
+        margin-top: 11%;
     }
 
     #kitchen-card-slider {
-        padding-left: 2.5%;
+        padding-left: 4.4%;
     }
 
     #kitchen-card-slider {
-        padding-left: 2.5%;
+        padding-left: 4.4%;
     }
 
     .kitchen-card-files .file a {
@@ -2888,7 +2928,7 @@ certified-quality
     }
 
     #color-and-fishing {
-        margin-top: 6.25%;
+        margin-top: 11%;
     }
 
     .kitchenCard-video-container::after,.kitchenCard-photo-container::after  {
@@ -2918,7 +2958,7 @@ certified-quality
     }
 
     .kitchen-card-back{
-        margin-bottom: 4%;
+        margin-bottom: 6.7%;
     }
 
     .kitchenCard-video-container iframe{

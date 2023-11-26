@@ -177,7 +177,8 @@
                             <div class="slider-catalog-kitchen-name">
                                 Кухни Stosa {{ kitchen.name }}
                             </div>
-                            <div>
+                            <div >
+                                <a href="/kitchen/{{ kitchen.slug }}" class="slider-catalog-kitchen-href" >
                                 Подробнее
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -185,6 +186,7 @@
                                             d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
                                             fill="#1E1E1E" />
                                 </svg>
+                                </a>
                             </div>
                         </div>
                         </a>
@@ -197,24 +199,28 @@
             <div class="slide-line-mobile">
                 {% for kitchen in catalog_carousel %}
                 <div class="slid-mobile">
-                    <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
-                    <div class="content-mobile">
-                        <a href="/kitchen/{{ kitchen.slug }}">
+                    <a href="/kitchen/{{ kitchen.slug }}">
+                        <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
+                        <div class="content-mobile">
+                        
                             <div class="slider-catalog-kitchen-name">
                                 Кухни {{ kitchen.name }}
                             </div>
                             <div>
-                                Подробнее
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                            d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
-                                            fill="#1E1E1E" />
-                                </svg>
+                                <a class="slider-catalog-kitchen-href" href="/kitchen/{{ kitchen.slug }}">
+                                    Подробнее
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                                d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
+                                                fill="#1E1E1E" />
+                                    </svg>
+                                </a>
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
+                
                 {% endfor %}
             </div>
         </div>
@@ -391,10 +397,11 @@
                 {% for item in look_at %}
                 <div class="hero-marquee-item" data-lazy-parent>
                     <div class="hero-marquee-item__info">
-                        <div class="lottie"></div>
+                        
                         <div class="hero-marquee-item__title num-white row_hero_2_col_1">{{item.name}}</div>
                         <div class="hero-marquee-item__tags row_hero_2_col_2" >
                             <div class="hero-marquee-item__tag little-text">
+                                <div class="lottie"></div>
                                 <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M15.2234 1.4727C15.2394 1.48633 15.2549 1.50064 15.2699 1.5156C17.2881 3.53431 17.2878 6.80688 15.2692 8.82529C15.2691 8.8253 15.2692 8.82528 15.2692 8.82529L10.5074 13.5871C10.5048 13.5897 10.5025 13.592 10.5005 13.5939C10.5003 13.5941 10.5001 13.5943 10.4999 13.5945C9.33303 14.7578 7.44406 14.7561 6.27946 13.59C6.2794 13.59 6.27934 13.5899 6.27928 13.5899C6.27918 13.5898 6.27909 13.5897 6.27899 13.5896L1.514 8.82451C-0.504655 6.80576 -0.504681 3.53281 1.51401 1.51412C3.39354 -0.365327 6.36019 -0.494967 8.38961 1.12528C10.404 -0.483136 13.342 -0.367297 15.2234 1.4727ZM9.05232 2.62379L8.94137 2.73474C8.63663 3.03948 8.14255 3.03948 7.83781 2.73474L7.72075 2.61769C6.31156 1.2085 4.02685 1.20848 2.61756 2.6177C1.20837 4.02689 1.20837 6.31166 2.61758 7.72095C2.61758 7.72095 2.61758 7.72095 2.61758 7.72095L7.38351 12.487C7.93862 13.043 8.83892 13.0446 9.39613 12.4912C9.39828 12.489 9.40023 12.4871 9.40194 12.4854C9.40208 12.4852 9.40222 12.4851 9.40235 12.485L14.1656 7.72172C15.5632 6.32434 15.5749 4.06581 14.2007 2.65404C14.1873 2.64239 14.1743 2.63026 14.1617 2.61766C12.7527 1.20847 10.468 1.20835 9.05886 2.61733C9.05669 2.6195 9.05451 2.62165 9.05232 2.62379Z" fill-opacity="0.58"/>
                                 </svg>
