@@ -9,9 +9,11 @@ class FeedbackForm(ModelForm):
 
         widgets = {
             "name": TextInput(attrs={
-                'class': 'form-control',
+                'class': 'form-control fb_name',
                 'placeholder': 'Введите имя',
                 'required': 'true',
+                'pattern': r'\s*[а-яА-Яa-zA-Z]*\s*[а-яА-Яa-zA-Z]*\s*[а-яА-Яa-zA-Z]*\s*',
+                'title': 'Используйте только буквы',
             }),
 
             "number": TextInput(attrs={

@@ -164,7 +164,7 @@
             <a href="/#project-and-reviews">Наши проекты</a>
           </span>
           <span>
-            <a href="/#look-at-block">Отзывы</a>
+            <a href="/#look-at-block">Взляните сами</a>
           </span>
           <span>
             <a href="/#feedback">Контакты</a>
@@ -219,6 +219,8 @@
 <div class="modal fade" id="mainFeedBackModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 431px;">
     <div class="modal-content feedback">
+
+
       <div class="modal-header border-0 p-0">
         <h3>Заказать персональную<br>консультацию</h3>
         <button type="button" class="close" data-bs-dismiss="modal" aria-label="Закрыть">
@@ -289,6 +291,19 @@ function validatePhoneNumber(phoneNumber, phone_input) {
     } else {
         phone_input.addClass("is-invalid")
     }
+}
+
+$('.fb_name').on('input', function() {
+  validateName($(this).val(),$(this));
+ });
+function validateName(name, name_input) {
+  var regex = /^\s*[а-яА-Яa-zA-Z][а-яА-Яa-zA-Z]*\s*[а-яА-Яa-zA-Z][а-яА-Яa-zA-Z]*\s*[а-яА-Яa-zA-Z][а-яА-Яa-zA-Z]*\s*$/;
+  var isValid = regex.test(name);
+  if (isValid) {
+    name_input.removeClass("is-invalid");
+  } else {
+    name_input.addClass("is-invalid")
+  }
 }
 </script>
 

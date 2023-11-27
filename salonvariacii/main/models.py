@@ -177,7 +177,8 @@ class Kitchen(models.Model):
                                     null=True,
                                     blank=True,
                                     help_text=("Проигрывается на странице каталога при наведении курсора на изображение кухни. Например: https://www.youtube.com/watch?v=z8xoGi5pK70") )
-    kitchenCardVideoPhotoChoices = models.CharField('Выбирите видео или фото для карточки кухни', choices=VIDEOPHOTO_CHOICES, max_length=50)
+    kitchenCardVideoPhotoChoices = models.CharField('Выбирите видео или фото для карточки кухни', choices=VIDEOPHOTO_CHOICES, max_length=50,
+                                                    help_text=("Обязательно выберите фото или введите ссылку на видео в блоке ниже"))
     kitchenCardVideo = models.CharField('Видео для карточки кухни',
                                         null=True,
                                         blank=True,

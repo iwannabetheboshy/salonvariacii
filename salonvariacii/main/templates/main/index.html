@@ -176,7 +176,8 @@
                             <div class="slider-catalog-kitchen-name">
                                 Кухни Stosa {{ kitchen.name }}
                             </div>
-                            <div class="slider-catalog-kitchen-href">
+                            <div >
+                                <a class="slider-catalog-kitchen-href" href="/kitchen/{{ kitchen.slug }}">
                                 Подробнее
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
@@ -184,6 +185,7 @@
                                             d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
                                             fill="#1E1E1E" />
                                 </svg>
+                            </a>
                             </div>
                             </div>
                         </a>
@@ -391,7 +393,11 @@
             <div class="hero-marquee__grid">
 
                 {% for item in look_at %}
-                <div class="hero-marquee-item" data-lazy-parent>
+                {% if item.content.url|slice:"-3:" == "mp4" %}
+                <div class="hero-marquee-item" style=" cursor: pointer;" data-lazy-parent >
+                    {% else %}
+                    <div class="hero-marquee-item" data-lazy-parent>
+                        {%endif%}
                     <div class="hero-marquee-item__info">
                         
                         <div class="hero-marquee-item__title num-white row_hero_2_col_1">{{item.name}}</div>

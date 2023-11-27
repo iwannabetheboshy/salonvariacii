@@ -327,7 +327,7 @@ first-block-main-kitchen-carousel
 
 .text-width {
   width: 70%;
-  margin-bottom: 80px;
+  margin-bottom: 20px;
 }
 
 .parent {
@@ -461,15 +461,17 @@ first-block-main-kitchen-carousel
   fill: #1E1E1E;
 }
 
-.nav-main-kitchen-carousel-buttton .slick-disabled {
-  fill: #DBC7D7;
-}
+
 
 .custom-prev-arrow:hover,
 .custom-next-arrow:hover {
   fill: #787878;
   cursor: pointer;
   transition: .3s;
+}
+
+.nav-main-kitchen-carousel-buttton .slick-disabled {
+  fill: #DBC7D7;
 }
 
 .custom-prev-arrow {
@@ -1559,10 +1561,6 @@ footer .contacts svg:hover path {
     justify-content: center;
   }
 
-  #feedback .feedback-form-annotation {
-    margin-top: -8px;
-  }
-
   .custom-button {
     width: 87.2%;
     padding: 12px 32px;
@@ -1633,10 +1631,6 @@ footer .contacts svg:hover path {
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
-}
-
-.hero-marquee-item:hover {
-  cursor: pointer;
 }
 
 .lottie {
@@ -1923,6 +1917,7 @@ filter desc
 
 
 .sub-menu li {
+  color: #000;
     list-style-type: none;
     padding: 4px 12px;
 }
@@ -2570,6 +2565,8 @@ KITCHEN CARD CSS
 }
 
 
+
+
 /*--------------------------------------------------
 kitchen-annotation
 --------------------------------------------------*/
@@ -2864,6 +2861,9 @@ certified-quality
 
 @media (max-width: 1200px) {
 
+  .dotsFalse .slick-dots{
+    display: none !important;
+  }
     .kitchen-annotation-right, .slick-dots {
         padding-left: 0 !important;
     }
@@ -2884,6 +2884,13 @@ certified-quality
     .kitchen-card-header-desc,
     .nav-kitchen-card-slider {
         display: none;
+    }
+
+    .dotsFalse .nav-kitchen-card-slider {
+      display: block;
+      margin-top: 4.4%;
+      padding-right: 4.4%;
+
     }
 
     .kitchen-card-header-mobile,
@@ -2975,6 +2982,7 @@ certified-quality
     .kitchenCard-video-container iframe{
         height: calc(100vw*0.6);
     }
+
 }
 
 

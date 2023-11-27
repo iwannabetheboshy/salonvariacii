@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    if($('#kitchen-card-slider .kitchen-card-slide').length > 8 ){
+        $('#kitchen-card-slider').addClass("dotsFalse");
+    }
+
     $('#kitchen-card-slider .kitchen-card-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
