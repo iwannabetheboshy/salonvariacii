@@ -57,11 +57,11 @@
                     </div>
                     {%endfor%}
                 </div>
-                <div class="kitchen-card-custom-button">
+                <!--<div class="kitchen-card-custom-button">
                     <button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
                         Оставить заявку
                     </button>
-                </div>
+                </div>-->
 
             </div>
         </div>
@@ -140,20 +140,12 @@
             <div class="col px-0">
                 <h2 class="mb-5">Сертифицированное качество</h2>
                 <div class="row sertificate">
+                    {% for cert in certificate %}
                     <div class="col-xl-4 col-12 px-0">
-                        <img src="{% static 'main/image/CERTIFICAZIONE-ISO.png' %}" alt="Сертификат качества">
-                        <p class="mb-0">CERTIFICAZIONE <br>ISO 9001:2015</p>
+                        <img src="{{ cert.image.url }}" alt="Сертификат качества">
+                        <p class="mb-0 certificate-p">{{ cert.name }}</p>
                     </div>
-                    <div class="col-xl-4 col-12 px-xl-4 px-0">
-                        <img src="{% static 'main/image/CERTIFICAZIONE-DI-ORIGINE.png' %}" alt="Сертификат качества">
-                        <p class="mb-0">CERTIFICAZIONE 100% <br>MADE IN ITALY</p>
-
-                    </div>
-                    <div class="col-xl-4 col-12 px-0">
-                        <img src="{% static 'main/image/CERTIFICAZIONE-100%.png' %}" alt="Сертификат качества">
-                        <p class="mb-0">CERTIFICAZIONE DI ORIGINE <br>ITALIANA DEL MOBILE</p>
-
-                    </div>
+                    {%endfor%}
                 </div>
             </div>
         </div>

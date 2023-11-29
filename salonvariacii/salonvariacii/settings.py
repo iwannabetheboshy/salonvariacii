@@ -135,13 +135,11 @@ ADMIN_REORDER = (
         )
     },
 
-     {
+    {
         'app': 'main',
-        'label': 'Блок о нас',
+        'label': 'Плитика и персональные данные',
         'models': (
-            "main.AboutUs",
-            'main.AboutUsDopBlock',
-
+            'main.Politic',
         )
     },
 
@@ -150,18 +148,60 @@ ADMIN_REORDER = (
         'label': 'Главная страница',
         'models': (
             'main.MainPageCarousel',
-            'main.ReviewsAndProject',
-            'main.LookAt',
-
+            'main.FeedbackBlock',
+            'main.WatchVideoMain',
         )
     },
 
     {
         'app': 'main',
-        'label': 'Плитика и персональные данные',
+        'label': 'Блок о нас',
         'models': (
-            'main.Politic',
+            "main.AboutUs",
+            'main.AboutUsDopBlock',
+        )
+    },
 
+    {
+        'app': 'main',
+        'label': 'Приемущества',
+        'models': (
+            'main.AdvantagesTitle',
+            'main.AdvantagesBlocks',
+        )
+    },
+
+    {
+        'app': 'main',
+        'label': 'Проекты и отзывы',
+        'models': (
+            'main.ReviewsAndProjectTitle',
+            'main.ReviewsAndProject',
+        )
+    },
+
+    {
+        'app': 'main',
+        'label': 'Взгляните сами',
+        'models': (
+            'main.LookAtTitle',
+            'main.LookAt',
+        )
+    },
+
+    {
+        'app': 'main',
+        'label': 'Страница каталога',
+        'models': (
+            'main.CatalogTitle',
+        )
+    },
+
+    {
+        'app': 'main',
+        'label': 'Карточка кухни',
+        'models': (
+            'main.Certificate',
         )
     },
 
@@ -170,8 +210,6 @@ ADMIN_REORDER = (
         'label': 'Заявки',
         'models': (
             'main.FeedBack',
-
         )
     },
-
 )

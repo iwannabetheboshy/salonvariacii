@@ -9,7 +9,7 @@ class KitchenAdmin(admin.ModelAdmin):
     filter_horizontal = ('material','openingMethod', 'finishing','files', 'images') 
     fieldsets = (
       ('Основные сведения', {
-          'fields': ('name', 'desc', 'style', 'material', 'openingMethod', 'finishing', 'show_number')
+          'fields': ('name', 'desc', 'style', 'material', 'openingMethod', 'finishing', 'show_number', 'hide')
       }),
       ('Медиа-файлы кухни', {
           'fields': ('mainImage', 'catalogVideo', 'kitchenCardVideoPhotoChoices', 'kitchenCardVideo', 'kitchenCardPhoto')
@@ -67,25 +67,31 @@ class AboutUsDopBlocklAdmin(admin.ModelAdmin):
 class AboutUslAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(ReviewsAndProject)
 class ReviewsAndProjectAdmin(admin.ModelAdmin):
     list_display = ("project_name", "price", "squeare", "review_name", "text")
+
 
 @admin.register(FeedBack)
 class FeedBackAdmin(admin.ModelAdmin):
     list_display = ("name", "number", "message")
 
+
 @admin.register(LookAt)
 class LookAtAdmin(admin.ModelAdmin):
-    list_display = ("name", "likes", "show_number")
+    list_display = ("name", "likes", "show_number", 'hide')
+
 
 @admin.register(KitchenFiles)
 class KitchenFilesAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(KitchenColors)
 class KitchenColorsAdmin(admin.ModelAdmin):
     pass
+
 
 @admin.register(KitchenFinishing)
 class KitchenFinishingAdmin(admin.ModelAdmin):
@@ -96,3 +102,47 @@ class KitchenFinishingAdmin(admin.ModelAdmin):
 @admin.register(Politic)
 class PoliticAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(FeedbackBlock)
+class FeedbackBlockAdmin(admin.ModelAdmin):
+    list_display = ("title", "text", "image")
+
+
+@admin.register(LookAtTitle)
+class LookAtTitleAdmin(admin.ModelAdmin):
+    list_display = ("titleOne", "titleTwo")
+
+
+@admin.register(ReviewsAndProjectTitle)
+class ReviewsAndProjectTitleAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(AdvantagesTitle)
+class AdvantagesTitleAdmin(admin.ModelAdmin):
+    list_display = ("titleOne", "titleTwo")
+
+
+@admin.register(AdvantagesBlocks)
+class AdvantagesBlocksAdmin(admin.ModelAdmin):
+    list_display = ("name", "text", "show_number")
+
+@admin.register(WatchVideoMain)
+class WatchVideoMainAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.CharField: {'widget': forms.TextInput(attrs={'size':'60'})},
+    }
+    
+    
+@admin.register(CatalogTitle)
+class CatalogTitleAdmin(admin.ModelAdmin):
+    list_display = ("name", "text")
+    formfield_overrides = {
+        models.CharField: {'widget': forms.TextInput(attrs={'size':'60'})},
+    }
+
+
+@admin.register(Certificate)
+class CertificateAdmin(admin.ModelAdmin):
+    list_display = ("name", "image")

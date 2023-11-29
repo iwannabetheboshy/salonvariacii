@@ -16,10 +16,10 @@
                     </div>
                     <div class="row align-items-center bottom-block-main-block">
                         <div class="col">
-                            <button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
+                            <!--<button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
                                 Оставить заявку
-                            </button>
-                            <span class="watch-video">
+                            </button>-->
+                            <span class="watch-video" data-url="{{ watchVideoMain }}">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -65,12 +65,12 @@
         <div class="bottom-block-main-block-mobile">
             <div class="row text-center mx-0">
                 <div class="col-xl-6 col-12 px-0">
-                    <button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
+                    <!--<button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
                         Оставить заявку
-                    </button>
+                    </button>-->
                 </div>
-                <div class="col-xl-6 col-12 px-0">
-                    <span class="watch-video px-0">
+                <div class="col-xl-6 col-12 px-0 watch-video-div" >
+                    <span class="watch-video px-0" data-url="{{ watchVideoMain }}">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                              xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -89,13 +89,13 @@
     <div class="wrapper">
 
         <div class="row about-us-block mx-0">
-            <h2 class="mobile px-0">О нас</h2>
+            <h2 class="mobile px-0">{{ about.title }}</h2>
             <div class="col-xl-6 col-12 about-us-block-image px-0">
                 <img src="{{ about.image.url }}" alt="О нас">
             </div>
 
             <div class="col-xl-6 col-12 about-us-text-block">
-                <h2 class="desk">О нас</h2>
+                <h2 class="desk">{{ about.title }}</h2>
                 <div class="about-us-text">
                     {{ about.text|linebreaksbr }}
                 </div>
@@ -225,7 +225,7 @@
         </div>
         <div class="row text-center catalog-carousel-button">
             <div class="col px-0">
-                <a href="/catalog/"><button class="custom-button">Смотреть все кухни</button></a>
+                <a href="/catalog/"><button class="custom-button">Смотреть весь каталог</button></a>
             </div>
         </div>
 </section>
@@ -233,63 +233,27 @@
 <section id="advantages">
     <div class="custom-bg">
         <div class="gray-text-14">
-            Преимущества
+           {{ AdvantagesTitle.titleOne }} 
         </div>
         <h2 class="mb-0">
-            Почему нас выбирают
+            {{ AdvantagesTitle.titleTwo }} 
         </h2>
         <div class="row advantages-content mx-0">
-            <div class="block col-lg-6 col-xl-3 col-12 ps-0">
-                <div class="col advantages-content-title">
-                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                                d="M8 0.5L9.61276 3.73998C10.2915 5.10354 11.3965 6.2085 12.76 6.88724L16 8.5L12.76 10.1128C11.3965 10.7915 10.2915 11.8965 9.61276 13.26L8 16.5L6.38724 13.26C5.7085 11.8965 4.60353 10.7915 3.23997 10.1128L0 8.5L3.23997 6.88724C4.60354 6.2085 5.7085 5.10353 6.38724 3.73997L8 0.5Z"
-                                fill="#1E1E1E" />
-                    </svg>
-                    Компетентность
+            {% for advantage in AdvantagesBlocks %}
+                <div class="block col-lg-6 col-xl-3 col-12 ps-0">
+                    <div class="col advantages-content-title">
+                        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                    d="M8 0.5L9.61276 3.73998C10.2915 5.10354 11.3965 6.2085 12.76 6.88724L16 8.5L12.76 10.1128C11.3965 10.7915 10.2915 11.8965 9.61276 13.26L8 16.5L6.38724 13.26C5.7085 11.8965 4.60353 10.7915 3.23997 10.1128L0 8.5L3.23997 6.88724C4.60354 6.2085 5.7085 5.10353 6.38724 3.73997L8 0.5Z"
+                                    fill="#1E1E1E" />
+                        </svg>
+                        {{ advantage.name }}
+                    </div>
+                    <div class="col advantages-content-title-text">
+                        {{ advantage.text }}
+                    </div>
                 </div>
-                <div class="col advantages-content-title-text">
-                    Итальянская кухня под заказ - это искусство, которым мы занимаемся уже более 50 лет. Тщательный контроль за процессом изготовления и надежные материалы - залог нашего успеха                </div>
-            </div>
-            <div class="block col-lg-6 col-xl-3 col-12 ps-0">
-                <div class="col advantages-content-title">
-                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                                d="M8 0.5L9.61276 3.73998C10.2915 5.10354 11.3965 6.2085 12.76 6.88724L16 8.5L12.76 10.1128C11.3965 10.7915 10.2915 11.8965 9.61276 13.26L8 16.5L6.38724 13.26C5.7085 11.8965 4.60353 10.7915 3.23997 10.1128L0 8.5L3.23997 6.88724C4.60354 6.2085 5.7085 5.10353 6.38724 3.73997L8 0.5Z"
-                                fill="#1E1E1E" />
-                    </svg>
-                    Индивидуальность
-                </div>
-                <div class="col advantages-content-title-text">
-                    Вы можете заказать кухню по индивидуальным размерам, а мы подберем дизайн кухни именно для вас. Вы можете выбрать цвет и материал для вашей идеальной кухни
-                </div>
-            </div>
-            <div class="block col-lg-6 col-xl-3 col-12 ps-0">
-                <div class="col advantages-content-title">
-                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                                d="M8 0.5L9.61276 3.73998C10.2915 5.10354 11.3965 6.2085 12.76 6.88724L16 8.5L12.76 10.1128C11.3965 10.7915 10.2915 11.8965 9.61276 13.26L8 16.5L6.38724 13.26C5.7085 11.8965 4.60353 10.7915 3.23997 10.1128L0 8.5L3.23997 6.88724C4.60354 6.2085 5.7085 5.10353 6.38724 3.73997L8 0.5Z"
-                                fill="#1E1E1E" />
-                    </svg>
-                    Надежность
-                </div>
-                <div class="col advantages-content-title-text">
-                    Кухонная мебель с фасадами толщиной до 23 мм создается из прочных материалов,а мебельная фурнитура самых надежных марок обеспечивает надежность в деталях
-                </div>
-            </div>
-            <div class="col-lg-6 col-xl-3 col-12 ps-0">
-                <div class="col advantages-content-title">
-                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                                d="M8 0.5L9.61276 3.73998C10.2915 5.10354 11.3965 6.2085 12.76 6.88724L16 8.5L12.76 10.1128C11.3965 10.7915 10.2915 11.8965 9.61276 13.26L8 16.5L6.38724 13.26C5.7085 11.8965 4.60353 10.7915 3.23997 10.1128L0 8.5L3.23997 6.88724C4.60354 6.2085 5.7085 5.10353 6.38724 3.73997L8 0.5Z"
-                                fill="#1E1E1E" />
-                    </svg>
-                    От А до Я
-                </div>
-                <div class="col advantages-content-title-text">
-                    Мы предоставляем персонального консультанта с первого телефонного звонка. Вместе с ним кухня мечты прямиком из Италии станет вашей реальностью
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -297,7 +261,7 @@
 <section id="project-and-reviews">
     <div class="wrapper">
         <div class="row title mx-0">
-            <h2 class="col-11 px-0">Наши проекты и отзывы</h2>
+            <h2 class="col-11 px-0">{{ ReviewsAndProjectTitle.title }}</h2>
             <div class="col row nav-project-and-reviews px-0 text-end align-items-center">
                 <div class="col px-0">
                     <svg class="custom-prev-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -371,9 +335,9 @@
 
         </div>
         <div class=" project-and-reviews-nav">
-            <button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
+            <!--<button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
                 Оставить заявку
-            </button>
+            </button>-->
         </div>
 
 
@@ -383,8 +347,8 @@
 
 <section id="look-at-block" class="">
     <div class="custom-bg py-0">
-        <div class="gray-text-14">Дизайн и качество</div>
-        <h2 class="">Взгляните сами</h2>
+        <div class="gray-text-14">{{ LookAtTitle.titleOne }}<div>
+        <h2 class="">{{ LookAtTitle.titleTwo }}</h2>
     </div>
 
 

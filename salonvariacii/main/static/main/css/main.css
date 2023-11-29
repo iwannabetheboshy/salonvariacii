@@ -334,8 +334,12 @@ first-block-main-kitchen-carousel
   padding-left: 70px;
 }
 
+.watch-video-div{
+  margin-top: 4%;
+}
+
 .watch-video {
-  padding-left: 24px;
+  /*padding-left: 24px;*/
   font-size: 18px;
   font-weight: 400;
   line-height: 22px;
@@ -476,6 +480,10 @@ first-block-main-kitchen-carousel
 
 .custom-prev-arrow {
   margin-right: 40px;
+}
+
+.bottom-block-main-block{
+  margin-top: 60px;
 }
 
 .bottom-block-main-block-mobile-a {
@@ -2562,6 +2570,12 @@ KITCHEN CARD CSS
     margin-left: auto;
     margin-right: auto;
 
+}
+
+.certificate-p{
+  width: 197px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 

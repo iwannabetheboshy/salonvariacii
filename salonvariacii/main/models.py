@@ -197,6 +197,7 @@ class Kitchen(models.Model):
                                       blank=True,
                                       help_text=("Объекты отображаются в порядке возрастания"))
     slug = models.SlugField(blank=True)
+    hide = models.BooleanField("Скрыть", help_text=("Для скрытия поставьте галочку"), default=False)
 
 
     def save(self, *args, **kwargs):
@@ -322,6 +323,10 @@ class AboutUsDopBlock(models.Model):
 
 
 class AboutUs(models.Model):
+    title = models.CharField('Заголовок',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «О нас»"))
     text = models.TextField('Текст',
                             help_text=("Обратите внимание - учитываются отступы и знаки переноса"))
     image = models.ImageField('Главное фото в блоке «О нас»',
@@ -349,8 +354,12 @@ class ReviewsAndProject(models.Model):
                                   help_text=("Введите площадь проекта в квадратных метрах"))
     review_name = models.CharField('Фамилия и имя заказчика',
                                    max_length=100,
+                                   null=True,
+                                   blank=True,
                                    help_text=("Пример: «Иванов Иван»"))
     text = models.TextField('Текст отзыва',
+                            null=True,
+                            blank=True,
                             help_text=("Обратите внимание - учитываются отступы и знаки переноса"))
 
     def save(self, *args, **kwargs):
@@ -376,6 +385,18 @@ class ReviewsAndProject(models.Model):
         verbose_name = "наш проект"
         verbose_name_plural = "Наши проекты"
 
+class ReviewsAndProjectTitle(models.Model):
+    title = models.CharField('Заголовок',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «Наши проекты и отзывы»"))
+
+    class Meta:
+        verbose_name = "наш проект"
+        verbose_name_plural = "Заголовки блока «Наши проекты»"
+
+    def __str__(self):
+        return self.title
 
 class LookAt(models.Model):
     content = models.FileField('Фото или видео',
@@ -395,6 +416,7 @@ class LookAt(models.Model):
     show_number = models.IntegerField('Номер показа',
                                       default=0,
                                       help_text=("Объекты отображаются в порядке возрастания"))
+    hide = models.BooleanField("Скрыть", help_text=("Для скрытия поставьте галочку"), default=False)
 
     class Meta:
         verbose_name = "взгляни сам"
@@ -419,6 +441,22 @@ class LookAt(models.Model):
                     self.content.save(f"{name}.webp", img_file, save=False)
         super().save(*args, **kwargs)
 
+class LookAtTitle(models.Model):
+    titleOne = models.CharField('Заголовок 1 уровня',
+                              max_length=50,
+                              null=True,
+                              blank=True,
+                              help_text=(
+                                  "Пример: «Дизайн и качество»"))
+    titleTwo = models.CharField('Заголовок 2 уровня',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «Взгляните сами»"))
+
+    class Meta:
+        verbose_name = "взгляни сам"
+        verbose_name_plural = "Заголовки блока «Взгляните сами»"
+
 class FeedBack(models.Model):
     name = models.CharField('Имя', max_length=50)
     number = models.CharField('Номер телефона', max_length=20)
@@ -428,12 +466,135 @@ class FeedBack(models.Model):
         verbose_name = "заявка"
         verbose_name_plural = "Заявки"
 
+class FeedbackBlock(models.Model):
+    title = models.CharField('Заголовок', max_length=50,
+        help_text=("Пример: «Заказать персональную консультацию»"))
+    text = models.TextField('Текст подписи')
+    image = models.ImageField('Фоновая фотография',
+                              upload_to='contact/',
+                              help_text=("Доступные форматы: jpg, png, webp"))
+    def save(self, *args, **kwargs):
+        if self.image:
+            file_name = os.path.basename(self.image.name)
+            file_extension = os.path.splitext(file_name)[1][1:].lower()
+
+            if file_extension not in ('mp4', 'webp'):
+                # Проверка наличия файла с таким же именем
+                existing_file = LookAt.objects.filter(content__icontains=self.image).first()
+                if existing_file:
+                    self.image = existing_file.image
+                else:
+                    name = str(uuid.uuid1())
+                    img = Image.open(self.image)
+                    img_io = BytesIO()
+                    img.save(img_io, format="WebP")
+                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+                    self.image.save(f"{name}.webp", img_file, save=False)
+        super().save(*args, **kwargs)
+    
+    class Meta:
+        verbose_name = "контакты"
+        verbose_name_plural = "Блок контакты"
+
 class Politic(models.Model):
     politucFile = models.FileField('Файл', upload_to ='politic/',
                              validators=[FileExtensionValidator(allowed_extensions=["pdf"])])
-
+                             
     class Meta:
         verbose_name = "файл"
         verbose_name_plural = "Файл политики обработки персональных данных"
 
-        
+
+class AdvantagesTitle(models.Model):
+    titleOne = models.CharField('Заголовок 1 уровня',
+                              max_length=50,
+                              null=True,
+                              blank=True,
+                              help_text=(
+                                  "Пример: «Преимущества»"))
+    titleTwo = models.CharField('Заголовок 2 уровня',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «Почему нас выбирают»"))
+
+    class Meta:
+        verbose_name = "приемущества"
+        verbose_name_plural = "Заголовки блока «Приемущества»"
+
+
+class AdvantagesBlocks(models.Model):
+    name = models.CharField('Наименование абзаца',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «Компетентность»"))
+    text = models.TextField('Текст абзаца')
+    show_number = models.IntegerField('Номер показа',
+                                      default=0,
+                                      help_text=("Объекты отображаются в порядке возрастания"))
+    
+    class Meta:
+        verbose_name = "приемущества"
+        verbose_name_plural = "Текст в блоке «Приемущества»"
+
+
+class WatchVideoMain(models.Model):
+    url = models.CharField('Ссылка на видео для кнопки «Смотреть видео» на главной странице',
+                                null=True,
+                                blank=True,
+                                max_length=100,
+                                help_text=("Например: https://www.youtube.com/watch?v=z8xoGi5pK70"))
+    
+    
+    def __str__(self):
+        return self.url
+
+    class Meta:
+        verbose_name = "видео"
+        verbose_name_plural = "Ссылка на видео для кнопки «Смотреть видео» на главной странице"
+
+
+class CatalogTitle(models.Model):
+    name = models.CharField('Наименование раздела',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «Каталог кухонь»"))
+    text = models.CharField('Подпись', 
+                             max_length=100,
+                             help_text=(
+                                  "Пример: «Мы делаем не просто кухни, мы создаём стиль»"))
+    
+    class Meta:
+        verbose_name = "надпись"
+        verbose_name_plural = "Надписи в каталоге"
+
+class Certificate(models.Model):
+    name = models.CharField('Наименование сертификата',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «CERTIFICAZIONE ISO 9001:2015»"))
+    image = models.ImageField('Фотограия сертификата',
+                              upload_to='certificate/',
+                              help_text=("Доступные форматы: jpg, png, webp"))
+    
+    class Meta:
+        verbose_name = "сертификат"
+        verbose_name_plural = "Сертификаты в карточке кухни"
+
+    def save(self, *args, **kwargs):
+        if self.image:
+            file_name = os.path.basename(self.image.name)
+            file_extension = os.path.splitext(file_name)[1][1:].lower()
+
+            if file_extension not in ('mp4', 'webp'):
+                # Проверка наличия файла с таким же именем
+                existing_file = LookAt.objects.filter(content__icontains=self.image).first()
+                if existing_file:
+                    self.image = existing_file.image
+                else:
+                    name = str(uuid.uuid1())
+                    img = Image.open(self.image)
+                    img_io = BytesIO()
+                    img.save(img_io, format="WebP")
+                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+                    self.image.save(f"{name}.webp", img_file, save=False)
+        super().save(*args, **kwargs)

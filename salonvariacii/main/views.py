@@ -37,14 +37,14 @@ def main(request):
     about = AboutUs.objects.first()
     aboutMini = AboutUsDopBlock.objects.all().order_by('show_number')
     numberOfBlocksAboutMini = aboutMini.count() 
-    catalog_carousel = Kitchen.objects.exclude(show_number=None).order_by('show_number')[:5]  
+    catalog_carousel = Kitchen.objects.exclude(show_number=None).exclude(hide=True).order_by('show_number')[:5]  
     for kit in catalog_carousel:
         kit.name = kit.name.capitalize()
-    reviews = ReviewsAndProject.objects.all()
-    look_at = LookAt.objects.all().exclude(show_number=None).order_by('show_number')
+    look_at = LookAt.objects.all().exclude(show_number=None).exclude(hide=True).order_by('show_number')
     for look_at_item in look_at:
         if look_at_item.shorts:
             look_at_item.shorts = get_url_youtube(look_at_item.shorts) 
+    watchVideoMain = get_url_youtube(WatchVideoMain.objects.first().url) 
     title = "Кухни на заказ в итальянском стиле по индивидуальным размерам. Stosa Cucine"
     pageDescription = "Заказать итальянскую кухонную мебель и гарнитур во Владивостоке. Современная или классическая кухня. Дизайн под заказ. Можем изготовить по индивидуальным размерам с установкой"
     keyWords = "итальянские кухни, итальянская кухня фото,  кухня в итальянском стиле фото, купить итальянскую кухню, кухня в итальянском стиле, кухонная мебель италии, ручки для кухонной мебели италия, современные итальянские кухни, кухонный гарнитур италия, итальянская кухня цена, итальянская мебель для кухни, купить кухню, купить кухню под заказ, кухня из дерева купить, мебель для кухни, купить мебель для кухни, сайт мебели для кухни, мебель для кухни фото и цены, кухня фото дизайн, заказать индивидуальную кухню, заказать кухню по индивидуальным размерам"
@@ -55,27 +55,36 @@ def main(request):
         "aboutMini": aboutMini,
         "numberOfBlocksAboutMini": numberOfBlocksAboutMini,
         "catalog_carousel": catalog_carousel,
-        "reviews": reviews,
+        "reviews": ReviewsAndProject.objects.all(),
         "look_at": look_at,
         "feedbackForm": FeedbackForm(),
         "feedbackFile": Politic.objects.first(),
         "title": title,
         "pageDescription": pageDescription,
         "keyWords": keyWords,
+        "AdvantagesTitle": AdvantagesTitle.objects.first(),
+        "AdvantagesBlocks": AdvantagesBlocks.objects.order_by('show_number'),
+        "ReviewsAndProjectTitle": ReviewsAndProjectTitle.objects.first(),
+        "LookAtTitle": LookAtTitle.objects.first(),
+        "FeedbackBlock": FeedbackBlock.objects.first(),
+        "watchVideoMain": watchVideoMain,
     }
 
     return render(request, "main/index.html", data)
 
 
 def catalog(request):
-    kitchen = Kitchen.objects.all().order_by('show_number')
+    kitchen = Kitchen.objects.exclude(hide=True).order_by('show_number')
     for kit in kitchen:
         if kit.catalogVideo:
             kit.catalogVideo = get_url_youtube(kit.catalogVideo)
         kit.name = kit.name.title()
+    catalogTitle = CatalogTitle.objects.first(),
     openingMethod = KitchenOpeningMethod.objects.values("name").distinct()
     material = KitchenMaterial.objects.values("name").distinct()
     style = KitchenStyle.objects.values("name").distinct()
+    annotationPage = " ".join(catalogTitle[0].text.split()[:-2])
+    annotationPageSpan =  " ".join(catalogTitle[0].text.split()[-2:])
     title = "Каталог кухонь из Италии с фото и ценами. Купить кухню во Владивостоке. Stosa Cucine"
     pageDescription = "Каталог кухонь. Кухни на заказ по индивидуальным размерам. Отделка и материал на выбор. Встраиваемые кухонные гарнитуры, различные системы открывания. Фабрика мебель STOSA CUCINE"
     keyWords = "итальянские кухни, итальянская кухня фото,  кухня в итальянском стиле фото, купить итальянскую кухню, кухня в итальянском стиле, кухонная мебель италии, ручки для кухонной мебели италия, современные итальянские кухни, кухонный гарнитур италия, итальянская кухня цена, итальянская мебель для кухни, купить кухню под заказ, кухня из дерева купить, мебель для кухни, купить мебель для кухни, сайт мебели для кухни, мебель для кухни фото и цены, кухня фото дизайн, заказать индивидуальную кухню, заказать кухню по индивидуальным размерам,"
@@ -89,6 +98,10 @@ def catalog(request):
         "title": title,
         "pageDescription": pageDescription,
         "keyWords": keyWords,
+        "FeedbackBlock": FeedbackBlock.objects.first(),
+        "annotationPage": annotationPage,
+        "annotationPageSpan": annotationPageSpan,
+        "catalogTitle": catalogTitle[0].name,
     }
     return render(request, "main/catalog.html", data)
 
@@ -132,5 +145,7 @@ def kitchenCard(request, slug):
         "title": title,
         "pageDescription": pageDescription,
         "keyWords": keyWords,
+        "FeedbackBlock": FeedbackBlock.objects.first(),
+        "certificate": Certificate.objects.all(),
     }
     return render(request, "main/kitchenCard.html", data) 

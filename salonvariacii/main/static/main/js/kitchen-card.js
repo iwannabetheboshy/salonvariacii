@@ -24,7 +24,7 @@ $(document).ready(function () {
         ]
     });
 
-
+    
     setTimeout(function() {
         var iframe = document.getElementsByTagName("iframe")[0].contentWindow;
         iframe.postMessage('{"event":"command","func":"playVideo","args":""}', "*");

@@ -221,7 +221,9 @@ Dribbble = window.Dribbble || {};
   watchVideoBlocks.forEach(function(block, index) {
       block.onclick = function() {
           str = '<div class="main-youtube-container">'
-          str += '<iframe src="https://www.youtube.com/embed/z8xoGi5pK70?autoplay=1&mute=1&loop=1&color=white&controls=1&modestbranding=1&playsinline=1&rel=0&enablejsapi=1" title="Infinity restyle 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          str += '<iframe src="https://www.youtube.com/embed/'
+          str += this.getAttribute("data-url");
+          str += '?autoplay=1&mute=1&loop=1&color=white&controls=1&modestbranding=1&playsinline=1&rel=0&enablejsapi=1" title="Infinity restyle 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
           str += '</div>'
           document.getElementById('player').innerHTML = str
           setTimeout(function() {
