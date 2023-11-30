@@ -4,6 +4,7 @@ from django.core.validators import FileExtensionValidator
 from io import BytesIO
 from PIL import Image
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.http import HttpResponse
 import uuid
 import os
 
@@ -527,7 +528,7 @@ class AdvantagesBlocks(models.Model):
                               max_length=50,
                               help_text=(
                                   "Пример: «Компетентность»"))
-    text = models.TextField('Текст абзаца')
+    text = models.TextField('Текст абзаца',max_length=180)
     show_number = models.IntegerField('Номер показа',
                                       default=0,
                                       help_text=("Объекты отображаются в порядке возрастания"))
@@ -535,6 +536,11 @@ class AdvantagesBlocks(models.Model):
     class Meta:
         verbose_name = "приемущества"
         verbose_name_plural = "Текст в блоке «Приемущества»"
+
+    def save(self, *args, **kwargs):
+        if AdvantagesBlocks.objects.count() < 4:
+            super().save(*args, **kwargs)
+        return HttpResponse('Слишком много записей блоков в приемуществах!')
 
 
 class WatchVideoMain(models.Model):

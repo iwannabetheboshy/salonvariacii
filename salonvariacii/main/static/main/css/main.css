@@ -2873,8 +2873,8 @@ certified-quality
     font-size: 14px;
 }
 
-@media (max-width: 1200px) {
 
+@media (max-width: 1200px) {
   .dotsFalse .slick-dots{
     display: none !important;
   }
@@ -2927,10 +2927,12 @@ certified-quality
     .custom-button {
         margin-top: 0;
     }
-
+    #kitchen-card-slider{
+      margin-top: 4%;
+    }
 
     .kitchen-card-files{
-        margin-top: 6.7%;
+        margin-top: 4%;
     }
     .kitchen-card-desc,
     #kitchen-card-slider .slick-dots {
@@ -2947,9 +2949,6 @@ certified-quality
         padding-left: 4.4%;
     }
 
-    #kitchen-card-slider {
-        padding-left: 4.4%;
-    }
 
     .kitchen-card-files .file a {
         color: #1E1E1E;
@@ -2996,6 +2995,17 @@ certified-quality
     .kitchenCard-video-container iframe{
         height: calc(100vw*0.6);
     }
+}
+
+@media (max-width: 630px) {
+
+  #kitchen-card-slider{
+    margin-top: 11.1%;
+  }
+
+  .kitchen-card-files{
+    margin-top: 6.7%;
+}
 
 }
 

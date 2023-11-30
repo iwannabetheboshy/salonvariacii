@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import *
 from django import forms
-
+from django.utils.html import format_html
 
 @admin.register(Kitchen)
 class KitchenAdmin(admin.ModelAdmin):
@@ -127,6 +127,19 @@ class AdvantagesTitleAdmin(admin.ModelAdmin):
 @admin.register(AdvantagesBlocks)
 class AdvantagesBlocksAdmin(admin.ModelAdmin):
     list_display = ("name", "text", "show_number")
+
+    def message_user(self, request, message, level='info', extra_tags='', fail_silently=False):
+        """
+        Override the default message_user method to customize success messages.
+        """
+
+        print(message)
+        if message == 'приемущества "<a href="/admin/main/advantagesblocks/None/change/">AdvantagesBlocks object (None)</a>" был успешно добавлен.':
+
+            custom_message = 'Превышено максимальное количество записей (4).'
+            self.message_user(request, format_html(custom_message), level='error')
+        else:
+            super().message_user(request, message, level, extra_tags, fail_silently)   
 
 @admin.register(WatchVideoMain)
 class WatchVideoMainAdmin(admin.ModelAdmin):
