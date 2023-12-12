@@ -65,7 +65,7 @@ class AboutUsDopBlocklAdmin(admin.ModelAdmin):
 
 @admin.register(AboutUs)
 class AboutUslAdmin(admin.ModelAdmin):
-    pass
+    list_display = ("title", "text", "image")
 
 
 @admin.register(ReviewsAndProject)

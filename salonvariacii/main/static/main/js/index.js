@@ -1,18 +1,19 @@
 $(document).ready(function () {
+  slideCount = $('.main-kitchen-carousel-slide').length;
   $('.main-kitchen-carousel').slick({
-    slidesToShow: 1.1,
+    slidesToShow: 1,
     prevArrow: $('.nav-main-kitchen-carousel-buttton .custom-prev-arrow'),
     nextArrow: $('.nav-main-kitchen-carousel-buttton .custom-next-arrow'),
     autoplaySpeed: 2500,
-    autoplay:true,
+    
     infinite: false,
     dots: true,
 
     customPaging: function (slider, i) {
-      return '<span> 0' +( i + 1 ) + '</span>';
+      return '<span> 0' +( i + 1 ) + '</span><div class="sliderCount"><svg width="8" height="21" viewBox="0 0 8 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L1.00019 20" stroke="white" stroke-opacity="0.5"/></svg> 0'+slideCount+'</div>';
     },
 
-    responsive: [
+   /* responsive: [
     {
       breakpoint: 1200,
       settings: {
@@ -49,7 +50,7 @@ $(document).ready(function () {
         slidesToShow: 1.1
       }
     },
-    ]
+    ]*/
 
   });
   $('#project-and-reviews .project-and-reviews-slider').slick({
@@ -242,3 +243,9 @@ Dribbble = window.Dribbble || {};
     } catch (err)
     {}
   })
+
+  $(document).ready(function() {
+    text = $(".about-us-text").eq(0);
+    size = $("#about-us-block").data("fontsize");
+    text.css("font-size", size);
+});

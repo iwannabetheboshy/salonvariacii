@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
-from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator, MinValueValidator, MaxValueValidator
 from io import BytesIO
 from PIL import Image
 from django.core.files.uploadedfile import InMemoryUploadedFile
@@ -330,9 +330,13 @@ class AboutUs(models.Model):
                                   "Пример: «О нас»"))
     text = models.TextField('Текст',
                             help_text=("Обратите внимание - учитываются отступы и знаки переноса"))
+    fontsize=models.IntegerField('Размер текста в блоке',
+                                 validators=[MinValueValidator(14), MaxValueValidator(32)],
+                                 help_text=("Размер от 14 до 32"))
     image = models.ImageField('Главное фото в блоке «О нас»',
                               upload_to='about/',
                               help_text=("Доступные форматы: jpg, png, webp"))
+                              
 
     class Meta:
         verbose_name = "основную информацию «О нас»"

@@ -22,7 +22,6 @@
 	height: 100%;
 }
 
-#first-block-main-kitchen-carousel,
 #about-us-block,
 #catalog-carousel,
 #project-and-reviews,
@@ -113,6 +112,25 @@ fonts
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Core Sans C-35Light';
+  font-style: normal;
+  src: url('font/CoreSansC-35Light.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Core Sans C-45Regular';
+  font-style: normal;
+  src: url('font/CoreSansC-45Regular.ttf') format('truetype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Core Sans C-55Medium';
+  font-style: normal;
+  src: url('font/CoreSansC-55Medium.ttf') format('truetype');
+  font-display: swap;
+}
 
 .plain-text {
   font-family: Stolzl;
@@ -181,12 +199,14 @@ a {
 }
 
 .header .nav-item a {
-  font-family: 'Stolzl Book' !important;
-  font-size: 14px;
+  font-family: 'Core Sans C-45Regular' !important;
+  font-size: 16px;
   font-weight: 400;
   line-height: 17px;
-  color: #787878;
+  color: #FFFF;
+  opacity: 0.6;
 }
+
 
 .header .navbar-toggler:focus {
   box-shadow: none;
@@ -292,9 +312,10 @@ a {
 #navbarNav ul:nth-child(1) a:hover,
 .header #phone a:hover,
 .link a:hover {
-  color: #1E1E1E !important;
+  color: #FFFF !important;
   border-bottom: 1px solid #787878;
   transition: 0.3s;
+  opacity: 1;
 }
 
 .navbar svg path {
@@ -315,7 +336,6 @@ a {
 first-block-main-kitchen-carousel
 ----------------------------------*/
 #first-block-main-kitchen-carousel {
-  padding-top: 120px;
   position: relative;
 }
 
@@ -407,8 +427,8 @@ first-block-main-kitchen-carousel
 
 /* carousel */
 .main-kitchen-carousel img {
-  width: 100%;
-  height: 500px;
+  width: 100vw;
+  height: 60vw;
   object-fit: cover;
 }
 
@@ -435,16 +455,6 @@ first-block-main-kitchen-carousel
   }
 }
 
-.main-kitchen-carousel-slide-kithen-name {
-  font-family: 'Stolzl Book' !important;
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  color: #FFF;
-  font-size: 18px;
-  font-weight: 700;
-}
-
 .main-kitchen-carousel-slide {
   position: relative;
   padding-right: 16px;
@@ -454,28 +464,47 @@ first-block-main-kitchen-carousel
   padding-left: 12px;
 }
 
-.nav-main-kitchen-carousel-buttton {
-  margin-top: -40px;
-  text-align: end;
+.nav-main-kitchen-carousel-buttton .custom-prev-arrow,
+.nav-main-kitchen-carousel-buttton .custom-next-arrow{
   position: absolute;
-  right: 70px;
+  top: 50%;
 }
+
+.nav-main-kitchen-carousel-buttton .custom-prev-arrow {
+  left: 0;
+  margin-left: 50px;
+}
+.nav-main-kitchen-carousel-buttton .custom-next-arrow {
+  right: 0;
+  margin-right: 50px;
+}
+
 
 .nav-main-kitchen-carousel-buttton svg {
   fill: #1E1E1E;
 }
 
+.main-kitchen-carousel .slick-dots{
+  position: absolute;
+  bottom: 40px;
+  right: 50px;
+}
 
 
 .custom-prev-arrow:hover,
 .custom-next-arrow:hover {
-  fill: #787878;
+  fill: #787878 !important;
   cursor: pointer;
   transition: .3s;
 }
 
 .nav-main-kitchen-carousel-buttton .slick-disabled {
-  fill: #DBC7D7;
+  fill: #ffffff;
+  opacity: 0.7;
+}
+
+.nav-main-kitchen-carousel-buttton .slick-arrow {
+  fill: #ffffff;
 }
 
 .custom-prev-arrow {
@@ -517,6 +546,36 @@ first-block-main-kitchen-carousel
   cursor: pointer;
 }
 
+.main-kitchen-carousel .slick-dots .slick-active {
+  color: #FFFFFF;
+}
+
+.sliderCount{
+  display: none;
+  position: absolute;
+  font-size: 16px;
+  right: -26px;
+  top: -2px;
+  color: #FFF;
+  opacity: 0.5;
+}
+.main-kitchen-carousel .slick-active .sliderCount {
+  display: initial;
+}
+
+.main-kitchen-carousel .slick-dots li {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.50);
+  display: inline-block;
+  margin-right: 16px;
+  padding-right: 12px;
+  padding-bottom: 12px;
+  font-family: 'Stolzl Regular' !important;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 17px;
+  color: transparent;
+  position: relative;
+}
 .slick-dots .slick-active {
   color: #1E1E1E;
 }
@@ -532,6 +591,10 @@ first-block-main-kitchen-carousel
   border-bottom: 2px solid #1E1E1E;
   animation: progress-bar 3s ease-out;
   animation-fill-mode: forwards;
+}
+
+.main-kitchen-carousel .slick-active:after {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.50) !important;
 }
 
 @keyframes progress-bar {
@@ -565,6 +628,31 @@ h1 br {
 .about-us-block-image {
   position: relative;
 }
+
+#about-us-block .desk{
+  margin-bottom: 16px !important;
+  text-align: center;
+  font-family: 'Core Sans C-55Medium' !important;
+  font-size: 28px;
+}
+
+#about-us-block{
+  padding-bottom: 80px;
+  border-bottom: 1px solid #C9C7DB; 
+  padding: 0 70px;
+}
+
+.about-us-block-text{
+  text-align: center;
+  font-size: 18px;
+  font-family: 'Core Sans C-35Light' !important;
+}
+
+.about-us-block-text strong{
+  font-family: 'Core Sans C-55Medium' !important;
+}
+
+
 
 .about-us-block-image:after {
   content: '';
@@ -1179,10 +1267,6 @@ footer .contacts svg:hover path {
     margin-top: 0 !important;
   }
 
-  #first-block-main-kitchen-carousel .parent img {
-    width: calc(100% * 0.3);
-  }
-
   #about-us-block,
   .feedback-wrapper,
   #section-404{
@@ -1221,7 +1305,6 @@ footer .contacts svg:hover path {
   .project-and-reviews-slider,
   #project-and-reviews .title,
   .slider-catalog-container,
-  .main-kitchen-carousel,
   .slider-catalog-container-mobile {
     padding-left: 4.4%;
   }
@@ -1264,11 +1347,6 @@ footer .contacts svg:hover path {
     margin-right: auto;
   }
 
-  #first-block-main-kitchen-carousel .custom-button {
-    margin-top: 6.7%;
-    margin-bottom: 6.7%;
-  }
-
   h1 {
     font-size: 46px;
   }
@@ -1279,9 +1357,7 @@ footer .contacts svg:hover path {
     margin-bottom: 20px;
   }
 
-  .main-kitchen-carousel-slide-kithen-name,
   .num,
-  .nav-main-kitchen-carousel-buttton,
   .bottom-block-main-block,
   .desk,
   .header-desk,
@@ -1430,11 +1506,6 @@ footer .contacts svg:hover path {
   h2 {
     font-size: 30px;
   }
-
-  #first-block-main-kitchen-carousel {
-    padding-top: 53px;
-  }
-
   .project-and-reviews-nav button{
     position: initial;
   }
