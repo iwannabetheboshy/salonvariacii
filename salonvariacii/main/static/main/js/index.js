@@ -4,54 +4,14 @@ $(document).ready(function () {
     slidesToShow: 1,
     prevArrow: $('.nav-main-kitchen-carousel-buttton .custom-prev-arrow'),
     nextArrow: $('.nav-main-kitchen-carousel-buttton .custom-next-arrow'),
-    autoplaySpeed: 2500,
-    
-    infinite: false,
+    //autoplaySpeed: 5000,
+    //autoplay: true,
+    infinite: true,
     dots: true,
 
     customPaging: function (slider, i) {
       return '<span> 0' +( i + 1 ) + '</span><div class="sliderCount"><svg width="8" height="21" viewBox="0 0 8 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L1.00019 20" stroke="white" stroke-opacity="0.5"/></svg> 0'+slideCount+'</div>';
     },
-
-   /* responsive: [
-    {
-      breakpoint: 1200,
-      settings: {
-        slidesToShow: 2.05
-      }
-    },
-    {
-      breakpoint: 1000,
-      settings: {
-        slidesToShow: 1.8
-      }
-    },
-    {
-      breakpoint: 900,
-      settings: {
-        slidesToShow: 1.6
-      }
-    },
-    {
-      breakpoint: 800,
-      settings: {
-        slidesToShow: 1.25
-      }
-    },
-    {
-      breakpoint: 700,
-      settings: {
-        slidesToShow: 1.15
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1.1
-      }
-    },
-    ]*/
-
   });
   $('#project-and-reviews .project-and-reviews-slider').slick({
     slidesToShow: 1.05,

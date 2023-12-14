@@ -322,17 +322,27 @@ class AboutUsDopBlock(models.Model):
     def __str__(self):
         return self.name
 
-
+ALIGMENT_CHOICES = (
+    ('center', "По центру"),
+    ('left', "По левому краю"),
+    ('end', "По правому краю" )
+)
 class AboutUs(models.Model):
     title = models.CharField('Заголовок',
                               max_length=50,
                               help_text=(
                                   "Пример: «О нас»"))
+
+    fontsizeH=models.IntegerField('Размер заголовка',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))        
+    alignmentH=models.CharField('Выравнивание заголовка', max_length=300, choices = ALIGMENT_CHOICES)                       
     text = models.TextField('Текст',
                             help_text=("Обратите внимание - учитываются отступы и знаки переноса"))
-    fontsize=models.IntegerField('Размер текста в блоке',
-                                 validators=[MinValueValidator(14), MaxValueValidator(32)],
-                                 help_text=("Размер от 14 до 32"))
+    fontsizeText=models.IntegerField('Размер текста в блоке',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    alignmentText=models.CharField('Выравнивание текста', max_length=300, choices = ALIGMENT_CHOICES)
     image = models.ImageField('Главное фото в блоке «О нас»',
                               upload_to='about/',
                               help_text=("Доступные форматы: jpg, png, webp"))

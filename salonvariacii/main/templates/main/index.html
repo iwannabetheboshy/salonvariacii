@@ -9,9 +9,7 @@
         <div class="main-kitchen-carousel" role="toolbar">
             {% for photo in sliderPhoto %}
             <div class="main-kitchen-carousel-slide">
-                <a href="/kitchen/{{ photo.slug }}">
                     <img src="{{ photo.image.url }}" alt="Фотография кухни {{ photo.name }}">
-                </a>
             </div>
             {%endfor%}
         </div>
@@ -30,9 +28,8 @@
 
 <section id="about-us-block">
     <div class="wrapper">
-        <h2 class="mobile px-0">{{ about.title }}</h2>
-        <h2 class="desk">{{ about.title }}</h2>
-        <div class="about-us-block-text">
+        <h2 style="font-size: {{about.fontsizeH}}px; text-align: {{about.alignmentH}};">{{ about.title }}</h2>
+        <div class="about-us-block-text" style="font-size: {{about.fontsizeText}}px; text-align: {{about.alignmentText}};">
             {% autoescape off %}
             {{ about.text|linebreaksbr|safe }}
         {% endautoescape %}
