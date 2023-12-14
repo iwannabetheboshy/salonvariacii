@@ -364,9 +364,15 @@ a {
 }
 
 #navbarNav ul:nth-child(1) a:hover,
-.header #phone a:hover,
-.link a:hover {
+.header #phone a:hover{
   color: #FFFF !important;
+  border-bottom: 1px solid #787878;
+  transition: 0.3s;
+  opacity: 1;
+}
+
+#footer .link a:hover {
+  color: #000000 !important;
   border-bottom: 1px solid #787878;
   transition: 0.3s;
   opacity: 1;
