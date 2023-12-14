@@ -4,8 +4,8 @@ $(document).ready(function () {
     slidesToShow: 1,
     prevArrow: $('.nav-main-kitchen-carousel-buttton .custom-prev-arrow'),
     nextArrow: $('.nav-main-kitchen-carousel-buttton .custom-next-arrow'),
-    //autoplaySpeed: 5000,
-    //autoplay: true,
+    autoplaySpeed: 5000,
+    autoplay: true,
     infinite: true,
     dots: true,
 

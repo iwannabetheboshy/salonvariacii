@@ -208,7 +208,8 @@ a {
 
 .header.sticky .navbar-nav .nav-item svg path,
 .header.sticky .button-navbar-custom svg path,
-.header .navbar-opened .button-navbar-custom svg path{
+.header .navbar-opened .button-navbar-custom svg path,
+.header .navbar-opened #navbarNav .nav-item svg path{
   fill:#8B8B8B;
 }
 
@@ -253,9 +254,6 @@ a {
 .header.sticky .nav-item a {
   color: #787878;
 }
-
-
-
 
 .header .navbar-toggler:focus {
   box-shadow: none;
@@ -354,9 +352,10 @@ a {
   transition: 0.3s;
 }
 
-.header.sticky #navbarNav .nav-item a:hover {
+.header.sticky #navbarNav .nav-item a:hover,
+.header .navbar-opened #navbarNav .nav-item a:hover {
   cursor: pointer;
-  color: #1E1E1E !important;; 
+  color: #1E1E1E !important;
 }
 
 #navbarNav ul:nth-child(2) a {
@@ -652,7 +651,7 @@ first-block-main-kitchen-carousel
   color: #1E1E1E;
   bottom: -2px;
   border-bottom: 2px solid #1E1E1E;
-  animation: progress-bar 3s ease-out;
+  animation: progress-bar 5s ease-out;
   animation-fill-mode: forwards;
 }
 
