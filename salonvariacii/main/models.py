@@ -521,20 +521,23 @@ class Politic(models.Model):
 
 
 class AdvantagesTitle(models.Model):
-    titleOne = models.CharField('Заголовок 1 уровня',
-                              max_length=50,
-                              null=True,
-                              blank=True,
-                              help_text=(
-                                  "Пример: «Преимущества»"))
-    titleTwo = models.CharField('Заголовок 2 уровня',
+    title = models.CharField('Заголовок блока',
                               max_length=50,
                               help_text=(
                                   "Пример: «Почему нас выбирают»"))
+    fontsizeH = models.IntegerField('Размер заголовка',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))
+    fontsizeTextH = models.IntegerField('Размер заголовка абзаца',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
+    fontsizeText = models.IntegerField('Размер текста абзаца',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
 
     class Meta:
         verbose_name = "приемущества"
-        verbose_name_plural = "Заголовки блока «Приемущества»"
+        verbose_name_plural = "Блок «Приемущества»"
 
 
 class AdvantagesBlocks(models.Model):
@@ -542,7 +545,7 @@ class AdvantagesBlocks(models.Model):
                               max_length=50,
                               help_text=(
                                   "Пример: «Компетентность»"))
-    text = models.TextField('Текст абзаца',max_length=180)
+    text = models.TextField('Текст абзаца',max_length=500)
     show_number = models.IntegerField('Номер показа',
                                       default=0,
                                       help_text=("Объекты отображаются в порядке возрастания"))
@@ -550,6 +553,9 @@ class AdvantagesBlocks(models.Model):
     class Meta:
         verbose_name = "приемущества"
         verbose_name_plural = "Текст в блоке «Приемущества»"
+
+    def __str__(self):
+        return self.name
 
     def save(self, *args, **kwargs):
         if AdvantagesBlocks.objects.count() < 4:
@@ -563,6 +569,9 @@ class WatchVideoMain(models.Model):
                                 blank=True,
                                 max_length=100,
                                 help_text=("Например: https://www.youtube.com/watch?v=z8xoGi5pK70"))
+    fontsize=models.IntegerField('Размер текста кнопки',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
     
     
     def __str__(self):
@@ -570,7 +579,17 @@ class WatchVideoMain(models.Model):
 
     class Meta:
         verbose_name = "видео"
-        verbose_name_plural = "Ссылка на видео для кнопки «Смотреть видео» на главной странице"
+        verbose_name_plural = "Кнопка «Смотреть видео» на главной странице"
+
+class CatalogMain(models.Model):
+    fontsize=models.IntegerField('Размер текста кнопки',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    
+
+    class Meta:
+        verbose_name = "видео"
+        verbose_name_plural = "Кнопка «Смотреть все кухни» на главной странице"
 
 
 class CatalogTitle(models.Model):

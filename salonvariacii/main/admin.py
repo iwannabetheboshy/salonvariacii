@@ -121,7 +121,7 @@ class ReviewsAndProjectTitleAdmin(admin.ModelAdmin):
 
 @admin.register(AdvantagesTitle)
 class AdvantagesTitleAdmin(admin.ModelAdmin):
-    list_display = ("titleOne", "titleTwo")
+    list_display = ("title", "fontsizeH", "fontsizeTextH", "fontsizeText")
 
 
 @admin.register(AdvantagesBlocks)
@@ -159,3 +159,10 @@ class CatalogTitleAdmin(admin.ModelAdmin):
 @admin.register(Certificate)
 class CertificateAdmin(admin.ModelAdmin):
     list_display = ("name", "image")
+
+
+@admin.register(CatalogMain)
+class CatalogMainAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.CharField: {'widget': forms.TextInput(attrs={'size':'60'})},
+    }

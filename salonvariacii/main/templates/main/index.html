@@ -36,14 +36,14 @@
         </div>
         <div class="row align-items-center">
             <div class="col text-center">
-                <span class="watch-video" data-url="{{ watchVideoMain }}">
+                <span class="watch-video" data-url="{{ watchVideoMain.url }}">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg">
                         <path
                                 d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM10.6219 8.41459L15.5008 11.6672C15.6846 11.7897 15.7343 12.0381 15.6117 12.2219C15.5824 12.2658 15.5447 12.3035 15.5008 12.3328L10.6219 15.5854C10.4381 15.708 10.1897 15.6583 10.0672 15.4745C10.0234 15.4088 10 15.3316 10 15.2526V8.74741C10 8.52649 10.1791 8.34741 10.4 8.34741C10.479 8.34741 10.5562 8.37078 10.6219 8.41459Z"
                                 fill="#1E1E1E" />
                     </svg>
-                    <span>Смотреть видео</span>
+                    <span style="font-size: {{watchVideoMain.fontsize}}px;">Смотреть видео</span>
                 </span>
             </div>
         </div>
@@ -189,36 +189,43 @@
         </div>
         <div class="row text-center catalog-carousel-button">
             <div class="col px-0">
-                <a href="/catalog/"><button class="custom-button">Смотреть весь каталог</button></a>
+                <a href="/catalog/"><button class="custom-button-new" style="font-size: {{catalogMain.fontsize}}px;">Смотреть все кухни</button></a>
             </div>
         </div>
 </section>
 
 <section id="advantages">
     <div class="custom-bg">
-        <div class="gray-text-14">
-           {{ AdvantagesTitle.titleOne }} 
-        </div>
-        <h2 class="mb-0">
-            {{ AdvantagesTitle.titleTwo }} 
+        <h2 class="mb-0 text-center" style="font-size: {{advantagesTitle.fontsizeH}}px;">
+            {{advantagesTitle.title}}
         </h2>
         <div class="row advantages-content mx-0">
             {% for advantage in AdvantagesBlocks %}
                 <div class="block col-lg-6 col-xl-3 col-12 ps-0">
-                    <div class="col advantages-content-title">
+                    <div class="col advantages-content-title" style="font-size: {{advantagesTitle.fontsizeTextH}}px;">
                         <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                     d="M8 0.5L9.61276 3.73998C10.2915 5.10354 11.3965 6.2085 12.76 6.88724L16 8.5L12.76 10.1128C11.3965 10.7915 10.2915 11.8965 9.61276 13.26L8 16.5L6.38724 13.26C5.7085 11.8965 4.60353 10.7915 3.23997 10.1128L0 8.5L3.23997 6.88724C4.60354 6.2085 5.7085 5.10353 6.38724 3.73997L8 0.5Z"
                                     fill="#1E1E1E" />
                         </svg>
+                        
                         {{ advantage.name }}
                     </div>
-                    <div class="col advantages-content-title-text">
+                    <div class="col advantages-content-title-text" style="font-size: {{advantagesTitle.fontsizeText}}px;">
                         {{ advantage.text }}
                     </div>
                 </div>
             {% endfor %}
         </div>
+        <div class="advantages-footer text-center">
+            Выбирайте Stosa для своей кухни и познакомьтесь со всеми новыми продуктами и моделями прямо сейчас
+            <div class="text-center">
+                <div class="col px-0">
+                    <a href="/catalog/"><button class="custom-button-new" style="font-size: {{catalogMain.fontsize}}px;">Смотреть все кухни</button></a>
+                </div>
+            </div>
+        </div>
+        
     </div>
 </section>
 

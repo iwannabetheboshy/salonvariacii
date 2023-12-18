@@ -147,8 +147,8 @@ h1 {
 
 h2 {
   color: #1E1E1E;
-  font-family: 'Stolzl Bold';
-  font-size: 36px;
+  font-family: 'Core Sans C-55Medium';
+  font-size: 28px;
   font-weight: 700;
   margin-bottom: 24px;
 }
@@ -801,7 +801,7 @@ catalog-carousel
   display: inline-block;
   position: relative;
   height: 500px;
-  padding-right: 8px;
+  padding-right: 4px;
   transition: all 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
 }
 
@@ -856,7 +856,7 @@ catalog-carousel
 }
 
 #catalog-carousel .content a {
-  font-family: 'Stolzl Book' !important;
+  font-family: 'Core Sans C-35Light' !important;
   font-size: 14px;
   font-weight: 400;
   line-height: 19px;
@@ -871,7 +871,7 @@ catalog-carousel
 
 .slider-catalog-kitchen-name {
   color: #1E1E1E;
-  font-family: 'Stolzl Regular' !important;
+  font-family: 'Core Sans C-55Medium' !important;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
@@ -907,6 +907,24 @@ catalog-carousel
   cursor: pointer;
 }
 
+.custom-button-new{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  font-family: 'Core Sans C-35Light' !important;
+  cursor: pointer;
+  transition: .3s;
+  position: relative;
+  padding: 16px 24px;
+  border: 1px solid #8B8B8B;
+  margin-top: 40px;
+  background-color: white;
+}
+
+
+.slider-catalog-container h2{
+  margin-bottom: 16px;
+}
 
 /*----------------------------------
 advantages
@@ -929,27 +947,34 @@ advantages
 }
 
 .advantages-content .block {
-  padding-right: 35px;
+  padding-right: 40px;
 }
 
 .advantages-content-title {
   color: #1E1E1E;
-  font-family: 'Stolzl Book' !important;
-  font-size: 24px;
+  font-family: 'Core Sans C-35Light' !important;
+  font-size: 20px;
 }
 
-.advantages-content-title svg {
-  margin-right: 12px;
-}
 
 .advantages-content-title-text {
   color: #787878;
-  font-family: 'Stolzl Book' !important;
+  font-family: 'Core Sans C-35Light' !important;
   font-size: 14px;
   font-weight: 400;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
+.advantages-footer{
+  font-size: 18px; 
+  font-family: 'Core Sans C-55Medium' !important;
+  margin-top: 52px;
+}
+
+.advantages-footer .custom-button-new{
+  background-color: #F8F7F4 !important; 
+  margin-top: 24px;
+}
 
 
 /*----------------------------------
@@ -1343,14 +1368,16 @@ footer .contacts svg:hover path {
 
   }
 
-  #look-at-block .custom-bg {
+  #look-at-block .custom-bg,
+  .custom-button-new {
     margin-top: 0 !important;
   }
 
   
   .feedback-wrapper,
-  #section-404{
-    padding: 0 4.4%;
+  #section-404,
+  .main-kitchen-carousel .slick-dots{
+    padding: 0 4.4% !important;
   }
 
   #about-us-block .wrapper{
@@ -1374,7 +1401,8 @@ footer .contacts svg:hover path {
   .parent,
   #look-at-block,
   .catalog-carousel-button,
-  .project-and-reviews-nav {
+  .project-and-reviews-nav,
+  #advantages .custom-button-new {
     margin-top: 6.7% !important;
   }
 
@@ -1490,7 +1518,7 @@ footer .contacts svg:hover path {
   }
 
   .slick-dots li {
-    width: 28px;
+    width: calc(100vw*0.04);
     height: 20px;
   }
 
@@ -1699,6 +1727,14 @@ footer .contacts svg:hover path {
 
 }
 
+@media (max-width: 770px) {
+
+  .slick-dots li {
+    width:  calc(100vw*0.03);
+  }
+
+}
+
 @media (max-width: 750px) {
 
   h1 {
@@ -1714,6 +1750,25 @@ footer .contacts svg:hover path {
     width: 75%;
   }
 }
+
+@media (max-width: 552px) {
+
+  .slick-dots li {
+    width:  calc(100vw*0.02);
+  }
+
+}
+
+@media (max-width: 464px) {
+
+  .slick-dots li {
+    width:  calc(100vw*0.01);
+    margin-right: 8px !important;
+  }
+
+}
+
+
 
 @media (max-width: 460px) {
 

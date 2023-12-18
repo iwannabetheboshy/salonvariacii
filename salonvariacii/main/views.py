@@ -44,7 +44,8 @@ def main(request):
     for look_at_item in look_at:
         if look_at_item.shorts:
             look_at_item.shorts = get_url_youtube(look_at_item.shorts) 
-    watchVideoMain = get_url_youtube(WatchVideoMain.objects.first().url) 
+    watchVideoMain = WatchVideoMain.objects.first()
+    watchVideoMain.url = get_url_youtube(WatchVideoMain.objects.first().url) 
     title = "Кухни на заказ в итальянском стиле по индивидуальным размерам. Stosa Cucine"
     pageDescription = "Заказать итальянскую кухонную мебель и гарнитур во Владивостоке. Современная или классическая кухня. Дизайн под заказ. Можем изготовить по индивидуальным размерам с установкой"
     keyWords = "итальянские кухни, итальянская кухня фото,  кухня в итальянском стиле фото, купить итальянскую кухню, кухня в итальянском стиле, кухонная мебель италии, ручки для кухонной мебели италия, современные итальянские кухни, кухонный гарнитур италия, итальянская кухня цена, итальянская мебель для кухни, купить кухню, купить кухню под заказ, кухня из дерева купить, мебель для кухни, купить мебель для кухни, сайт мебели для кухни, мебель для кухни фото и цены, кухня фото дизайн, заказать индивидуальную кухню, заказать кухню по индивидуальным размерам"
@@ -62,12 +63,13 @@ def main(request):
         "title": title,
         "pageDescription": pageDescription,
         "keyWords": keyWords,
-        "AdvantagesTitle": AdvantagesTitle.objects.first(),
+        "advantagesTitle": AdvantagesTitle.objects.first(),
         "AdvantagesBlocks": AdvantagesBlocks.objects.order_by('show_number'),
         "ReviewsAndProjectTitle": ReviewsAndProjectTitle.objects.first(),
         "LookAtTitle": LookAtTitle.objects.first(),
         "FeedbackBlock": FeedbackBlock.objects.first(),
         "watchVideoMain": watchVideoMain,
+        "catalogMain":CatalogMain.objects.first(),
     }
 
     return render(request, "main/index.html", data)

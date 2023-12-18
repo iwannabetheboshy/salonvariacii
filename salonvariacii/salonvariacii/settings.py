@@ -150,7 +150,8 @@ ADMIN_REORDER = (
             'main.MainPageCarousel',
             'main.FeedbackBlock',
             'main.WatchVideoMain',
-        )
+            'main.CatalogMain',
+            )
     },
 
     {

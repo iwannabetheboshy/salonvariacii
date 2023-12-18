@@ -10,7 +10,12 @@ $(document).ready(function () {
     dots: true,
 
     customPaging: function (slider, i) {
-      return '<span> 0' +( i + 1 ) + '</span><div class="sliderCount"><svg width="8" height="21" viewBox="0 0 8 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L1.00019 20" stroke="white" stroke-opacity="0.5"/></svg> 0'+slideCount+'</div>';
+      if( i+1>=10){
+        return '<span>' +( i + 1 ) + '</span><div class="sliderCount"><svg width="8" height="21" viewBox="0 0 8 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L1.00019 20" stroke="white" stroke-opacity="0.5"/></svg>'+slideCount+'</div>';
+      }else{
+        return '<span> 0' +( i + 1 ) + '</span><div class="sliderCount"><svg width="8" height="21" viewBox="0 0 8 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 1L1.00019 20" stroke="white" stroke-opacity="0.5"/></svg>'+slideCount+'</div>';
+      }
+      
     },
   });
   $('#project-and-reviews .project-and-reviews-slider').slick({
