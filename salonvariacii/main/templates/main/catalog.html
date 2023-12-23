@@ -5,21 +5,21 @@
 <section id="catalog-header">
   <div class="row mx-0">
     <div class="col px-0">
-      <div class="catalog-name">
-        {{ catalogTitle }}
+      <div class="catalog-name" style="font-size: {{catalogTitle.fontsizeH}}px">
+        {{ catalogTitle.name }}
       </div>
-      <div class="catalog-annotation">
+      <div class="catalog-annotation"  style="font-size: {{catalogTitle.fontsizeText}}px">
         {{ annotationPage }} <span>{{ annotationPageSpan }}</span>
       </div>
     </div>
   </div>
 </section>
-<section id="catalog-filter">
+<section id="catalog-filter" data-size="{{catalogTitle.fontsizeFilter}}">
   <div class="filter">
     <div class="filter-desc">
       <div class="row mx-0">
         <div class="col dropdowns px-0 align-self-center">
-          <div class="filter-name px-0" id="style">
+          <div class="filter-name px-0" id="style" style="font-size: {{catalogTitle.fontsizeFilter}}px">
             Стиль
             <svg class="close" width="16" height="16" viewBox="0 0 16 16" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
@@ -44,7 +44,7 @@
               </ul>
             </div>
           </div>
-          <div class="filter-name px-0" id="material">
+          <div class="filter-name px-0" id="material" style="font-size: {{catalogTitle.fontsizeFilter}}px">
             Материал
             <svg class="close" width="16" height="16" viewBox="0 0 16 16" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
@@ -67,7 +67,7 @@
               </ul>
             </div>
           </div>
-          <div class="filter-name px-0" id="openingMethod">
+          <div class="filter-name px-0" id="openingMethod" style="font-size: {{catalogTitle.fontsizeFilter}}px">
             Система открывания
             <svg class="close" width="16" height="16" viewBox="0 0 16 16" fill="none"
                  xmlns="http://www.w3.org/2000/svg">
@@ -117,7 +117,7 @@
   </div>
   {% csrf_token %}
   </div>
-  <div class="select">
+  <div class="select" style="font-size: {{catalogTitle.fontsizeH}}px">
   </div>
   </div>
 
@@ -265,8 +265,8 @@
         </div>
 
         <div class="kitchen-name">
-          <a href="/kitchen/{{ kit.slug }}">
-            Stosa {{kit.name}}
+          <a href="/kitchen/{{ kit.slug }}" style="font-size: {{catalogTitle.fontsizeKitchen}}px">
+             {{kit.name}}
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                       d="M10.7814 7.33327L7.20539 3.75726L8.14819 2.81445L13.3337 7.99993L8.14819 13.1853L7.20539 12.2425L10.7814 8.6666H2.66699V7.33327H10.7814Z"
@@ -386,11 +386,11 @@
                     fill="#787878" />
           </svg>
         </div>
-        <div class="none-result-title">
-          К сожалению, ничего не найдено
+        <div class="none-result-title" style="font-size: {{catalogTitle.fontsize404}}px">
+          {{catalogTitle.name404}}
         </div>
-        <div class="none-result-text">
-          Попробуйте изменить критерии поиска
+        <div class="none-result-text" style="font-size: {{catalogTitle.fontsize404Gray}}px">
+          {{catalogTitle.name404Gray}}
         </div>
       </div>
     </div>

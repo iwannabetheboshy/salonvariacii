@@ -145,18 +145,27 @@ ADMIN_REORDER = (
 
     {
         'app': 'main',
+        'label': 'Шапка и подвал',
+        'models': (
+            'main.Header',
+            'main.Footer',
+            )
+    },
+
+
+    {
+        'app': 'main',
         'label': 'Главная страница',
         'models': (
             'main.MainPageCarousel',
             'main.FeedbackBlock',
             'main.WatchVideoMain',
-            'main.CatalogMain',
             )
     },
 
     {
         'app': 'main',
-        'label': 'Блок о нас',
+        'label': 'Блок о нас (главная страница)',
         'models': (
             "main.AboutUs",
             'main.AboutUsDopBlock',
@@ -165,7 +174,16 @@ ADMIN_REORDER = (
 
     {
         'app': 'main',
-        'label': 'Приемущества',
+        'label': 'Каталог (главная страница)',
+        'models': (
+            'main.CatalogMainBlock',
+            'main.CatalogMain',
+        )
+    },
+
+    {
+        'app': 'main',
+        'label': 'Приемущества (главная страница)',
         'models': (
             'main.AdvantagesTitle',
             'main.AdvantagesBlocks',
@@ -174,7 +192,7 @@ ADMIN_REORDER = (
 
     {
         'app': 'main',
-        'label': 'Проекты и отзывы',
+        'label': 'Проекты и отзывы (главная страница)',
         'models': (
             'main.ReviewsAndProjectTitle',
             'main.ReviewsAndProject',
@@ -183,7 +201,7 @@ ADMIN_REORDER = (
 
     {
         'app': 'main',
-        'label': 'Взгляните сами',
+        'label': 'Взгляните сами (главная страница)',
         'models': (
             'main.LookAtTitle',
             'main.LookAt',
@@ -202,6 +220,7 @@ ADMIN_REORDER = (
         'app': 'main',
         'label': 'Карточка кухни',
         'models': (
+            'main.KitchenCardText',
             'main.Certificate',
         )
     },

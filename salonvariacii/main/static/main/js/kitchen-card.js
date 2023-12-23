@@ -2,6 +2,9 @@ $(document).ready(function () {
     if($('#kitchen-card-slider .kitchen-card-slide').length > 8 ){
         $('#kitchen-card-slider').addClass("dotsFalse");
     }
+    
+    var header = document.querySelector("header");
+    header.classList.add("catalogCard");
 
     $('#kitchen-card-slider .kitchen-card-slider').slick({
         slidesToShow: 1,

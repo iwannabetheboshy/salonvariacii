@@ -482,12 +482,36 @@ class FeedBack(models.Model):
         verbose_name_plural = "Заявки"
 
 class FeedbackBlock(models.Model):
-    title = models.CharField('Заголовок', max_length=50,
-        help_text=("Пример: «Заказать персональную консультацию»"))
+    title = models.CharField('Заголовок 1 уровня', max_length=50,
+        help_text=("Пример: «Контакты»"))
+    fontsize = models.IntegerField('Размер заголовка 1 уровня',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
+    titleTwo = models.CharField('Заголовок 2 уровня', max_length=50,
+        help_text=("Пример: «Контакты»"))
+    fontsizeTiteTwo = models.IntegerField('Размер заголовка 2 уровня',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))
     text = models.TextField('Текст подписи')
+    fontsizeText = models.IntegerField('Размер текста подписи',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
     image = models.ImageField('Фоновая фотография',
                               upload_to='contact/',
                               help_text=("Доступные форматы: jpg, png, webp"))
+    fontsizeBtn = models.IntegerField('Размер подписи кнопки "Оставить заявку"',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
+    
+    inputName = models.CharField('Надпись для ввода имени', max_length=50,
+                                 help_text=("Например: «Имя (обязательно)»"))
+    inputPhone = models.CharField('Надпись для ввода телефона', max_length=50,
+                                 help_text=("Например: «Телефон (обязательно)»"))
+    inputMassage = models.CharField('Надпись для ввода сообщения', max_length=50,
+                                 help_text=("Например: «Сообщение»"))
+    fontsizeInput = models.IntegerField('Размер подписей в форме',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
     def save(self, *args, **kwargs):
         if self.image:
             file_name = os.path.basename(self.image.name)
@@ -586,10 +610,11 @@ class CatalogMain(models.Model):
                                  validators=[MinValueValidator(14), MaxValueValidator(24)],
                                  help_text=("Размер от 14 до 24"))
     
-
     class Meta:
-        verbose_name = "видео"
+        verbose_name = "надпись"
         verbose_name_plural = "Кнопка «Смотреть все кухни» на главной странице"
+
+
 
 
 class CatalogTitle(models.Model):
@@ -597,10 +622,38 @@ class CatalogTitle(models.Model):
                               max_length=50,
                               help_text=(
                                   "Пример: «Каталог кухонь»"))
+    
+    fontsizeH = models.IntegerField('Размер заголовка',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))
     text = models.CharField('Подпись', 
                              max_length=100,
                              help_text=(
                                   "Пример: «Мы делаем не просто кухни, мы создаём стиль»"))
+    fontsizeText=models.IntegerField('Размер подписи заголовка',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    fontsizeFilter=models.IntegerField('Размер подписей фильтров',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    fontsizeKitchen=models.IntegerField('Размер подписей кухонь',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    name404 = models.CharField('Надпись черного цвета',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «К сожалению, ничего не найдено»"))
+    fontsize404=models.IntegerField('Размер черной надписи',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    name404Gray = models.CharField('Надпись серого цвета',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «Попробуйте изменить критерии поиска»"))
+    fontsize404Gray=models.IntegerField('Размер серой надписи',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    
     
     class Meta:
         verbose_name = "надпись"
@@ -637,3 +690,105 @@ class Certificate(models.Model):
                     img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
                     self.image.save(f"{name}.webp", img_file, save=False)
         super().save(*args, **kwargs)
+
+class KitchenCardText(models.Model):
+    fontsizeH = models.IntegerField('Размер надписи кухни',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))
+    fontsizeText=models.IntegerField('Размер текста описания кухни',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    fontsizeFile=models.IntegerField('Размер подписей файлов',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    fontsizeBtn = models.IntegerField('Размер подписи кнопки "Оставить заявку"',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
+    
+    colorMaterialName = models.CharField('Заголовок блока с материалами',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «Цвет и отделка»"))
+    fontsizeColorMaterial=models.IntegerField('Размер заголовка блока с материалами',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))
+    fontsizeNameMaterial=models.IntegerField('Размер подписи материала',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    fontsizeNameColor=models.IntegerField('Размер подписи цвета',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    
+
+    certificateName = models.CharField('Заголовок блока с сертификатами',
+                              max_length=50,
+                              help_text=(
+                                  "Пример: «Сертифицированное качество»"))
+    fontsizeCertificateH=models.IntegerField('Размер заголовка блока с сертификатами',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))
+    fontsizeCertificateName=models.IntegerField('Размер подписи сертификатов',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    
+    class Meta:
+        verbose_name = "надпись"
+        verbose_name_plural = "Надписи в карточке кухни"
+
+
+class CatalogMainBlock(models.Model):
+    title = models.CharField('Заголовок 1 уровня', max_length=50,
+        help_text=("Пример: «Выберите идеальную кухню для вас»"))
+    fontsize = models.IntegerField('Размер заголовка 1 уровня',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
+    titleTwo = models.CharField('Заголовок 2 уровня', max_length=50,
+        help_text=("Пример: «Каталог»"))
+    fontsizeTiteTwo = models.IntegerField('Размер заголовка 2 уровня',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))
+    
+    class Meta:
+        verbose_name = "надпись"
+        verbose_name_plural = "Надписи в блоке 'Каталог'"
+
+
+class Header(models.Model):
+    titleCatalog = models.CharField('Надпись для перехода в каталог', max_length=50,
+        help_text=("Пример: «Каталог»"))
+    titleLookAt = models.CharField('Надпись для перехода в блок «Взгляните сами»', max_length=50,
+        help_text=("Пример: «Взгляните сами»"))
+    titleMore = models.CharField('Надпись для перехода в блок «Больше возможностей»', max_length=50,
+        help_text=("Пример: «Больше возможностей»"))
+    titleContact = models.CharField('Надпись для перехода в блок «Контакты»', max_length=50,
+        help_text=("Пример: «Контакты»"))
+
+    fontsize = models.IntegerField('Размер надписей',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
+    
+
+    
+    class Meta:
+        verbose_name = "надписи"
+        verbose_name_plural = "Шапка"
+
+class Footer(models.Model):
+    titleCatalog = models.CharField('Надпись для перехода в каталог', max_length=50,
+        help_text=("Пример: «Каталог»"))
+    titleLookAt = models.CharField('Надпись для перехода в блок «Взгляните сами»', max_length=50,
+        help_text=("Пример: «Взгляните сами»"))
+    titleMore = models.CharField('Надпись для перехода в блок «Больше возможностей»', max_length=50,
+        help_text=("Пример: «Больше возможностей»"))
+    titleContact = models.CharField('Надпись для перехода в блок «Контакты»', max_length=50,
+        help_text=("Пример: «Контакты»"))
+
+    fontsize = models.IntegerField('Размер надписей',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
+    
+
+    
+    class Meta:
+        verbose_name = "надписи"
+        verbose_name_plural = "Подвал"

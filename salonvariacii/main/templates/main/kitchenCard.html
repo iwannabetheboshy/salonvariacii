@@ -17,8 +17,8 @@
 
             </a>
         </div>
-        <div class="kitchen-card-name">
-            <h1>Кухни Stosa {{ kitchen.name }}</h1>
+        <div class="kitchen-card-name" >
+            <h1>{{ kitchen.name }}</h1>
         </div>
     </div>
     <div class="row mx-0">
@@ -38,12 +38,12 @@
                             </button>
                         </a>
                     </div>
-                    <div class="kitchen-card-name">
+                    <div class="kitchen-card-name" style="font-size: {{kitchenCardText.fontsizeH}}px;">
                         <h1>Кухни Stosa {{ kitchen.name }}</h1>
                     </div>
                 </div>
 
-                <div class="kitchen-card-desc">
+                <div class="kitchen-card-desc" style="font-size: {{kitchenCardText.fontsizeText}}px;">
                     <p>{{ kitchen.desc|linebreaksbr }}</p>
                 </div>
                 <div class="kitchen-card-files">
@@ -53,15 +53,15 @@
                             <path
                                 d="M10.8333 10.5001H13.3333L10 13.8334L6.66667 10.5001H9.16667V7.16675H10.8333V10.5001ZM12.5 3.83341H4.16667V17.1667H15.8333V7.16675H12.5V3.83341ZM2.5 2.99325C2.5 2.53679 2.87291 2.16675 3.33208 2.16675H13.3333L17.4998 6.33341L17.5 17.9938C17.5 18.4575 17.1292 18.8334 16.6722 18.8334H3.32783C2.87063 18.8334 2.5 18.454 2.5 18.0069V2.99325Z" />
                         </svg>
-                        <a href="{{ kitFile.files.url }}" download>{{kitFile.name}}</a>
+                        <a href="{{ kitFile.files.url }}" download style="font-size: {{kitchenCardText.fontsizeFile}}px;">{{kitFile.name}}</a>
                     </div>
                     {%endfor%}
                 </div>
-                <!--<div class="kitchen-card-custom-button">
-                    <button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
+                <div class="kitchen-card-custom-button">
+                    <button class="custom-button-new" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal" style="font-size: {{kitchenCardText.fontsizeBtn}}px;">
                         Оставить заявку
                     </button>
-                </div>-->
+                </div>
 
             </div>
         </div>
@@ -104,24 +104,24 @@
     </div>
 </section>
 
-<section id="color-and-fishing">
-    <h2>Цвет и отделка</h2>
+<section id="color-and-fishing" >
+    <h2 style="font-size: {{kitchenCardText.fontsizeColorMaterial}}px;">{{kitchenCardText.colorMaterialName}}</h2>
     <div class="finishing-wrapper">
         {% for finishing in kitchen.finishing.all%}
         <div class="finishing">
             
-            <div class="finishing-name">
+            <div class="finishing-name" style="font-size: {{kitchenCardText.fontsizeNameMaterial}}px;">
                 
                 {{ finishing.name }}
             
             </div>
 
-            <div class="finishing-colors">
+            <div class="finishing-colors" >
                 {% for color in finishing.colors.all%}
                 
                 <div class="finishing-color">
                     <img src="{{ color.image.url }}" alt="Фотография цвета">
-                    <div class="finishing-color-name">{{ color.name }}</div>
+                    <div class="finishing-color-name" style="font-size: {{kitchenCardText.fontsizeNameColor}}px;">{{ color.name }}</div>
                     
                 </div>
                 {%endfor%}
@@ -138,12 +138,12 @@
     <div class="certified-quality-wrapper">
         <div class="row mx-0 text-center">
             <div class="col px-0">
-                <h2 class="mb-5">Сертифицированное качество</h2>
+                <h2 class="mb-5" style="font-size: {{kitchenCardText.fontsizeCertificateH}}px;">{{kitchenCardText.certificateName}}</h2>
                 <div class="row sertificate">
                     {% for cert in certificate %}
                     <div class="col-xl-4 col-12 px-0">
                         <img src="{{ cert.image.url }}" alt="Сертификат качества">
-                        <p class="mb-0 certificate-p">{{ cert.name }}</p>
+                        <p class="mb-0 certificate-p" style="font-size: {{kitchenCardText.fontsizeCertificateName}}px;">{{ cert.name }}</p>
                     </div>
                     {%endfor%}
                 </div>

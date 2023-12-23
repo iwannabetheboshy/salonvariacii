@@ -24,7 +24,6 @@
 
 #about-us-block,
 #catalog-carousel,
-#project-and-reviews,
 #feedback,
 footer {
   max-width: 1420px;
@@ -35,7 +34,6 @@ footer {
 #look-at-block,
 #about-us-block,
 #catalog-carousel,
-#project-and-reviews,
 #feedback {
   scroll-margin-top: 90px;
 }
@@ -43,7 +41,6 @@ footer {
 @media (max-width: 1200px) {
     #about-us-block,
     #catalog-carousel,
-    #project-and-reviews,
     #look-at-block,
     #feedback {
       scroll-margin-top: 45px;
@@ -140,7 +137,7 @@ fonts
 
 h1 {
   color: #1E1E1E;
-  font-family: 'Stolzl Bold';
+  font-family: 'Core Sans C-55Medium';
   font-size: 52px;
   font-weight: 700;
 }
@@ -153,19 +150,13 @@ h2 {
   margin-bottom: 24px;
 }
 
-.gray-text-16 {
-  font-family: 'Stolzl Light' !important;
-  color: #787878;
-  font-size: 16px;
-  font-weight: 400;
-  padding-top: 10px;
-}
-
 .gray-text-14 {
-  font-family: 'Stolzl Book' !important;
+  font-family: 'Core Sans C-35Light' !important;
   color: #787878;
   font-size: 14px;
   font-weight: 400;
+  font-style: italic; 
+  margin-bottom: 8px;
 }
 
 a {
@@ -196,11 +187,12 @@ a {
 .header .nav-item svg path,
 .header .button-navbar-custom svg path{
   fill:white;
-  fill-opacity: 0.6;
+  fill-opacity: 1;
 }
 
-.header .nav-item svg:hover path{
-  fill-opacity: 1;
+.header .nav-item svg:hover path,
+.header .button-navbar-custom svg:hover path{
+  fill-opacity: 0.6;
   fill:white;
   cursor: pointer;
   transition: .3s; 
@@ -208,6 +200,8 @@ a {
 
 .header.sticky .navbar-nav .nav-item svg path,
 .header.sticky .button-navbar-custom svg path,
+.header.catalogCard .navbar-nav .nav-item svg path,
+.header.catalogCard .button-navbar-custom svg path,
 .header .navbar-opened .button-navbar-custom svg path,
 .header .navbar-opened #navbarNav .nav-item svg path{
   fill:#8B8B8B;
@@ -227,18 +221,11 @@ a {
   transition: .3s;
 }
 
-.header.sticky #navbarNav svg:hover path{
+.header.sticky #navbarNav svg:hover path,
+.header.catalogCard #navbarNav svg:hover path{
   fill: #8B8B8B !important;
 }
 
-
-.header .nav-item svg:hover path,
-.header .button-navbar-custom svg:hover path{
-  fill-opacity: 1;
-  fill:white;
-  cursor: pointer;
-  transition: .3s; 
-}
 
 .header.sticky {
   padding-top: 0;
@@ -259,10 +246,11 @@ a {
   font-weight: 400;
   line-height: 17px;
   color: #FFFF;
-  opacity: 0.6;
+  opacity: 1;
 }
 
-.header.sticky .nav-item a {
+.header.sticky .nav-item a,
+.header.catalogCard .nav-item a {
   color: #787878;
 }
 
@@ -321,7 +309,7 @@ a {
   .header #navbarNav a {
     font-size: 16px;
     margin-bottom: 24px;
-    color: #1E1E1E;
+    color: #787878;
     margin-left: 0 !important;
     padding-left: 0 !important;
   }
@@ -364,9 +352,10 @@ a {
 }
 
 .header.sticky #navbarNav .nav-item a:hover,
+.header.catalogCard #navbarNav .nav-item a:hover,
 .header .navbar-opened #navbarNav .nav-item a:hover {
   cursor: pointer;
-  color: #1E1E1E !important;
+  color: rgba(120, 120, 120, 0.60)  !important;
 }
 
 #navbarNav ul:nth-child(2) a {
@@ -376,16 +365,17 @@ a {
 #navbarNav ul:nth-child(1) a:hover,
 .header #phone a:hover{
   color: #FFFF !important;
-  border-bottom: 1px solid #787878;
+  border-bottom: 1px solid #C7C5C4;
   transition: 0.3s;
-  opacity: 1;
+  opacity: 0.6;
 }
 
 #footer .link a:hover {
-  color: #000000 !important;
-  border-bottom: 1px solid #787878;
+  cursor: pointer;
+  color: rgba(120, 120, 120, 0.60) !important;
+  border-bottom: 1px solid #C7C5C4;
   transition: 0.3s;
-  opacity: 1;
+  opacity: 0.6;
 }
 
 .navbar svg path {
@@ -627,17 +617,30 @@ first-block-main-kitchen-carousel
   color: #FFFFFF;
 }
 
-.sliderCount{
-  display: none;
+.main-kitchen-carousel-sliderCount{
   position: absolute;
-  font-size: 16px;
-  right: -26px;
-  top: -2px;
-  color: #FFF;
-  opacity: 0.5;
+  font-size: 24px;
+  right: 68px;
+  bottom: 50px;
+  color: rgb(255, 255, 255);
+}
+
+.main-kitchen-carousel-sliderCount svg{
+  margin-left: 6px;
+  margin-bottom: 7px;
+}
+
+.sliderCount{
+  margin-left: 8px;
+  color: rgba(255, 255, 255, 0.50); 
+  font-size: 16px; 
 }
 .main-kitchen-carousel .slick-active .sliderCount {
   display: initial;
+}
+
+.main-kitchen-carousel .slick-dots button{
+  display: none;
 }
 
 .main-kitchen-carousel .slick-dots li {
@@ -691,6 +694,10 @@ h1 br {
 @media (max-width: 1200px) {
   h1 br {
     display: block !important;
+  }
+
+  .main-kitchen-carousel-sliderCount{
+    display: none;
   }
 }
 
@@ -978,140 +985,6 @@ advantages
 
 
 /*----------------------------------
-project-and-reviews
-----------------------------------*/
-
-#project-and-reviews .title {
-  padding: 0 70px;
-}
-
-.nav-project-and-reviews {
-  margin-bottom: 24px;
-}
-
-.nav-project-and-reviews svg {
-  fill: #000;
-}
-
-.nav-project-and-reviews .slick-disabled {
-  fill: #DBC7D7;
-}
-
-.project-and-reviews-slider {
-  padding-left: 70px;
-}
-
-.project-and-reviews-slider-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  max-height: 537px;
-}
-
-.project-and-reviews-slider-slide img:hover {
-  cursor: pointer;
-}
-
-.project-and-reviews-kitchen-name {
-  font-family: 'Stolzl Light';
-  font-size: 14px;
-  font-weight: 400;
-  padding: 4px 12px;
-  border-radius: 24px;
-  background: #1E1E1E;
-  color: #FFF;
-}
-
-.review-content {
-  padding-left: 50px;
-}
-
-.project-and-reviews-slider-price-square {
-  margin-bottom: 40px;
-}
-
-.project-and-reviews-name {
-  font-family: 'Stolzl Bold';
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 24px;
-  margin-bottom: 12px;
-}
-
-.project-and-reviews-text {
-  font-family: 'Stolzl Book';
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 24px;
-  
-}
-
-#project-and-reviews .read-more {
-    display: none;
-}
-
-@media (max-width: 550px) {
-  .project-and-reviews-text {
-    height: 120px;
-    overflow: hidden;
-    transition: all .5s ease 0s;
-  }
-
-  #project-and-reviews .read-more {
-    display: block;
-    background-color: #fff;
-    padding-top: 10px;
-    position: relative;
-    transition: 1s;
-  }
-
-  #project-and-reviews .read-more span{
-    cursor: pointer;
-  }
-}
-
-.project-and-reviews-slider .slick-slide {
-  opacity: .6;
-  transition: .7s;
-}
-
-.project-and-reviews-slider .slick-active {
-  opacity: 1;
-}
-
-.project-and-reviews-slider-name-svg {
-  position: relative;
-}
-
-.project-and-reviews-slider-name-svg svg {
-  position: absolute;
-  z-index: -1;
-  top: -10px;
-  left: -15px;
-}
-
-.project-and-reviews-nav {
-  position: relative;
-  margin-left: 70px;
-}
-
-.project-and-reviews-nav button{
-  z-index: 1;
-  position: absolute;
-  bottom: -4%;
-}
-
-.project-and-reviews-nav .num {
-  margin-bottom: 4px;
-}
-
-#project-and-reviews .slick-dots {
-  text-align: end;
-  padding-right: 31px;
-  margin-top: 50px;
-}
-
-/*----------------------------------
 404
 ----------------------------------*/
 #section-404{
@@ -1137,48 +1010,32 @@ project-and-reviews
 /*----------------------------------
 feedback
 ----------------------------------*/
-.feedback-wrapper {
-  padding-left: 70px;
-}
 
 .feedback-text {
-  font-family: 'Stolzl Book';
-  margin-top: 40px;
-  margin-bottom: 46px;
+  font-family: 'Core Sans C-35Light' !important;
+  margin-top: 16px;
+  margin-bottom: 60px;
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
 }
 
-.feedback-wrapper {
-  width: 50%;
+#feedback .wrapper{
+  padding: 0 70px;
 }
 
-#feedback {
-  position: relative;
-}
-
-.feedback-form {
-  position: absolute;
-  right: 70px;
-  width: 30%;
-  padding: 32px;
-  top: 0;
-  background-color: #FFF;
-  box-shadow: 0px -8px 16px 0px rgba(0, 0, 0, 0.08), 0px 0px 4px 0px rgba(0, 0, 0, 0.04);
-}
 
 .feedback label {
   padding-bottom: 8px;
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
-  font-family: 'Stolzl Book';
+  font-family: 'Core Sans C-35Light' !important;
 }
 
 .feedback input::placeholder,
 .feedback textarea::placeholder {
-  font-family: 'Stolzl Book';
+  font-family: 'Core Sans C-35Light' !important;
   font-size: 16px;
   font-weight: 400;
   line-height: 19px;
@@ -1189,32 +1046,30 @@ feedback
     overflow-y: hidden;
 }
 
-#label_number,
+
 #label_message {
   margin-top: 24px;
 }
 
 .form-control {
   font-family: 'Stolzl Book';
-  border-radius: 36px;
-  background: #F1EFED;
   padding: 12px 16px;
   color: #1E1E1E;
   font-size: 16px;
-  border: 1px solid transparent;
+  border: 1px solid #8B8B8B; 
+  border-radius: 0;
 }
 
 .form-control-area {
   font-family: 'Stolzl Book';
-  border-radius: 16px;
-  background: #F1EFED;
+  border-radius: 0;
   padding: 16px;
   color: #1E1E1E;
   font-size: 16px;
   width: 100%;
   height: 100px;
   resize: none;
-  border: 1px solid transparent;
+  border: 1px solid #8B8B8B;
 }
 
 .form-control:hover,
@@ -1237,13 +1092,13 @@ feedback
   outline: none;
 }
 
-.feedback-form .custom-button {
+.feedback-form .custom-button-new {
   margin-top: 24px;
   width: 100%;
 }
 
 .feedback-form-annotation {
-  font-family: 'Stolzl Book';
+  font-family: 'Core Sans C-35Light' !important;
   margin-top: 16px;
   color: #787878;
   font-size: 14px;
@@ -1251,7 +1106,7 @@ feedback
 }
 
 .feedback-form-annotation a {
-  font-family: 'Stolzl Book';
+  font-family: 'Core Sans C-35Light' !important;
   color: #0466FF;
 }
 
@@ -1268,8 +1123,29 @@ feedback
 .feedback-img-desc img{
   width: 100%;
   height: 100%;
+  margin-top: 80px;
 }
 
+.feedback-contact{
+  font-family: 'Core Sans C-35Light' !important;
+}
+
+.feedback-contact .footer-number,
+.feedback-contact .footer-adress{
+  margin-top: 16px;
+}
+
+.feedback-contact .contacts svg{
+  margin-left: 16px;
+}
+
+.feedback-contact .contacts svg path{
+  fill: #8B8B8B99;
+}
+
+.feedback-contact .contacts a:first-child svg{
+  margin-left: 0;
+}
 
 /*----------------------------------
 footer
@@ -1291,7 +1167,7 @@ footer .contacts a {
 
 footer .under-contacts,
 footer .under-contacts a {
-  font-family: 'Stolzl Book';
+  font-family: 'Core Sans C-35Light' !important;
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -1301,14 +1177,14 @@ footer .under-contacts a {
 footer .under-contacts a:hover,
 .footer-adress a:hover,
 .footer-number a:hover {
-  color: #1E1E1E !important;
-  border-bottom: 1px solid #787878;
+  border-bottom: 1px solid #C7C5C4;
   transition: 0.3s;
+  opacity: 0.6;
 }
 
 footer .plain-text a {
   margin-right: 32px;
-  font-family: 'Stolzl Book';
+  font-family: 'Core Sans C-35Light' !important;
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -1317,7 +1193,7 @@ footer .plain-text a {
 
 footer .footer-number,
 footer .footer-adress {
-  font-family: 'Stolzl Book';
+  font-family: 'Core Sans C-35Light' !important;
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -1359,7 +1235,7 @@ footer .contacts svg:hover path {
   }
 
   footer .link a {
-    color: #000;
+    color: #787878; 
   }
 
   #look-at-block {
@@ -1401,7 +1277,6 @@ footer .contacts svg:hover path {
   .parent,
   #look-at-block,
   .catalog-carousel-button,
-  .project-and-reviews-nav,
   #advantages .custom-button-new {
     margin-top: 6.7% !important;
   }
@@ -1415,8 +1290,6 @@ footer .contacts svg:hover path {
     margin-bottom: 6.7%;
   }
 
-  .project-and-reviews-slider,
-  #project-and-reviews .title,
   .slider-catalog-container,
   .slider-catalog-container-mobile {
     padding-left: 4.4%;
@@ -1433,18 +1306,6 @@ footer .contacts svg:hover path {
   .review-content {
     padding-left: 0;
     margin-top: 4.4%;
-  }
-
-  .project-and-reviews-slider-price-square {
-    margin-bottom: 6.7%;
-  }
-
-  .project-and-reviews-slider-name-svg svg {
-    left: 0;
-  }
-
-  .project-and-reviews-slider-slide {
-    padding-right: 4.4%;
   }
 
   .parent {
@@ -1474,7 +1335,6 @@ footer .contacts svg:hover path {
   .bottom-block-main-block,
   .desk,
   .header-desk,
-  .nav-project-and-reviews,
   .slider-catalog-container,
   .slick-dots a {
     display: none !important;
@@ -1541,10 +1401,6 @@ footer .contacts svg:hover path {
     margin: 0;
   }
 
-  .project-and-reviews-nav {
-    text-align: center;
-  }
-
   .contacts,
   .footer-number,
   #advantages,
@@ -1567,20 +1423,6 @@ footer .contacts svg:hover path {
     right: 4.4%;
   }
 
-  .project-and-reviews-nav {
-    margin: 0;
-  }
-
-  #project-and-reviews .slick-dots {
-    text-align: center;
-    padding: 0;
-    margin-top: 8.9%;
-  }
-
-  .project-and-reviews-name {
-    margin-bottom: 2.4%;
-  }
-
   .link {
     display: grid;
     text-align: start;
@@ -1600,14 +1442,13 @@ footer .contacts svg:hover path {
     font-size: 16px;
   }
 
-  .slider-catalog-kitchen-short-desc-mobile,
-  .project-and-reviews-text {
-    font-family: 'Stolzl Book' !important;
+  .slider-catalog-kitchen-short-desc-mobile {
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 14px;
   }
 
   #catalog-carousel .content-mobile a {
-    font-family: 'Stolzl Book' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 14px;
     font-weight: 400;
   }
@@ -1619,12 +1460,9 @@ footer .contacts svg:hover path {
   h2 {
     font-size: 30px;
   }
-  .project-and-reviews-nav button{
-    position: initial;
-  }
 
   .slick-dots li span, 
-  .sliderCount{
+  .main-kitchen-carousel-sliderCount{
     display: none !important;
   }
 
@@ -1674,26 +1512,11 @@ footer .contacts svg:hover path {
     margin-right: auto;
   }
 
-  .nav-project-and-reviews {
-    display: none;
-  }
-
   .review-content {
     margin-top: 16px;
     padding: 0px;
   }
 
-  .project-and-reviews-slider .slick-slide {
-    opacity: 1;
-  }
-
-  .project-and-reviews-slider-price-square {
-    margin-bottom: 24px;
-  }
-
-  .project-and-reviews-slider-slide img {
-    height: calc(100vw*0.6);
-  }
 
   .mobile-button {
     display: block;
@@ -1847,7 +1670,7 @@ footer .contacts svg:hover path {
 }
 
 .hero-marquee-item__title {
-  font-family: 'Stolzl Book' !important;
+  font-family: 'Core Sans C-35Light' !important;
   font-size: 14px;
   font-weight: 700;
   line-height: 24px;
@@ -1859,7 +1682,7 @@ footer .contacts svg:hover path {
 }
 
 .hero-marquee-item__tag div {
-  font-family: 'Stolzl Book' !important;
+  font-family: 'Core Sans C-35Light' !important;
   font-size: 14px;
   font-weight: 400;
   line-height: 17px;
@@ -1919,7 +1742,7 @@ footer .contacts svg:hover path {
 Modal Feedback
 -----------------------*/
 #mainFeedBackModal h3 {
-  font-family: 'Stolzl Book' !important;
+  font-family: 'Core Sans C-35Light' !important;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
@@ -1993,31 +1816,21 @@ catalog-header
 }
 
 .catalog-name {
-    font-family: 'Stolzl Bold' !important;
-    font-size: 52px;
+    font-family: 'Core Sans C-55Medium' !important;
+    font-size: 32px;
     color: #1E1E1E;
     font-weight: 700;
 }
 
 .catalog-annotation {
     color: #787878;
-    font-family: 'Stolzl Light' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 16px;
     margin-top: 24px;
 }
 
 .catalog-annotation span {
     color: #1E1E1E;
-}
-
-.catalog-annotation span::after {
-    content: "";
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='127' height='11' fill='%231E1E1E'><path fill-rule='evenodd' clip-rule='evenodd' d='M53.9383 1.05347C47.9718 1.41449 42.0754 1.85839 36.3254 2.34369C28.1856 3.03022 20.049 3.74042 11.9614 4.86489C9.41559 5.21999 6.83031 5.44487 4.30044 5.88875C2.71234 6.16691 0.606566 6.56338 0.33021 6.64623C0.185664 6.69358 0.122603 6.76467 0.102227 6.78834C-0.0410457 6.95405 -0.0149038 7.11378 0.0659656 7.23806C0.0984407 7.29133 0.180561 7.42158 0.408523 7.43934C15.654 8.65259 31.2433 6.28527 46.5072 6.0367C72.9776 5.61059 100.25 7.30322 126.511 10.9962C126.74 11.0258 126.963 10.8778 126.995 10.6589C127.033 10.4458 126.867 10.2387 126.638 10.2091C100.333 6.51012 73.0158 4.81156 46.4945 5.2436C32.2691 5.47441 17.763 7.55178 3.51785 6.84158C3.84515 6.7824 4.1661 6.72319 4.45901 6.66993C6.97869 6.22606 9.55314 6.0071 12.0887 5.652C20.1591 4.52752 28.2792 3.81733 36.4081 3.13673C46.4945 2.28449 57.0202 1.55062 67.6288 1.20736C71.4239 1.26062 75.2063 1.31391 78.9887 1.37901C87.1711 1.52105 95.3918 1.93533 103.555 2.49165C106.013 2.66328 108.471 2.84082 110.929 2.99469C111.744 3.04796 113.845 3.20181 114.138 3.18997C114.501 3.17813 114.571 2.89408 114.578 2.84673C114.597 2.74021 114.584 2.59224 114.406 2.46795C114.387 2.4502 114.272 2.39098 114.017 2.35547C99.1742 0.260393 83.3251 -0.0887311 67.6415 0.414324C51.0983 0.195347 34.4915 0.100611 17.9903 0C17.7541 0 17.5611 0.177575 17.5592 0.396552C17.5579 0.615529 17.7483 0.793109 17.9845 0.799028C29.9328 0.870047 41.9416 0.941026 53.9383 1.05347Z' fill='%231E1E1E' /></svg>");
-    position: absolute;
-    width: 127px;
-    height: 11px;
-    bottom: -17px;
-    right: 0;
 }
 
 .catalog-annotation span {
@@ -2077,7 +1890,7 @@ catalog-filter-result
 }
 
 #catalog-filter .kitchen-name {
-    font-family: 'Stolzl Book' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 18px;
 }
 
@@ -2191,7 +2004,7 @@ filter desc
 
 .none-result .none-result-title {
     color: #1E1E1E;
-    font-family: 'Stolzl Book' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 18px;
     font-weight: 400;
     margin-top: 16px;
@@ -2199,7 +2012,7 @@ filter desc
 
 .none-result .none-result-text {
     color: #787878;
-    font-family: 'Stolzl Book' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 16px;
     font-weight: 400;
     margin-top: 8px;
@@ -2207,7 +2020,7 @@ filter desc
 
 .filter-name {
     float: left;
-    font-family: 'Stolzl Book' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 14px;
 }
 
@@ -2222,7 +2035,7 @@ filter desc
 .search-div {
     width: 254px;
     float: right;
-    border-radius: 36px;
+    border-radius: 0;
     background: #F1EFED;
     padding: 12px 16px !important;
     border: 1px solid transparent;
@@ -2233,7 +2046,7 @@ filter desc
     background: #F1EFED;
     color: #1E1E1E;
     width: 80%;
-    font-family: 'Stolzl Light' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 14px;
 }
 
@@ -2277,7 +2090,7 @@ filter mobile
 }
 
 .filter-mobile-name {
-    font-family: 'Stolzl Book' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 14px;
     line-height: 50px;
 }
@@ -2839,35 +2652,6 @@ kitchen-annotation
     transition: .3s;
 }
 
-.kitchenCard-video-container::after {
-    content: '';
-    width: 0;
-    height: 0;
-    border-left: 70px solid #fff;
-    border-top: 70px solid transparent;
-    border-right: 70px solid transparent;
-    border-bottom: 70px solid #fff;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    left: 0;
-}
-
-.kitchenCard-photo-container::after {
-  content: '';
-  width: 0;
-  height: 0;
-  border-left: 70px solid #fff;
-  border-top: 70px solid transparent;
-  border-right: 70px solid transparent;
-  border-bottom: 70px solid #fff;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
-
 
 .kitchen-card-back {
     margin: 10px 0;
@@ -2891,13 +2675,13 @@ kitchen-annotation
 
 .kitchen-card-desc p {
     margin: 0;
-    font-family: 'Stolzl Book' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 16px;
 }
 
 .kitchen-card-files .file {
     margin-top: 12px;
-    font-family: 'Stolzl Light' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 14px;
     color: #787878;
 }
@@ -3042,7 +2826,7 @@ color-and-fishing
     margin-right: 16px;
     margin-top: 16px;
     color: #1E1E1E;
-    font-family: 'Stolzl Book' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 14px;
     width: 120px;
 }
@@ -3051,7 +2835,7 @@ color-and-fishing
 .finishing-name {
     margin-bottom: 8px;
     color: #1E1E1E;
-    font-family: 'Stolzl Book' !important;
+    font-family: 'Core Sans C-35Light' !important;
     font-size: 16px;
     margin-top: 24px;
 }
@@ -3185,10 +2969,7 @@ certified-quality
     #color-and-fishing {
         margin-top: 11%;
     }
-
-    .kitchenCard-video-container::after,.kitchenCard-photo-container::after  {
-        display: none;
-    }
+  
 
     .kitchen-annotation-right svg {
         top: 43% !important;

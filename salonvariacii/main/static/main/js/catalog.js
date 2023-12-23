@@ -1,3 +1,8 @@
+$(document).ready(function () {
+  var header = document.querySelector("header");
+  header.classList.add("catalogCard");
+});
+
 function sleep(milliseconds) {
   const date = Date.now();
   let currentDate = null;
@@ -129,8 +134,9 @@ async function filtration() {
 }
 
 function addSelect(parentId, selectName){
+  var size = $("#catalog-filter").attr('data-size');
   var select = $(`
-    <div class="selected" id="${parentId}"> 
+    <div class="selected" id="${parentId}"  style="font-size: ${size}px"> 
     ${selectName}
     <svg  width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/>
@@ -180,9 +186,9 @@ $(".filter-desc li").click(function () {
 });
 
 function addClean(){
-  console.log("123");
+  var size = $("#catalog-filter").attr('data-size');
   if ($("#catalog-filter .select .clean").length == 0) {
-    var div = $('<div class="selected clean" id="clean">Очистить</div>');
+    var div = $(`<div class="selected clean" id="clean" style="font-size: ${size}px">Очистить</div>`);
     var svg = $('<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00047 7.05767L11.3003 3.75781L12.2431 4.70062L8.94327 8.00047L12.2431 11.3003L11.3003 12.2431L8.00047 8.94327L4.70062 12.2431L3.75781 11.3003L7.05767 8.00047L3.75781 4.70062L4.70062 3.75781L8.00047 7.05767Z" fill="#1E1E1E"/></svg>');
 
     div.append(svg);

@@ -4,23 +4,37 @@
 
 {% block content %}
 
-<div style="background: linear-gradient(180deg, #F8F7F4 0%, rgba(255, 255, 255, 0) 100%);" >
+<div style="background: linear-gradient(180deg, #F8F7F4 0%, rgba(255, 255, 255, 0) 100%);">
     <section id="first-block-main-kitchen-carousel">
         <div class="main-kitchen-carousel" role="toolbar">
             {% for photo in sliderPhoto %}
             <div class="main-kitchen-carousel-slide">
-                    <img src="{{ photo.image.url }}" alt="Фотография кухни {{ photo.name }}">
+                <img src="{{ photo.image.url }}" alt="Фотография кухни {{ photo.name }}">
             </div>
             {%endfor%}
         </div>
-        <div class="nav-main-kitchen-carousel-buttton ps-0">
-            <svg class="custom-prev-arrow" width="35" height="30" viewBox="0 0 35 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9.7855 16.2501L16.4905 22.9551L14.7227 24.7229L5 15.0001L14.7228 5.2775L16.4905 7.04525L9.7855 13.7501L35 13.7501L35 16.2501L9.7855 16.2501Z"/>
-                </svg> 
+        <div class="main-kitchen-carousel-sliderCount row mx-0">
+            <div class="currentSlide col px-0"></div>
+            <div class="col px-0">
+                <svg width="8" height="21" viewBox="0 0 8 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 1L1.00019 20" stroke="white" stroke-opacity="0.5" />
+                </svg>
+            </div>
+            <div class="sliderCount col px-0"></div>
 
-                <svg class="custom-next-arrow" width="35" height="30" viewBox="0 0 35 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M25.2145 13.7499L18.5095 7.04486L20.2773 5.2771L30 14.9999L20.2773 24.7225L18.5095 22.9547L25.2145 16.2499L1.63764e-07 16.2499L1.26452e-07 13.7499L25.2145 13.7499Z"/>
-                    </svg> 
+        </div>
+        <div class="nav-main-kitchen-carousel-buttton ps-0">
+            <svg class="custom-prev-arrow" width="35" height="30" viewBox="0 0 35 30" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M9.7855 16.2501L16.4905 22.9551L14.7227 24.7229L5 15.0001L14.7228 5.2775L16.4905 7.04525L9.7855 13.7501L35 13.7501L35 16.2501L9.7855 16.2501Z" />
+            </svg>
+
+            <svg class="custom-next-arrow" width="35" height="30" viewBox="0 0 35 30" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M25.2145 13.7499L18.5095 7.04486L20.2773 5.2771L30 14.9999L20.2773 24.7225L18.5095 22.9547L25.2145 16.2499L1.63764e-07 16.2499L1.26452e-07 13.7499L25.2145 13.7499Z" />
+            </svg>
         </div>
 
     </section>
@@ -29,19 +43,19 @@
 <section id="about-us-block">
     <div class="wrapper">
         <h2 style="font-size: {{about.fontsizeH}}px; text-align: {{about.alignmentH}};">{{ about.title }}</h2>
-        <div class="about-us-block-text" style="font-size: {{about.fontsizeText}}px; text-align: {{about.alignmentText}};">
+        <div class="about-us-block-text"
+            style="font-size: {{about.fontsizeText}}px; text-align: {{about.alignmentText}};">
             {% autoescape off %}
             {{ about.text|linebreaksbr|safe }}
-        {% endautoescape %}
+            {% endautoescape %}
         </div>
         <div class="row align-items-center">
             <div class="col text-center">
                 <span class="watch-video" data-url="{{ watchVideoMain.url }}">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
-                                d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM10.6219 8.41459L15.5008 11.6672C15.6846 11.7897 15.7343 12.0381 15.6117 12.2219C15.5824 12.2658 15.5447 12.3035 15.5008 12.3328L10.6219 15.5854C10.4381 15.708 10.1897 15.6583 10.0672 15.4745C10.0234 15.4088 10 15.3316 10 15.2526V8.74741C10 8.52649 10.1791 8.34741 10.4 8.34741C10.479 8.34741 10.5562 8.37078 10.6219 8.41459Z"
-                                fill="#1E1E1E" />
+                            d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM10.6219 8.41459L15.5008 11.6672C15.6846 11.7897 15.7343 12.0381 15.6117 12.2219C15.5824 12.2658 15.5447 12.3035 15.5008 12.3328L10.6219 15.5854C10.4381 15.708 10.1897 15.6583 10.0672 15.4745C10.0234 15.4088 10 15.3316 10 15.2526V8.74741C10 8.52649 10.1791 8.34741 10.4 8.34741C10.479 8.34741 10.5562 8.37078 10.6219 8.41459Z"
+                            fill="#1E1E1E" />
                     </svg>
                     <span style="font-size: {{watchVideoMain.fontsize}}px;">Смотреть видео</span>
                 </span>
@@ -49,149 +63,74 @@
         </div>
     </div>
 </section>
-<!--<section id="about-us-block" data-fontsize="{{ about.fontsize }}">
-    <div class="wrapper">
-
-        <div class="row about-us-block mx-0">
-            <h2 class="mobile px-0">{{ about.title }}</h2>
-            <div class="col-xl-6 col-12 about-us-block-image px-0">
-                <img src="{{ about.image.url }}" alt="О нас">
-            </div>
-
-            <div class="col-xl-6 col-12 about-us-text-block">
-                <h2 class="desk">{{ about.title }}</h2>
-                <div class="about-us-text" >
-                    {{ about.text|linebreaksbr }}
-                </div>
-                <div class="about-us-text-dop row row-cols-3">
-                    {% if numberOfBlocksAboutMini == 4%}
-                    <div class="about-us-text-dop-block">
-                        <div class="value">
-                            {{ aboutMini.0.value }}
-                        </div>
-                        <div class="value-name">
-                            {{ aboutMini.0.name }}
-                        </div>
-                    </div>
-                    <div class="about-us-text-dop-block">
-                        <div class="value">
-                            {{ aboutMini.1.value }}
-                        </div>
-                        <div class="value-name">
-                            {{ aboutMini.1.name }}
-                        </div>
-                    </div>
-                    <div class="about-us-text-dop-block">
-                        <div class="value">
-                        </div>
-                        <div class="value-name">
-                        </div>
-                    </div>
-                    <div class="about-us-text-dop-block">
-                        <div class="value">
-                            {{ aboutMini.2.value }}
-                        </div>
-                        <div class="value-name">
-                            {{ aboutMini.2.name }}
-                        </div>
-                    </div>
-                    <div class="about-us-text-dop-block">
-                        <div class="value">
-                            {{ aboutMini.3.value }}
-                        </div>
-                        <div class="value-name">
-                            {{ aboutMini.3.name }}
-                        </div>
-                    </div>
-                    <div class="about-us-text-dop-block">
-                        <div class="value">
-                        </div>
-                        <div class="value-name">
-                        </div>
-                    </div>
-                    {% else %}
-                    {% for mini in aboutMini %}
-                    <div class="about-us-text-dop-block">
-                        <div class="value">
-                            {{ mini.value }}
-                        </div>
-                        <div class="value-name">
-                            {{ mini.name }}
-                        </div>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-</section>-->
 
 <section id="catalog-carousel">
-        <div class="slider-catalog-container">
-            <h2>Каталог</h2>
-            <div class="slide-line">
-                {% for kitchen in catalog_carousel %}
-                <div class="slide">
-                    <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
-                    
-                        <a href="/kitchen/{{ kitchen.slug }}">
-                            <div class="content">
-                            <div class="slider-catalog-kitchen-name">
-                                Кухни Stosa {{ kitchen.name }}
-                            </div>
-                            <div >
-                                <a class="slider-catalog-kitchen-href" href="/kitchen/{{ kitchen.slug }}">
+    <div class="slider-catalog-container">
+        <div class="gray-text-14" style="font-size: {{сatalogMainBlock.fontsize}}px;">{{ сatalogMainBlock.title }}</div>
+        <h2 style="font-size: {{сatalogMainBlock.fontsizeTiteTwo}}px;">{{сatalogMainBlock.titleTwo}}</h2>
+        <div class="slide-line">
+            {% for kitchen in catalog_carousel %}
+            <div class="slide">
+                <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
+
+                <a href="/kitchen/{{ kitchen.slug }}">
+                    <div class="content">
+                        <div class="slider-catalog-kitchen-name">
+                            Кухни Stosa {{ kitchen.name }}
+                        </div>
+                        <div>
+                            <a class="slider-catalog-kitchen-href" href="/kitchen/{{ kitchen.slug }}">
                                 Подробнее
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
+                                    xmlns="http://www.w3.org/2000/svg">
                                     <path
-                                            d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
-                                            fill="#1E1E1E" />
+                                        d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
+                                        fill="#1E1E1E" />
                                 </svg>
                             </a>
-                            </div>
-                            </div>
-                        </a>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="slider-catalog-container-mobile">
-            <h2>Каталог</h2>
-            <div class="slide-line-mobile">
-                {% for kitchen in catalog_carousel %}
-                <div class="slid-mobile">
-                    <a href="/kitchen/{{ kitchen.slug }}">
-                        <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
-                        <div class="content-mobile">
-                        
-                            <div class="slider-catalog-kitchen-name">
-                                Кухни {{ kitchen.name }}
-                            </div>
-                            <div>
-                                <a class="slider-catalog-kitchen-href" href="/kitchen/{{ kitchen.slug }}">
-                                    Подробнее
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                                d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
-                                                fill="#1E1E1E" />
-                                    </svg>
-                                </a>
-                            </div>
                         </div>
-                    </a>
-                </div>
-                
-                {% endfor %}
+                    </div>
+                </a>
             </div>
+            {% endfor %}
         </div>
-        <div class="row text-center catalog-carousel-button">
-            <div class="col px-0">
-                <a href="/catalog/"><button class="custom-button-new" style="font-size: {{catalogMain.fontsize}}px;">Смотреть все кухни</button></a>
+    </div>
+    <div class="slider-catalog-container-mobile">
+        <h2>{{сatalogMainBlock.titleTwo}}</h2>
+        <div class="slide-line-mobile">
+            {% for kitchen in catalog_carousel %}
+            <div class="slid-mobile">
+                <a href="/kitchen/{{ kitchen.slug }}">
+                    <img src="{{ kitchen.mainImage.url }}" alt="Фотография кухни {{ kitchen.name }}">
+                    <div class="content-mobile">
+
+                        <div class="slider-catalog-kitchen-name">
+                            Кухни {{ kitchen.name }}
+                        </div>
+                        <div>
+                            <a class="slider-catalog-kitchen-href" href="/kitchen/{{ kitchen.slug }}">
+                                Подробнее
+                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M13.476 9.16658L9.00601 4.69657L10.1845 3.51807L16.6663 9.99992L10.1845 16.4817L9.00601 15.3032L13.476 10.8332H3.33301V9.16658H13.476Z"
+                                        fill="#1E1E1E" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </a>
             </div>
+
+            {% endfor %}
         </div>
+    </div>
+    <div class="row text-center catalog-carousel-button">
+        <div class="col px-0">
+            <a href="/catalog/"><button class="custom-button-new"
+                    style="font-size: {{catalogMain.fontsize}}px;">Смотреть все кухни</button></a>
+        </div>
+    </div>
 </section>
 
 <section id="advantages">
@@ -201,116 +140,31 @@
         </h2>
         <div class="row advantages-content mx-0">
             {% for advantage in AdvantagesBlocks %}
-                <div class="block col-lg-6 col-xl-3 col-12 ps-0">
-                    <div class="col advantages-content-title" style="font-size: {{advantagesTitle.fontsizeTextH}}px;">
-                        <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                    d="M8 0.5L9.61276 3.73998C10.2915 5.10354 11.3965 6.2085 12.76 6.88724L16 8.5L12.76 10.1128C11.3965 10.7915 10.2915 11.8965 9.61276 13.26L8 16.5L6.38724 13.26C5.7085 11.8965 4.60353 10.7915 3.23997 10.1128L0 8.5L3.23997 6.88724C4.60354 6.2085 5.7085 5.10353 6.38724 3.73997L8 0.5Z"
-                                    fill="#1E1E1E" />
-                        </svg>
-                        
-                        {{ advantage.name }}
-                    </div>
-                    <div class="col advantages-content-title-text" style="font-size: {{advantagesTitle.fontsizeText}}px;">
-                        {{ advantage.text }}
-                    </div>
+            <div class="block col-lg-6 col-xl-3 col-12 ps-0">
+                <div class="col advantages-content-title" style="font-size: {{advantagesTitle.fontsizeTextH}}px;">
+                    <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M8 0.5L9.61276 3.73998C10.2915 5.10354 11.3965 6.2085 12.76 6.88724L16 8.5L12.76 10.1128C11.3965 10.7915 10.2915 11.8965 9.61276 13.26L8 16.5L6.38724 13.26C5.7085 11.8965 4.60353 10.7915 3.23997 10.1128L0 8.5L3.23997 6.88724C4.60354 6.2085 5.7085 5.10353 6.38724 3.73997L8 0.5Z"
+                            fill="#1E1E1E" />
+                    </svg>
+
+                    {{ advantage.name }}
                 </div>
+                <div class="col advantages-content-title-text" style="font-size: {{advantagesTitle.fontsizeText}}px;">
+                    {{ advantage.text }}
+                </div>
+            </div>
             {% endfor %}
         </div>
         <div class="advantages-footer text-center">
             Выбирайте Stosa для своей кухни и познакомьтесь со всеми новыми продуктами и моделями прямо сейчас
             <div class="text-center">
                 <div class="col px-0">
-                    <a href="/catalog/"><button class="custom-button-new" style="font-size: {{catalogMain.fontsize}}px;">Смотреть все кухни</button></a>
+                    <a href="/catalog/"><button class="custom-button-new"
+                            style="font-size: {{catalogMain.fontsize}}px;">Смотреть все кухни</button></a>
                 </div>
             </div>
         </div>
-        
-    </div>
-</section>
-
-<section id="project-and-reviews">
-    <div class="wrapper">
-        <div class="row title mx-0">
-            <h2 class="col-11 px-0">{{ ReviewsAndProjectTitle.title }}</h2>
-            <div class="col row nav-project-and-reviews px-0 text-end align-items-center">
-                <div class="col px-0">
-                    <svg class="custom-prev-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                                d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z" />
-                    </svg>
-                    <svg class="custom-next-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" />
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <div class="project-and-reviews-slider ">
-            {% for review in reviews %}
-            <div class="project-and-reviews-slider-slide">
-                <div class="row mx-0">
-                    <div class="col-xl-6 col-12 px-0">
-                        <img src="{{ review.image.url }}" alt="Фотография отзыва">
-                    </div>
-                    <div class="col-xl-5 col-12 review-content pe-0">
-                        <div class="mb-4">
-                            <span class="project-and-reviews-kitchen-name">
-                                {{ review.project_name }}
-                            </span>
-
-                        </div>
-                        <div class="row project-and-reviews-slider-price-square mx-0">
-                            <div class="col px-0">
-                                <div class="value">
-                                    {{ review.price|intcomma }} €
-                                </div>
-                                <div class="value-name">
-                                    цена проекта под ключ
-                                </div>
-                            </div>
-                            <div class="col px-0">
-                                <div class="value">
-                                    {{ review.squeare }} м²
-                                </div>
-                                <div class="value-name">
-                                    площадь кухни
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="project-and-reviews-name">
-                            <div class="project-and-reviews-slider-name-svg">
-                                <svg width="39" height="28" viewBox="0 0 39 28" fill="none"
-                                     xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                            d="M36.5079 0C37.0853 0 37.5617 0.187243 37.937 0.561728C38.3123 0.907407 38.5 1.35391 38.5 1.90123C38.5 2.76543 37.9514 3.4856 36.8543 4.06173C34.227 5.44444 32.3071 6.78395 31.0945 8.08025C29.9685 9.31893 29.4055 10.2263 29.4055 10.8025C29.4055 11.3498 29.8386 11.6811 30.7047 11.7963L31.2244 11.8395L31.9173 11.9259C33.794 12.1852 35.3097 13.0494 36.4646 14.5185C37.6194 15.9588 38.1968 17.7305 38.1968 19.8333C38.1968 21.9362 37.4751 23.7798 36.0315 25.3642C34.4147 27.1214 32.3215 28 29.752 28C27.269 28 25.1614 27.035 23.4291 25.1049C21.6102 23.1461 20.7008 20.6831 20.7008 17.716C20.7008 15.0947 21.6102 12.3868 23.4291 9.59259C25.248 6.76955 27.6155 4.40741 30.5315 2.50617C33.0722 0.835391 35.0643 0 36.5079 0ZM15.8071 0C16.3845 0 16.8609 0.187243 17.2362 0.561728C17.6115 0.907407 17.7992 1.35391 17.7992 1.90123C17.7992 2.76543 17.2507 3.4856 16.1535 4.06173C13.5262 5.44444 11.6063 6.78395 10.3937 8.08025C9.26772 9.31893 8.70472 10.2263 8.70472 10.8025C8.70472 11.3498 9.13779 11.6811 10.0039 11.7963L10.5236 11.8395L11.2165 11.9259C13.0932 12.1852 14.6089 13.0494 15.7638 14.5185C16.9186 15.9588 17.4961 17.7305 17.4961 19.8333C17.4961 21.9362 16.7743 23.7798 15.3307 25.3642C13.7139 27.1214 11.6207 28 9.05118 28C6.56824 28 4.46063 27.035 2.72835 25.1049C0.909449 23.1461 0 20.6831 0 17.716C0 15.0947 0.909449 12.3868 2.72835 9.59259C4.54724 6.76955 6.9147 4.40741 9.83071 2.50617C12.3714 0.835391 14.3635 0 15.8071 0Z"
-                                            fill="#EAE9E6" />
-                                </svg>
-                            </div>
-                            {{ review.review_name }}
-                        </div>
-                        <div class="project-and-reviews-text">
-                            {{ review.text }}
-                        </div>
-                    </div>
-                </div>
-                    <div class="read-more gray-text-14">
-                        <span onclick="readMore(this)">Читать далее...</span>
-                    </div>
-            </div>
-            {%endfor%}
-
-        </div>
-        <div class=" project-and-reviews-nav">
-            <!--<button class="custom-button" data-bs-toggle="modal" data-bs-target="#mainFeedBackModal">
-                Оставить заявку
-            </button>-->
-        </div>
-
 
     </div>
 </section>
@@ -323,64 +177,53 @@
     </div>
 
 
-    <div class="hero-marquee py-0" style="--card-count: 24;" >
+    <div class="hero-marquee py-0" style="--card-count: 24;">
         <div class="hero-marquee__track">
             <div class="hero-marquee__grid">
 
                 {% for item in look_at %}
                 {% if item.content.url|slice:"-3:" == "mp4" %}
-                <div class="hero-marquee-item" style=" cursor: pointer;" data-lazy-parent >
+                <div class="hero-marquee-item" style=" cursor: pointer;" data-lazy-parent>
                     {% else %}
                     <div class="hero-marquee-item" data-lazy-parent>
                         {%endif%}
-                    <div class="hero-marquee-item__info">
-                        
-                        <div class="hero-marquee-item__title num-white row_hero_2_col_1">{{item.name}}</div>
-                        <div class="hero-marquee-item__tags row_hero_2_col_2" >
-                            <div class="hero-marquee-item__tag little-text">
-                                <div class="lottie"></div>
-                                <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.2234 1.4727C15.2394 1.48633 15.2549 1.50064 15.2699 1.5156C17.2881 3.53431 17.2878 6.80688 15.2692 8.82529C15.2691 8.8253 15.2692 8.82528 15.2692 8.82529L10.5074 13.5871C10.5048 13.5897 10.5025 13.592 10.5005 13.5939C10.5003 13.5941 10.5001 13.5943 10.4999 13.5945C9.33303 14.7578 7.44406 14.7561 6.27946 13.59C6.2794 13.59 6.27934 13.5899 6.27928 13.5899C6.27918 13.5898 6.27909 13.5897 6.27899 13.5896L1.514 8.82451C-0.504655 6.80576 -0.504681 3.53281 1.51401 1.51412C3.39354 -0.365327 6.36019 -0.494967 8.38961 1.12528C10.404 -0.483136 13.342 -0.367297 15.2234 1.4727ZM9.05232 2.62379L8.94137 2.73474C8.63663 3.03948 8.14255 3.03948 7.83781 2.73474L7.72075 2.61769C6.31156 1.2085 4.02685 1.20848 2.61756 2.6177C1.20837 4.02689 1.20837 6.31166 2.61758 7.72095C2.61758 7.72095 2.61758 7.72095 2.61758 7.72095L7.38351 12.487C7.93862 13.043 8.83892 13.0446 9.39613 12.4912C9.39828 12.489 9.40023 12.4871 9.40194 12.4854C9.40208 12.4852 9.40222 12.4851 9.40235 12.485L14.1656 7.72172C15.5632 6.32434 15.5749 4.06581 14.2007 2.65404C14.1873 2.64239 14.1743 2.63026 14.1617 2.61766C12.7527 1.20847 10.468 1.20835 9.05886 2.61733C9.05669 2.6195 9.05451 2.62165 9.05232 2.62379Z" fill-opacity="0.58"/>
-                                </svg>
-                                <div class="likes-count">{{item.likes}}</div>
+                        <div class="hero-marquee-item__info">
+
+                            <div class="hero-marquee-item__title num-white row_hero_2_col_1">{{item.name}}</div>
+                            <div class="hero-marquee-item__tags row_hero_2_col_2">
+                                <div class="hero-marquee-item__tag little-text">
+                                    <div class="lottie"></div>
+                                    <svg width="17" height="15" viewBox="0 0 17 15" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M15.2234 1.4727C15.2394 1.48633 15.2549 1.50064 15.2699 1.5156C17.2881 3.53431 17.2878 6.80688 15.2692 8.82529C15.2691 8.8253 15.2692 8.82528 15.2692 8.82529L10.5074 13.5871C10.5048 13.5897 10.5025 13.592 10.5005 13.5939C10.5003 13.5941 10.5001 13.5943 10.4999 13.5945C9.33303 14.7578 7.44406 14.7561 6.27946 13.59C6.2794 13.59 6.27934 13.5899 6.27928 13.5899C6.27918 13.5898 6.27909 13.5897 6.27899 13.5896L1.514 8.82451C-0.504655 6.80576 -0.504681 3.53281 1.51401 1.51412C3.39354 -0.365327 6.36019 -0.494967 8.38961 1.12528C10.404 -0.483136 13.342 -0.367297 15.2234 1.4727ZM9.05232 2.62379L8.94137 2.73474C8.63663 3.03948 8.14255 3.03948 7.83781 2.73474L7.72075 2.61769C6.31156 1.2085 4.02685 1.20848 2.61756 2.6177C1.20837 4.02689 1.20837 6.31166 2.61758 7.72095C2.61758 7.72095 2.61758 7.72095 2.61758 7.72095L7.38351 12.487C7.93862 13.043 8.83892 13.0446 9.39613 12.4912C9.39828 12.489 9.40023 12.4871 9.40194 12.4854C9.40208 12.4852 9.40222 12.4851 9.40235 12.485L14.1656 7.72172C15.5632 6.32434 15.5749 4.06581 14.2007 2.65404C14.1873 2.64239 14.1743 2.63026 14.1617 2.61766C12.7527 1.20847 10.468 1.20835 9.05886 2.61733C9.05669 2.6195 9.05451 2.62165 9.05232 2.62379Z"
+                                            fill-opacity="0.58" />
+                                    </svg>
+                                    <div class="likes-count">{{item.likes}}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="hero-marquee-item__media">
-                        {% if item.content.url|slice:"-3:" == "mp4" %}
-                        <video
-                                width="273"
-                                height="340"
-                                playsinline
-                                class="lazyload lazypreload"
-                                preload="none"
-                                autoplay
-                                loop
-                                muted
-                                src="{{item.content.url}}"
-                                data-url="{{item.shorts}}">
-                        </video>
-                        {% else %}
-                        <img
-                                alt="{{item.name}}"
-                                width="273"
-                                height="340"
-                                class="lazyload lazypreload"
-                                data-sizes="auto"
-                                src="{{item.content.url}}"
-                        />
-                        {%endif%}
+                        <div class="hero-marquee-item__media">
+                            {% if item.content.url|slice:"-3:" == "mp4" %}
+                            <video width="273" height="340" playsinline class="lazyload lazypreload" preload="none"
+                                autoplay loop muted src="{{item.content.url}}" data-url="{{item.shorts}}">
+                            </video>
+                            {% else %}
+                            <img alt="{{item.name}}" width="273" height="340" class="lazyload lazypreload"
+                                data-sizes="auto" src="{{item.content.url}}" />
+                            {%endif%}
+                        </div>
                     </div>
+                    {%endfor%}
+
                 </div>
-                {%endfor%}
-
             </div>
         </div>
-    </div>
 </section>
 
-<div class="modal fade px-0" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade px-0" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-body" id="player">

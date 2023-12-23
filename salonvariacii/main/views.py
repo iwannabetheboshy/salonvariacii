@@ -11,6 +11,8 @@ def page_not_found_view(request, exception):
         "404.html",
         {
             "feedbackForm": FeedbackForm(),
+            "header": Header.objects.first(),
+            "footer": Footer.objects.first(),
             "feedbackFile": Politic.objects.first(),
             "title": f"Похоже мы не нашли что вы искали",
             "description": "Заказать итальянскую кухонную мебель и гарнитур во Владивостоке. Современная или классическая кухня. Дизайн под заказ. Можем изготовить по индивидуальным размерам с установкой",
@@ -70,6 +72,9 @@ def main(request):
         "FeedbackBlock": FeedbackBlock.objects.first(),
         "watchVideoMain": watchVideoMain,
         "catalogMain":CatalogMain.objects.first(),
+        "сatalogMainBlock":CatalogMainBlock.objects.first(),
+        "header": Header.objects.first(),
+        "footer": Footer.objects.first(),
     }
 
     return render(request, "main/index.html", data)
@@ -103,7 +108,9 @@ def catalog(request):
         "FeedbackBlock": FeedbackBlock.objects.first(),
         "annotationPage": annotationPage,
         "annotationPageSpan": annotationPageSpan,
-        "catalogTitle": catalogTitle[0].name,
+        "catalogTitle": catalogTitle[0],
+        "header": Header.objects.first(),
+        "footer": Footer.objects.first(),
     }
     return render(request, "main/catalog.html", data)
 
@@ -148,6 +155,9 @@ def kitchenCard(request, slug):
         "pageDescription": pageDescription,
         "keyWords": keyWords,
         "FeedbackBlock": FeedbackBlock.objects.first(),
+        "kitchenCardText": KitchenCardText.objects.first(),
         "certificate": Certificate.objects.all(),
+        "header": Header.objects.first(),
+        "footer": Footer.objects.first(),
     }
     return render(request, "main/kitchenCard.html", data) 

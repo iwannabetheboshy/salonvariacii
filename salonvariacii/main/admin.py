@@ -107,6 +107,14 @@ class PoliticAdmin(admin.ModelAdmin):
 @admin.register(FeedbackBlock)
 class FeedbackBlockAdmin(admin.ModelAdmin):
     list_display = ("title", "text", "image")
+    fieldsets = (
+      ('Основные надписи', {
+          'fields': ('title', 'fontsize', 'titleTwo', 'fontsizeTiteTwo', 'text', 'fontsizeText', 'image', 'fontsizeBtn')
+      }),
+      ('Надписи в форме', {
+          'fields': ('inputName', 'inputPhone', 'inputMassage', 'fontsizeInput')
+      }),
+   )
 
 
 @admin.register(LookAtTitle)
@@ -155,10 +163,34 @@ class CatalogTitleAdmin(admin.ModelAdmin):
         models.CharField: {'widget': forms.TextInput(attrs={'size':'60'})},
     }
 
+    fieldsets = (
+      ('Основные надписи', {
+          'fields': ('name', 'fontsizeH', 'text', 'fontsizeText', 'fontsizeFilter', 'fontsizeKitchen')
+      }),
+      ('Надписи, когда результаты фильтрации не найдены', {
+          'fields': ('name404', 'fontsize404', 'name404Gray', 'fontsize404Gray')
+      }),
+   )
+
 
 @admin.register(Certificate)
 class CertificateAdmin(admin.ModelAdmin):
     list_display = ("name", "image")
+
+@admin.register(KitchenCardText)
+class KitchenCardTextAdmin(admin.ModelAdmin):
+    list_display = ("fontsizeH", "fontsizeText", "fontsizeFile")
+    fieldsets = (
+      ('Основаня информация', {
+          'fields': ('fontsizeH', 'fontsizeText', 'fontsizeFile', 'fontsizeBtn')
+      }),
+      ('Цвета и материалы', {
+          'fields': ('colorMaterialName', 'fontsizeColorMaterial', 'fontsizeNameMaterial', 'fontsizeNameColor')
+      }),
+      ('Сертификаты качества', {
+          'fields': ('certificateName', 'fontsizeCertificateH', 'fontsizeCertificateName')
+      }),
+   )
 
 
 @admin.register(CatalogMain)
@@ -166,3 +198,17 @@ class CatalogMainAdmin(admin.ModelAdmin):
     formfield_overrides = {
         models.CharField: {'widget': forms.TextInput(attrs={'size':'60'})},
     }
+
+@admin.register(CatalogMainBlock)
+class CatalogMainBlockAdmin(admin.ModelAdmin):
+    list_display = ("title", "titleTwo")
+
+
+@admin.register(Header)
+class HeaderAdmin(admin.ModelAdmin):
+    list_display = ("titleCatalog", "titleLookAt", "titleMore", "titleCatalog", "fontsize")
+
+
+@admin.register(Footer)
+class FooterAdmin(admin.ModelAdmin):
+    list_display = ("titleCatalog", "titleLookAt", "titleMore", "titleCatalog", "fontsize")
