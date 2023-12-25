@@ -98,6 +98,40 @@ $(document).ready(function () {
     ]
   });
 
+  slideCountMore = $('.more-slide').length;
+
+
+  $('.more-slider').slick({
+    slidesToShow: 1.35,
+    prevArrow: $('.nav-more-slider .custom-prev-arrow'),
+    nextArrow: $('.nav-more-slider .custom-next-arrow'),
+    autoplaySpeed: 5000,
+    //autoplay: true,
+    infinite: false,
+    dots: false,
+
+    responsive: [
+      {
+        breakpoint: 1200,
+        settings: {
+          dots: true
+        }
+      },
+    ]
+  });
+
+  $('.more-header .sliderCount').html('&nbsp/ ' + slideCountMore);
+  $('.more-header .currentSlide').html('01');
+
+  $(".more-slider").on("afterChange", function (event, slick, currentSlide, nextSlide) {
+    let currentSlider = $('.more-slider').slick('slickCurrentSlide') + 1;
+    if (currentSlider >= 10) {
+      $('.more-header .currentSlide').html(currentSlider+ ' ');
+    } else {
+      $('.more-header .currentSlide').html('0' + currentSlider + ' ');
+    }
+  });
+
 
 });
 

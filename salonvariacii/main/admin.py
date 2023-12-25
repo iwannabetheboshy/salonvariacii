@@ -68,11 +68,6 @@ class AboutUslAdmin(admin.ModelAdmin):
     list_display = ("title", "text", "image")
 
 
-@admin.register(ReviewsAndProject)
-class ReviewsAndProjectAdmin(admin.ModelAdmin):
-    list_display = ("project_name", "price", "squeare", "review_name", "text")
-
-
 @admin.register(FeedBack)
 class FeedBackAdmin(admin.ModelAdmin):
     list_display = ("name", "number", "message")
@@ -121,10 +116,6 @@ class FeedbackBlockAdmin(admin.ModelAdmin):
 class LookAtTitleAdmin(admin.ModelAdmin):
     list_display = ("titleOne", "titleTwo")
 
-
-@admin.register(ReviewsAndProjectTitle)
-class ReviewsAndProjectTitleAdmin(admin.ModelAdmin):
-    pass
 
 
 @admin.register(AdvantagesTitle)
@@ -212,3 +203,12 @@ class HeaderAdmin(admin.ModelAdmin):
 @admin.register(Footer)
 class FooterAdmin(admin.ModelAdmin):
     list_display = ("titleCatalog", "titleLookAt", "titleMore", "titleCatalog", "fontsize")
+
+
+@admin.register(MoreMainBlock)
+class MoreMainBlockAdmin(admin.ModelAdmin):
+    list_display = ("title", "fontsize", "titleTwo", "fontsizeTiteTwo", "fontsizeTiteText", "fontsizeText")
+
+@admin.register(MoreBlocks)
+class MoreBlocksAdmin(admin.ModelAdmin):
+    list_display = ("title", "text", "image1", "image2", "image3", "showNumber")

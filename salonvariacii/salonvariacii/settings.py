@@ -192,19 +192,19 @@ ADMIN_REORDER = (
 
     {
         'app': 'main',
-        'label': 'Проекты и отзывы (главная страница)',
+        'label': 'Взгляните сами (главная страница)',
         'models': (
-            'main.ReviewsAndProjectTitle',
-            'main.ReviewsAndProject',
+            'main.LookAtTitle',
+            'main.LookAt',
         )
     },
 
     {
         'app': 'main',
-        'label': 'Взгляните сами (главная страница)',
+        'label': 'Больше возможностей (главная страница)',
         'models': (
-            'main.LookAtTitle',
-            'main.LookAt',
+            'main.MoreMainBlock',
+            'main.MoreBlocks',
         )
     },
 

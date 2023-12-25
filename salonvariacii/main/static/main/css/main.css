@@ -25,7 +25,8 @@
 #about-us-block,
 #catalog-carousel,
 #feedback,
-footer {
+footer, 
+#more {
   max-width: 1420px;
   margin-left: auto;
   margin-right: auto;
@@ -34,7 +35,8 @@ footer {
 #look-at-block,
 #about-us-block,
 #catalog-carousel,
-#feedback {
+#feedback,
+#more {
   scroll-margin-top: 90px;
 }
 
@@ -42,7 +44,8 @@ footer {
     #about-us-block,
     #catalog-carousel,
     #look-at-block,
-    #feedback {
+    #feedback,
+    #more {
       scroll-margin-top: 45px;
     }
 }
@@ -148,6 +151,7 @@ h2 {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 24px;
+  margin-top: 8px;
 }
 
 .gray-text-14 {
@@ -156,7 +160,6 @@ h2 {
   font-size: 14px;
   font-weight: 400;
   font-style: italic; 
-  margin-bottom: 8px;
 }
 
 a {
@@ -630,7 +633,7 @@ first-block-main-kitchen-carousel
   margin-bottom: 7px;
 }
 
-.sliderCount{
+.main-kitchen-carousel-sliderCount .sliderCount{
   margin-left: 8px;
   color: rgba(255, 255, 255, 0.50); 
   font-size: 16px; 
@@ -2252,6 +2255,85 @@ scrollbar
     border-radius: 5px;
 }
 
+
+
+/*--------------------------------------------------
+more
+--------------------------------------------------*/
+#more{
+  padding-left: 70px;
+  margin-top: 100px;
+}
+
+#more .more-slide img{
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.more-slide-text{
+  padding-left: 40px !important;
+}
+
+.more-slide-text p{
+  font-family: 'Core Sans C-35Light';
+  font-size: 16px; 
+  color: #000;
+}
+
+.more-slide-text h3{
+  font-family: 'Core Sans C-55Medium';
+  font-size: 20px; 
+  color: #000;
+}
+
+.more-header{
+  margin-right: 70px;
+}
+
+.more-header .custom-prev-arrow,
+.more-header .custom-next-arrow,
+.more-header .currentSlide,
+.more-header .sliderCount{
+  float: right;
+}
+
+.more-header .currentSlide,
+.more-header .sliderCount{
+  font-family: 'Core Sans C-35Light';
+  font-size: 16px;
+}
+
+.more-header .custom-prev-arrow{
+
+  margin-right: 10px;
+}
+
+.more-header .custom-next-arrow{
+  margin-left: 10px;
+}
+
+.more-header .custom-prev-arrow path,
+.more-header .custom-next-arrow path{
+  fill: #000;
+}
+
+.more-header .custom-prev-arrow:hover path,
+.more-header .custom-next-arrow:hover path{
+  fill: #787878;
+}
+
+.more-header .slick-disabled:hover path{
+  fill: #C9C7DB;
+}
+
+.more-header .slick-disabled path{
+  fill: #C9C7DB;
+}
+
+.more-header .sliderCount{
+  color: #787878; 
+}
 
 
 

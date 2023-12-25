@@ -52,21 +52,7 @@ class KitchenPhoto(models.Model):
     image = models.ImageField('Фото кухни', upload_to='kitchen/')
 
     def save(self, *args, **kwargs):
-        file_name = os.path.basename(self.image.name)
-        file_extension = os.path.splitext(file_name)[1][1:].lower()
-
-        if file_extension not in ('webp'):
-            # Проверка наличия файла с таким же именем
-            existing_file = KitchenPhoto.objects.filter(image__icontains=self.image).first()
-            if existing_file:
-                self.image = existing_file.image
-            else:
-                name = str(uuid.uuid1())
-                img = Image.open(self.image)
-                img_io = BytesIO()
-                img.save(img_io, format="WebP")
-                img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
-                self.image.save(f"{name}.webp", img_file, save=False)
+        safeImage('image', self.image, KitchenPhoto)
         super().save(*args, **kwargs)
 
     class Meta:
@@ -85,21 +71,7 @@ class KitchenColors(models.Model):
 
     def save(self, *args, **kwargs):
         if self.image:
-            file_name = os.path.basename(self.image.name)
-            file_extension = os.path.splitext(file_name)[1][1:].lower()
-
-            if file_extension not in ('webp'):
-                # Проверка наличия файла с таким же именем
-                existing_file = KitchenColors.objects.filter(image__icontains=self.image).first()
-                if existing_file:
-                    self.image = existing_file.image
-                else:
-                    name = str(uuid.uuid1())
-                    img = Image.open(self.image)
-                    img_io = BytesIO()
-                    img.save(img_io, format="WebP")
-                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
-                    self.image.save(f"{name}.webp", img_file, save=False)
+            safeImage('image', self.image, KitchenColors)
         super().save(*args, **kwargs)
 
     class Meta:
@@ -205,39 +177,10 @@ class Kitchen(models.Model):
         # Генерируем slug из названия кухни
         self.slug = "stosa_" + slugify(self.name).replace('-', '_')
         if self.mainImage:
-            file_name = os.path.basename(self.mainImage.name)
-            file_extension = os.path.splitext(file_name)[1][1:].lower()
-
-            if file_extension not in ('webp'):
-                # Проверка наличия файла с таким же именем
-                existing_file = Kitchen.objects.filter(mainImage__icontains=self.mainImage).first()
-                if existing_file:
-                    self.mainImage = existing_file.mainImage
-                else:
-                    name = str(uuid.uuid1())
-                    img = Image.open(self.mainImage)
-                    img_io = BytesIO()
-                    img.save(img_io, format="WebP")
-                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
-                    self.mainImage.save(f"{name}.webp", img_file, save=False)
+            safeImage('mainImage', self.mainImage, Kitchen)
         
         if self.kitchenCardPhoto:
-            file_name = os.path.basename(self.kitchenCardPhoto.name)
-            file_extension = os.path.splitext(file_name)[1][1:].lower()
-            print(file_extension)
-            if file_extension not in ('webp'):
-                
-                # Проверка наличия файла с таким же именем
-                existing_file = Kitchen.objects.filter(kitchenCardPhoto__icontains=self.kitchenCardPhoto).first()
-                if existing_file:
-                    self.kitchenCardPhoto = existing_file.kitchenCardPhoto
-                else:
-                    name = str(uuid.uuid1())
-                    img = Image.open(self.kitchenCardPhoto)
-                    img_io = BytesIO()
-                    img.save(img_io, format="WebP")
-                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
-                    self.kitchenCardPhoto.save(f"{name}.webp", img_file, save=False)
+            safeImage('kitchenCardPhoto', self.kitchenCardPhoto, Kitchen)
 
         super().save(*args, **kwargs)
 
@@ -279,21 +222,8 @@ class MainPageCarousel(models.Model):
     def save(self, *args, **kwargs):
         self.slug = "stosa_" + slugify(self.name).replace('-', '_')
         if self.image:
-            file_name = os.path.basename(self.image.name)
-            file_extension = os.path.splitext(file_name)[1][1:].lower()
+            safeImage('image', self.image, MainPageCarousel)
 
-            if file_extension not in ('webp'):
-                # Проверка наличия файла с таким же именем
-                existing_file = MainPageCarousel.objects.filter(image__icontains=self.image).first()
-                if existing_file:
-                    self.image = existing_file.image
-                else:
-                    name = str(uuid.uuid1())
-                    img = Image.open(self.image)
-                    img_io = BytesIO()
-                    img.save(img_io, format="WebP")
-                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
-                    self.image.save(f"{name}.webp", img_file, save=False)
         super().save(*args, **kwargs)
 
     class Meta:
@@ -356,63 +286,6 @@ class AboutUs(models.Model):
         return self.image.url
 
 
-class ReviewsAndProject(models.Model):
-    image = models.ImageField('Главная фотография проекта',
-                              upload_to='review/',
-                              help_text=("Доступные форматы: jpg, png, webp"))
-    project_name = models.CharField('Название кухни',
-                                    max_length=50,
-                                    help_text=("Пример: «Stosa Young»"))
-    price = models.IntegerField('Стоимость проекта',
-                                help_text=("Введите стоимость проекта в евро"))
-    squeare = models.IntegerField('Площадь проекта',
-                                  help_text=("Введите площадь проекта в квадратных метрах"))
-    review_name = models.CharField('Фамилия и имя заказчика',
-                                   max_length=100,
-                                   null=True,
-                                   blank=True,
-                                   help_text=("Пример: «Иванов Иван»"))
-    text = models.TextField('Текст отзыва',
-                            null=True,
-                            blank=True,
-                            help_text=("Обратите внимание - учитываются отступы и знаки переноса"))
-
-    def save(self, *args, **kwargs):
-        if self.image:
-            file_name = os.path.basename(self.image.name)
-            file_extension = os.path.splitext(file_name)[1][1:].lower()
-
-            if file_extension not in ('webp'):
-                # Проверка наличия файла с таким же именем
-                existing_file = ReviewsAndProject.objects.filter(image__icontains=self.image).first()
-                if existing_file:
-                    self.image = existing_file.image
-                else:
-                    name = str(uuid.uuid1())
-                    img = Image.open(self.image)
-                    img_io = BytesIO()
-                    img.save(img_io, format="WebP")
-                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
-                    self.image.save(f"{name}.webp", img_file, save=False)
-        super().save(*args, **kwargs)
-
-    class Meta:
-        verbose_name = "наш проект"
-        verbose_name_plural = "Наши проекты"
-
-class ReviewsAndProjectTitle(models.Model):
-    title = models.CharField('Заголовок',
-                              max_length=50,
-                              help_text=(
-                                  "Пример: «Наши проекты и отзывы»"))
-
-    class Meta:
-        verbose_name = "наш проект"
-        verbose_name_plural = "Заголовки блока «Наши проекты»"
-
-    def __str__(self):
-        return self.title
-
 class LookAt(models.Model):
     content = models.FileField('Фото или видео',
                                help_text=("Доступные форматы: webp, jpg, png, mp4"),
@@ -439,21 +312,8 @@ class LookAt(models.Model):
 
     def save(self, *args, **kwargs):
         if self.content:
-            file_name = os.path.basename(self.content.name)
-            file_extension = os.path.splitext(file_name)[1][1:].lower()
+            safeImage('content', self.content, LookAt)
 
-            if file_extension not in ('mp4', 'webp'):
-                # Проверка наличия файла с таким же именем
-                existing_file = LookAt.objects.filter(content__icontains=self.content).first()
-                if existing_file:
-                    self.content = existing_file.content
-                else:
-                    name = str(uuid.uuid1())
-                    img = Image.open(self.content)
-                    img_io = BytesIO()
-                    img.save(img_io, format="WebP")
-                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
-                    self.content.save(f"{name}.webp", img_file, save=False)
         super().save(*args, **kwargs)
 
 class LookAtTitle(models.Model):
@@ -483,10 +343,13 @@ class FeedBack(models.Model):
 
 class FeedbackBlock(models.Model):
     title = models.CharField('Заголовок 1 уровня', max_length=50,
+                            null=True,
+                            blank=True,
         help_text=("Пример: «Контакты»"))
     fontsize = models.IntegerField('Размер заголовка 1 уровня',
                                  validators=[MinValueValidator(14), MaxValueValidator(22)],
-                                 help_text=("Размер от 14 до 22"))
+                                 help_text=("Размер от 14 до 22"),
+                                 default = 14)
     titleTwo = models.CharField('Заголовок 2 уровня', max_length=50,
         help_text=("Пример: «Контакты»"))
     fontsizeTiteTwo = models.IntegerField('Размер заголовка 2 уровня',
@@ -514,21 +377,8 @@ class FeedbackBlock(models.Model):
                                  help_text=("Размер от 14 до 22"))
     def save(self, *args, **kwargs):
         if self.image:
-            file_name = os.path.basename(self.image.name)
-            file_extension = os.path.splitext(file_name)[1][1:].lower()
+             safeImage('image', self.image, FeedbackBlock)
 
-            if file_extension not in ('mp4', 'webp'):
-                # Проверка наличия файла с таким же именем
-                existing_file = LookAt.objects.filter(content__icontains=self.image).first()
-                if existing_file:
-                    self.image = existing_file.image
-                else:
-                    name = str(uuid.uuid1())
-                    img = Image.open(self.image)
-                    img_io = BytesIO()
-                    img.save(img_io, format="WebP")
-                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
-                    self.image.save(f"{name}.webp", img_file, save=False)
         super().save(*args, **kwargs)
     
     class Meta:
@@ -674,21 +524,7 @@ class Certificate(models.Model):
 
     def save(self, *args, **kwargs):
         if self.image:
-            file_name = os.path.basename(self.image.name)
-            file_extension = os.path.splitext(file_name)[1][1:].lower()
-
-            if file_extension not in ('mp4', 'webp'):
-                # Проверка наличия файла с таким же именем
-                existing_file = LookAt.objects.filter(content__icontains=self.image).first()
-                if existing_file:
-                    self.image = existing_file.image
-                else:
-                    name = str(uuid.uuid1())
-                    img = Image.open(self.image)
-                    img_io = BytesIO()
-                    img.save(img_io, format="WebP")
-                    img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
-                    self.image.save(f"{name}.webp", img_file, save=False)
+            safeImage('image', self.image, Certificate)
         super().save(*args, **kwargs)
 
 class KitchenCardText(models.Model):
@@ -738,10 +574,13 @@ class KitchenCardText(models.Model):
 
 class CatalogMainBlock(models.Model):
     title = models.CharField('Заголовок 1 уровня', max_length=50,
+                              null=True,
+                            blank=True,
         help_text=("Пример: «Выберите идеальную кухню для вас»"))
     fontsize = models.IntegerField('Размер заголовка 1 уровня',
                                  validators=[MinValueValidator(14), MaxValueValidator(22)],
-                                 help_text=("Размер от 14 до 22"))
+                                 help_text=("Размер от 14 до 22"),
+                                 default = 14)
     titleTwo = models.CharField('Заголовок 2 уровня', max_length=50,
         help_text=("Пример: «Каталог»"))
     fontsizeTiteTwo = models.IntegerField('Размер заголовка 2 уровня',
@@ -750,7 +589,7 @@ class CatalogMainBlock(models.Model):
     
     class Meta:
         verbose_name = "надпись"
-        verbose_name_plural = "Надписи в блоке 'Каталог'"
+        verbose_name_plural = "Надписи в блоке «Каталог»"
 
 
 class Header(models.Model):
@@ -767,11 +606,10 @@ class Header(models.Model):
                                  validators=[MinValueValidator(14), MaxValueValidator(22)],
                                  help_text=("Размер от 14 до 22"))
     
-
-    
     class Meta:
         verbose_name = "надписи"
         verbose_name_plural = "Шапка"
+
 
 class Footer(models.Model):
     titleCatalog = models.CharField('Надпись для перехода в каталог', max_length=50,
@@ -787,8 +625,87 @@ class Footer(models.Model):
                                  validators=[MinValueValidator(14), MaxValueValidator(22)],
                                  help_text=("Размер от 14 до 22"))
     
-
-    
     class Meta:
         verbose_name = "надписи"
         verbose_name_plural = "Подвал"
+
+
+class MoreMainBlock(models.Model):
+    title = models.CharField('Заголовок 1 уровня', max_length=50,
+                            null=True,
+                            blank=True,
+        help_text=("Пример: «Дизайн»"))
+    fontsize = models.IntegerField('Размер заголовка 1 уровня',
+                                validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                help_text=("Размер от 14 до 22"),
+                                default = 14)
+    titleTwo = models.CharField('Заголовок 2 уровня', max_length=50,
+        help_text=("Пример: «Больше возможностей»"))
+    fontsizeTiteTwo = models.IntegerField('Размер заголовка 2 уровня',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))
+    
+    fontsizeTiteText = models.IntegerField('Размер заголовка текста в слайде',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
+    
+    fontsizeText = models.IntegerField('Размер текста в слайде',
+                                 validators=[MinValueValidator(14), MaxValueValidator(22)],
+                                 help_text=("Размер от 14 до 22"))
+    
+    class Meta:
+        verbose_name = "надпись"
+        verbose_name_plural = "Надписи в блоке «Больше возможностей»"
+
+
+class MoreBlocks(models.Model):
+    title = models.CharField('Заголовок', max_length=200)
+    text = models.TextField('Текст',
+                            null=True,
+                            blank=True,
+                            help_text=("Обратите внимание - учитываются отступы и знаки переноса"))
+    image1 = models.ImageField('Фотография 1',
+                              upload_to='more/',
+                              help_text=("Доступные форматы: jpg, png, webp. Отображается в первой строке"))
+    image2 = models.ImageField('Фотография 2',
+                              upload_to='more/',
+                              help_text=("Доступные форматы: jpg, png, webp. Отображается во второй строке слева"))
+    image3 = models.ImageField('Фотография 3',
+                              upload_to='more/',
+                              help_text=("Доступные форматы: jpg, png, webp. Отображается во второй строке справа"))
+    showNumber = models.IntegerField('Номер показа в карусели',
+                                      null=True,
+                                      blank=True,
+                                      help_text=("Объекты отображаются в порядке возрастания"))
+    
+    class Meta:
+        verbose_name = "слайд"
+        verbose_name_plural = "Слайды в блоке «Больше возможностей»"
+
+    def save(self, *args, **kwargs):
+        if self.image1:
+            safeImage('image1', self.image1, MoreBlocks)
+        if self.image2:
+             safeImage('image2',self.image2, MoreBlocks)
+        if self.image3:
+            safeImage('image3',self.image3, MoreBlocks)
+        super().save(*args, **kwargs)
+
+
+
+def safeImage(field_name, imageName, imageModel):
+    file_name = os.path.basename(imageName.name)
+    file_extension = os.path.splitext(file_name)[1][1:].lower()
+
+    if file_extension not in ('webp'):
+        # Проверка наличия файла с таким же именем
+        existing_file = imageModel.objects.filter(**{f'{field_name}__icontains':file_name}).first()
+        if existing_file:
+            imageName = existing_file.image
+        else:
+            name = str(uuid.uuid1())
+            img = Image.open(imageName)
+            img_io = BytesIO()
+            img.save(img_io, format="WebP")
+            img_file = InMemoryUploadedFile(img_io, None, f"{name}.webp", "image/webp", img_io.tell(), None)
+            imageName.save(f"{name}.webp", img_file, save=False)

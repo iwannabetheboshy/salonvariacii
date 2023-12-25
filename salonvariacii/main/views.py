@@ -58,7 +58,6 @@ def main(request):
         "aboutMini": aboutMini,
         "numberOfBlocksAboutMini": numberOfBlocksAboutMini,
         "catalog_carousel": catalog_carousel,
-        "reviews": ReviewsAndProject.objects.all(),
         "look_at": look_at,
         "feedbackForm": FeedbackForm(),
         "feedbackFile": Politic.objects.first(),
@@ -67,15 +66,17 @@ def main(request):
         "keyWords": keyWords,
         "advantagesTitle": AdvantagesTitle.objects.first(),
         "AdvantagesBlocks": AdvantagesBlocks.objects.order_by('show_number'),
-        "ReviewsAndProjectTitle": ReviewsAndProjectTitle.objects.first(),
         "LookAtTitle": LookAtTitle.objects.first(),
         "FeedbackBlock": FeedbackBlock.objects.first(),
         "watchVideoMain": watchVideoMain,
         "catalogMain":CatalogMain.objects.first(),
         "сatalogMainBlock":CatalogMainBlock.objects.first(),
+        "moreMainBlock":MoreMainBlock.objects.first(),
+        "moreBlocks":MoreBlocks.objects.order_by('showNumber'),
         "header": Header.objects.first(),
         "footer": Footer.objects.first(),
     }
+
 
     return render(request, "main/index.html", data)
 

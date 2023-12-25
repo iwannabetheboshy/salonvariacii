@@ -66,7 +66,9 @@
 
 <section id="catalog-carousel">
     <div class="slider-catalog-container">
+        {% if сatalogMainBlock.title%}
         <div class="gray-text-14" style="font-size: {{сatalogMainBlock.fontsize}}px;">{{ сatalogMainBlock.title }}</div>
+        {%endif%}
         <h2 style="font-size: {{сatalogMainBlock.fontsizeTiteTwo}}px;">{{сatalogMainBlock.titleTwo}}</h2>
         <div class="slide-line">
             {% for kitchen in catalog_carousel %}
@@ -172,7 +174,9 @@
 
 <section id="look-at-block" class="">
     <div class="custom-bg py-0">
+        {% if LookAtTitle.titleOne%}
         <div class="gray-text-14">{{ LookAtTitle.titleOne }}</div>
+        {%endif%}
         <h2 class="">{{ LookAtTitle.titleTwo }}</h2>
     </div>
 
@@ -220,6 +224,72 @@
                 </div>
             </div>
         </div>
+</section>
+
+<section id="more">
+    <div class="more-header row ms-0">
+        <div class="col-6 px-0">
+            {% if moreMainBlock.title%}
+            <div class="gray-text-14" style="font-size: {{moreMainBlock.fontsize}}px;">{{moreMainBlock.title}}</div>
+            {%endif%}
+            
+            <h2 style="font-size: {{moreMainBlock.fontsizeTiteTwo}}px;">{{moreMainBlock.titleTwo}}</h2>
+        </div>
+        <div class="col-6 text-end nav-more-slider px-0">
+
+            <svg class="custom-next-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M16.1716 11.5009L10.8076 6.13687L12.2218 4.72266L20 12.5009L12.2218 20.279L10.8076 18.8648L16.1716 13.5009H4V11.5009H16.1716Z"
+                    fill="#787878" />
+            </svg>
+            <div class="sliderCount">
+
+            </div>
+            <div class="currentSlide">
+
+            </div>
+            <svg class="custom-prev-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M7.82843 11.5009H20V13.5009H7.82843L13.1924 18.8648L11.7782 20.279L4 12.5009L11.7782 4.72266L13.1924 6.13687L7.82843 11.5009Z"
+                    fill="#C9C7DB" />
+            </svg>
+
+
+
+        </div>
+    </div>
+
+    <div class="more-slider">
+        {% for block in moreBlocks %}
+        <div class="more-slide">
+            <div class="row mx-0">
+                <div class="col-4 px-0">
+                    <div>
+                        <img src="{{ block.image1.url }}" alt="">
+                        <div class="row mx-0 mt-3">
+                            <div class="col ps-0 pe-2">
+                                <img src="{{ block.image2.url }}" alt="">
+                            </div>
+                            <div class="col  pe-0 ps-2">
+                                <img src="{{ block.image3.url }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8 more-slide-text">
+                    <h3 style="font-size: {{moreMainBlock.fontsizeTiteText}}px;">{{block.title}}</h3>
+                    <p style="font-size: {{moreMainBlock.fontsizeText}}px;">
+                        {% autoescape off %}
+                        {{ block.text|linebreaksbr|safe }}
+                        {% endautoescape %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
 </section>
 
 <div class="modal fade px-0" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
