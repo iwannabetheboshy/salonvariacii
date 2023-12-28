@@ -2110,6 +2110,7 @@ filter desc
   margin-right: 8px;
   font-family: 'Stolzl Light' !important;
   font-size: 14px;
+  margin-top: 8px;
 }
 
 .selected:hover {
@@ -2468,11 +2469,14 @@ more
   cursor: pointer;
   z-index: 1005;
   text-align: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .fullscreen-image img{
-  height: 80%;
-  margin-top: 3%;
+  height: calc(100vw*0.4);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .more-header .slick-disabled:hover path,
@@ -2516,7 +2520,7 @@ more
 
   .filtered-results-wrapper,
   .select {
-    margin-top: 3.4%;
+    margin-top: 2%;
   }
 
   .filtered-results-wrapper .result {
@@ -2553,7 +2557,7 @@ more
   }
 
   .fullscreen-image img{
-    height: 65%;
+    height: calc(100vw*0.6);
   }
 
 }
@@ -3221,13 +3225,6 @@ certified-quality
     display: none;
   }
 
-  .dotsFalse .nav-kitchen-card-slider {
-    display: block;
-    margin-top: 4.4%;
-    padding-right: 4.4%;
-
-  }
-
   .kitchen-card-header-mobile,
   .kitchen-card-desc,
   .kitchen-card-files,
@@ -3250,12 +3247,8 @@ certified-quality
     margin-top: 0;
   }
 
-  #kitchen-card-slider {
-    margin-top: 4%;
-  }
-
   .kitchen-card-files {
-    margin-top: 4%;
+    margin-top: 24px;
   }
 
   .kitchen-card-desc,
@@ -3265,8 +3258,8 @@ certified-quality
 
   .kitchen-card-custom-button {
     text-align: center;
-    margin-bottom: 11%;
-    margin-top: 11%;
+    margin-bottom: 40px;
+    margin-top: 40px;
   }
 
   #kitchen-card-slider {
@@ -3310,7 +3303,7 @@ certified-quality
   }
 
   .kitchen-card-back {
-    margin-bottom: 6.7%;
+    margin-bottom: 26px;
   }
 
   .kitchenCard-video-container iframe {

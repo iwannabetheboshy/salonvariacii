@@ -22,12 +22,13 @@ $(document).ready(function () {
                     centerMode: false,
                     infinite: false,
                     slidesToShow: 1.8,
-                    prevArrow: $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .col-5 .custom-prev-arrow'),
-                    nextArrow: $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .col-5 .custom-next-arrow'),
+                    prevArrow: $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .col-4 .custom-prev-arrow'),
+                    nextArrow: $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .col-4 .custom-next-arrow'),
                 }
             }
         ]
     });
+
 
     if(slideCount  >= 10){
         $('#kitchen-card-slider .nav-kitchen-card-slider .sliderCount').html('&nbsp/ ' + slideCount);

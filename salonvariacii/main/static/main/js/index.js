@@ -115,24 +115,24 @@ $(document).ready(function () {
         breakpoint: 1200,
         settings: {
           slidesToShow: 1.2,
-          prevArrow: $('.nav-more-slider-mobile .col-5 .custom-prev-arrow'),
-          nextArrow: $('.nav-more-slider-mobile .col-5 .custom-next-arrow'),
+          prevArrow: $('.nav-more-slider-mobile .col-4 .custom-prev-arrow'),
+          nextArrow: $('.nav-more-slider-mobile .col-4 .custom-next-arrow'),
         }
       },
       {
         breakpoint: 1000,
         settings: {
           slidesToShow: 1.2,
-          prevArrow: $('.nav-more-slider-mobile .col-5 .custom-prev-arrow'),
-          nextArrow: $('.nav-more-slider-mobile .col-5 .custom-next-arrow'),
+          prevArrow: $('.nav-more-slider-mobile .col-4 .custom-prev-arrow'),
+          nextArrow: $('.nav-more-slider-mobile .col-4 .custom-next-arrow'),
         }
       },
       {
         breakpoint: 800,
         settings: {
           slidesToShow: 1.1,
-          prevArrow: $('.nav-more-slider-mobile .col-5 .custom-prev-arrow'),
-          nextArrow: $('.nav-more-slider-mobile .col-5 .custom-next-arrow'),
+          prevArrow: $('.nav-more-slider-mobile .col-4 .custom-prev-arrow'),
+          nextArrow: $('.nav-more-slider-mobile .col-4 .custom-next-arrow'),
         }
       },
     ]
@@ -162,7 +162,7 @@ $(document).ready(function () {
       src: $(this).attr('src'),
       alt: $(this).attr('alt')
     });
-    var div = $(`<div class="fullscreen-image"></div>`);
+    var div = $(`<div class="fullscreen-image modal-dialog-centered"></div>`);
     // Добавляем элемент в тело документа
     div.append(fullscreenImage);
     $('body').append(div);

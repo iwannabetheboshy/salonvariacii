@@ -195,7 +195,7 @@ function addClean(){
     
 
     $("#catalog-filter .select").prepend(div);
-    $("#catalog-filter .select").css("max-height", $("#catalog-filter .select")[0].scrollHeight + "px");
+    $("#catalog-filter .select").css("max-height", ($("#catalog-filter .select")[0].scrollHeight) + "px");
   }
 }
 
@@ -244,6 +244,7 @@ $("#catalog-filter .modal-dialog .filter-save").click(function () {
       }
   
       addSelect(parentId, selectName)
+      $("#catalog-filter .select").css("max-height", ($("#catalog-filter .select")[0].scrollHeight) + "px");
       filtration();
     });
   }
