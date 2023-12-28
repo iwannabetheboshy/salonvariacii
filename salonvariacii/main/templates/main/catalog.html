@@ -9,7 +9,9 @@
         {{ catalogTitle.name }}
       </div>
       <div class="catalog-annotation"  style="font-size: {{catalogTitle.fontsizeText}}px">
-        {{ annotationPage }} <span>{{ annotationPageSpan }}</span>
+        {% autoescape off %}
+            {{ catalogTitle.text|linebreaksbr|safe }}
+            {% endautoescape %} 
       </div>
     </div>
   </div>
@@ -241,8 +243,8 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer p-0">
-          <button type="button" class="filter-save custom-button" data-bs-dismiss="modal">Показать</button>
+        <div class="modal-footer p-0 justify-content-center">
+          <button type="button" class="filter-save custom-button-new" data-bs-dismiss="modal">Показать</button>
         </div>
       </div>
     </div>

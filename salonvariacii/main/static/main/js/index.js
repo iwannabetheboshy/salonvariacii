@@ -102,9 +102,9 @@ $(document).ready(function () {
 
 
   $('.more-slider').slick({
-    slidesToShow: 1.35,
-    prevArrow: $('.nav-more-slider .custom-prev-arrow'),
-    nextArrow: $('.nav-more-slider .custom-next-arrow'),
+    slidesToShow: 1.3,
+    prevArrow: $('.nav-more-slider-desc .custom-prev-arrow'),
+    nextArrow: $('.nav-more-slider-desc .custom-next-arrow'),
     autoplaySpeed: 5000,
     //autoplay: true,
     infinite: false,
@@ -114,7 +114,25 @@ $(document).ready(function () {
       {
         breakpoint: 1200,
         settings: {
-          dots: true
+          slidesToShow: 1.2,
+          prevArrow: $('.nav-more-slider-mobile .col-5 .custom-prev-arrow'),
+          nextArrow: $('.nav-more-slider-mobile .col-5 .custom-next-arrow'),
+        }
+      },
+      {
+        breakpoint: 1000,
+        settings: {
+          slidesToShow: 1.2,
+          prevArrow: $('.nav-more-slider-mobile .col-5 .custom-prev-arrow'),
+          nextArrow: $('.nav-more-slider-mobile .col-5 .custom-next-arrow'),
+        }
+      },
+      {
+        breakpoint: 800,
+        settings: {
+          slidesToShow: 1.1,
+          prevArrow: $('.nav-more-slider-mobile .col-5 .custom-prev-arrow'),
+          nextArrow: $('.nav-more-slider-mobile .col-5 .custom-next-arrow'),
         }
       },
     ]
@@ -123,13 +141,36 @@ $(document).ready(function () {
   $('.more-header .sliderCount').html('&nbsp/ ' + slideCountMore);
   $('.more-header .currentSlide').html('01');
 
+  $('.nav-more-slider-mobile .sliderCount').html('&nbsp/ ' + slideCountMore);
+  $('.nav-more-slider-mobile .currentSlide').html('01');
+
   $(".more-slider").on("afterChange", function (event, slick, currentSlide, nextSlide) {
     let currentSlider = $('.more-slider').slick('slickCurrentSlide') + 1;
     if (currentSlider >= 10) {
-      $('.more-header .currentSlide').html(currentSlider+ ' ');
+      $('.more-header .currentSlide').html(currentSlider + ' ');
+      $('.nav-more-slider-mobile .currentSlide').html(currentSlider + ' ');
     } else {
       $('.more-header .currentSlide').html('0' + currentSlider + ' ');
+      $('.nav-more-slider-mobile .currentSlide').html('0' + currentSlider + ' ');
     }
+  });
+
+
+  $('.more-slider .more-slide img').click(function (event) {
+    if (!$(event.target).hasClass('slick-next') && !$(event.target).hasClass('slick-prev')) {
+    const fullscreenImage = $('<img>', {
+      src: $(this).attr('src'),
+      alt: $(this).attr('alt')
+    });
+    var div = $(`<div class="fullscreen-image"></div>`);
+    // Добавляем элемент в тело документа
+    div.append(fullscreenImage);
+    $('body').append(div);
+  };
+    // Обработчик клика для закрытия полноэкранного изображения
+    div.on('click', function () {
+      $(this).remove();
+    });
   });
 
 

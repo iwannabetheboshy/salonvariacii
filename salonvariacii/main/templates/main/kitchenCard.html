@@ -46,6 +46,39 @@
                 <div class="kitchen-card-desc" style="font-size: {{kitchenCardText.fontsizeText}}px;">
                     <p>{{ kitchen.desc|linebreaksbr }}</p>
                 </div>
+                <div class="kitchen-advantages">
+                    
+                    <div class="advantage">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.33309 12.6425L15.9934 4.98218L17.1719 6.16069L8.33309 14.9995L3.02979 9.69624L4.2083 8.51774L8.33309 12.6425Z" fill="#1E1E1E"/>
+                            </svg> 
+                        <a style="font-size: {{kitchenCardText.fontsizeAdvanteges}}px;">
+                            {% autoescape off %}
+                            {{ kitchen.advantages1|linebreaksbr|safe }}
+                            {% endautoescape %} 
+                        </a>
+                    </div>
+                    <div class="advantage">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.33309 12.6425L15.9934 4.98218L17.1719 6.16069L8.33309 14.9995L3.02979 9.69624L4.2083 8.51774L8.33309 12.6425Z" fill="#1E1E1E"/>
+                            </svg> 
+                            <a style="font-size: {{kitchenCardText.fontsizeAdvanteges}}px;">
+                                {% autoescape off %}
+                                {{ kitchen.advantages2|linebreaksbr|safe }}
+                                {% endautoescape %} 
+                            </a>
+                    </div>
+                    <div class="advantage">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8.33309 12.6425L15.9934 4.98218L17.1719 6.16069L8.33309 14.9995L3.02979 9.69624L4.2083 8.51774L8.33309 12.6425Z" fill="#1E1E1E"/>
+                            </svg> 
+                            <a style="font-size: {{kitchenCardText.fontsizeAdvanteges}}px;">
+                                {% autoescape off %}
+                                {{ kitchen.advantages3|linebreaksbr|safe }}
+                                {% endautoescape %} 
+                            </a>
+                    </div>
+                </div>
                 <div class="kitchen-card-files">
                     {% for kitFile in kitchen.files.all %}
                     <div class="file">
@@ -81,6 +114,29 @@
 </section>
 
 <section id="kitchen-card-slider">
+    
+    <div class="nav-kitchen-card-slider  text-end">
+        <svg class="custom-next-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
+                fill="#1E1E1E" />
+        </svg>
+        <div class="sliderCount">
+
+        </div>
+        <div class="currentSlide">
+
+        </div>
+        <svg class="custom-prev-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"
+                fill="#1E1E1E" />
+        </svg>
+        
+        
+    </div>
     <div class="kitchen-card-slider">
         {% for photo in kitchen.images.all %}
         <div class="kitchen-card-slide">
@@ -88,20 +144,34 @@
         </div>
         {%endfor%}
     </div>
-    <div class="nav-kitchen-card-slider">
-        <svg class="custom-prev-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M7.82843 10.9999H20V12.9999H7.82843L13.1924 18.3638L11.7782 19.778L4 11.9999L11.7782 4.22168L13.1924 5.63589L7.82843 10.9999Z"
-                fill="#1E1E1E" />
-        </svg>
-        <svg class="custom-next-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                fill="#1E1E1E" />
-        </svg>
+
+    <div class="nav-kitchen-card-slider-mobile  text-end">
+        <div class="row mx-0">
+            <div class="col-5  px-0 m-0 text-start">
+                <svg class="custom-prev-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.82843 11.5009H20V13.5009H7.82843L13.1924 18.8648L11.7782 20.279L4 12.5009L11.7782 4.72266L13.1924 6.13687L7.82843 11.5009Z"
+                        fill="#C9C7DB" />
+                </svg>
+            </div>
+            <div class="currentSlide col-1 px-0 text-end">
+            </div>
+            <div class="sliderCount col-2 px-0 text-start">
+            </div>
+            <div class="col-4  px-0 text-end">
+                <svg class="custom-next-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.1716 11.5009L10.8076 6.13687L12.2218 4.72266L20 12.5009L12.2218 20.279L10.8076 18.8648L16.1716 13.5009H4V11.5009H16.1716Z"
+                        fill="#787878" />
+                </svg>
+            </div>
+        </div>
+        
+        
     </div>
+    
 </section>
 
 <section id="color-and-fishing" >

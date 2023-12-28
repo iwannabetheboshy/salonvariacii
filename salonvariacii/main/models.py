@@ -171,6 +171,19 @@ class Kitchen(models.Model):
                                       help_text=("Объекты отображаются в порядке возрастания"))
     slug = models.SlugField(blank=True)
     hide = models.BooleanField("Скрыть", help_text=("Для скрытия поставьте галочку"), default=False)
+    advantages1 = models.CharField('Поле 1',
+                                        null=True,
+                                        blank=True,
+                                        max_length=100)
+    advantages2 = models.CharField('Поле 2',
+                                        null=True,
+                                        blank=True,
+                                        max_length=100)
+    advantages3 = models.CharField('Поле 3',
+                                        null=True,
+                                        blank=True,
+                                        max_length=100)
+    
 
 
     def save(self, *args, **kwargs):
@@ -233,24 +246,6 @@ class MainPageCarousel(models.Model):
     def __str__(self):
         return self.name
 
-
-
-class AboutUsDopBlock(models.Model):
-    value = models.CharField('Значение',
-                             max_length=50,
-                             help_text=("Укажите число, включая единицы измерения. Например, 100%"))
-    name = models.CharField('Подпись',
-                            max_length=50,
-                            help_text=("Пример: «сделано в Италии»"))
-    show_number = models.IntegerField('Номер показа ',
-                                      help_text=("Объекты отображаются в порядке возрастания (слева направо)"))
-
-    class Meta:
-        verbose_name = "О нас в цифрах"
-        verbose_name_plural = "О нас в цифрах "
-
-    def __str__(self):
-        return self.name
 
 ALIGMENT_CHOICES = (
     ('center', "По центру"),
@@ -476,8 +471,7 @@ class CatalogTitle(models.Model):
     fontsizeH = models.IntegerField('Размер заголовка',
                                  validators=[MinValueValidator(16), MaxValueValidator(36)],
                                  help_text=("Размер от 16 до 36"))
-    text = models.CharField('Подпись', 
-                             max_length=100,
+    text = models.TextField('Подпись', 
                              help_text=(
                                   "Пример: «Мы делаем не просто кухни, мы создаём стиль»"))
     fontsizeText=models.IntegerField('Размер подписи заголовка',
@@ -535,6 +529,9 @@ class KitchenCardText(models.Model):
                                  validators=[MinValueValidator(14), MaxValueValidator(24)],
                                  help_text=("Размер от 14 до 24"))
     fontsizeFile=models.IntegerField('Размер подписей файлов',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    fontsizeAdvanteges=models.IntegerField('Размер подписей приемущества кухни',
                                  validators=[MinValueValidator(14), MaxValueValidator(24)],
                                  help_text=("Размер от 14 до 24"))
     fontsizeBtn = models.IntegerField('Размер подписи кнопки "Оставить заявку"',

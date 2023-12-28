@@ -11,6 +11,9 @@ class KitchenAdmin(admin.ModelAdmin):
       ('Основные сведения', {
           'fields': ('name', 'desc', 'style', 'material', 'openingMethod', 'finishing', 'show_number', 'hide')
       }),
+      ('Приемущества кухни в карточке', {
+          'fields': ('advantages1', 'advantages2', 'advantages3')
+      }),
       ('Медиа-файлы кухни', {
           'fields': ('mainImage', 'catalogVideo', 'kitchenCardVideoPhotoChoices', 'kitchenCardVideo', 'kitchenCardPhoto')
       }),
@@ -57,10 +60,6 @@ class MainPageCarouselAdmin(admin.ModelAdmin):
     list_display = ("name", "show_number")
     exclude = ['slug']
 
-
-@admin.register(AboutUsDopBlock)
-class AboutUsDopBlocklAdmin(admin.ModelAdmin):
-    list_display = ("value", "name", "show_number")
 
 
 @admin.register(AboutUs)
@@ -173,7 +172,7 @@ class KitchenCardTextAdmin(admin.ModelAdmin):
     list_display = ("fontsizeH", "fontsizeText", "fontsizeFile")
     fieldsets = (
       ('Основаня информация', {
-          'fields': ('fontsizeH', 'fontsizeText', 'fontsizeFile', 'fontsizeBtn')
+          'fields': ('fontsizeH', 'fontsizeText', 'fontsizeFile', 'fontsizeAdvanteges', 'fontsizeBtn')
       }),
       ('Цвета и материалы', {
           'fields': ('colorMaterialName', 'fontsizeColorMaterial', 'fontsizeNameMaterial', 'fontsizeNameColor')

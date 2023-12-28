@@ -37,8 +37,6 @@ def main(request):
     for slide in sliderPhoto:
         slide.name = slide.name.title()
     about = AboutUs.objects.first()
-    aboutMini = AboutUsDopBlock.objects.all().order_by('show_number')
-    numberOfBlocksAboutMini = aboutMini.count() 
     catalog_carousel = Kitchen.objects.exclude(show_number=None).exclude(hide=True).order_by('show_number')[:5]  
     for kit in catalog_carousel:
         kit.name = kit.name.capitalize()
@@ -55,8 +53,6 @@ def main(request):
     data = {
         "sliderPhoto": sliderPhoto,
         "about": about,
-        "aboutMini": aboutMini,
-        "numberOfBlocksAboutMini": numberOfBlocksAboutMini,
         "catalog_carousel": catalog_carousel,
         "look_at": look_at,
         "feedbackForm": FeedbackForm(),
@@ -91,8 +87,6 @@ def catalog(request):
     openingMethod = KitchenOpeningMethod.objects.values("name").distinct()
     material = KitchenMaterial.objects.values("name").distinct()
     style = KitchenStyle.objects.values("name").distinct()
-    annotationPage = " ".join(catalogTitle[0].text.split()[:-2])
-    annotationPageSpan =  " ".join(catalogTitle[0].text.split()[-2:])
     title = "Каталог кухонь из Италии с фото и ценами. Купить кухню во Владивостоке. Stosa Cucine"
     pageDescription = "Каталог кухонь. Кухни на заказ по индивидуальным размерам. Отделка и материал на выбор. Встраиваемые кухонные гарнитуры, различные системы открывания. Фабрика мебель STOSA CUCINE"
     keyWords = "итальянские кухни, итальянская кухня фото,  кухня в итальянском стиле фото, купить итальянскую кухню, кухня в итальянском стиле, кухонная мебель италии, ручки для кухонной мебели италия, современные итальянские кухни, кухонный гарнитур италия, итальянская кухня цена, итальянская мебель для кухни, купить кухню под заказ, кухня из дерева купить, мебель для кухни, купить мебель для кухни, сайт мебели для кухни, мебель для кухни фото и цены, кухня фото дизайн, заказать индивидуальную кухню, заказать кухню по индивидуальным размерам,"
@@ -107,8 +101,6 @@ def catalog(request):
         "pageDescription": pageDescription,
         "keyWords": keyWords,
         "FeedbackBlock": FeedbackBlock.objects.first(),
-        "annotationPage": annotationPage,
-        "annotationPageSpan": annotationPageSpan,
         "catalogTitle": catalogTitle[0],
         "header": Header.objects.first(),
         "footer": Footer.objects.first(),
