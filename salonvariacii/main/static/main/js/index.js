@@ -158,23 +158,76 @@ $(document).ready(function () {
 
   $('.more-slider .more-slide img').click(function (event) {
     if (!$(event.target).hasClass('slick-next') && !$(event.target).hasClass('slick-prev')) {
-    const fullscreenImage = $('<img>', {
-      src: $(this).attr('src'),
-      alt: $(this).attr('alt')
-    });
-    var div = $(`<div class="fullscreen-image modal-dialog-centered"></div>`);
-    // Добавляем элемент в тело документа
-    div.append(fullscreenImage);
-    $('body').append(div);
-  };
-    // Обработчик клика для закрытия полноэкранного изображения
-    div.on('click', function () {
-      $(this).remove();
-    });
+      var parent = $(this).closest('div[data-scr1]');
+      var div = $(
+        '<div class="fullscreen-image fabe modal-dialog-centered"> <div class="modal-content" style="margin-left: auto;margin-right: auto;width: 80%;"">' +
+          '<div class="slide">' +
+            '<img src="'+ parent.attr('data-scr1')+'" alt="">' +
+          '</div>' +
+          '<div class="slide">' +
+            '<img src="'+ parent.attr('data-scr2')+'" alt="">' +
+          '</div>' +
+          '<div class="slide ">' +
+            '<img src="'+ parent.attr('data-scr3')+'" alt="">' +
+          '</div>' +
+          '<div class="row" style="margin-left: auto; margin-right: auto;""><div class="col-4 mini px-0">' +
+            '<img src="'+ parent.attr('data-scr1')+'" alt="" onclick="currentSlide(1)">' +
+          '</div>' +
+          '<div class="col-4 mini px-0">' +
+            '<img src="'+ parent.attr('data-scr2')+'" alt="" onclick="currentSlide(2)">' +
+          '</div>' +
+          '<div class="col-4 mini px-0">' +
+            '<img src="'+ parent.attr('data-scr3')+'" alt="" onclick="currentSlide(3)">' +
+          '</div> </div>' +
+        '</div> </div>'
+      );
+      $('body').append(div);
+      
+      var slideIndex = $(this).attr('data-current');
+      showSlides(slideIndex);
+      
+    };
   });
-
-
 });
+
+$(document).click(function (e) {
+  if ($(e.target).is('.fullscreen-image')) {
+    $(".fullscreen-image").remove();
+  }
+});
+
+
+function currentSlide(n){
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n){
+  slideIndex = n;
+  var i;
+  var slides = document.querySelectorAll(".fullscreen-image .slide");
+  console.log(slides);
+  var mini = document.querySelectorAll(".fullscreen-image .mini");
+
+  if(n > slides.lenght){
+    slideIndex = 1;
+  }
+  if(n < 1){
+    slideIndex = slides.lenght;
+  }
+
+  for (var i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+
+  for (var i = 0; i < mini.length; i++) {
+    mini[i].className =   mini[i].className.replace("active", "");
+  }
+
+
+  slides[slideIndex-1].style.display = "block";
+  mini[slideIndex-1].className+= " active"
+}
+
 
 function readMore(e) {
   ful_text_review = e.parentNode.parentNode.querySelector(".project-and-reviews-text");
@@ -188,6 +241,8 @@ function readMore(e) {
     ful_text_review.style.height = "120px";
   }
 }
+
+
 
 
 Dribbble = window.Dribbble || {};

@@ -267,14 +267,14 @@
         <div class="more-slide">
             <div class="row mx-0">
                 <div class="col-lg-4 col-12 px-0">
-                    <div>
-                        <img src="{{ block.image1.url }}" alt="">
+                    <div data-scr1="{{ block.image1.url }}" data-scr2="{{ block.image2.url }}" data-scr3="{{ block.image3.url }}">
+                        <img src="{{ block.image1.url }}" alt="" data-current = "1">
                         <div class="row mx-0 mt-3">
                             <div class="col ps-0 pe-2">
-                                <img src="{{ block.image2.url }}" alt="">
+                                <img src="{{ block.image2.url }}" alt="" data-current = "2">
                             </div>
                             <div class="col  pe-0 ps-2">
-                                <img src="{{ block.image3.url }}" alt="">
+                                <img src="{{ block.image3.url }}" alt="" data-current = "3">
                             </div>
                         </div>
                     </div>
@@ -335,6 +335,9 @@
         </div>
     </div>
 </div>
+
+
+<
 
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script type="text/javascript" src="{% static 'main/js/index.js' %}"></script>

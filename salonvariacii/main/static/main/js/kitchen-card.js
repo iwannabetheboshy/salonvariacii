@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     slideCount = $('#kitchen-card-slider .kitchen-card-slide').length;
     if ($('#kitchen-card-slider .kitchen-card-slide').length > 8) {
@@ -6,28 +7,26 @@ $(document).ready(function () {
 
     var header = document.querySelector("header");
     header.classList.add("catalogCard");
-
-    $('#kitchen-card-slider .kitchen-card-slider').slick({
-        slidesToShow: 1,
+        $('#kitchen-card-slider .kitchen-card-slider').slick({
+        slidesToShow: 1.5, // Количество отображаемых слайдов
         slidesToScroll: 1,
-        centerMode: true,
         prevArrow: $('.nav-kitchen-card-slider .custom-prev-arrow'),
         nextArrow: $('.nav-kitchen-card-slider .custom-next-arrow'),
         infinite: true,
-        variableWidth: true,
-        responsive: [
-            {
-                breakpoint: 1200,
-                settings: {
-                    centerMode: false,
-                    infinite: false,
-                    slidesToShow: 1.8,
-                    prevArrow: $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .col-4 .custom-prev-arrow'),
-                    nextArrow: $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .col-4 .custom-next-arrow'),
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        centerMode: false,
+                        infinite: false,
+                        slidesToShow: 1.8,
+                        prevArrow: $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .col-4 .custom-prev-arrow'),
+                        nextArrow: $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .col-4 .custom-next-arrow'),
+                    }
                 }
-            }
-        ]
-    });
+            ]
+        });
+    
 
 
     if(slideCount  >= 10){
