@@ -62,7 +62,7 @@
             </div>
         </div>
     </div>
-   
+
 </section>
 
 <section id="catalog-carousel">
@@ -78,11 +78,11 @@
 
                 <a href="/kitchen/{{ kitchen.slug }}">
                     <div class="content">
-                        <div class="slider-catalog-kitchen-name">
+                        <div class="slider-catalog-kitchen-name" style="font-size: {{сatalogMainBlock.kitchenTitle}}px;">
                             Кухни Stosa {{ kitchen.name }}
                         </div>
                         <div>
-                            <a class="slider-catalog-kitchen-href" href="/kitchen/{{ kitchen.slug }}">
+                            <a class="slider-catalog-kitchen-href" href="/kitchen/{{ kitchen.slug }}" style="font-size: {{сatalogMainBlock.kitchenTitleTwo}}px;">
                                 Подробнее
                                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -267,14 +267,15 @@
         <div class="more-slide">
             <div class="row mx-0">
                 <div class="col-lg-4 col-12 px-0">
-                    <div data-scr1="{{ block.image1.url }}" data-scr2="{{ block.image2.url }}" data-scr3="{{ block.image3.url }}">
-                        <img src="{{ block.image1.url }}" alt="" data-current = "1">
+                    <div data-scr1="{{ block.image1.url }}" data-scr2="{{ block.image2.url }}"
+                        data-scr3="{{ block.image3.url }}">
+                        <img src="{{ block.image1.url }}" alt="" data-current="1">
                         <div class="row mx-0 mt-3">
                             <div class="col ps-0 pe-2">
-                                <img src="{{ block.image2.url }}" alt="" data-current = "2">
+                                <img src="{{ block.image2.url }}" alt="" data-current="2">
                             </div>
                             <div class="col  pe-0 ps-2">
-                                <img src="{{ block.image3.url }}" alt="" data-current = "3">
+                                <img src="{{ block.image3.url }}" alt="" data-current="3">
                             </div>
                         </div>
                     </div>
@@ -317,12 +318,13 @@
         </div>
     </div>
 
-    <div class="text-center">
+   <!-- <div class="text-center">
         <div class="col px-0">
             <a href="/#feedback"><button class="custom-button-new"
                     style="font-size: {{FeedbackBlock.fontsizeBt}}px;">Оставить заявку</button></a>
         </div>
     </div>
+     --> 
 </section>
 
 <div class="modal fade px-0" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -337,7 +339,42 @@
 </div>
 
 
-<
+<div id="fullscreen-image" class=" fabe modal-dialog-centered">
+    <div class="modal-content d-flex" style="margin-left: auto;margin-right: auto;width: 80%;justify-content: center;"">
+        {% for block in moreBlocks %}
+            <div class=" slide">
+        <img src="{{ block.image1.url }}" alt="">
+    </div>
+    <div class="slide">
+        <img src="{{ block.image2.url }}" alt=""">
+            </div>
+            <div class=" slide">
+        <img src="{{ block.image3.url }}" alt="">
+    </div>
+    {%endfor%}
+    <div class="fullscreen-image-nav">
+        <div class="prev" onclick="prevSlide()">
+            <svg class="custom-prev-arrow" width="24" height="50" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.354 0.646039C7.40056 0.692485 7.43751 0.747661 7.46271 0.808406C7.48792 0.869151 7.50089 0.934272 7.50089 1.00004C7.50089 1.06581 7.48792 1.13093 7.46271 1.19167C7.43751 1.25242 7.40056 1.30759 7.354 1.35404L1.707 7.00004L7.354 12.646C7.44789 12.7399 7.50063 12.8673 7.50063 13C7.50063 13.1328 7.44789 13.2602 7.354 13.354C7.26011 13.4479 7.13278 13.5007 7 13.5007C6.86723 13.5007 6.73989 13.4479 6.646 13.354L0.646001 7.35404C0.599438 7.30759 0.562495 7.25242 0.537288 7.19167C0.512082 7.13093 0.499107 7.06581 0.499107 7.00004C0.499107 6.93427 0.512082 6.86915 0.537288 6.80841C0.562495 6.74766 0.599438 6.69248 0.646001 6.64604L6.646 0.646039C6.69245 0.599476 6.74762 0.562533 6.80837 0.537327C6.86911 0.51212 6.93423 0.499146 7 0.499146C7.06577 0.499146 7.13089 0.51212 7.19163 0.537327C7.25238 0.562533 7.30756 0.599476 7.354 0.646039Z" fill="#212529"/>
+                </svg> 
+        </div>
+        <div class="next" onclick="nextSlide()">
+            <svg class="custom-next-arrow" width="24" height="50" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.646001 0.646039C0.692447 0.599476 0.747622 0.562533 0.808367 0.537327C0.869112 0.51212 0.934234 0.499146 1 0.499146C1.06577 0.499146 1.13089 0.51212 1.19163 0.537327C1.25238 0.562533 1.30756 0.599476 1.354 0.646039L7.354 6.64604C7.40056 6.69248 7.43751 6.74766 7.46271 6.80841C7.48792 6.86915 7.50089 6.93427 7.50089 7.00004C7.50089 7.06581 7.48792 7.13093 7.46271 7.19167C7.43751 7.25242 7.40056 7.30759 7.354 7.35404L1.354 13.354C1.26011 13.4479 1.13278 13.5007 1 13.5007C0.867225 13.5007 0.739888 13.4479 0.646001 13.354C0.552114 13.2602 0.499369 13.1328 0.499369 13C0.499369 12.8673 0.552114 12.7399 0.646001 12.646L6.293 7.00004L0.646001 1.35404C0.599438 1.30759 0.562495 1.25242 0.537288 1.19167C0.512082 1.13093 0.499107 1.06581 0.499107 1.00004C0.499107 0.934272 0.512082 0.869151 0.537288 0.808406C0.562495 0.747661 0.599438 0.692485 0.646001 0.646039Z" fill="#212529"/>
+                </svg> 
+        </div>
+        <div class="close">
+            <svg width="30" height="30" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M13.854 2.14592C13.9006 2.19236 13.9375 2.24754 13.9627 2.30828C13.9879 2.36903 14.0009 2.43415 14.0009 2.49992C14.0009 2.56568 13.9879 2.63081 13.9627 2.69155C13.9375 2.7523 13.9006 2.80747 13.854 2.85392L2.85401 13.8539C2.76012 13.9478 2.63278 14.0005 2.50001 14.0005C2.36723 14.0005 2.2399 13.9478 2.14601 13.8539C2.05212 13.76 1.99938 13.6327 1.99938 13.4999C1.99938 13.3671 2.05212 13.2398 2.14601 13.1459L13.146 2.14592C13.1925 2.09935 13.2476 2.06241 13.3084 2.0372C13.3691 2.012 13.4342 1.99902 13.5 1.99902C13.5658 1.99902 13.6309 2.012 13.6916 2.0372C13.7524 2.06241 13.8076 2.09935 13.854 2.14592Z" fill="#212529"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M2.14601 2.14592C2.09945 2.19236 2.0625 2.24754 2.0373 2.30828C2.01209 2.36903 1.99911 2.43415 1.99911 2.49992C1.99911 2.56568 2.01209 2.63081 2.0373 2.69155C2.0625 2.7523 2.09945 2.80747 2.14601 2.85392L13.146 13.8539C13.2399 13.9478 13.3672 14.0005 13.5 14.0005C13.6328 14.0005 13.7601 13.9478 13.854 13.8539C13.9479 13.76 14.0006 13.6327 14.0006 13.4999C14.0006 13.3671 13.9479 13.2398 13.854 13.1459L2.85401 2.14592C2.80756 2.09935 2.75239 2.06241 2.69164 2.0372C2.6309 2.012 2.56578 1.99902 2.50001 1.99902C2.43424 1.99902 2.36912 2.012 2.30838 2.0372C2.24763 2.06241 2.19245 2.09935 2.14601 2.14592Z" fill="#212529"/>
+                </svg> 
+        </div>
+
+    </div>
+</div>
+
+</div>
+
 
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script type="text/javascript" src="{% static 'main/js/index.js' %}"></script>

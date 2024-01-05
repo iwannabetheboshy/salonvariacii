@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     responsive: [
       {
-        breakpoint: 1200,
+        breakpoint: 552,
         settings: {
           dots: true
         }
@@ -155,78 +155,80 @@ $(document).ready(function () {
     }
   });
 
+  
 
   $('.more-slider .more-slide img').click(function (event) {
     if (!$(event.target).hasClass('slick-next') && !$(event.target).hasClass('slick-prev')) {
-      var parent = $(this).closest('div[data-scr1]');
-      var div = $(
-        '<div class="fullscreen-image fabe modal-dialog-centered"> <div class="modal-content" style="margin-left: auto;margin-right: auto;width: 80%;"">' +
-          '<div class="slide">' +
-            '<img src="'+ parent.attr('data-scr1')+'" alt="">' +
-          '</div>' +
-          '<div class="slide">' +
-            '<img src="'+ parent.attr('data-scr2')+'" alt="">' +
-          '</div>' +
-          '<div class="slide ">' +
-            '<img src="'+ parent.attr('data-scr3')+'" alt="">' +
-          '</div>' +
-          '<div class="row" style="margin-left: auto; margin-right: auto;""><div class="col-4 mini px-0">' +
-            '<img src="'+ parent.attr('data-scr1')+'" alt="" onclick="currentSlide(1)">' +
-          '</div>' +
-          '<div class="col-4 mini px-0">' +
-            '<img src="'+ parent.attr('data-scr2')+'" alt="" onclick="currentSlide(2)">' +
-          '</div>' +
-          '<div class="col-4 mini px-0">' +
-            '<img src="'+ parent.attr('data-scr3')+'" alt="" onclick="currentSlide(3)">' +
-          '</div> </div>' +
-        '</div> </div>'
-      );
-      $('body').append(div);
-      
-      var slideIndex = $(this).attr('data-current');
-      showSlides(slideIndex);
-      
+      var src = $(this).attr('src');
+      var index = findSliderItemIndexByImageSrc(src);
+
+      showSlides(index)
+
+      $('#fullscreen-image').show();
     };
   });
+
+  $('.fullscreen-image-nav .close ').click(function (event) {
+    $('#fullscreen-image').hide();
+
+  });
+
+  
+
 });
 
-$(document).click(function (e) {
-  if ($(e.target).is('.fullscreen-image')) {
-    $(".fullscreen-image").remove();
+
+var currentSlideIndex = 0;
+var slides = document.querySelectorAll("#fullscreen-image .slide");
+
+function showSlides(slideIndex){
+  
+  if (slideIndex-1 < 0) {
+    document.querySelectorAll("#fullscreen-image .fullscreen-image-nav .custom-prev-arrow")[0].classList.add("slick-disabled");
+  }else if(slideIndex+1 >= slides.length){
+    document.querySelectorAll("#fullscreen-image .fullscreen-image-nav .custom-next-arrow")[0].classList.add("slick-disabled");
+  }else{
+    document.querySelectorAll("#fullscreen-image .fullscreen-image-nav .custom-prev-arrow")[0].classList.remove("slick-disabled");
+    document.querySelectorAll("#fullscreen-image .fullscreen-image-nav .custom-next-arrow")[0].classList.remove("slick-disabled");
   }
-});
-
-
-function currentSlide(n){
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n){
-  slideIndex = n;
-  var i;
-  var slides = document.querySelectorAll(".fullscreen-image .slide");
-  console.log(slides);
-  var mini = document.querySelectorAll(".fullscreen-image .mini");
-
-  if(n > slides.lenght){
-    slideIndex = 1;
-  }
-  if(n < 1){
-    slideIndex = slides.lenght;
-  }
-
+  
+  currentSlideIndex = slideIndex;
   for (var i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
 
-  for (var i = 0; i < mini.length; i++) {
-    mini[i].className =   mini[i].className.replace("active", "");
-  }
-
-
-  slides[slideIndex-1].style.display = "block";
-  mini[slideIndex-1].className+= " active"
+  slides[slideIndex].style.display = "block";
 }
+
+function prevSlide() {
+  currentSlideIndex--;
+  if (currentSlideIndex < 0) {
+    currentSlideIndex = 0; 
+  }
+  showSlides(currentSlideIndex);
+  
+}
+
+function nextSlide() {
+  currentSlideIndex++;
+  if (currentSlideIndex >= slides.length) {
+    currentSlideIndex = slides.length - 1; 
+  }
+  showSlides(currentSlideIndex);
+
+}
+
+function findSliderItemIndexByImageSrc(srcToFind) {
+  var $sliderItems = $("#fullscreen-image .modal-content .slide");
+
+  var foundIndex = $sliderItems.filter(function(index, sliderItem) {
+    var $img = $(sliderItem).find('img');
+    return $img.length > 0 && $img.attr('src') === srcToFind;
+  }).index();
+
+  return foundIndex;
+}
+
 
 
 function readMore(e) {

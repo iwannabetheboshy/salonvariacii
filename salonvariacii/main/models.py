@@ -583,6 +583,12 @@ class CatalogMainBlock(models.Model):
     fontsizeTiteTwo = models.IntegerField('Размер заголовка 2 уровня',
                                  validators=[MinValueValidator(16), MaxValueValidator(36)],
                                  help_text=("Размер от 16 до 36"))
+    kitchenTitle = models.IntegerField('Размер названия кухни',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))
+    kitchenTitleTwo = models.IntegerField('Размер надписи «Подробнее»',
+                                 validators=[MinValueValidator(16), MaxValueValidator(36)],
+                                 help_text=("Размер от 16 до 36"))
     
     class Meta:
         verbose_name = "надпись"
