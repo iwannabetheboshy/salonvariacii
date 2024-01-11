@@ -173,6 +173,133 @@
 </section>
 
 
+
+<section id="more">
+    <div class="more-header row ms-0">
+        <div class="col-lg-6 col px-0">
+            {% if moreMainBlock.title%}
+            <div class="gray-text-14" style="font-size: {{moreMainBlock.fontsize}}px;">{{moreMainBlock.title}}</div>
+            {%endif%}
+
+            <h2 style="font-size: {{moreMainBlock.fontsizeTiteTwo}}px;">{{moreMainBlock.titleTwo}}</h2>
+        </div>
+        <div class="col-lg-6 text-end nav-more-slider-desc px-0">
+
+            <svg class="custom-next-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M16.1716 11.5009L10.8076 6.13687L12.2218 4.72266L20 12.5009L12.2218 20.279L10.8076 18.8648L16.1716 13.5009H4V11.5009H16.1716Z"
+                    fill="#787878" />
+            </svg>
+            <div class="sliderCount">
+
+            </div>
+            <div class="currentSlide">
+
+            </div>
+            <svg class="custom-prev-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M7.82843 11.5009H20V13.5009H7.82843L13.1924 18.8648L11.7782 20.279L4 12.5009L11.7782 4.72266L13.1924 6.13687L7.82843 11.5009Z"
+                    fill="#C9C7DB" />
+            </svg>
+
+
+
+        </div>
+    </div>
+
+    <div class="more-slider">
+        {% for block in moreBlocks %}
+        <div class="more-slide">
+            {%if block.image4  %}
+               <div class="row mx-0">
+                    <div class="col-lg-4 col-12 px-0 row row-cols-2">
+                                <div class="col ps-0 pe-2 pb-2">
+                                    <img src="{{ block.image1.url }}" alt="" >
+                                </div>
+                                <div class="col  pe-0 ps-2  pb-2">
+                                    <img src="{{ block.image2.url }}" alt="" >
+                                </div>
+                                <div class="col ps-0 pe-2  pt-2">
+                                    <img src="{{ block.image3.url }}" alt="" >
+                                </div>
+                                <div class="col  pe-0 ps-2  pt-2">
+                                    <img src="{{ block.image4.url }}" alt="" >
+                                </div>
+
+                    </div>
+                    <div class="col-lg-8 col-12 more-slide-text">
+                        <h3 style="font-size: {{moreMainBlock.fontsizeTiteText}}px;">{{block.title}}</h3>
+                        <p style="font-size: {{moreMainBlock.fontsizeText}}px;">
+                            {% autoescape off %}
+                            {{ block.text|linebreaksbr|safe }}
+                            {% endautoescape %}
+                        </p>
+                    </div>
+                </div>
+            {%else%}
+                <div class="row mx-0">
+                    <div class="col-lg-4 col-12 px-0">
+                        <div>
+                            <img src="{{ block.image1.url }}" alt="" data-current="1">
+                            <div class="row mx-0 mt-3">
+                                <div class="col ps-0 pe-2">
+                                    <img src="{{ block.image2.url }}" alt="" data-current="2">
+                                </div>
+                                <div class="col  pe-0 ps-2">
+                                    <img src="{{ block.image3.url }}" alt="" data-current="3">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 col-12 more-slide-text">
+                        <h3 style="font-size: {{moreMainBlock.fontsizeTiteText}}px;">{{block.title}}</h3>
+                        <p style="font-size: {{moreMainBlock.fontsizeText}}px;">
+                            {% autoescape off %}
+                            {{ block.text|linebreaksbr|safe }}
+                            {% endautoescape %}
+                        </p>
+                    </div>
+                </div>
+            {%endif%}
+        </div>
+        {%endfor%}
+    </div>
+
+    <div class="nav-more-slider-mobile ">
+        <div class="row mx-0">
+            <div class="col-4  px-0 m-0">
+                <svg class="custom-prev-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.82843 11.5009H20V13.5009H7.82843L13.1924 18.8648L11.7782 20.279L4 12.5009L11.7782 4.72266L13.1924 6.13687L7.82843 11.5009Z"
+                        fill="#C9C7DB" />
+                </svg>
+            </div>
+            <div class="currentSlide col-2 px-0 text-end">
+            </div>
+            <div class="sliderCount col-2 px-0">
+            </div>
+            <div class="col-4  px-0 text-end">
+                <svg class="custom-next-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.1716 11.5009L10.8076 6.13687L12.2218 4.72266L20 12.5009L12.2218 20.279L10.8076 18.8648L16.1716 13.5009H4V11.5009H16.1716Z"
+                        fill="#787878" />
+                </svg>
+            </div>
+        </div>
+    </div>
+
+   <!-- <div class="text-center">
+        <div class="col px-0">
+            <a href="/#feedback"><button class="custom-button-new"
+                    style="font-size: {{FeedbackBlock.fontsizeBt}}px;">Оставить заявку</button></a>
+        </div>
+    </div>
+     --> 
+</section>
 <section id="look-at-block" class="">
     <div class="custom-bg py-0">
         {% if LookAtTitle.titleOne%}
@@ -227,106 +354,6 @@
         </div>
 </section>
 
-<section id="more">
-    <div class="more-header row ms-0">
-        <div class="col-lg-6 col px-0">
-            {% if moreMainBlock.title%}
-            <div class="gray-text-14" style="font-size: {{moreMainBlock.fontsize}}px;">{{moreMainBlock.title}}</div>
-            {%endif%}
-
-            <h2 style="font-size: {{moreMainBlock.fontsizeTiteTwo}}px;">{{moreMainBlock.titleTwo}}</h2>
-        </div>
-        <div class="col-lg-6 text-end nav-more-slider-desc px-0">
-
-            <svg class="custom-next-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M16.1716 11.5009L10.8076 6.13687L12.2218 4.72266L20 12.5009L12.2218 20.279L10.8076 18.8648L16.1716 13.5009H4V11.5009H16.1716Z"
-                    fill="#787878" />
-            </svg>
-            <div class="sliderCount">
-
-            </div>
-            <div class="currentSlide">
-
-            </div>
-            <svg class="custom-prev-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M7.82843 11.5009H20V13.5009H7.82843L13.1924 18.8648L11.7782 20.279L4 12.5009L11.7782 4.72266L13.1924 6.13687L7.82843 11.5009Z"
-                    fill="#C9C7DB" />
-            </svg>
-
-
-
-        </div>
-    </div>
-
-    <div class="more-slider">
-        {% for block in moreBlocks %}
-        <div class="more-slide">
-            <div class="row mx-0">
-                <div class="col-lg-4 col-12 px-0">
-                    <div data-scr1="{{ block.image1.url }}" data-scr2="{{ block.image2.url }}"
-                        data-scr3="{{ block.image3.url }}">
-                        <img src="{{ block.image1.url }}" alt="" data-current="1">
-                        <div class="row mx-0 mt-3">
-                            <div class="col ps-0 pe-2">
-                                <img src="{{ block.image2.url }}" alt="" data-current="2">
-                            </div>
-                            <div class="col  pe-0 ps-2">
-                                <img src="{{ block.image3.url }}" alt="" data-current="3">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8 col-12 more-slide-text">
-                    <h3 style="font-size: {{moreMainBlock.fontsizeTiteText}}px;">{{block.title}}</h3>
-                    <p style="font-size: {{moreMainBlock.fontsizeText}}px;">
-                        {% autoescape off %}
-                        {{ block.text|linebreaksbr|safe }}
-                        {% endautoescape %}
-                    </p>
-                </div>
-            </div>
-        </div>
-        {%endfor%}
-    </div>
-
-    <div class="nav-more-slider-mobile ">
-        <div class="row mx-0">
-            <div class="col-4  px-0 m-0">
-                <svg class="custom-prev-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M7.82843 11.5009H20V13.5009H7.82843L13.1924 18.8648L11.7782 20.279L4 12.5009L11.7782 4.72266L13.1924 6.13687L7.82843 11.5009Z"
-                        fill="#C9C7DB" />
-                </svg>
-            </div>
-            <div class="currentSlide col-2 px-0 text-end">
-            </div>
-            <div class="sliderCount col-2 px-0">
-            </div>
-            <div class="col-4  px-0 text-end">
-                <svg class="custom-next-arrow" width="24" height="25" viewBox="0 0 24 25" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M16.1716 11.5009L10.8076 6.13687L12.2218 4.72266L20 12.5009L12.2218 20.279L10.8076 18.8648L16.1716 13.5009H4V11.5009H16.1716Z"
-                        fill="#787878" />
-                </svg>
-            </div>
-        </div>
-    </div>
-
-   <!-- <div class="text-center">
-        <div class="col px-0">
-            <a href="/#feedback"><button class="custom-button-new"
-                    style="font-size: {{FeedbackBlock.fontsizeBt}}px;">Оставить заявку</button></a>
-        </div>
-    </div>
-     --> 
-</section>
-
 <div class="modal fade px-0" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -343,14 +370,19 @@
     <div class="modal-content d-flex" style="margin-left: auto;margin-right: auto;width: 80%;justify-content: center;"">
         {% for block in moreBlocks %}
             <div class=" slide">
-        <img src="{{ block.image1.url }}" alt="">
-    </div>
-    <div class="slide">
-        <img src="{{ block.image2.url }}" alt=""">
+                <img src="{{ block.image1.url }}" alt="">
+            </div>
+            <div class="slide">
+                <img src="{{ block.image2.url }}" alt=""">
             </div>
             <div class=" slide">
-        <img src="{{ block.image3.url }}" alt="">
-    </div>
+                <img src="{{ block.image3.url }}" alt="">
+            </div>
+            {%if block.image4 %}
+            <div class=" slide">
+                <img src="{{ block.image4.url }}" alt="">
+            </div>
+            {%endif%}
     {%endfor%}
     <div class="fullscreen-image-nav">
         <div class="prev" onclick="prevSlide()">

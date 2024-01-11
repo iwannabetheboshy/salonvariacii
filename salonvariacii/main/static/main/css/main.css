@@ -843,7 +843,7 @@ catalog-carousel
   padding-top: 16px;
   padding-bottom: 16px;
   padding-left: 16px;
-  padding-right: 52px;
+  padding-right: 16px;
   background: #FFF;
   transition: .5s cubic-bezier(0.05, 0.61, 0.41, 0.95), opacity .5s ease-out;
 }
@@ -956,6 +956,7 @@ advantages
   color: #1E1E1E;
   font-family: 'Core Sans C-55Medium' !important;
   font-size: 20px;
+  white-space: nowrap;
 }
 
 
@@ -2409,6 +2410,7 @@ more
   width: 100%;
   object-fit: cover;
 }
+
 
 #more .more-slide img:hover {
   cursor: pointer;
