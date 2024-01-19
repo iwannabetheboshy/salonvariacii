@@ -1070,6 +1070,7 @@ feedback
 .form-control:hover,
 .form-control-area:hover {
   background: #E5E4E3;
+  transition: .3s;
 }
 
 .form-control:focus,
@@ -2425,13 +2426,14 @@ more
 
 .more-slide-text {
   padding-left: 40px;
+  padding-right: 40px;
 }
 
 .more-slide-text p {
   font-family: 'Core Sans C-35Light';
   font-size: 16px;
   color: #000;
-  max-width: 534px;
+  line-height: 1.3em;
 }
 
 .more-slide-text h3 {
@@ -2502,7 +2504,7 @@ more
   height: 100vh;
   margin-right: auto;
   margin-left: auto;
-  max-height: calc(100vh - 50vh);
+  max-height: 90vh;
 }
 
 
