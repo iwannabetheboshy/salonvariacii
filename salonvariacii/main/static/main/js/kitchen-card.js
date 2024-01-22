@@ -8,7 +8,7 @@ $(document).ready(function () {
     var header = document.querySelector("header");
     header.classList.add("catalogCard");
         $('#kitchen-card-slider .kitchen-card-slider').slick({
-        slidesToShow: 1.5, // Количество отображаемых слайдов
+        slidesToShow: 3, // Количество отображаемых слайдов
         slidesToScroll: 1,
         prevArrow: $('.nav-kitchen-card-slider .custom-prev-arrow'),
         nextArrow: $('.nav-kitchen-card-slider .custom-next-arrow'),

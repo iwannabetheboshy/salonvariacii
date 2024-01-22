@@ -3123,9 +3123,9 @@ kitchen-slider
   position: relative;
 }
 
-.kitchen-card-slider .slick-slide img{
+/*.kitchen-card-slider .slick-slide img{
   margin-left: -218px;
-}
+}*/
 
 .kitchen-card-slider img {
   width: 100%;
