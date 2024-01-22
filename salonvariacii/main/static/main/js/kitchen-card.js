@@ -13,6 +13,8 @@ $(document).ready(function () {
         prevArrow: $('.nav-kitchen-card-slider .custom-prev-arrow'),
         nextArrow: $('.nav-kitchen-card-slider .custom-next-arrow'),
         infinite: true,
+        variableWidth: true,
+        centerMode: true,
             responsive: [
                 {
                     breakpoint: 1200,
