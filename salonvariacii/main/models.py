@@ -187,8 +187,12 @@ class Kitchen(models.Model):
 
 
     def save(self, *args, **kwargs):
-        # Генерируем slug из названия кухни
-        self.slug = "stosa_" + slugify(self.name).replace('-', '_')
+        if "stosa" in self.name:
+            self.slug = slugify(self.name).replace('-', '_')
+        else:
+            # Генерируем slug из названия кухни
+            self.slug = "stosa_" + slugify(self.name).replace('-', '_')
+                
         if self.mainImage:
             safeImage('mainImage', self.mainImage, Kitchen)
         
@@ -709,7 +713,7 @@ def safeImage(field_name, imageName, imageModel):
         # Проверка наличия файла с таким же именем
         existing_file = imageModel.objects.filter(**{f'{field_name}__icontains':file_name}).first()
         if existing_file:
-            imageName = existing_file.image
+            imageName = existing_file
         else:
             name = str(uuid.uuid1())
             img = Image.open(imageName)

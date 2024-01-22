@@ -3409,6 +3409,9 @@ certified-quality
   .kitchenCard-video-container iframe {
     height: calc(100vw*0.6);
   }
+  #kitchen-card-slider {
+    margin-top: 4.4%;
+  }
 }
 
 @media (max-width: 630px) {
@@ -3422,6 +3425,7 @@ certified-quality
   }
 
 }
+
 
 
 /*--------------------------------------------------
