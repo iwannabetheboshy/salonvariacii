@@ -70,7 +70,7 @@ $(document).ready(function () {
   $('.slider-catalog-container .slide .content').first().addClass('active');
   $('.slider-catalog-container .slide').click(function () {
     $('.slider-catalog-container .slide').removeClass('large-image');
-    $('slider-catalog-container .slide .content').removeClass('active');
+    $('.slider-catalog-container .slide .content').removeClass('active');
     $(this).addClass('large-image');
     $(this).find('.content').addClass('active');
   });
@@ -128,9 +128,9 @@ $(document).ready(function () {
         }
       },
       {
-        breakpoint: 800,
+        breakpoint: 984,
         settings: {
-          slidesToShow: 1.1,
+          slidesToShow: 1,
           prevArrow: $('.nav-more-slider-mobile .col-4 .custom-prev-arrow'),
           nextArrow: $('.nav-more-slider-mobile .col-4 .custom-next-arrow'),
         }
@@ -155,7 +155,7 @@ $(document).ready(function () {
     }
   });
 
-  
+
 
   $('.more-slider .more-slide img').click(function (event) {
     if (!$(event.target).hasClass('slick-next') && !$(event.target).hasClass('slick-prev')) {
@@ -173,7 +173,7 @@ $(document).ready(function () {
 
   });
 
-  
+
 
 });
 
@@ -181,17 +181,17 @@ $(document).ready(function () {
 var currentSlideIndex = 0;
 var slides = document.querySelectorAll("#fullscreen-image .slide");
 
-function showSlides(slideIndex){
-  
-  if (slideIndex-1 < 0) {
+function showSlides(slideIndex) {
+
+  if (slideIndex - 1 < 0) {
     document.querySelectorAll("#fullscreen-image .fullscreen-image-nav .custom-prev-arrow")[0].classList.add("slick-disabled");
-  }else if(slideIndex+1 >= slides.length){
+  } else if (slideIndex + 1 >= slides.length) {
     document.querySelectorAll("#fullscreen-image .fullscreen-image-nav .custom-next-arrow")[0].classList.add("slick-disabled");
-  }else{
+  } else {
     document.querySelectorAll("#fullscreen-image .fullscreen-image-nav .custom-prev-arrow")[0].classList.remove("slick-disabled");
     document.querySelectorAll("#fullscreen-image .fullscreen-image-nav .custom-next-arrow")[0].classList.remove("slick-disabled");
   }
-  
+
   currentSlideIndex = slideIndex;
   for (var i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
@@ -203,16 +203,16 @@ function showSlides(slideIndex){
 function prevSlide() {
   currentSlideIndex--;
   if (currentSlideIndex < 0) {
-    currentSlideIndex = 0; 
+    currentSlideIndex = 0;
   }
   showSlides(currentSlideIndex);
-  
+
 }
 
 function nextSlide() {
   currentSlideIndex++;
   if (currentSlideIndex >= slides.length) {
-    currentSlideIndex = slides.length - 1; 
+    currentSlideIndex = slides.length - 1;
   }
   showSlides(currentSlideIndex);
 
@@ -221,7 +221,7 @@ function nextSlide() {
 function findSliderItemIndexByImageSrc(srcToFind) {
   var $sliderItems = $("#fullscreen-image .modal-content .slide");
 
-  var foundIndex = $sliderItems.filter(function(index, sliderItem) {
+  var foundIndex = $sliderItems.filter(function (index, sliderItem) {
     var $img = $(sliderItem).find('img');
     return $img.length > 0 && $img.attr('src') === srcToFind;
   }).index();
@@ -358,3 +358,34 @@ $(document).ready(function () {
   size = $("#about-us-block").data("fontsize");
   text.css("font-size", size);
 });
+
+$(document).ready(function () {
+  if (window.innerWidth < 984) {
+    var elements = document.querySelectorAll('.more-slide');
+    var elementsArray = Array.from(elements);
+
+    elementsArray.forEach(function (element) {
+      var height = element.querySelector('.more-slide-text').offsetHeight;
+
+      if (height > 270) {
+        element.getElementsByClassName('mobileFull')[0].style.display = 'block';
+        console.log(element.getElementsByClassName('mobileFull'))
+        element.querySelector('.more-slide-text').style.maxHeight = "250px";
+        element.querySelector('.more-slide-text').style.overflow = 'hidden';
+      }
+    });
+  }
+});
+
+
+function showFull(id) {
+  if (document.getElementById('more-slide-' + id).innerText == 'развернуть ') {
+    document.getElementById('more-slide-text-' + id).style.maxHeight = "1000px";
+    console.log(document.getElementById('more-slide-text-' + id));
+    document.getElementById('more-slide-' + id).innerHTML = 'свернуть <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.64601 0.646039C6.69245 0.599476 6.74763 0.562533 6.80837 0.537326C6.86912 0.51212 6.93424 0.499146 7.00001 0.499146C7.06577 0.499146 7.13089 0.51212 7.19164 0.537326C7.25238 0.562533 7.30756 0.599476 7.35401 0.646039L13.354 6.64604C13.4479 6.73993 13.5006 6.86726 13.5006 7.00004C13.5006 7.13281 13.4479 7.26015 13.354 7.35404C13.2601 7.44793 13.1328 7.50067 13 7.50067C12.8672 7.50067 12.7399 7.44793 12.646 7.35404L7.00001 1.70704L1.35401 7.35404C1.26012 7.44793 1.13278 7.50067 1.00001 7.50067C0.86723 7.50067 0.739893 7.44793 0.646006 7.35404C0.552119 7.26015 0.499374 7.13281 0.499374 7.00004C0.499374 6.86726 0.552119 6.73993 0.646006 6.64604L6.64601 0.646039Z" fill="#212529"/></svg> ';
+  } else {
+    document.getElementById('more-slide-text-' + id).style.maxHeight = "270px";
+    document.getElementById('more-slide-' + id).innerHTML = 'развернуть <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.64601 4.64604C1.69245 4.59948 1.74763 4.56253 1.80838 4.53733C1.86912 4.51212 1.93424 4.49915 2.00001 4.49915C2.06578 4.49915 2.1309 4.51212 2.19164 4.53733C2.25239 4.56253 2.30756 4.59948 2.35401 4.64604L8.00001 10.293L13.646 4.64604C13.6925 4.59955 13.7477 4.56267 13.8084 4.53752C13.8692 4.51236 13.9343 4.49941 14 4.49941C14.0658 4.49941 14.1309 4.51236 14.1916 4.53752C14.2523 4.56267 14.3075 4.59955 14.354 4.64604C14.4005 4.69253 14.4374 4.74772 14.4625 4.80846C14.4877 4.86919 14.5006 4.9343 14.5006 5.00004C14.5006 5.06578 14.4877 5.13088 14.4625 5.19162C14.4374 5.25236 14.4005 5.30755 14.354 5.35404L8.35401 11.354C8.30756 11.4006 8.25239 11.4375 8.19164 11.4628C8.1309 11.488 8.06578 11.5009 8.00001 11.5009C7.93424 11.5009 7.86912 11.488 7.80838 11.4628C7.74763 11.4375 7.69245 11.4006 7.64601 11.354L1.64601 5.35404C1.59945 5.30759 1.5625 5.25242 1.5373 5.19167C1.51209 5.13093 1.49911 5.06581 1.49911 5.00004C1.49911 4.93427 1.51209 4.86915 1.5373 4.80841C1.5625 4.74766 1.59945 4.69248 1.64601 4.64604Z" fill="#212529"/></svg>';
+
+  }
+}

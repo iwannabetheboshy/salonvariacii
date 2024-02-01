@@ -1,58 +1,52 @@
+$(document).ready( function () {
+    const swiper = new Swiper('.mySwiper', {
+        spaceBetween: 16,
+        loop: true,
+        loopAdditionalSlides: 1,
+        LoopedSlides: 1,
+        initialSlide: 3,
+        navigation: {
+            nextEl: '.nav-kitchen-card-slider .custom-next-arrow',
+            prevEl: '.nav-kitchen-card-slider .custom-prev-arrow',
+            enabled: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            type: 'fraction',
+            formatFractionCurrent: function (number) {
+                return number < 10 ? '0' + number : number;
+            },
+        },
+        breakpoints: {
+            // when window width is >= 320px
+            1200: {
+                centeredSlides: true,
+                slidesPerView: 1.8,
+            },
+            // when window width is >= 480px
+            360: {
+                centeredSlides: false,
+                slidesPerView: 'auto',
+             
+            },
+            
+          }
+        
+    });
+    
+    
 
-$(document).ready(function () {
-    slideCount = $('#kitchen-card-slider .kitchen-card-slide').length;
-    if ($('#kitchen-card-slider .kitchen-card-slide').length > 8) {
-        $('#kitchen-card-slider').addClass("dotsFalse");
-    }
+    setTimeout(function () {
+        swiper.slideToLoop(0, 0, true)
 
+    }, 500);
     var header = document.querySelector("header");
     header.classList.add("catalogCard");
-        $('#kitchen-card-slider .kitchen-card-slider').slick({
-        slidesToShow: 3, // Количество отображаемых слайдов
-        slidesToScroll: 1,
-        prevArrow: $('.nav-kitchen-card-slider .custom-prev-arrow'),
-        nextArrow: $('.nav-kitchen-card-slider .custom-next-arrow'),
-        infinite: true,
-        variableWidth: true,
-        centerMode: true,
-            responsive: [
-                {
-                    breakpoint: 1200,
-                    settings: {
-                        centerMode: false,
-                        infinite: false,
-                        slidesToShow: 1.8,
-                        prevArrow: $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .col-4 .custom-prev-arrow'),
-                        nextArrow: $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .col-4 .custom-next-arrow'),
-                    }
-                }
-            ]
-        });
+
+    
     
 
 
-    if(slideCount  >= 10){
-        $('#kitchen-card-slider .nav-kitchen-card-slider .sliderCount').html('&nbsp/ ' + slideCount);
-        $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .sliderCount').html('&nbsp/ ' + slideCount);
-    }
-    else{
-        $('#kitchen-card-slider .nav-kitchen-card-slider .sliderCount').html('&nbsp/ 0' + slideCount);
-        $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .sliderCount').html('&nbsp/ 0' + slideCount);
-    }
-    
-    $('#kitchen-card-slider .nav-kitchen-card-slider .currentSlide').html('01');
-    $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .currentSlide').html('01');
-
-    $("#kitchen-card-slider .kitchen-card-slider").on("afterChange", function (event, slick, currentSlide, nextSlide) {
-        let currentSlider = $('#kitchen-card-slider .kitchen-card-slider').slick('slickCurrentSlide') + 1;
-        if (currentSlider >= 10) {
-            $('#kitchen-card-slider .nav-kitchen-card-slider .currentSlide').html(currentSlider + ' ');
-            $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .currentSlide').html(currentSlider + ' ');
-        } else {
-            $('#kitchen-card-slider .nav-kitchen-card-slider .currentSlide').html('0' + currentSlider + ' ');
-            $('#kitchen-card-slider .nav-kitchen-card-slider-mobile .currentSlide').html('0' + currentSlider + ' ');
-        }
-    });
 
     setTimeout(function () {
         var iframe = document.getElementsByTagName("iframe")[0].contentWindow;
@@ -60,5 +54,5 @@ $(document).ready(function () {
     }, 500);
 
 
-
 });
+
