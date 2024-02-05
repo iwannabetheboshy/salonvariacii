@@ -128,6 +128,10 @@ def sendFeedBack(request):
 
 def kitchenCard(request, slug):
     kitchen = Kitchen.objects.get(slug=slug)
+    if kitchen.show_number == Kitchen.objects.order_by('-show_number').first().show_number:
+       next_kitchen = Kitchen.objects.exclude(hide=True).order_by('show_number').first()
+    else:
+        next_kitchen = Kitchen.objects.exclude(hide=True).filter(show_number__gt=kitchen.show_number).order_by('show_number').first()
     kitchen.name = kitchen.name.title()
     kitchen.kitchenCardVideo = get_url_youtube(kitchen.kitchenCardVideo)
     if kitchen.kitchenCardVideo:
@@ -152,5 +156,6 @@ def kitchenCard(request, slug):
         "certificate": Certificate.objects.all(),
         "header": Header.objects.first(),
         "footer": Footer.objects.first(),
+        "nextKitchen": next_kitchen,
     }
     return render(request, "main/kitchenCard.html", data) 

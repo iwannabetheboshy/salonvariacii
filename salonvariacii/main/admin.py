@@ -127,11 +127,6 @@ class AdvantagesBlocksAdmin(admin.ModelAdmin):
     list_display = ("name", "text", "show_number")
 
     def message_user(self, request, message, level='info', extra_tags='', fail_silently=False):
-        """
-        Override the default message_user method to customize success messages.
-        """
-
-        print(message)
         if message == 'приемущества "<a href="/admin/main/advantagesblocks/None/change/">AdvantagesBlocks object (None)</a>" был успешно добавлен.':
 
             custom_message = 'Превышено максимальное количество записей (4).'
@@ -179,6 +174,9 @@ class KitchenCardTextAdmin(admin.ModelAdmin):
       }),
       ('Сертификаты качества', {
           'fields': ('certificateName', 'fontsizeCertificateH', 'fontsizeCertificateName')
+      }),
+      ('Следующая кухня', {
+          'fields': ('fontsizeNextKitchen',)
       }),
    )
 

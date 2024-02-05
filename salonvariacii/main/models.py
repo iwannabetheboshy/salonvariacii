@@ -568,6 +568,10 @@ class KitchenCardText(models.Model):
                                  validators=[MinValueValidator(14), MaxValueValidator(24)],
                                  help_text=("Размер от 14 до 24"))
     
+    fontsizeNextKitchen=models.IntegerField('Размер подписи для перехода к следующей кухне',
+                                 validators=[MinValueValidator(14), MaxValueValidator(24)],
+                                 help_text=("Размер от 14 до 24"))
+    
     class Meta:
         verbose_name = "надпись"
         verbose_name_plural = "Надписи в карточке кухни"
