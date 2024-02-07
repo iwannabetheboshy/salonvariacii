@@ -383,25 +383,31 @@
     </div>
 </div>
 
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <div id="fullscreen-image" class=" fabe modal-dialog-centered">
     <div class="modal-content d-flex" style="margin-left: auto;margin-right: auto;width: 80%;justify-content: center;"">
-        {% for block in moreBlocks %}
-            <div class=" slide">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+            {% for block in moreBlocks %}
+            <div class="swiper-slide">
                 <img src="{{ block.image1.url }}" alt="">
             </div>
-            <div class="slide">
+            <div class="swiper-slide">
                 <img src="{{ block.image2.url }}" alt=""">
             </div>
-            <div class=" slide">
+            <div class="swiper-slide">
                 <img src="{{ block.image3.url }}" alt="">
             </div>
             {%if block.image4 %}
-            <div class=" slide">
+            <div class="swiper-slide">
                 <img src="{{ block.image4.url }}" alt="">
             </div>
             {%endif%}
     {%endfor%}
+        </div>
+    </div>
+        
     <div class="fullscreen-image-nav">
         <div class="prev" onclick="prevSlide()">
             <svg class="custom-prev-arrow" width="24" height="50" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -427,6 +433,7 @@
 
 
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
 <script type="text/javascript" src="{% static 'main/js/index.js' %}"></script>
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.4/lottie_svg.min.js"></script>
 <script async src="https://cdn.dribbble.com/assets/packs/js/application.aae9ed62b46bef969bcb.js"></script>

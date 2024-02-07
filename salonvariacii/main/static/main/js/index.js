@@ -155,14 +155,62 @@ $(document).ready(function () {
     }
   });
 
+var catalogSlider = null;
+
+
+function catalogSliderInit () {
+	if (!catalogSlider) {
+		catalogSlider = new Swiper('#fullscreen-image .mySwiper', {
+    });
+	}
+}
+
+function catalogSliderDestroy () {
+	if (catalogSlider) {
+		catalogSlider.destroy();
+		catalogSlider = null;
+	}
+}
+
+  //инициализация слайдера больше возможностей при загрузке
+	windowWidth = $(this).innerWidth();
+
+	if (windowWidth <= 1200) {
+		catalogSliderInit()
+	} else {
+		catalogSliderDestroy()
+  }
+
+  //инициализация слайдера больше возможностей при ресайзе страницы
+$(window).on('load resize', function () {
+
+	windowWidth = $(this).innerWidth();
+	
+	// Если ширина экрана меньше или равна mediaQuerySize(1024)
+	if (windowWidth <= 1200) {
+		// Инициализировать слайдер если он ещё не был инициализирован
+		catalogSliderInit()
+	} else {
+		// Уничтожить слайдер если он был инициализирован
+		catalogSliderDestroy()
+	}
+});
+
 
 
   $('.more-slider .more-slide img').click(function (event) {
     if (!$(event.target).hasClass('slick-next') && !$(event.target).hasClass('slick-prev')) {
       var src = $(this).attr('src');
       var index = findSliderItemIndexByImageSrc(src);
-
-      showSlides(index)
+      console.log(index);
+      if(windowWidth <= 1200){
+        catalogSlider.slideTo(index, 0, false);
+      }
+      else{
+        showSlides(index)
+      }
+      
+      
 
       $('#fullscreen-image').show();
     };
@@ -174,12 +222,11 @@ $(document).ready(function () {
   });
 
 
-
 });
 
 
 var currentSlideIndex = 0;
-var slides = document.querySelectorAll("#fullscreen-image .slide");
+var slides = document.querySelectorAll("#fullscreen-image .swiper-slide");
 
 function showSlides(slideIndex) {
 
@@ -219,7 +266,7 @@ function nextSlide() {
 }
 
 function findSliderItemIndexByImageSrc(srcToFind) {
-  var $sliderItems = $("#fullscreen-image .modal-content .slide");
+  var $sliderItems = $("#fullscreen-image .modal-content .swiper-slide");
 
   var foundIndex = $sliderItems.filter(function (index, sliderItem) {
     var $img = $(sliderItem).find('img');
@@ -369,7 +416,6 @@ $(document).ready(function () {
 
       if (height > 270) {
         element.getElementsByClassName('mobileFull')[0].style.display = 'block';
-        console.log(element.getElementsByClassName('mobileFull'))
         element.querySelector('.more-slide-text').style.maxHeight = "250px";
         element.querySelector('.more-slide-text').style.overflow = 'hidden';
       }
